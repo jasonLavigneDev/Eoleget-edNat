@@ -7,6 +7,7 @@ import Spinner from '../components/system/Spinner';
 import MsgHandler from '../components/system/MsgHandler';
 import DynamicStore, { useAppContext } from '../contexts/context';
 import lightTheme from '../themes/light';
+import Index from '../pages';
 
 // dynamic imports
 const MainLayout = lazy(() => import('./MainLayout'));
@@ -26,7 +27,7 @@ function App() {
       <CssBaseline />
       <Suspense fallback={<Spinner full />}>
         <Switch>
-          <Route path="/" component={MainLayout} />
+          <Route path="/" component={Index} />
         </Switch>
       </Suspense>
       <MsgHandler />

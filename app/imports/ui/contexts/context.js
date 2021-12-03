@@ -87,6 +87,7 @@ Store.defaultProps = {
   loggingIn: false,
   userId: undefined,
   user: {},
+  roles: {},
 };
 
 Store.propTypes = {
@@ -96,4 +97,5 @@ Store.propTypes = {
   userId: PropTypes.string,
   user: PropTypes.objectOf(PropTypes.any),
   children: PropTypes.element.isRequired,
+  roles: PropTypes.objectOf(PropTypes.any),
 };

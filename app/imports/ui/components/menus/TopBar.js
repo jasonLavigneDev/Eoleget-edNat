@@ -45,7 +45,6 @@ function TopBar() {
   const classes = useStyles();
   const LOGO = `/images/${isMobile ? SMALL_LOGO : LONG_LOGO}`;
 
-
   return (
     <AppBar position="fixed" className={classes.root}>
       <Link to="/" className={classes.imgLogo}>
@@ -53,9 +52,11 @@ function TopBar() {
       </Link>
 
       {!isMobile && !!user && <MenuBar />}
-      {!!user && <div className={classes.rightContainer}>
-        <MainMenu user={user} />
-      </div>}
+      {!!user && (
+        <div className={classes.rightContainer}>
+          <MainMenu user={user} />
+        </div>
+      )}
     </AppBar>
   );
 }

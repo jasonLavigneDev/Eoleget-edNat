@@ -145,7 +145,6 @@ if (Meteor.isServer) {
   });
 }
 
-
 Meteor.users.deny({
   insert() {
     return true;
