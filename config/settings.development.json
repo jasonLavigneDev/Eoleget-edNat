@@ -1,0 +1,21 @@
+{
+  "public": {
+    "enableKeycloak": true,
+    "keycloakUrl": "https://auth.appseducation.fr/auth",
+    "keycloakRealm": "dev"
+  },
+  "keycloak": {
+    "pubkey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv7ffLYo34ZNPQfjfAlaXCIrsV6eyqKk8kSJAs2dkwl3z+AAHqhC6e1687NGrj+qa8QkPs6N92T7kscJY0liZSgmf2YFx/NR7+CzkD8l25XM0/l1ffvTwCvX2NZwi8NEZGeCAIoKdjt2mqEDpWaAgy7brY6khC1vBv4UdgfOXJS/pIcdoHCTHsSKd84JcU6vcSLIknGNfjXXlC5mWoNr4OmjKxZ21sXeidcMk/vfbUISN4aegLSr7hbkQQgjuBsE+DWtWwGuUDcv4DRNUWgOnyxMFNfXEe8ZwPf85tOkqmSNkRl0jcBDB9SsNcOjDnP3fKlrbrbKg7Kb1rlEsqKHPQQIDAQAB",
+    "client": "sso"
+  },
+  "private": {
+    "apiKeys": [
+      "849b7648-14b8-4154-9ef2-8d1dc4c2b7e9"
+    ]
+  },
+  "smtp":{
+    "url": "smtps://USERNAME:PASSWORD@HOST:PORT",
+    "fromEmail": "USERNAME",
+    "toEmail": "admin@domain.fr"
+  }
+}

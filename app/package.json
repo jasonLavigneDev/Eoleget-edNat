@@ -1,0 +1,56 @@
+{
+  "name": "agenda3",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "start": "meteor --exclude-archs 'web.browser.legacy, web.cordova' --settings ../config/settings.development.json",
+    "test": "meteor test --once --exclude-archs 'web.browser.legacy, web.cordova' --driver-package meteortesting:mocha --allow-superuser",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "lint": "eslint . --ext js,jsx",
+    "lintfix": "eslint --fix . --ext js,jsx",
+    "visualize": "meteor --production --extra-packages bundle-visualizer --settings ../config/settings.development.json",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "babel-eslint": "^10.1.0",
+    "bcrypt": "^5.0.1",
+    "meteor-node-stubs": "^1.0.1",
+    "moment": "^2.29.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-toastify": "^7.0.4",
+    "simpl-schema": "^1.12.0"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-i18n": "^2.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx": "^0.1.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-meteor": "^7.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "prettier": "^2.2.1"
+  }
+}

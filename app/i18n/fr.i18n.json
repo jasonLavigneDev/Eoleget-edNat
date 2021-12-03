@@ -1,0 +1,79 @@
+{
+  "api": {
+    "appsettings": {
+      "labels": {
+      }
+    },
+    "methods": {}
+  },
+  "pages": {
+    "NotFound": { "backButtonLabel": "Retour", "message": "Page non trouvée !" }
+  },
+  "components": {
+    "MenuBar": {
+      "menuHome": "Accueil",
+      "menuHomeMobile": ""
+    },
+    "MainMenu": {
+      "menuLogoutLabel": "Se déconnecter",
+      "menuAddEvent": "Ajouter événement"
+    },
+    "AppVersion": {
+      "title": "Version"
+    },
+    "LogoutDialog": {
+      "dialogTitle": "Déconnexion globale",
+      "dialogContent": "Voulez vous également vous déconnecter de toutes les applications ?",
+      "dontAskAgain": "Ne plus demander",
+      "buttonYes": "Oui",
+      "buttonNo": "Non"
+    }
+  },
+  "layouts": {
+    "MainLayout": {}
+  },
+  "languages": {
+    "en": "Anglais",
+    "fr": "Français"
+  },
+  "SimpleSchema": {
+    "required": "{$label} est requis",
+    "minString": "{$label} doit faire au moins {$min} caractères",
+    "maxString": "{$label} est limité à {$max} caractères",
+    "minNumber": "{$label} doit être supérieur ou égal à {$min}",
+    "maxNumber": "{$label} doit être inférieur ou égal à {$max}",
+    "minNumberExclusive": "{$label} doit être supérieur à {$min}",
+    "maxNumberExclusive": "{$label} doit être inférieur à {$max}",
+    "minDate": "{$label} doit être postérieur à {$min}",
+    "maxDate": "{$label} doit être antérieur à {$max}",
+    "badDate": "{$label} n'est pas une tâche valide",
+    "minCount": "Vous devez saisir plus de {$minCount} valeurs",
+    "maxCount": "Vous devez saisir moins de {$maxCount} valeurs",
+    "noDecimal": "{$label} doit être un entier ",
+    "notAllowed": "{$value} n'est pas une valeur acceptée",
+    "expectedType": "{$label} doit être du type {$dataType}",
+    "keyNotInSchema": "{$name} n'est pas autorisé par le schéma",
+    "RegEx": {
+      "Default": "Echec de validation de l'expression régulière",
+      "Email": "doit être une adresse e-mail valide",
+      "EmailWithTLD": "doit être une adresse e-mail valide",
+      "Domain": "doit être un domaine valide",
+      "WeakDomain": "doit être un domaine valide",
+      "IP": "doit être une adresse IPv4/IPv6 valide",
+      "IPv4": "doit être une adresse IPv4 valide",
+      "IPv6": "doit être une adresse IPv6 valide",
+      "Url": "doit être une URL valide",
+      "Id": "doit être un identifiant alphanumérique valide",
+      "ZipCode": "doit être un code postal valide",
+      "Phone": "doit être un numéro de téléphone valide"
+    },
+    "dataTypes": {
+      "String": "Chaine de caractères",
+      "Number": "Numérique",
+      "Integer": "Entier",
+      "Boolean": "Booléen",
+      "Array": "Tableau",
+      "Object": "Objet"
+    }
+  }
+}
