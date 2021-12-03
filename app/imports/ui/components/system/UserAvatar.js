@@ -12,7 +12,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UserAvatar = ({ customClass }) => {
-  const [{ user: { avatar, firstName } }] = useAppContext();
+  const [
+    {
+      user: { avatar, firstName },
+    },
+  ] = useAppContext();
   const classes = useStyles();
   const getClasse = () => {
     if (customClass) return customClass;

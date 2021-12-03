@@ -26,8 +26,6 @@ export const menu = [
   },
 ];
 
-
-
 const MainMenu = ({ user = {} }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -101,7 +99,6 @@ const MainMenu = ({ user = {} }) => {
           horizontal: 'center',
         }}
       >
-
         {menu.map((item) => {
           return item.content === 'Divider' ? (
             <Divider key={item.path} />
@@ -117,7 +114,7 @@ const MainMenu = ({ user = {} }) => {
         })}
         <Divider />
 
-<MenuItem onClick={onLogout}>
+        <MenuItem onClick={onLogout}>
           <T>menuLogoutLabel</T>
         </MenuItem>
         <Divider />

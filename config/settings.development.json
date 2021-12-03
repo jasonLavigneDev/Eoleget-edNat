@@ -1,6 +1,6 @@
 {
   "public": {
-    "enableKeycloak": true,
+    "enableKeycloak": false,
     "keycloakUrl": "https://auth.appseducation.fr/auth",
     "keycloakRealm": "dev"
   },
