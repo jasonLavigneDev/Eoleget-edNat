@@ -13,13 +13,12 @@ const useStyles = makeStyles(() => ({
   },
   main: {
     display: 'flex',
+    flexDirection: 'column',
     marginTop: '50px',
   },
   cardContainer: {
     display: 'flex',
-    flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
   },
 }));
 
@@ -31,18 +30,14 @@ export default function Index() {
     <div className={classes.root}>
       <TopBar />
       <main className={classes.main}>
+        <h1>Magasin dapplications</h1>
         <span className={classes.cardContainer}>
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
