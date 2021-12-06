@@ -14,8 +14,8 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'white',
   },
   avatar: {
-    width: 25,
-    height: 25,
+    width: 40,
+    height: 40,
   },
   avatarMobile: {
     width: 120,

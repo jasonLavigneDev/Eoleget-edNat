@@ -10,9 +10,10 @@ import AppAvatar from './AppAvatar';
 
 const useStyles = makeStyles(() => ({
   card: {
-    width: '200px',
-    maxWidth: '200px',
+    width: '300px',
+    height: '300px',
     margin: '1%',
+    backgroundColor: '#ECEEF8',
   },
 }));
 
