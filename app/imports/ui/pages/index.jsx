@@ -1,11 +1,42 @@
 import React from 'react';
-import TopBar from '../components/menus/TopBar';
+import { makeStyles } from '@material-ui/core/styles';
+import AppCard from '../components/AppCard';
+
+const useStyles = makeStyles(() => ({
+  cardContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+}));
 
 export default function Index() {
+  const classes = useStyles();
   return (
-    <main>
-      <TopBar />
-      <div>Coucou</div>
-    </main>
+    <div>
+      <main>
+        <span className={classes.cardContainer}>
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        </span>
+      </main>
+    </div>
   );
 }
