@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ import lightTheme from '../themes/light';
 import Index from '../pages';
 
 // dynamic imports
-const MainLayout = lazy(() => import('./MainLayout'));
+// const MainLayout = lazy(() => import('./MainLayout'));
 
 function App() {
   const [{ userId, loggingIn }] = useAppContext();
