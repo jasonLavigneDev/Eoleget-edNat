@@ -14,8 +14,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 function SearchBarApp({ opened }) {
-  const [open, setOpen] = useState(false);
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
 
   React.useEffect(() => {
     setOpen(opened);
