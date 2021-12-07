@@ -41,7 +41,8 @@
       "inProgress": "Vérification de votre adresse email en cours"
     },
     "Store": {
-      "storeTitle": "Magasin d'applications"
+      "storeTitle": "Magasin d'applications",
+      "searchApp": "Chercher une application"
     }
   },
   "components": {

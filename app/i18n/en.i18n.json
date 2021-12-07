@@ -46,7 +46,8 @@
       "inProgress": "Email verification in progress"
     },
     "Store": {
-      "storeTitle": "Applications store"
+      "storeTitle": "Applications store",
+      "searchApp": "Search for an application"
     }
   },
   "components": {
