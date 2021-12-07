@@ -1,13 +1,18 @@
 {
   "api": {
     "appsettings": {
-      "labels": {
-      }
+      "labels": {}
     },
     "methods": {}
   },
   "pages": {
-    "NotFound": { "backButtonLabel": "Retour", "message": "Page non trouvée !" }
+    "Store": {
+      "storeTitle": "Magasin d'applications"
+    },
+    "NotFound": {
+      "backButtonLabel": "Retour",
+      "message": "Page non trouvée !"
+    }
   },
   "components": {
     "MenuBar": {
@@ -27,6 +32,9 @@
       "dontAskAgain": "Ne plus demander",
       "buttonYes": "Oui",
       "buttonNo": "Non"
+    },
+    "Card": {
+      "addButtonTooltip": "Ajouter l'application"
     }
   },
   "layouts": {

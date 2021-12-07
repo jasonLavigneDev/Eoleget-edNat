@@ -13,6 +13,13 @@ const darkTheme = createMuiTheme({
       light: '#FFDBA5',
     },
   },
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: '1em',
+      },
+    },
+  },
 });
 
 export default darkTheme;

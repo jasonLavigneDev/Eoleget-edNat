@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from 'meteor/universe:i18n';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -29,7 +30,7 @@ export default function Index() {
       <TopBar />
       <main className={classes.main}>
         <Typography variant="h4" component="div">
-          Magasin d&apos;applications
+          {i18n.__('pages.Store.storeTitle')}
         </Typography>
         <span className={classes.cardContainer}>
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
