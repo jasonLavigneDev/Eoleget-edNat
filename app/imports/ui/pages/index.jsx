@@ -1,9 +1,11 @@
 import React from 'react';
 // import { Roles } from 'meteor/alanning:roles';
-import { makeStyles } from '@material-ui/core/styles';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 // import { useAppContext } from '../contexts/context';
-import AppCard from '../components/AppCard';
+
+import AppCard from '../components/card/AppCard';
 import TopBar from '../components/menus/TopBar';
 
 const useStyles = makeStyles(() => ({
@@ -30,7 +32,9 @@ export default function Index() {
     <div className={classes.root}>
       <TopBar />
       <main className={classes.main}>
-        <h1>Magasin dapplications</h1>
+        <Typography variant="h4" component="div">
+          Magasin d&apos;applications
+        </Typography>
         <span className={classes.cardContainer}>
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
