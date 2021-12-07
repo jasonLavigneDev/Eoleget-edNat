@@ -39,6 +39,9 @@
       "error": "Votre adresse email n'a pas pu être vérifiée",
       "success": "Votre adresse email est vérifiée",
       "inProgress": "Vérification de votre adresse email en cours"
+    },
+    "Store": {
+      "storeTitle": "Magasin d'applications"
     }
   },
   "components": {
@@ -96,6 +99,9 @@
       "success": "Courriel de vérification envoyé avec succès",
       "error": "Échec de l'envoi du courriel de vérification",
       "doVerify": "Envoyer un courriel"
+    },
+    "Card": {
+      "addButtonTooltip": "Ajouter l'application"
     }
   },
   "layouts": {

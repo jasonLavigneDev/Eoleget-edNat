@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 
 import AddIcon from '@material-ui/icons/Add';
@@ -9,6 +10,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 
 import AppBadge from './AppBadge';
@@ -30,6 +32,9 @@ const useStyles = makeStyles(() => ({
     bottom: '0',
     right: '30%',
   },
+  tooltip: {
+    fontSize: '24px',
+  },
 }));
 
 function AppCard({ title, content }) {
@@ -45,9 +50,11 @@ function AppCard({ title, content }) {
           </AppBadge>
         }
         action={
-          <IconButton aria-label="add">
-            <AddIcon fontSize="large" />
-          </IconButton>
+          <Tooltip className={classes.tooltip} title={i18n.__('components.Card.addButtonTooltip')}>
+            <IconButton aria-label="add">
+              <AddIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
         }
         className={classes.cardHeader}
       />

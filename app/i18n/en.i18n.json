@@ -44,6 +44,9 @@
       "error": "Email could not be verified",
       "success": "Email verified",
       "inProgress": "Email verification in progress"
+    },
+    "Store": {
+      "storeTitle": "Applications store"
     }
   },
   "components": {
@@ -101,6 +104,9 @@
       "success": "Verification email sent successfully",
       "error": "Verification email could not be sent",
       "doVerify": "Send an email"
+    },
+    "Card": {
+      "addButtonTooltip": "Add this app"
     }
   },
   "layouts": {

@@ -46,6 +46,13 @@ const lightTheme = createMuiTheme({
       fontFamily: 'WorkSansBold',
     },
   },
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: '1em',
+      },
+    },
+  },
 });
 
 export default lightTheme;
