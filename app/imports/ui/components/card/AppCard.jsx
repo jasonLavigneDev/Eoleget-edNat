@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 
@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
+import lightTheme from '../../themes/light';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -22,8 +23,11 @@ const useStyles = makeStyles((theme) => ({
     width: '300px',
     height: '300px',
     margin: '1%',
-    backgroundColor: '#ECEEF8',
+    backgroundColor: lightTheme.palette.primary.light,
     boxShadow: theme.shadows[3],
+  },
+  cardSelected: {
+    outline: 'solid #011CAA',
   },
   cardHeader: {
     backgroundColor: '#95B5F0',
@@ -37,9 +41,15 @@ const useStyles = makeStyles((theme) => ({
 
 function AppCard({ title, content }) {
   const classes = useStyles();
+  const [selected, setSelected] = useState(false);
+  const isSelected = selected ? `${classes.card} ${classes.cardSelected}` : classes.card;
+
+  React.useEffect(() => {
+    setSelected(selected);
+  }, [selected]);
 
   return (
-    <Card className={classes.card}>
+    <Card className={isSelected}>
       <CardHeader
         title={<Typography variant="h6">{title}</Typography>}
         avatar={
@@ -49,7 +59,12 @@ function AppCard({ title, content }) {
         }
         action={
           <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
-            <IconButton aria-label="add">
+            <IconButton
+              aria-label="add"
+              onClick={() => {
+                setSelected(!selected);
+              }}
+            >
               <AddIcon fontSize="large" />
             </IconButton>
           </Tooltip>
