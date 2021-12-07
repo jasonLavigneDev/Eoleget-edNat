@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import AppCard from '../components/card/AppCard';
 import TopBar from '../components/menus/TopBar';
@@ -48,9 +49,11 @@ export default function Index() {
             <Typography variant="h4" component="div">
               {i18n.__('pages.Store.storeTitle')}
             </Typography>
-            <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
-              <SearchIcon fontSize="large" />
-            </IconButton>
+            <Tooltip title={i18n.__('pages.Store.searchApp')}>
+              <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
+                <SearchIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
           </div>
           <Collapse in={showSearchApp} collapsedSize={0}>
             <SearchBarApp opened={showSearchApp} />

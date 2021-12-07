@@ -7,7 +7,8 @@
   },
   "pages": {
     "Store": {
-      "storeTitle": "Magasin d'applications"
+      "storeTitle": "Magasin d'applications",
+      "searchApp": "Chercher une application"
     },
     "NotFound": {
       "backButtonLabel": "Retour",

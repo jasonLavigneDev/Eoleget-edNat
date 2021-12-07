@@ -32,9 +32,6 @@ const useStyles = makeStyles(() => ({
     bottom: '0',
     right: '30%',
   },
-  tooltip: {
-    fontSize: '24px',
-  },
 }));
 
 function AppCard({ title, content }) {
@@ -50,7 +47,7 @@ function AppCard({ title, content }) {
           </AppBadge>
         }
         action={
-          <Tooltip className={classes.tooltip} title={i18n.__('components.Card.addButtonTooltip')}>
+          <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
             <IconButton aria-label="add">
               <AddIcon fontSize="large" />
             </IconButton>
