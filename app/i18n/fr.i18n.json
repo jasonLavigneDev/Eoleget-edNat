@@ -102,6 +102,9 @@
     },
     "Card": {
       "addButtonTooltip": "Ajouter l'application"
+    },
+    "Search": {
+      "searchingApp": "Quelle app cherchez vous ?"
     }
   },
   "layouts": {
