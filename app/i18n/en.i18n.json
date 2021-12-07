@@ -35,6 +35,9 @@
     },
     "Card": {
       "addButtonTooltip": "Add this app"
+    },
+    "Search": {
+      "searchingApp": "Which app are you looking for?"
     }
   },
   "layouts": {
