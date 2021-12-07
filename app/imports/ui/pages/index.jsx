@@ -14,7 +14,7 @@ import AppCard from '../components/card/AppCard';
 import TopBar from '../components/menus/TopBar';
 import SearchBarApp from '../components/search/SearchBarApp';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     position: 'relative',
@@ -22,7 +22,8 @@ const useStyles = makeStyles(() => ({
   main: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '50px',
+    marginTop: '5%',
+    padding: '0 15%',
   },
   storeTitleContainer: {
     width: 'fit-content',
@@ -35,6 +36,10 @@ const useStyles = makeStyles(() => ({
   cardContainer: {
     display: 'flex',
     flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f1f1fc',
+    boxShadow: theme.shadows[5],
   },
 }));
 

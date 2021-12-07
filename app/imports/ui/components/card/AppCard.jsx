@@ -16,13 +16,14 @@ import Typography from '@material-ui/core/Typography';
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   card: {
     position: 'relative',
     width: '300px',
     height: '300px',
     margin: '1%',
     backgroundColor: '#ECEEF8',
+    boxShadow: theme.shadows[3],
   },
   cardHeader: {
     backgroundColor: '#95B5F0',
