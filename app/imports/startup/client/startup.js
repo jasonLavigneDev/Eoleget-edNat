@@ -12,5 +12,5 @@ Meteor.startup(() => {
   i18n.setLocale(getLang());
   // setup translated validation messages
   registerSchemaMessages();
-  render(<App />, document.getElementById('react-target')); // eslint-disable-line
+  render(<App />, document.getElementById('root')); // eslint-disable-line
 });
