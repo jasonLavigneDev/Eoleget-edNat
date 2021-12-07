@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
@@ -30,14 +32,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function AppCard({ title, subTitle, content }) {
+function AppCard({ title, content }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
       <CardHeader
-        title={title}
-        subheader={subTitle}
+        title={<Typography variant="h6">{title}</Typography>}
         avatar={
           <AppBadge className={classes.badge}>
             <AppAvatar />
@@ -45,15 +46,21 @@ function AppCard({ title, subTitle, content }) {
         }
         action={
           <IconButton aria-label="add">
-            <AddCircleOutlineIcon fontSize="large" />
+            <AddIcon fontSize="large" />
           </IconButton>
         }
         className={classes.cardHeader}
       />
       <CardContent>
-        <div>Nom: {content}</div>
-        <div>Version: {content}</div>
-        <div>URL: {content}</div>
+        <Typography variant="body1" component="div">
+          Description: {content}
+        </Typography>
+        <Typography variant="body2" component="div">
+          Version: {content}
+        </Typography>
+        <Typography variant="body2" component="div">
+          URL: {content}
+        </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button variant="contained">Voir plus</Button>
@@ -64,7 +71,6 @@ function AppCard({ title, subTitle, content }) {
 
 AppCard.propTypes = {
   title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
 };
 
