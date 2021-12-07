@@ -32,7 +32,6 @@ const AppAvatar = () => {
 
   return (
     <Badge
-      overlap="circular"
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'right',

@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
-import AppCard from '../components/AppCard';
+import Typography from '@material-ui/core/Typography';
+
+import AppCard from '../components/card/AppCard';
 import TopBar from '../components/menus/TopBar';
 
 const useStyles = makeStyles(() => ({
@@ -25,7 +28,9 @@ export default function Index() {
     <div className={classes.root}>
       <TopBar />
       <main className={classes.main}>
-        <h1>Magasin dapplications</h1>
+        <Typography variant="h4" component="div">
+          Magasin d&apos;applications
+        </Typography>
         <span className={classes.cardContainer}>
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
           <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
