@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Switch, Route, useHistory } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 
