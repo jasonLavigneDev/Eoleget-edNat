@@ -1,8 +1,10 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, useEffect, lazy } from 'react';
 import { BrowserRouter, Switch, Route, useHistory } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
+
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
 import Spinner from '../components/system/Spinner';
 import MsgHandler from '../components/system/MsgHandler';
 import DynamicStore from '../contexts/context';
