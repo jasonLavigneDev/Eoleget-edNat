@@ -1,0 +1,11 @@
+{
+  "public": {
+    "enableKeycloak": "",
+    "keycloakUrl": "",
+    "keycloakRealm": ""
+  },
+  "keycloak": {
+    "pubkey": "",
+    "client": ""
+  }
+}

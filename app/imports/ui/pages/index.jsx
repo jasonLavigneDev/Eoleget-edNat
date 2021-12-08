@@ -5,11 +5,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import SearchIcon from '@material-ui/icons/Search';
+import ListIcon from '@material-ui/icons/ViewList';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import AppCard from '../components/card/AppCard';
-import TopBar from '../components/menus/TopBar';
 import SearchBarApp from '../components/search/SearchBarApp';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 15%',
   },
   storeTitleContainer: {
-    width: 'fit-content',
+    width: '100%',
+    marginBottom: '2%',
   },
   storeTitleContent: {
     display: 'flex',
@@ -39,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#f1f1fc',
     boxShadow: theme.shadows[5],
   },
+  iconListe: {
+    alignItems: 'end',
+  },
 }));
 
 function Index() {
@@ -46,41 +50,43 @@ function Index() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <TopBar />
-      <main className={classes.main}>
-        <div className={classes.storeTitleContainer}>
-          <div className={classes.storeTitleContent}>
-            <Typography variant="h4" component="div">
-              {i18n.__('pages.Store.storeTitle')}
-            </Typography>
-            <Tooltip title={i18n.__('pages.Store.searchApp')}>
-              <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
-                <SearchIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-          </div>
-          <Collapse in={showSearchApp} collapsedSize={0}>
-            <SearchBarApp opened={showSearchApp} />
-          </Collapse>
+    <main className={classes.main}>
+      <div className={classes.storeTitleContainer}>
+        <div className={classes.storeTitleContent}>
+          <Typography variant="h4" component="div">
+            {i18n.__('pages.Store.storeTitle')}
+          </Typography>
+          <Tooltip title={i18n.__('pages.Store.searchApp')}>
+            <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
+              <SearchIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Mode liste">
+            <IconButton>
+              <ListIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
         </div>
-        <span className={classes.cardContainer}>
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <Collapse in={showSearchApp} collapsedSize={0}>
+          <SearchBarApp opened={showSearchApp} />
+        </Collapse>
+      </div>
+      <span className={classes.cardContainer}>
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
 
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-          <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        </span>
-      </main>
-    </div>
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
+      </span>
+    </main>
   );
 }
 
