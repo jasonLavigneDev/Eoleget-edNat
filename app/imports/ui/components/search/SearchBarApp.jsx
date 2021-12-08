@@ -27,12 +27,6 @@ function SearchBarApp({ opened }) {
       variant="outlined"
       className={classes.searchBar}
       open={open}
-      onOpen={() => {
-        setOpen(true);
-      }}
-      onClose={() => {
-        setOpen(false);
-      }}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

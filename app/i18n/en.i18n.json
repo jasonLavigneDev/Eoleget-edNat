@@ -39,6 +39,12 @@
     },
     "Search": {
       "searchingApp": "Which app are you looking for?"
+    },
+    "List": {
+      "application": "Application",
+      "description": "Description",
+      "version": "Version",
+      "url": "URL"
     }
   },
   "layouts": {

@@ -6,11 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import SearchIcon from '@material-ui/icons/Search';
 import ListIcon from '@material-ui/icons/ViewList';
+import CardIcon from '@material-ui/icons/Dashboard';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import AppCard from '../components/card/AppCard';
 import SearchBarApp from '../components/search/SearchBarApp';
+// eslint-disable-next-line import/no-named-as-default
+import AppCardList from '../components/card/AppCardList';
+import AppList from '../components/AppList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,12 +28,19 @@ const useStyles = makeStyles((theme) => ({
   },
   storeTitleContainer: {
     width: '100%',
-    marginBottom: '2%',
   },
   storeTitleContent: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  searchBar: {
+    width: '35%',
+  },
+  iconListe: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    width: '100%',
   },
   cardContainer: {
     display: 'flex',
@@ -40,14 +50,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#f1f1fc',
     boxShadow: theme.shadows[5],
   },
-  iconListe: {
-    alignItems: 'end',
-  },
 }));
 
 function Index() {
   const [showSearchApp, setShowSearchApp] = useState(false);
+  const [showModeList, setModeList] = useState(false);
   const classes = useStyles();
+
+  React.useEffect(() => {
+    setModeList(showModeList);
+  }, [showSearchApp]);
 
   return (
     <main className={classes.main}>
@@ -61,31 +73,39 @@ function Index() {
               <SearchIcon fontSize="large" />
             </IconButton>
           </Tooltip>
+        </div>
+        <Collapse in={showSearchApp} collapsedsize={0} className={classes.searchBar}>
+          <SearchBarApp opened={showSearchApp} />
+        </Collapse>
+        <span className={classes.iconListe}>
           <Tooltip title="Mode liste">
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                setModeList(true);
+              }}
+            >
               <ListIcon fontSize="large" />
             </IconButton>
           </Tooltip>
+          <Tooltip title="Mode carte">
+            <IconButton
+              onClick={() => {
+                setModeList(false);
+              }}
+            >
+              <CardIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
+        </span>
+        <div className={classes.cardContainer}>
+          <Collapse in={!showModeList} collapsedsize={0}>
+            <AppCardList title="ça claque" content="Je suis un super contenu qui déchire." />
+          </Collapse>
+          <Collapse in={showModeList} collapsedsize={0}>
+            <AppList title="ça claque" content="Je suis un super contenu qui déchire." />
+          </Collapse>
         </div>
-        <Collapse in={showSearchApp} collapsedSize={0}>
-          <SearchBarApp opened={showSearchApp} />
-        </Collapse>
       </div>
-      <span className={classes.cardContainer}>
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-        <AppCard title="La classe" subTitle="C'est vrai" content="C'est pas mal" />
-      </span>
     </main>
   );
 }
