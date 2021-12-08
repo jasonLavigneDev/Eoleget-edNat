@@ -1,18 +1,32 @@
-import React from 'react';
-import { Route, Switch } from 'react-router';
+import React, { lazy } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import TopBar from '../components/menus/TopBar';
-import Index from '../pages';
 
-const MainLayout = () => {
+// pages
+const Index = lazy(() => import('../pages/index'));
+
+const useStyles = () =>
+  makeStyles(() => ({
+    root: {
+      display: 'flex',
+      position: 'relative',
+    },
+  }));
+
+function MainLayout() {
+  const classes = useStyles();
+
   return (
-    <main>
+    <div className={classes.root}>
       <TopBar />
-
-      <Switch>
-        <Route path="/" component={Index} />
-      </Switch>
-    </main>
+      <main id="main">
+        <Switch>
+          <Route exact path="/" component={Index} />
+        </Switch>
+      </main>
+    </div>
   );
-};
+}
 
 export default MainLayout;

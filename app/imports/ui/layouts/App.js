@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, lazy } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -7,10 +7,9 @@ import Spinner from '../components/system/Spinner';
 import MsgHandler from '../components/system/MsgHandler';
 import DynamicStore, { useAppContext } from '../contexts/context';
 import lightTheme from '../themes/light';
-import Index from '../pages';
 
 // dynamic imports
-// const MainLayout = lazy(() => import('./MainLayout'));
+const MainLayout = lazy(() => import('./MainLayout'));
 
 function App() {
   const [{ userId, loggingIn }] = useAppContext();
@@ -27,7 +26,7 @@ function App() {
       <CssBaseline />
       <Suspense fallback={<Spinner full />}>
         <Switch>
-          <Route path="/" component={Index} />
+          <Route path="/" component={MainLayout} />
         </Switch>
       </Suspense>
       <MsgHandler />

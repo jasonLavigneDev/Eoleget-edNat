@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Index() {
+function Index() {
   const [showSearchApp, setShowSearchApp] = useState(false);
   const classes = useStyles();
 
@@ -83,3 +83,5 @@ export default function Index() {
     </div>
   );
 }
+
+export default Index;
