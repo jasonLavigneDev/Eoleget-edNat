@@ -11,6 +11,10 @@ import NotLoggedIn from '../pages/NotLoggedIn';
 import { isVerified } from '../../api/utils/functions';
 import Spinner from '../components/system/Spinner';
 
+// pages
+const Index = lazy(() => import('../pages/index'));
+const Packs = lazy(() => import('../pages/packs'));
+
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
@@ -25,9 +29,6 @@ const MainLayout = () => {
   const classes = useStyles();
   const [{ user, loadingUser, authenticated }] = useAppContext();
   const verifyEmail = Meteor.settings.public.emailValidation === true;
-
-  // pages
-  const Index = lazy(() => import('../pages/index'));
 
   return (
     <div className={classes.root}>
@@ -47,6 +48,7 @@ const MainLayout = () => {
               <Route path="/" component={NotLoggedIn} />
             )}
             <Redirect from="*" to="/" />
+            <Route exact path="/packs" component={Packs} />
           </Switch>
         </div>
       </main>
