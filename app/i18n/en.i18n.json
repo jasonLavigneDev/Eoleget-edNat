@@ -48,6 +48,10 @@
     "Store": {
       "storeTitle": "Applications store",
       "searchApp": "Search for an application"
+    },
+    "Packs": {
+      "packsStoreTitle": "Packs store",
+      "packsSearchApp": "Search for a pack"
     }
   },
   "components": {
@@ -110,13 +114,18 @@
       "addButtonTooltip": "Add this app"
     },
     "Search": {
-      "searchingApp": "Which app are you looking for?"
+      "searchingApp": "Which app are you looking for ?",
+      "searchingPack": "Which pack are you looking for ?",
+      "searchingError": "What are you searching for ?"
     },
     "List": {
       "application": "Application",
       "description": "Description",
       "version": "Version",
       "url": "URL"
+    },
+    "PacksCard": {
+      "infoTooltip": "Show application"
     }
   },
   "layouts": {

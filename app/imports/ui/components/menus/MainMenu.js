@@ -48,7 +48,7 @@ const MainMenu = ({ user = {} }) => {
     setAnchorEl(null);
   };
   const T = i18n.createComponent('components.MainMenu');
-  const currentLink = userMenu.find((link) => {
+  const currentLink = menu.find((link) => {
     if (link.path === pathname || pathname.search(link.path) > -1) {
       return true;
     }
@@ -108,7 +108,7 @@ const MainMenu = ({ user = {} }) => {
           horizontal: 'center',
         }}
       >
-        {userMenu.map((item) => {
+        {menu.map((item) => {
           return item.content === 'Divider' ? (
             <Divider key={item.path} />
           ) : (
