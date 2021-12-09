@@ -1,22 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
+
 import MaterialTable from '@material-table/core';
 
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(() => ({
-  tableContainer: {
-    width: '100%',
-  },
-  tableHeader: {
-    backgroundColor: '#95B5F0',
-  },
-}));
-
 function AppList({ title, content }) {
-  const classes = useStyles();
-
   const columns = [
     {
       title: i18n.__('components.List.application'),
@@ -37,6 +25,18 @@ function AppList({ title, content }) {
     },
   ];
 
+  const options = {
+    pageSize: 10,
+    pageSizeOptions: [10, 20, 50, 100],
+    paginationType: 'stepped',
+    actionsColumnIndex: 6,
+    addRowPosition: 'first',
+    emptyRowsWhenPaging: false,
+    headerStyle: {
+      backgroundColor: '#95B5F0',
+    },
+  };
+
   const data = [
     { application: title, description: content, version: content, url: content },
     { application: title, description: content, version: content, url: content },
@@ -46,11 +46,7 @@ function AppList({ title, content }) {
     { application: title, description: content, version: content, url: content },
   ];
 
-  return (
-    <div className={classes.tableContainer}>
-      <MaterialTable style={{ width: 'auto' }} columns={columns} data={data} title="Demo Title" />
-    </div>
-  );
+  return <MaterialTable columns={columns} data={data} title="Liste des applications" options={options} />;
 }
 
 AppList.propTypes = {

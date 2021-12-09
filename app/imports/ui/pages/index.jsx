@@ -97,10 +97,12 @@ function Index() {
             </IconButton>
           </Tooltip>
         </span>
-        <div className={classes.cardContainer}>
-          <Collapse in={!showModeList} collapsedsize={0}>
-            <AppCardList title="ça claque" content="Je suis un super contenu qui déchire." />
-          </Collapse>
+        <div>
+          <div className={classes.cardContainer}>
+            <Collapse in={!showModeList} collapsedsize={0}>
+              <AppCardList title="ça claque" content="Je suis un super contenu qui déchire." />
+            </Collapse>
+          </div>
           <Collapse in={showModeList} collapsedsize={0}>
             <AppList title="ça claque" content="Je suis un super contenu qui déchire." />
           </Collapse>
