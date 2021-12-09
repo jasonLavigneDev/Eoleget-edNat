@@ -5,6 +5,7 @@ import TopBar from '../components/menus/TopBar';
 
 // pages
 const Index = lazy(() => import('../pages/index'));
+const Packs = lazy(() => import('../pages/packs'));
 
 const useStyles = () =>
   makeStyles(() => ({
@@ -23,6 +24,7 @@ function MainLayout() {
       <main id="main">
         <Switch>
           <Route exact path="/" component={Index} />
+          <Route exact path="/packs" component={Packs} />
         </Switch>
       </main>
     </div>

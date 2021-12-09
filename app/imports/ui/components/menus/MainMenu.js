@@ -19,10 +19,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const menu = [
+export const userMenu = [
   {
-    path: '/add-event',
-    content: 'menuAddEvent',
+    path: '/',
+    content: 'Application',
+  },
+  {
+    path: '/packs',
+    content: 'Packs',
   },
 ];
 
@@ -39,7 +43,7 @@ const MainMenu = ({ user = {} }) => {
     setAnchorEl(null);
   };
   const T = i18n.createComponent('components.MainMenu');
-  const currentLink = menu.find((link) => {
+  const currentLink = userMenu.find((link) => {
     if (link.path === pathname || pathname.search(link.path) > -1) {
       return true;
     }
@@ -99,7 +103,7 @@ const MainMenu = ({ user = {} }) => {
           horizontal: 'center',
         }}
       >
-        {menu.map((item) => {
+        {userMenu.map((item) => {
           return item.content === 'Divider' ? (
             <Divider key={item.path} />
           ) : (
