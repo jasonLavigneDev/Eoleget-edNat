@@ -53,7 +53,7 @@ function AppCard({ title, content }) {
       <CardHeader
         title={<Typography variant="h6">{title}</Typography>}
         avatar={
-          <AppBadge className={classes.badge}>
+          <AppBadge>
             <AppAvatar />
           </AppBadge>
         }

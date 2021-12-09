@@ -10,6 +10,10 @@
       "storeTitle": "Magasin d'applications",
       "searchApp": "Chercher une application"
     },
+    "Packs": {
+      "packsStoreTitle": "Magasin des packs",
+      "packsSearchApp": "Chercher un pack"
+    },
     "NotFound": {
       "backButtonLabel": "Retour",
       "message": "Page non trouvée !"
@@ -38,13 +42,18 @@
       "addButtonTooltip": "Ajouter l'application"
     },
     "Search": {
-      "searchingApp": "Quelle app cherchez vous ?"
+      "searchingApp": "Quelle app cherchez vous ?",
+      "searchingPack": "Quel pack cherchez vous ?",
+      "searchingError": "Que cherchez vous ?"
     },
     "List": {
       "application": "Application",
       "description": "Description",
       "version": "Version",
       "url": "URL"
+    },
+    "PacksCard": {
+      "infoTooltip": "Voir l'application"
     }
   },
   "layouts": {
