@@ -30,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
     outline: 'solid #011CAA',
   },
   cardHeader: {
-    backgroundColor: '#95B5F0',
+    background: 'linear-gradient(#5aa1d8,#555BE6 100%)',
+    color: 'white',
   },
   cardActions: {
     position: 'absolute',

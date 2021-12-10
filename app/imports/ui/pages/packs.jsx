@@ -12,6 +12,7 @@ import CardIcon from '@material-ui/icons/Dashboard';
 
 import SearchBarApp from '../components/search/SearchBarApp';
 import PackCardList from '../components/packsCard/packCardList';
+import PackList from '../components/packsCard/packList';
 
 const useStyle = makeStyles((theme) => ({
   main: {
@@ -98,7 +99,7 @@ function Packs() {
             </Collapse>
           </div>
           <Collapse in={showModeList} collapsedsize={0}>
-            TODO 2
+            <PackList />
           </Collapse>
         </div>
       </div>
