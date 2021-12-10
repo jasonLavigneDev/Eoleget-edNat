@@ -70,7 +70,7 @@ function Packs() {
           </Tooltip>
         </div>
         <Collapse in={showSearchApp} collapsedsize={0} className={classes.searchBar}>
-          <SearchBarApp opened={showSearchApp} pack />
+          <SearchBarApp opened={showSearchApp} app={false} />
         </Collapse>
         <span className={classes.iconListe}>
           <Tooltip title="Mode liste">

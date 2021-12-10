@@ -37,7 +37,7 @@ function AppPacksCard() {
         </AppBadge>
         <Typography variant="body1">Nom application</Typography>
         <CardActions>
-          <Tooltip title={i18n.__('components.PacksCard.infoTooltip')}>
+          <Tooltip title={i18n.__('components.AppPacksCard.infoTooltip')}>
             <IconButton>
               <InfoIcon />
             </IconButton>

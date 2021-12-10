@@ -7,20 +7,20 @@ import MaterialTable from '@material-table/core';
 function AppList({ title, content }) {
   const columns = [
     {
-      title: i18n.__('components.List.application'),
+      title: i18n.__('components.AppList.application'),
       field: 'application',
       editable: 'never',
     },
     {
-      title: i18n.__('components.List.description'),
+      title: i18n.__('components.AppList.description'),
       field: 'description',
     },
     {
-      title: i18n.__('components.List.version'),
+      title: i18n.__('components.AppList.version'),
       field: 'version',
     },
     {
-      title: i18n.__('components.List.url'),
+      title: i18n.__('components.AppList.url'),
       field: 'url',
     },
   ];

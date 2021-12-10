@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import i18n from 'meteor/universe:i18n';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -62,10 +63,10 @@ function PackCard() {
     <div className={classes.cardContainer}>
       <Card className={classes.card}>
         <CardHeader
-          title="Pack"
+          title="Pack trop super"
           className={classes.cardHeader}
           action={
-            <Tooltip title="Voir le pack">
+            <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
               <IconButton className={classes.iconButton}>
                 <OpenInNewIcon />
               </IconButton>

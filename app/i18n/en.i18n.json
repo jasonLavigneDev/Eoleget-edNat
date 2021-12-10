@@ -46,14 +46,17 @@
       "searchingPack": "Which pack are you looking for ?",
       "searchingError": "What are you searching for ?"
     },
-    "List": {
+    "AppList": {
       "application": "Application",
       "description": "Description",
       "version": "Version",
       "url": "URL"
     },
-    "PacksCard": {
+    "AppPacksCard": {
       "infoTooltip": "Show application"
+    },
+    "PacksCard": {
+      "packTooltip": "Show pack"
     }
   },
   "layouts": {

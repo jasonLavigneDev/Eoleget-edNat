@@ -13,11 +13,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function SearchBarApp({ opened, app, pack }) {
+function SearchBarApp({ opened, app }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [isApp, setApp] = useState(false);
-  const [isPack, setPack] = useState(false);
 
   React.useEffect(() => {
     setOpen(opened);
@@ -26,25 +25,10 @@ function SearchBarApp({ opened, app, pack }) {
   React.useEffect(() => {
     setApp(app);
   }, [isApp]);
-  React.useEffect(() => {
-    setPack(pack);
-  }, [isPack]);
-
-  function setLabel() {
-    let label = '';
-    if (isApp) {
-      label = i18n.__('components.Search.searchingApp');
-    } else if (isPack) {
-      label = i18n.__('components.Search.searchingPacks');
-    } else {
-      label = i18n.__('components.Search.searchingError');
-    }
-    return label;
-  }
 
   return (
     <TextField
-      label={setLabel()}
+      label={isApp ? i18n.__('components.Search.searchingApp') : i18n.__('components.Search.searchingPack')}
       variant="outlined"
       className={classes.searchBar}
       open={open}
@@ -62,13 +46,11 @@ function SearchBarApp({ opened, app, pack }) {
 SearchBarApp.defaultProps = {
   opened: false,
   app: false,
-  pack: false,
 };
 
 SearchBarApp.propTypes = {
   opened: PropTypes.bool,
   app: PropTypes.bool,
-  pack: PropTypes.bool,
 };
 
 export default SearchBarApp;
