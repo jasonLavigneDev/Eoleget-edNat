@@ -55,7 +55,7 @@ function AppCard({ title, content }) {
         title={<Typography variant="h6">{title}</Typography>}
         avatar={
           <AppBadge>
-            <AppAvatar />
+            <AppAvatar detailApp={false} />
           </AppBadge>
         }
         action={
