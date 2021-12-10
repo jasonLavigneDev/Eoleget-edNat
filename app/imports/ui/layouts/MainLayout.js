@@ -15,6 +15,7 @@ import Spinner from '../components/system/Spinner';
 const Index = lazy(() => import('../pages/index'));
 const Packs = lazy(() => import('../pages/packs'));
 const DetailApp = lazy(() => import('../pages/detailApp'));
+const DetailPack = lazy(() => import('../pages/detailPack'));
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -51,6 +52,7 @@ const MainLayout = () => {
             <Redirect from="*" to="/" />
             <Route exact path="/packs" component={Packs} />
             <Route exact path="/detailApp" component={DetailApp} />
+            <Route exact path="/detailPack" component={DetailPack} />
           </Switch>
         </div>
       </main>
