@@ -18,6 +18,13 @@ const useStyle = makeStyles((theme) => ({
     flexDirection: 'column',
     backgroundColor: '#f1f1fc',
     boxShadow: theme.shadows[5],
+    padding: '2%',
+  },
+  getPackButton: {
+    width: '30%',
+    marginLeft: '35%',
+    marginTop: '2%',
+    marginBottom: '2%',
   },
 }));
 
@@ -38,7 +45,9 @@ function DetailPack() {
         <AppPacksCard />
         <AppPacksCard />
         <AppPacksCard />
-        <Button variant="contained">Obtenir le pack</Button>
+        <Button variant="contained" className={classes.getPackButton}>
+          Obtenir le pack
+        </Button>
       </div>
     </div>
   );
