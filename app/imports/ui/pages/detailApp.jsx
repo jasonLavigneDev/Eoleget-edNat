@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 
 import AppAvatar from '../components/appCard/AppAvatar';
 
@@ -41,6 +42,9 @@ const useStyle = makeStyles((theme) => ({
   iconSpan: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  buttonSave: {
+    marginTop: '10%',
   },
 }));
 
@@ -83,8 +87,21 @@ function DetailApp() {
               </IconButton>
               <p>Licence</p>
             </span>
+            <span className={classes.iconSpan}>
+              <IconButton disabled>
+                <LocalOfferIcon />
+              </IconButton>
+              <p>Tags</p>
+            </span>
+            <span className={classes.iconSpan}>
+              <Button variant="outlined">Tag 1</Button>
+              <Button variant="outlined">Tag 2</Button>
+              <Button variant="outlined">Tag 3</Button>
+            </span>
           </div>
-          <Button variant="contained">Enregistrer lapplication</Button>
+          <div className={classes.buttonSave}>
+            <Button variant="contained">Enregistrer lapplication</Button>
+          </div>
         </div>
         <AppAvatar detailApp />
       </div>
