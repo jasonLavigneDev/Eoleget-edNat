@@ -20,8 +20,8 @@ const useStyles = makeStyles(() => ({
     height: 40,
   },
   avatarDetails: {
-    width: 250,
-    height: 250,
+    width: 150,
+    height: 150,
   },
   iconProfil: {
     fontSize: 100,
