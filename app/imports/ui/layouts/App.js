@@ -1,34 +1,42 @@
-import React, { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter, Switch, Route, useHistory } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Spinner from '../components/system/Spinner';
 import MsgHandler from '../components/system/MsgHandler';
-import DynamicStore, { useAppContext } from '../contexts/context';
+import DynamicStore from '../contexts/context';
+import useQuery from '../utils';
 import lightTheme from '../themes/light';
-import Index from '../pages';
 
 // dynamic imports
+const LoggingOut = lazy(() => import('../components/system/LoggingOut'));
 const MainLayout = lazy(() => import('./MainLayout'));
+const VerifyEmail = lazy(() => import('../pages/VerifyEmail'));
+const ResetPassword = lazy(() => import('../pages/ResetPassword'));
 
 function App() {
-  const [{ userId, loggingIn }] = useAppContext();
-  const useKeycloak = Meteor.settings.public.enableKeycloak;
-
-  useEffect(() => {
-    if (!userId && !loggingIn && useKeycloak) {
-      setTimeout(() => Meteor.loginWithKeycloak(), 1000);
-    }
-  }, [userId, loggingIn]);
+  const { dologout } = useQuery();
+  const history = useHistory();
+  if (dologout) {
+    // if requested (after redirect from keycloak logout),
+    // close local session and redirect without dologout parameter
+    Meteor.logout(() => history.replace('/'));
+  }
 
   return (
     <>
       <CssBaseline />
       <Suspense fallback={<Spinner full />}>
-        <Switch>
-          <Route path="/" component={Index} />
-        </Switch>
+        {dologout ? (
+          <LoggingOut />
+        ) : (
+          <Switch>
+            <Route path="/verify-email/:token" component={VerifyEmail} />
+            <Route path="/reset-password/:token" component={ResetPassword} />
+            <Route path="/" component={MainLayout} />
+          </Switch>
+        )}
       </Suspense>
       <MsgHandler />
     </>

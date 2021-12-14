@@ -1,13 +1,45 @@
 {
   "api": {
     "appsettings": {
-      "labels": {
-      }
+      "labels": {}
     },
-    "methods": {}
+    "methods": {},
+    "users": {
+      "mustBeLoggedIn": "Vous devez être connecté.",
+      "adminNeeded": "Vous n'êtes pas administrateur.",
+      "adminGiven": "Les droits d'administration ont été donnés à cet utilisateur: ",
+      "notPermitted": "Vous n'avez pas les droits suffisants.",
+      "labels": {
+        "id": "Id Utilisateur",
+        "username": "Pseudonyme",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "emails": "Adresse Électronique",
+        "emailAddress": "Adresse Électronique",
+        "emailVerified": "Adresse Vérifiée",
+        "createdAt": "Crée Le",
+        "profile": "Profil",
+        "services": "Services",
+        "heartbeat": "heartbeat",
+        "primaryEmail": "Adresse Électronique principale",
+        "language": "Langage Préféré",
+        "logoutType": "Méthode De Déconnexion",
+        "lastLogin": "Date de dernière connexion"
+      }
+    }
+  },
+  "system": {
+    "loading": "Chargement",
+    "login": "Se connecter",
+    "logout": "Déconnexion en cours"
   },
   "pages": {
-    "NotFound": { "backButtonLabel": "Retour", "message": "Page non trouvée !" }
+    "NotFound": { "backButtonLabel": "Retour", "message": "Page non trouvée !" },
+    "VerifyEmail": {
+      "error": "Votre adresse email n'a pas pu être vérifiée",
+      "success": "Votre adresse email est vérifiée",
+      "inProgress": "Vérification de votre adresse email en cours"
+    }
   },
   "components": {
     "MenuBar": {
@@ -16,7 +48,7 @@
     },
     "MainMenu": {
       "menuLogoutLabel": "Se déconnecter",
-      "menuAddEvent": "Ajouter événement"
+      "menuProfile": "Mon profil"
     },
     "AppVersion": {
       "title": "Version"
@@ -27,6 +59,43 @@
       "dontAskAgain": "Ne plus demander",
       "buttonYes": "Oui",
       "buttonNo": "Non"
+    },
+    "LoginDialog": {
+      "signinTitle": "Connexion",
+      "signupTitle": "Création de compte",
+      "resetTitle": "Réinitialisation du mot de passe",
+      "toSignin": "Retour à la connexion",
+      "toSignup": "Créer un compte",
+      "toResetPwd": "Mot de passe perdu ?",
+      "labelUsernameEmail": "Pseudonyme ou courriel",
+      "labelUsername": "Pseudonyme",
+      "labelPassword": "Mot de passe",
+      "labelVerify": "Mot de passe (vérification)",
+      "labelEmail": "Courriel",
+      "labelFirstName": "Prénom",
+      "labelLastName": "Nom",
+      "dosignin": "Connexion",
+      "dosignup": "Créer",
+      "doreset": "Envoyer la demande",
+      "signinError": "Mauvais utilisateur / mot de passe",
+      "resetError": "Erreur d'envoi de la demande",
+      "resetSuccess": "Courriel de réinitialisation envoyé",
+      "signupError": "Erreur de création du compte",
+      "signupSuccess": "Compte créé avec succès",
+      "resetInfo": "Renseignez l'addresse email associée à votre compte pour recevoir un courriel de réinitialisation"
+    },
+    "ResetPwdDialog": {
+      "title": "Réinitialisation de mot de passe",
+      "doResetPwd": "Changer le mot de passe",
+      "success": "Mot de passe changé avec succès",
+      "error": "La modification du mot de passe a échoué"
+    },
+    "VerifyNeeded": {
+      "title": "Votre adresse email doit être vérifiée",
+      "info": "Cliquez sur le bouton ci-dessous pour envoyer un courriel de vérification à l'addresse fournie lors de votre inscription (vérifiez votre dossier 'indésirables' si vous ne le trouvez pas)",
+      "success": "Courriel de vérification envoyé avec succès",
+      "error": "Échec de l'envoi du courriel de vérification",
+      "doVerify": "Envoyer un courriel"
     }
   },
   "layouts": {

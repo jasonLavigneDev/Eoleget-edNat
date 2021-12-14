@@ -1,13 +1,50 @@
 {
   "api": {
     "appsettings": {
-      "labels": {
-      }
+      "labels": {}
     },
-    "methods": {}
+    "methods": {},
+    "users": {
+      "mustBeLoggedIn": "You must be logged in.",
+      "adminNeeded": "You don't have admin rights.",
+      "adminGiven": "Admin rights have been given to user: ",
+      "notPermitted": "You don't have sufficient rights.",
+      "labels": {
+        "id": "User Id",
+        "username": "User Name",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "emails": "Email",
+        "emailAddress": "Email Address",
+        "emailVerified": "Email Verified",
+        "createdAt": "User Creation Date",
+        "profile": "Profile",
+        "services": "Services",
+        "heartbeat": "Heartbeat",
+        "primaryEmail": "Primary Email",
+        "language": "Preferred Language",
+        "logoutType": "Logout Method",
+        "lastLogin": "Last login date"
+      },
+      "logoutTypes": {
+        "ask": "Ask at logout",
+        "local": "Disconnect only this app",
+        "global": "Disconnect from all apps"
+      }
+    }
+  },
+  "system": {
+    "loading": "Loading",
+    "login": "Log In",
+    "logout": "Logging out"
   },
   "pages": {
-    "NotFound": { "backButtonLabel": "Back", "message": "Page not found !" }
+    "NotFound": { "backButtonLabel": "Back", "message": "Page not found !" },
+    "VerifyEmail": {
+      "error": "Email could not be verified",
+      "success": "Email verified",
+      "inProgress": "Email verification in progress"
+    }
   },
   "components": {
     "MenuBar": {
@@ -16,7 +53,7 @@
     },
     "MainMenu": {
       "menuLogoutLabel": "Logout",
-      "menuAddEvent": "Add event"
+      "menuProfile": "My Profile"
     },
     "AppVersion": {
       "title": "Version"
@@ -27,6 +64,43 @@
       "dontAskAgain": "Do not ask again",
       "buttonYes": "Yes",
       "buttonNo": "No"
+    },
+    "LoginDialog": {
+      "signinTitle": "Log in",
+      "signupTitle": "Account creation",
+      "resetTitle": "Password reset",
+      "toSignin": "Return to login",
+      "toSignup": "Create an account",
+      "toResetPwd": "Forgot password ?",
+      "labelUsernameEmail": "Username or email",
+      "labelUsername": "Username",
+      "labelPassword": "Pasword",
+      "labelVerify": "Password (verify)",
+      "labelEmail": "Email",
+      "labelFirstName": "Firstname",
+      "labelLastName": "Lastname",
+      "dosignin": "Login",
+      "dosignup": "Create",
+      "doreset": "Send reset email",
+      "signinError": "Bad username / password",
+      "resetError": "Reset email could not be sent",
+      "resetSuccess": "Reset email sent",
+      "signupError": "Failed to create account",
+      "signupSuccess": "Account succesfully created",
+      "resetInfo": "Please input email address associated with your account to receive a password reset link"
+    },
+    "ResetPwdDialog": {
+      "title": "Reset password",
+      "doResetPwd": "Change password",
+      "success": "Password succesfully changed",
+      "error": "Password change failed"
+    },
+    "VerifyNeeded": {
+      "title": "Your email needs to be verified",
+      "info": "Click on the button below to send a verification email to the email address you provided at signup (don't forget to check your spams folder if not found)",
+      "success": "Verification email sent successfully",
+      "error": "Verification email could not be sent",
+      "doVerify": "Send an email"
     }
   },
   "layouts": {

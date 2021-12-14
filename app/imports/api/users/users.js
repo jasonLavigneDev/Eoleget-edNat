@@ -1,7 +1,12 @@
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
+import { Roles } from 'meteor/alanning:roles';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
-import { getLabel } from '../utils/functions';
+import i18n from 'meteor/universe:i18n';
+import logServer, { getLabel } from '../utils/functions';
+
+const AppRoles = ['admin'];
 
 Meteor.users.schema = new SimpleSchema(
   {
@@ -37,16 +42,6 @@ Meteor.users.schema = new SimpleSchema(
       type: Boolean,
       label: getLabel('api.users.labels.emailVerified'),
     },
-    // Use this registered_emails field if you are using splendido:meteor-accounts-emails-field
-    // splendido:meteor-accounts-meld
-    // registered_emails: {
-    //     type: Array,
-    //     optional: true
-    // },
-    // 'registered_emails.$': {
-    //     type: Object,
-    //     blackbox: true
-    // },
     createdAt: {
       type: Date,
       label: getLabel('api.users.labels.createdAt'),
@@ -75,11 +70,6 @@ Meteor.users.schema = new SimpleSchema(
       optional: true,
       label: getLabel('api.users.labels.heartbeat'),
     },
-    structure: {
-      type: String,
-      optional: true,
-      label: getLabel('api.users.labels.structure'),
-    },
     primaryEmail: {
       type: String,
       regEx: SimpleSchema.RegEx.Email,
@@ -97,15 +87,6 @@ Meteor.users.schema = new SimpleSchema(
       allowedValues: ['ask', 'local', 'global'],
       label: getLabel('api.users.labels.logoutType'),
     },
-    lastArticle: {
-      type: Date,
-      optional: true,
-    },
-    avatar: {
-      type: String,
-      optional: true,
-      label: getLabel('api.users.labels.avatar'),
-    },
   },
   { tracker: Tracker },
 );
@@ -116,34 +97,17 @@ Meteor.users.selfFields = {
   lastName: 1,
   emails: 1,
   createdAt: 1,
-  isActive: 1,
-  isRequest: 1,
-  favServices: 1,
-  favGroups: 1,
-  structure: 1,
-  primaryEmail: 1,
   language: 1,
   logoutType: 1,
   lastLogin: 1,
-  avatar: 1,
 };
 
 Meteor.users.publicFields = {
   username: 1,
   firstName: 1,
   lastName: 1,
-  structure: 1,
   emails: 1,
-  avatar: 1,
 };
-
-if (Meteor.isServer) {
-  Accounts.onCreateUser(() => {
-    // Users should not be created by apps-agenda,
-    // Redirect user to laboite if not found
-    throw new Meteor.Error('api.users.createUser', 'User creation is disabled in Agenda');
-  });
-}
 
 Meteor.users.deny({
   insert() {
@@ -158,3 +122,66 @@ Meteor.users.deny({
 });
 
 Meteor.users.attachSchema(Meteor.users.schema);
+
+if (Meteor.isServer) {
+  // server side login hook
+  Accounts.onLogin((details) => {
+    const loginDate = new Date();
+    if (details.type === 'keycloak') {
+      // update user informations from keycloak service data
+      const updateInfos = {
+        lastLogin: loginDate,
+        primaryEmail: details.user.services.keycloak.email,
+      };
+      if (details.user.services.keycloak.given_name) {
+        updateInfos.firstName = details.user.services.keycloak.given_name;
+      }
+      if (details.user.services.keycloak.family_name) {
+        updateInfos.lastName = details.user.services.keycloak.family_name;
+      }
+      if (
+        details.user.services.keycloak.preferred_username &&
+        details.user.services.keycloak.preferred_username !== details.user.username
+      ) {
+        // use preferred_username as username if defined
+        // (should be set as mandatory in keycloak)
+        updateInfos.username = details.user.services.keycloak.preferred_username;
+      }
+      Meteor.users.update({ _id: details.user._id }, { $set: updateInfos });
+      // Manage primary email change
+      if (details.user.primaryEmail !== details.user.services.keycloak.email) {
+        updateInfos.email = details.user.services.keycloak.email;
+        Accounts.addEmail(details.user._id, details.user.services.keycloak.email, true);
+        if (details.user.primaryEmail !== undefined) {
+          Accounts.removeEmail(details.user._id, details.user.primaryEmail);
+        }
+      }
+      // check if user is defined as admin in settings
+      if (Meteor.settings.private.adminEmails) {
+        if (Meteor.settings.private.adminEmails.indexOf(details.user.services.keycloak.email) !== -1) {
+          if (!Roles.userIsInRole(details.user._id, 'admin')) {
+            Roles.addUsersToRoles(details.user._id, 'admin');
+            logServer(`${i18n.__('api.users.adminGiven')} : ${details.user.services.keycloak.email}`);
+          }
+        }
+      }
+    } else {
+      const updateInfos = {
+        lastLogin: loginDate,
+      };
+      // check if email is in adminEmails
+      if (Meteor.settings.private.adminEmails) {
+        if (Meteor.settings.private.adminEmails.indexOf(details.user.emails[0].address) !== -1) {
+          if (!Roles.userIsInRole(details.user._id, 'admin')) {
+            Roles.addUsersToRoles(details.user._id, 'admin');
+            logServer(`${i18n.__('api.users.adminGiven')} : ${details.user.emails[0].address}`);
+          }
+          if (!details.user.isActive) updateInfos.isActive = true;
+        }
+      }
+      Meteor.users.update({ _id: details.user._id }, { $set: updateInfos });
+    }
+  });
+}
+
+export default AppRoles;

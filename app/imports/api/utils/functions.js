@@ -9,6 +9,11 @@ export function isActive(userId) {
   return false;
 }
 
+export function isVerified(user) {
+  if (!user || !user.emails) return false;
+  return user.emails.filter((email) => email.verified === true).length > 0;
+}
+
 export function getLang() {
   return (
     (navigator.languages && navigator.languages[0]) ||

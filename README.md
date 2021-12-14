@@ -28,7 +28,7 @@ cd eoleget/app
 npm start
 ```
 
-Il est possible de vérifier le fonctionnement de la boite en tapant la ligne suivante à partir d'un navigateur
+Il est possible de vérifier le fonctionnement d'eoleget en tapant la ligne suivante à partir d'un navigateur
 
 ```
 http://localhost:3000
