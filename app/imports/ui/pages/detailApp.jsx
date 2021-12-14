@@ -25,11 +25,11 @@ const useStyle = makeStyles((theme) => ({
     justifyContent: 'center',
     backgroundColor: '#f1f1fc',
     boxShadow: theme.shadows[5],
+    width: '80%',
   },
   content: {
     margin: '2% 0',
-    marginRight: '20%',
-    paddingRight: '20%',
+    paddingRight: '10%',
   },
   listIcon: {
     display: 'flex',
@@ -45,6 +45,9 @@ const useStyle = makeStyles((theme) => ({
   },
   buttonSave: {
     marginTop: '10%',
+  },
+  appFavicon: {
+    display: 'flex',
   },
 }));
 
@@ -103,7 +106,9 @@ function DetailApp() {
             <Button variant="contained">Enregistrer lapplication</Button>
           </div>
         </div>
-        <AppAvatar detailApp />
+        <div className={classes.appFavicon}>
+          <AppAvatar detailApp />
+        </div>
       </div>
     </div>
   );
