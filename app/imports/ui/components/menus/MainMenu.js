@@ -20,10 +20,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const menu = [
-  {
-    path: '/add-event',
-    content: 'menuAddEvent',
-  },
+  // Not implemented yet
+  // {
+  //   path: '/profile',
+  //   content: 'menuProfile',
+  // },
 ];
 
 const MainMenu = ({ user = {} }) => {

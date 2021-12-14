@@ -1,3 +1,3 @@
-import '../../api/users/server/publications';
 import '../../api/users/users';
-// import '../../api/groups/methods';
+import '../../api/users/methods';
+import '../../api/users/server/publications';

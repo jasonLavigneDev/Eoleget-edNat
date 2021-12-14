@@ -1,19 +1,15 @@
 {
   "public": {
-    "enableKeycloak": true,
+    "enableKeycloak": false,
     "keycloakUrl": "",
-    "keycloakRealm": ""
+    "keycloakRealm": "",
+    "emailValidation": true
   },
   "keycloak": {
     "pubkey": "",
-    "client": "",
+    "client": ""
   },
   "private": {
-    "apiKeys": [],
+    "adminEmails": []
   },
-  "smtp":{
-    "url": "smtps://USERNAME:PASSWORD@HOST:PORT",
-    "fromEmail": "USERNAME",
-    "toEmail": "admin@domain.fr"
-  }
 }
