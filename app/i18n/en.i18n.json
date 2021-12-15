@@ -56,8 +56,10 @@
   },
   "components": {
     "MenuBar": {
-      "menuHome": "Home",
-      "menuHomeMobile": ""
+      "menuApp": "Applications",
+      "menuPacks": "Packs",
+      "menuAppMobile": "",
+      "menuPacksMobile": ""
     },
     "MainMenu": {
       "menuLogoutLabel": "Logout",

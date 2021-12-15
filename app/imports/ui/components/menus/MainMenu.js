@@ -25,14 +25,6 @@ export const userMenu = [
   //   path: '/profile',
   //   content: 'menuProfile',
   // },
-  {
-    path: '/',
-    content: 'Application',
-  },
-  {
-    path: '/packs',
-    content: 'Packs',
-  },
 ];
 
 const MainMenu = ({ user = {} }) => {

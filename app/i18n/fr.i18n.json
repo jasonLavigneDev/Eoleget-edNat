@@ -51,8 +51,10 @@
   },
   "components": {
     "MenuBar": {
-      "menuHome": "Accueil",
-      "menuHomeMobile": ""
+      "menuApp": "Applications",
+      "menuPacks": "Packs",
+      "menuAppMobile": "",
+      "menuPacksMobile": ""
     },
     "MainMenu": {
       "menuLogoutLabel": "Se déconnecter",

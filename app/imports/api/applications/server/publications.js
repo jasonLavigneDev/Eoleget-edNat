@@ -12,6 +12,5 @@ Meteor.publish('applications.all', function () {
   if (!isActive(this.userId)) {
     return this.ready();
   }
-  console.log(Applications.find({}).fetch());
   return Applications.find({}).fetch();
 });

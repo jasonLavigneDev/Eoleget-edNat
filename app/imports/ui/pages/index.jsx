@@ -115,5 +115,3 @@ export default function Index() {
     </div>
   );
 }
-
-export default Index;

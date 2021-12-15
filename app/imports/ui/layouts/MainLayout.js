@@ -42,17 +42,20 @@ const MainLayout = () => {
               loadingUser || !authenticated ? (
                 <Spinner full />
               ) : !verifyEmail || isVerified(user) ? (
-                <Route path="/" component={Index} />
+                <Switch>
+                  <Route exact path="/" component={Index} />
+                  <Route exact path="/packs" component={Packs} />
+                  <Route exact path="/detailApp" component={DetailApp} />
+                  <Route exact path="/detailPack" component={DetailPack} />
+                </Switch>
               ) : (
                 <Route path="/" component={VerifyNeeded} />
               )
             ) : (
               <Route path="/" component={NotLoggedIn} />
             )}
+
             <Redirect from="*" to="/" />
-            <Route exact path="/packs" component={Packs} />
-            <Route exact path="/detailApp" component={DetailApp} />
-            <Route exact path="/detailPack" component={DetailPack} />
           </Switch>
         </div>
       </main>
