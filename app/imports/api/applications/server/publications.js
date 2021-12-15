@@ -8,9 +8,10 @@ function isActive() {
 }
 
 // publish all Applications
-Meteor.publish('applications.all', function applicationsAll() {
+Meteor.publish('applications.all', function () {
   if (!isActive(this.userId)) {
     return this.ready();
   }
-  return Applications.find({}, { fields: Applications.publicFields, limit: 2 });
+  console.log(Applications.find({}).fetch());
+  return Applications.find({}).fetch();
 });

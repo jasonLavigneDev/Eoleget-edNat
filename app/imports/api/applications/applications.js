@@ -31,10 +31,10 @@ Applications.schema = new SimpleSchema(
       type: String,
       label: getLabel('api.application.description'),
     },
-    tags: {
-      type: Array,
-      label: getLabel('appi.application.tags'),
-    },
+    // tags: {
+    //   type: Array,
+    //   label: getLabel('appi.application.tags'),
+    // },
     // version: {
     //   type: String,
     //   label: getLabel('api.application.version'),
@@ -59,7 +59,6 @@ Applications.publicField = {
   identification: 1,
   name: 1,
   description: 1,
-  tags: 1,
 };
 
 Applications.attachSchema(Applications.schema);
