@@ -3,6 +3,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Fade from '@material-ui/core/Fade';
 
 import AppPacksCard from '../components/packsCard/appPacksCard';
 
@@ -32,24 +33,26 @@ function DetailPack() {
   const classes = useStyle();
 
   return (
-    <div className={classes.main}>
-      <Typography variant="h4" component="div">
-        Détail du pack
-      </Typography>
-      <div className={classes.mainContent}>
-        <Typography variant="h6" component="div">
-          Nom du pack
+    <Fade in>
+      <div className={classes.main}>
+        <Typography variant="h4" component="div">
+          Détail du pack
         </Typography>
-        <p>Description du pack</p>
-        <AppPacksCard />
-        <AppPacksCard />
-        <AppPacksCard />
-        <AppPacksCard />
-        <Button variant="contained" className={classes.getPackButton}>
-          Obtenir le pack
-        </Button>
+        <div className={classes.mainContent}>
+          <Typography variant="h6" component="div">
+            Nom du pack
+          </Typography>
+          <p>Description du pack</p>
+          <AppPacksCard />
+          <AppPacksCard />
+          <AppPacksCard />
+          <AppPacksCard />
+          <Button variant="contained" className={classes.getPackButton}>
+            Obtenir le pack
+          </Button>
+        </div>
       </div>
-    </div>
+    </Fade>
   );
 }
 

@@ -9,6 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Collapse from '@material-ui/core/Collapse';
 import ListIcon from '@material-ui/icons/ViewList';
 import CardIcon from '@material-ui/icons/Dashboard';
+import Fade from '@material-ui/core/Fade';
 
 import SearchBarApp from '../components/search/SearchBarApp';
 import PackCardList from '../components/packsCard/packCardList';
@@ -57,53 +58,55 @@ function Packs() {
   }, [showSearchApp]);
 
   return (
-    <div className={classes.main}>
-      <div className={classes.packsTitleContainer}>
-        <div className={classes.packsTitleContent}>
-          <Typography variant="h4" component="div">
-            {i18n.__('pages.Packs.packsStoreTitle')}
-          </Typography>
-          <Tooltip title={i18n.__('pages.Packs.packsSearchApp')}>
-            <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
-              <SearchIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
-        </div>
-        <Collapse in={showSearchApp} collapsedsize={0} className={classes.searchBar}>
-          <SearchBarApp opened={showSearchApp} app={false} />
-        </Collapse>
-        <span className={classes.iconListe}>
-          <Tooltip title="Mode liste">
-            <IconButton
-              onClick={() => {
-                setModeList(true);
-              }}
-            >
-              <ListIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Mode carte">
-            <IconButton
-              onClick={() => {
-                setModeList(false);
-              }}
-            >
-              <CardIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
-        </span>
-        <div>
-          <div className={classes.cardContainer}>
-            <Collapse in={!showModeList} collapsedsize={0}>
-              <PackCardList />
+    <Fade in>
+      <div className={classes.main}>
+        <div className={classes.packsTitleContainer}>
+          <div className={classes.packsTitleContent}>
+            <Typography variant="h4" component="div">
+              {i18n.__('pages.Packs.packsStoreTitle')}
+            </Typography>
+            <Tooltip title={i18n.__('pages.Packs.packsSearchApp')}>
+              <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
+                <SearchIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
+          </div>
+          <Collapse in={showSearchApp} collapsedsize={0} className={classes.searchBar}>
+            <SearchBarApp opened={showSearchApp} app={false} />
+          </Collapse>
+          <span className={classes.iconListe}>
+            <Tooltip title="Mode liste">
+              <IconButton
+                onClick={() => {
+                  setModeList(true);
+                }}
+              >
+                <ListIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Mode carte">
+              <IconButton
+                onClick={() => {
+                  setModeList(false);
+                }}
+              >
+                <CardIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
+          </span>
+          <div>
+            <div className={classes.cardContainer}>
+              <Collapse in={!showModeList} collapsedsize={0}>
+                <PackCardList />
+              </Collapse>
+            </div>
+            <Collapse in={showModeList} collapsedsize={0}>
+              <PackList />
             </Collapse>
           </div>
-          <Collapse in={showModeList} collapsedsize={0}>
-            <PackList />
-          </Collapse>
         </div>
       </div>
-    </div>
+    </Fade>
   );
 }
 
