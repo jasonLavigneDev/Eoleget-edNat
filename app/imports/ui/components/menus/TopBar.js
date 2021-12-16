@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SMALL_LOGO = 'Logo-A.svg';
-const LONG_LOGO = 'apps-logo-sansfond.svg';
+const SMALL_LOGO = 'puceEOLE.png';
+const LONG_LOGO = 'logoEole.png';
 
 function TopBar() {
   const [{ isMobile, user }] = useAppContext();

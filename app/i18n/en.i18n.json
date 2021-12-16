@@ -44,12 +44,22 @@
       "error": "Email could not be verified",
       "success": "Email verified",
       "inProgress": "Email verification in progress"
+    },
+    "Store": {
+      "storeTitle": "Applications store",
+      "searchApp": "Search for an application"
+    },
+    "Packs": {
+      "packsStoreTitle": "Packs store",
+      "packsSearchApp": "Search for a pack"
     }
   },
   "components": {
     "MenuBar": {
-      "menuHome": "Home",
-      "menuHomeMobile": ""
+      "menuApp": "Applications",
+      "menuPacks": "Packs",
+      "menuAppMobile": "",
+      "menuPacksMobile": ""
     },
     "MainMenu": {
       "menuLogoutLabel": "Logout",
@@ -101,6 +111,26 @@
       "success": "Verification email sent successfully",
       "error": "Verification email could not be sent",
       "doVerify": "Send an email"
+    },
+    "Card": {
+      "addButtonTooltip": "Add this app"
+    },
+    "Search": {
+      "searchingApp": "Which app are you looking for ?",
+      "searchingPack": "Which pack are you looking for ?",
+      "searchingError": "What are you searching for ?"
+    },
+    "AppList": {
+      "application": "Application",
+      "description": "Description",
+      "version": "Version",
+      "url": "URL"
+    },
+    "AppPacksCard": {
+      "infoTooltip": "Show application"
+    },
+    "PacksCard": {
+      "packTooltip": "Show pack"
     }
   },
   "layouts": {

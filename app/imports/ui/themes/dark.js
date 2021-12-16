@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const darkTheme = createMuiTheme({
+const darkTheme = createTheme({
   palette: {
     type: 'dark',
     primary: {
@@ -11,6 +11,13 @@ const darkTheme = createMuiTheme({
     secondary: {
       main: '#EFAC61',
       light: '#FFDBA5',
+    },
+  },
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: '1em',
+      },
     },
   },
 });

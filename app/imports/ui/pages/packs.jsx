@@ -1,38 +1,31 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
-// import { Roles } from 'meteor/alanning:roles';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Collapse from '@material-ui/core/Collapse';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+import Collapse from '@material-ui/core/Collapse';
 import ListIcon from '@material-ui/icons/ViewList';
 import CardIcon from '@material-ui/icons/Dashboard';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
 
-// import { useAppContext } from '../contexts/context';
 import SearchBarApp from '../components/search/SearchBarApp';
-// eslint-disable-next-line import/no-named-as-default
-import AppCardList from '../components/appCard/AppCardList';
-import AppList from '../components/appCard/AppList';
+import PackCardList from '../components/packsCard/packCardList';
+import PackList from '../components/packsCard/packList';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    position: 'relative',
-  },
+const useStyle = makeStyles((theme) => ({
   main: {
     display: 'flex',
     flexDirection: 'column',
     marginTop: '5%',
     padding: '0 15%',
   },
-  storeTitleContainer: {
+  packsTitleContainer: {
     width: '100%',
   },
-  storeTitleContent: {
+  packsTitleContent: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -55,12 +48,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Index() {
-  // const [{ user }] = useAppContext();
-  // const isAdmin = user ? Roles.userIsInRole(user._id, 'admin') : false;
+function Packs() {
   const [showSearchApp, setShowSearchApp] = useState(false);
   const [showModeList, setModeList] = useState(false);
-  const classes = useStyles();
+  const classes = useStyle();
 
   React.useEffect(() => {
     setModeList(showModeList);
@@ -69,19 +60,19 @@ export default function Index() {
   return (
     <Fade in>
       <div className={classes.main}>
-        <div className={classes.storeTitleContainer}>
-          <div className={classes.storeTitleContent}>
+        <div className={classes.packsTitleContainer}>
+          <div className={classes.packsTitleContent}>
             <Typography variant="h4" component="div">
-              {i18n.__('pages.Store.storeTitle')}
+              {i18n.__('pages.Packs.packsStoreTitle')}
             </Typography>
-            <Tooltip title={i18n.__('pages.Store.searchApp')}>
+            <Tooltip title={i18n.__('pages.Packs.packsSearchApp')}>
               <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
                 <SearchIcon fontSize="large" />
               </IconButton>
             </Tooltip>
           </div>
           <Collapse in={showSearchApp} collapsedsize={0} className={classes.searchBar}>
-            <SearchBarApp opened={showSearchApp} app />
+            <SearchBarApp opened={showSearchApp} app={false} />
           </Collapse>
           <span className={classes.iconListe}>
             <Tooltip title="Mode liste">
@@ -106,11 +97,11 @@ export default function Index() {
           <div>
             <div className={classes.cardContainer}>
               <Collapse in={!showModeList} collapsedsize={0}>
-                <AppCardList title="ça claque" content="Je suis un super contenu qui déchire." />
+                <PackCardList />
               </Collapse>
             </div>
             <Collapse in={showModeList} collapsedsize={0}>
-              <AppList title="ça claque" content="Je suis un super contenu qui déchire." />
+              <PackList />
             </Collapse>
           </div>
         </div>
@@ -118,3 +109,5 @@ export default function Index() {
     </Fade>
   );
 }
+
+export default Packs;

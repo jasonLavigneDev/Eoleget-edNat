@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const lightTheme = createMuiTheme({
+const lightTheme = createTheme({
   shape: {
     borderRadius: 8,
   },
@@ -44,6 +44,13 @@ const lightTheme = createMuiTheme({
     },
     h6: {
       fontFamily: 'WorkSansBold',
+    },
+  },
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: '1em',
+      },
     },
   },
 });

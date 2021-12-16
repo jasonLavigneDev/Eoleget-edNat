@@ -5,15 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { PropTypes } from 'prop-types';
-import HomeIcon from '@material-ui/icons/Home';
 
 export const links = [
   {
     path: '/',
-    content: 'menuHome',
-    contentMobile: 'menuHomeMobile',
-    icon: <HomeIcon />,
-    admin: false,
+    content: 'menuApp',
+  },
+  {
+    path: '/packs',
+    content: 'menuPacks',
   },
 ];
 
@@ -82,7 +82,7 @@ const MenuBar = ({ mobile }) => {
           disableRipple={mobile}
           className={mobile ? classes.mobileTabs : null}
           icon={mobile ? link.icon : undefined}
-          label={<T>{mobile ? link.contentMobile : link.content}</T>}
+          label={<T>{link.contentMobile || link.content}</T>}
           onClick={() => history.push(link.path)}
         />
       ))}
