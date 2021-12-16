@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
@@ -37,26 +37,28 @@ const MainLayout = () => {
       <TopBar />
       <main id="main">
         <div id="content" className={classes.content}>
-          <Switch>
-            {user ? (
-              loadingUser || !authenticated ? (
-                <Spinner full />
-              ) : !verifyEmail || isVerified(user) ? (
-                <Switch>
-                  <Route exact path="/" component={Index} />
-                  <Route exact path="/packs" component={Packs} />
-                  <Route exact path="/detailApp" component={DetailApp} />
-                  <Route exact path="/detailPack" component={DetailPack} />
-                </Switch>
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              {user ? (
+                loadingUser || !authenticated ? (
+                  <Spinner />
+                ) : !verifyEmail || isVerified(user) ? (
+                  <Switch>
+                    <Route exact path="/" component={Index} />
+                    <Route exact path="/packs" component={Packs} />
+                    <Route exact path="/detailApp" component={DetailApp} />
+                    <Route exact path="/detailPack" component={DetailPack} />
+                  </Switch>
+                ) : (
+                  <Route path="/" component={VerifyNeeded} />
+                )
               ) : (
-                <Route path="/" component={VerifyNeeded} />
-              )
-            ) : (
-              <Route path="/" component={NotLoggedIn} />
-            )}
+                <Route path="/" component={NotLoggedIn} />
+              )}
 
-            <Redirect from="*" to="/" />
-          </Switch>
+              <Redirect from="*" to="/" />
+            </Switch>
+          </Suspense>
         </div>
       </main>
     </div>

@@ -8,7 +8,7 @@ function isActive() {
 }
 
 // publish all Applications
-Meteor.publish('applications.all', function () {
+Meteor.publish('applications.all', function publishApps() {
   if (!isActive(this.userId)) {
     return this.ready();
   }

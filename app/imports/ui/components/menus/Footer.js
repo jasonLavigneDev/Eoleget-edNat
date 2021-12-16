@@ -1,12 +1,11 @@
 import { Meteor } from 'meteor/meteor';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import i18n from 'meteor/universe:i18n';
 import { useAppContext } from '../../contexts/context';
-// import { getAppSettingsLinks } from '../../../api/appsettings/methods';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,9 +45,9 @@ export const LEGAL_ROUTES = {
 
 const Footer = () => {
   const classes = useStyles();
-  const [settingsData, setSettingsData] = useState([]);
   const [{ isMobile }] = useAppContext();
   const externalBlog = Meteor.settings.public.laboiteBlogURL;
+  const settingsData = [];
 
   const toolbarContent = () => {
     return (
@@ -103,27 +102,6 @@ const Footer = () => {
       </a>
     );
   };
-
-  // useEffect(() => {
-  //   let isCancelled = false;
-  //   getAppSettingsLinks.call(null, (error, result) => {
-  //     const newData = { ...result };
-  //     delete newData._id;
-  //     const keys = Object.keys(newData);
-  //     const appsettings = keys.map((key) => ({
-  //       key,
-  //       external: newData[key].external,
-  //       link: newData[key].external ? newData[key].link : LEGAL_ROUTES[key],
-  //       text: key,
-  //     }));
-  //     if (!isCancelled) setSettingsData(appsettings);
-  //   });
-  //   return () => {
-  //     // fix to avoid modifying component after unmounting
-  //     // see : https://stackoverflow.com/questions/56442582/react-hooks-cant-perform-a-react-state-update-on-an-unmounted-component/56443045#56443045
-  //     isCancelled = true;
-  //   };
-  // }, []);
 
   return (
     <AppBar position="relative">
