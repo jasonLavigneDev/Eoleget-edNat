@@ -33,6 +33,14 @@
       }
     }
   },
+  "emailTemplates": {
+    "siteName": "EoleGet",
+    "from": "EoleGet Admin",
+    "resetSubject": "Reset your EoleGet password",
+    "resetText": "Hello {$user} ! You can reset your password by following this link: {$url}",
+    "verifySubject": "Activate your EoleGet account",
+    "verifyText": "Hello {$user} ! Verify your e-mail by following this link: {$url}"
+  },
   "system": {
     "loading": "Loading",
     "login": "Log In",

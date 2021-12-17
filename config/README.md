@@ -28,3 +28,9 @@ In this case, user email will be considered verified by default (validation is d
 | Key              | Type     | Default value | Description                                     |
 | ---------------- | -------- | --------------| ----------------------------------------------- |
 | adminEmails      | [string] | []            | users with these emails will receive admin role |
+
+## smtp:
+
+| Key      | Type     | Default value | Description                                     |
+| -------- | -------- | --------------| ----------------------------------------------- |
+| url      | [string] | ""            | email server url (smtps://user:password@server) |

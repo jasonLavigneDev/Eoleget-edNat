@@ -9,8 +9,15 @@ services:
       - '80:3000'
     environment:
       ROOT_URL: ${APP_ROOT_URL:-http://localhost}
-      MONGO_URL: mongodb://mongo.domain/labase
+      MONGO_URL: mongodb://mongo:27017/meteor
       PORT: 3000
       METEOR_SETTINGS: ${METEOR_SETTINGS}
+  mongo:
+    image: mongo:latest
+    command:
+      - --storageEngine=wiredTiger
+    volumes:
+      - data:/data/db
 
-
+volumes:
+  data:

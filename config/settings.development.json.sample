@@ -12,4 +12,7 @@
   "private": {
     "adminEmails": []
   },
+  "smtp": {
+      "url": ""
+  }
 }
