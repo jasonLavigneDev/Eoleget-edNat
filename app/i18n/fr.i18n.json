@@ -28,6 +28,14 @@
       }
     }
   },
+  "emailTemplates": {
+    "siteName": "EoleGet",
+    "from": "Administrateur du site EoleGet",
+    "resetSubject": "Réinitialisation de votre mot de passe EoleGet",
+    "resetText": "Bonjour {$user} ! Vous pouvez réinitialiser votre mot de passe en suivant ce lien: {$url}",
+    "verifySubject": "Activation de votre compte EoleGet",
+    "verifyText": "Bonjour {$user} ! Veuillez suivre le lien suivant pour vérifier votre addresse électronique : {$url}"
+  },
   "system": {
     "loading": "Chargement",
     "login": "Se connecter",
