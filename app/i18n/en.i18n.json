@@ -3,6 +3,16 @@
     "appsettings": {
       "labels": {}
     },
+    "applications":{
+      "labels":{
+        "identification": "Identification",
+        "name": "Name",
+        "description": "Description",
+        "tags": "Tags",
+        "version": "Version",
+        "url": "URL"
+      }
+    },
     "methods": {},
     "users": {
       "mustBeLoggedIn": "You must be logged in.",
@@ -45,7 +55,7 @@
     "loading": "Loading",
     "login": "Log In",
     "logout": "Logging out"
-  },
+    },
   "pages": {
     "NotFound": { "backButtonLabel": "Back", "message": "Page not found !" },
     "VerifyEmail": {
