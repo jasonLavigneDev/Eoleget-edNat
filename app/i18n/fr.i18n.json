@@ -55,6 +55,22 @@
     "Packs": {
       "packsStoreTitle": "Magasin des packs",
       "packsSearchApp": "Chercher un pack"
+    },
+    "ProfilePage": {
+      "title": "Mes préférences",
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "email": "Courriel",
+      "languageLabel": "Choix de la langue",
+      "reset": "Réinitialiser",
+      "update": "Mettre à jour",
+      "useGallery": "Choisir parmi la gallerie d'images",
+      "useEmail": "Utiliser mon email",
+      "valueRequired": "Ce champ ne peut pas être vide",
+      "updateSuccess": "Profil mis à jour avec succès",
+      "noModifications": "Aucun changement à appliquer",
+      "logoutType": "Portée de la déconnexion",
+      "uploadSuccess": "Chargement des données réussi"
     }
   },
   "components": {
@@ -134,6 +150,25 @@
     },
     "PacksCard": {
       "packTooltip": "Voir le pack"
+    },
+    "UserAvatarGallery": {
+      "title": "Créer votre avatar",
+      "subtitle": "depuis la galerie d'images"
+    },
+    "UserAvatarCamCapture": {
+      "title": "Créer votre avatar",
+      "subtitle": "à partir de la webcam",
+      "takePicture": "Prendre une photo",
+      "cancel": "Annuler"
+    },
+    "UserAvatarEdit": {
+      "title": "Créer votre avatar",
+      "subtitle": "à partir d'une image",
+      "zoom": "Zoom",
+      "turnLeft": "Pivoter à gauche",
+      "turnRight": "Pivoter à droite",
+      "sendImage": "Envoyer cet avatar",
+      "cancel": "Annuler"
     }
   },
   "layouts": {
