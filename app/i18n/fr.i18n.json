@@ -3,6 +3,16 @@
     "appsettings": {
       "labels": {}
     },
+    "applications":{
+      "labels":{
+        "identification": "Identification",
+        "name": "Name",
+        "description": "Description",
+        "tags": "Tags",
+        "version": "Version",
+        "url": "URL"
+      }
+    },
     "methods": {},
     "users": {
       "mustBeLoggedIn": "Vous devez être connecté.",
