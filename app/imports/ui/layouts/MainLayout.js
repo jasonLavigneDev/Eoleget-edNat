@@ -16,6 +16,7 @@ const Index = lazy(() => import('../pages/index'));
 const Packs = lazy(() => import('../pages/packs'));
 const DetailApp = lazy(() => import('../pages/detailApp'));
 const DetailPack = lazy(() => import('../pages/detailPack'));
+const ProfilePage = lazy(() => import('../pages/profile'));
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -48,6 +49,7 @@ const MainLayout = () => {
                     <Route exact path="/packs" component={Packs} />
                     <Route exact path="/detailApp" component={DetailApp} />
                     <Route exact path="/detailPack" component={DetailPack} />
+                    <Route exact path="/profilePage" component={ProfilePage} />
                   </Switch>
                 ) : (
                   <Route path="/" component={VerifyNeeded} />

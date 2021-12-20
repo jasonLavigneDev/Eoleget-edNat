@@ -11,26 +11,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserAvatar = ({ customClass }) => {
+const UserAvatar = ({ userAvatar, customClass }) => {
   const [
     {
       user: { avatar, firstName },
     },
   ] = useAppContext();
+  const localAvatar = userAvatar || avatar;
   const classes = useStyles();
   const getClasse = () => {
     if (customClass) return customClass;
-    if (avatar) return '';
+    if (localAvatar) return '';
     return classes.avatar;
   };
-  return <Avatar alt={firstName} src={avatar || firstName} className={getClasse()} />;
+  return <Avatar alt={firstName} src={localAvatar || firstName} className={getClasse()} />;
 };
 
 UserAvatar.defaultProps = {
+  userAvatar: '',
   customClass: '',
 };
 
 UserAvatar.propTypes = {
+  userAvatar: PropTypes.string,
   customClass: PropTypes.string,
 };
 

@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PropTypes from 'prop-types';
 import AppVersion from '../system/AppVersion';
 import LogoutDialog from '../system/LogoutDialog';
-import UserAvatar from '../system/UserAvatar';
+import UserAvatar from '../users/UserAvatar';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -20,11 +20,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const userMenu = [
-  // Not implemented yet
-  // {
-  //   path: '/profile',
-  //   content: 'menuProfile',
-  // },
+  {
+    path: '/profilePage',
+    content: 'menuProfile',
+  },
 ];
 
 const MainMenu = ({ user = {} }) => {

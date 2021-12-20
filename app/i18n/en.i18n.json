@@ -60,6 +60,22 @@
     "Packs": {
       "packsStoreTitle": "Packs store",
       "packsSearchApp": "Search for a pack"
+    },
+    "ProfilePage": {
+      "title": "My settings",
+      "firstname": "First name",
+      "lastname": "Last name",
+      "email": "Email",
+      "languageLabel": "Change language",
+      "reset": "Reset",
+      "update": "Update",
+      "useGallery": "Choose among image gallery",
+      "useEmail": "Use my email",
+      "valueRequired": "This field can not be empty",
+      "updateSuccess": "Profile update success",
+      "logoutType": "Logout perimeter",
+      "noModifications": "No changes to apply",
+      "uploadSuccess": "Datas uploaded with success"
     }
   },
   "components": {
@@ -139,6 +155,25 @@
     },
     "PacksCard": {
       "packTooltip": "Show pack"
+    },
+    "UserAvatarGallery": {
+      "title": "Create your avatar",
+      "subtitle": "from image gallery"
+    },
+    "UserAvatarCamCapture": {
+      "title": "Create your avatar",
+      "subtitle": "from the webcam",
+      "takePicture": "Take a picture",
+      "cancel": "Cancel"
+    },
+    "UserAvatarEdit": {
+      "title": "Create your avatar",
+      "subtitle": "from an image",
+      "zoom": "Zoom",
+      "turnLeft": "Turn left",
+      "turnRight": "Turn right",
+      "sendImage": "Send this avatar",
+      "cancel": "Cancel"
     }
   },
   "layouts": {

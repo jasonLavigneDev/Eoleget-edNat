@@ -10,17 +10,19 @@ import Collapse from '@material-ui/core/Collapse';
 import ListIcon from '@material-ui/icons/ViewList';
 import CardIcon from '@material-ui/icons/Dashboard';
 import Fade from '@material-ui/core/Fade';
+import Paper from '@material-ui/core/Paper';
 
 import SearchBarApp from '../components/search/SearchBarApp';
 import PackCardList from '../components/packsCard/packCardList';
 import PackList from '../components/packsCard/packList';
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles(() => ({
   main: {
     display: 'flex',
     flexDirection: 'column',
     marginTop: '5%',
     padding: '0 15%',
+    marginBottom: '2%',
   },
   packsTitleContainer: {
     width: '100%',
@@ -44,7 +46,6 @@ const useStyle = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f1f1fc',
-    boxShadow: theme.shadows[5],
   },
 }));
 
@@ -95,11 +96,13 @@ function Packs() {
             </Tooltip>
           </span>
           <div>
-            <div className={classes.cardContainer}>
-              <Collapse in={!showModeList} collapsedsize={0}>
-                <PackCardList />
-              </Collapse>
-            </div>
+            <Paper>
+              <div className={classes.cardContainer}>
+                <Collapse in={!showModeList} collapsedsize={0}>
+                  <PackCardList />
+                </Collapse>
+              </div>
+            </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
               <PackList />
             </Collapse>

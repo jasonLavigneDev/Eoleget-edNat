@@ -87,6 +87,11 @@ Meteor.users.schema = new SimpleSchema(
       allowedValues: ['ask', 'local', 'global'],
       label: getLabel('api.users.labels.logoutType'),
     },
+    avatar: {
+      type: String,
+      optional: true,
+      label: getLabel('api.users.labels.avatar'),
+    },
   },
   { tracker: Tracker },
 );
@@ -100,6 +105,7 @@ Meteor.users.selfFields = {
   language: 1,
   logoutType: 1,
   lastLogin: 1,
+  avatar: 1,
 };
 
 Meteor.users.publicFields = {
@@ -107,6 +113,7 @@ Meteor.users.publicFields = {
   firstName: 1,
   lastName: 1,
   emails: 1,
+  avatar: 1,
 };
 
 Meteor.users.deny({

@@ -11,6 +11,7 @@ import CardIcon from '@material-ui/icons/Dashboard';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
+import Paper from '@material-ui/core/Paper';
 
 // import { useAppContext } from '../contexts/context';
 import SearchBarApp from '../components/search/SearchBarApp';
@@ -18,7 +19,7 @@ import SearchBarApp from '../components/search/SearchBarApp';
 import AppCardList from '../components/appCard/AppCardList';
 import AppList from '../components/appCard/AppList';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     position: 'relative',
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     marginTop: '5%',
     padding: '0 15%',
+    marginBottom: '2%',
   },
   storeTitleContainer: {
     width: '100%',
@@ -51,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f1f1fc',
-    boxShadow: theme.shadows[5],
   },
 }));
 
@@ -104,11 +105,13 @@ export default function Index() {
             </Tooltip>
           </span>
           <div>
-            <div className={classes.cardContainer}>
-              <Collapse in={!showModeList} collapsedsize={0}>
-                <AppCardList title="ça claque" content="Je suis un super contenu qui déchire." />
-              </Collapse>
-            </div>
+            <Paper>
+              <div className={classes.cardContainer}>
+                <Collapse in={!showModeList} collapsedsize={0}>
+                  <AppCardList title="ça claque" content="Je suis un super contenu qui déchire." />
+                </Collapse>
+              </div>
+            </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
               <AppList title="ça claque" content="Je suis un super contenu qui déchire." />
             </Collapse>
