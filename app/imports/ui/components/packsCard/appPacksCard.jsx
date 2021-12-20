@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import { Link } from 'react-router-dom';
 import AppBadge from '../appCard/AppBadge';
 import AppAvatar from '../appCard/AppAvatar';
 
@@ -39,7 +40,9 @@ function AppPacksCard() {
         <CardActions>
           <Tooltip title={i18n.__('components.AppPacksCard.infoTooltip')}>
             <IconButton>
-              <InfoIcon />
+              <Link to="/detailapp" className={classes.imgLogo}>
+                <InfoIcon />
+              </Link>
             </IconButton>
           </Tooltip>
         </CardActions>

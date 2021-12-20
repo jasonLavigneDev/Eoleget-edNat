@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 
+import { Link } from 'react-router-dom';
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
 import lightTheme from '../../themes/light';
@@ -84,7 +85,9 @@ function AppCard({ title, content }) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button variant="contained">Voir plus</Button>
+        <Link to="/detailapp" className={classes.imgLogo}>
+          <Button variant="contained">Voir plus</Button>
+        </Link>
       </CardActions>
     </Card>
   );
