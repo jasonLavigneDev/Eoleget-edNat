@@ -13,11 +13,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
 
-// import { useAppContext } from '../contexts/context';
 import SearchBarApp from '../components/search/SearchBarApp';
-// eslint-disable-next-line import/no-named-as-default
 import AppCardList from '../components/appCard/AppCardList';
 import AppList from '../components/appCard/AppList';
+// import { useAppContext } from '../contexts/context';
+// import { usePagination } from '../../api/utils/hooks';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -56,16 +56,39 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+// const ITEM_PER_PAGE = 9;
+
 export default function Index() {
-  // const [{ user }] = useAppContext();
-  // const isAdmin = user ? Roles.userIsInRole(user._id, 'admin') : false;
   const [showSearchApp, setShowSearchApp] = useState(false);
   const [showModeList, setModeList] = useState(false);
   const classes = useStyles();
+  // Add when data will be up
+  // const [filterChecked, setFilterChecked] = React.useState(true);
+  // const [{ user }] = useAppContext();
+  // const isAdmin = user ? Roles.userIsInRole(user._id, 'admin') : false;
 
-  React.useEffect(() => {
-    setModeList(showModeList);
-  }, [showSearchApp]);
+  // const { changePage, page, items, total } = !filterChecked
+  //   ? usePagination('groups.all', {}, {}, {}, { sort: { name: 1 } }, ITEM_PER_PAGE)
+  //   : usePagination('groups.memberOf', {}, {}, {}, { sort: { name: 1 } }, ITEM_PER_PAGE);
+
+  // const handleChangePage = (event, value) => {
+  //   changePage(value);
+  // };
+
+  // React.useEffect(() => {
+  //   setModeList(showModeList);
+  // }, [showSearchApp]);
+
+  // React.useEffect(() => {
+  //   if (page !== 1) {
+  //     changePage(1);
+  //   }
+  // }, [search]);
+
+  //  const updateFilterCheck = () => {
+  //    setFilterChecked(!filterChecked);
+  //    changePage(1);
+  //  };
 
   return (
     <Fade in>

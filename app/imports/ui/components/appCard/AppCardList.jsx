@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AppCard from './AppCard';
+import Pagination from '../Pagination/pagination';
 
 const useStyles = makeStyles(() => ({
   cardContainer: {
@@ -17,21 +18,25 @@ function AppCardList({ title, content }) {
   const classes = useStyles();
 
   return (
-    <span className={classes.cardContainer}>
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
+    <>
+      <Pagination nbPages={20} page={1} />
+      <span className={classes.cardContainer}>
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
 
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-      <AppCard title={title} content={content} />
-    </span>
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+        <AppCard title={title} content={content} />
+      </span>
+      <Pagination nbPages={20} page={1} />
+    </>
   );
 }
 
