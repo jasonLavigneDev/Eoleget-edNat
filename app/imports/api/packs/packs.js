@@ -8,19 +8,19 @@ Packs.schema = new SimpleSchema(
   {
     name: {
       type: String,
-      label: getLabel('api.packs.label'),
+      label: getLabel('api.packs.labels.name'),
     },
     creationDate: {
       type: Date,
-      label: getLabel('api.packs.creationDate'),
+      label: getLabel('api.packs.labels.creationDate'),
     },
     isValidated: {
       type: Boolean,
-      label: getLabel('api.packs.isValidated'),
+      label: getLabel('api.packs.labels.isValidated'),
     },
     applications: {
       type: Array,
-      label: getLabel('api.packs.applications'),
+      label: getLabel('api.packs.labels.applications'),
     },
   },
   { tracker: Tracker },
