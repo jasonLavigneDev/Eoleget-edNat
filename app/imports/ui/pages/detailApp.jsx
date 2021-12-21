@@ -10,29 +10,34 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Fade from '@material-ui/core/Fade';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 
 import AppAvatar from '../components/appCard/AppAvatar';
 import Applications from '../../api/applications/applications';
 
 const useStyle = makeStyles((theme) => ({
-  main: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: '5%',
-    padding: '0 25%',
+  root: {
+    marginTop: theme.spacing(15),
+    marginLeft: theme.spacing(60),
+    maxWidth: '1000px',
+    minWidth: '550px',
   },
-  mainContent: {
+  rootPaper: {
+    padding: theme.spacing(1),
+  },
+  main: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f1f1fc',
-    boxShadow: theme.shadows[5],
-    width: '80%',
+    justifyItems: 'center',
   },
   content: {
-    margin: '2% 0',
-    paddingRight: '10%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: '20px',
   },
   listIcon: {
     display: 'flex',
@@ -47,10 +52,9 @@ const useStyle = makeStyles((theme) => ({
     flexDirection: 'row',
   },
   buttonSave: {
-    marginTop: '10%',
-  },
-  appFavicon: {
     display: 'flex',
+    justifyContent: 'center',
+    marginTop: '5%',
   },
 }));
 
@@ -64,21 +68,21 @@ function DetailApp() {
 
   return (
     <Fade in>
-      <div className={classes.main}>
-        <Typography variant="h4" component="div">
-          Détail de lapplication
-        </Typography>
-        <div className={classes.mainContent}>
-          <div className={classes.content}>
-            <Typography variant="h6" component="div">
-              Nom de lapplication
-            </Typography>
-            <Typography variant="body1" component="div">
-              Description de lapplication
-            </Typography>
-            <p>commande winget</p>
-            <p>Verison v 1.1.1.1.1.1.1.1.1.1.1.1.1.1</p>
-            <div className={classes.iconButtonList}>
+      <Container className={classes.root}>
+        <Paper className={classes.rootPaper}>
+          <Typography variant="h4" component="div">
+            Détail de lapplication
+          </Typography>
+          <Grid container className={classes.main}>
+            <Grid item xs={8} style={{ paddingLeft: '18px' }}>
+              <Typography variant="h6" component="div">
+                Nom de lapplication
+              </Typography>
+              <Typography variant="body1" component="div" wrap="nowrap">
+                Description de lapplication
+              </Typography>
+              <p>commande winget</p>
+              <p>Verison v 1.1.1.1.1.1.1.1.1.1.1.1.1.1</p>
               <span className={classes.iconSpan}>
                 <IconButton title="Vers le site de l'application">
                   <LanguageIcon />
@@ -91,8 +95,6 @@ function DetailApp() {
                 </IconButton>
                 <p>Télécharger</p>
               </span>
-            </div>
-            <div className={classes.listIcon}>
               <span className={classes.iconSpan}>
                 <IconButton disabled>
                   <MonetizationOnIcon />
@@ -110,16 +112,14 @@ function DetailApp() {
                 <Button variant="outlined">Tag 2</Button>
                 <Button variant="outlined">Tag 3</Button>
               </span>
-            </div>
-            <div className={classes.buttonSave}>
-              <Button variant="contained">Enregistrer lapplication</Button>
-            </div>
-          </div>
-          <div className={classes.appFavicon}>
+            </Grid>
             <AppAvatar detailApp />
+          </Grid>
+          <div className={classes.buttonSave}>
+            <Button variant="contained">Enregistrer lapplication</Button>
           </div>
-        </div>
-      </div>
+        </Paper>
+      </Container>
     </Fade>
   );
 }
