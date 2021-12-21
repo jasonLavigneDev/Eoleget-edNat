@@ -11,6 +11,9 @@ include:
   - project: EOLE/infra/ci-tools
     ref: stable
     file: /templates/Lint/Commitlint.yaml
+  - project: EOLE/infra/ci-tools
+    ref: stable
+    file: /templates/Release/Semantic-release.yaml
 
 variables:
   # `ci-tools` default branch is `stable`
@@ -18,6 +21,7 @@ variables:
 
 stages:
   - initial-checks
+  - release
 
 
 ###############################################################################
@@ -26,3 +30,8 @@ stages:
 # Execute `commitlint` before resource heavy jobs
 commitlint:
   stage: initial-checks
+
+
+###############################################################################
+# `release` stage: `semantic-release`
+###############################################################################
