@@ -7,10 +7,14 @@ function isActive() {
   return false;
 }
 
+// Meteor.publish('applications.all', function () {
+//   console.log(Applications.find({}).fetch());
+//   console.log(` count : `, Applications.find({}).count());
+//   return Applications.find({}).fetch();
+// });
+
 // publish all Applications
 Meteor.publish('applications.all', function publishApps() {
-  if (!isActive(this.userId)) {
-    return this.ready();
-  }
-  return Applications.find({}).fetch();
+  console.log(` count : `, Applications.find({}, { limit: 30 }).count());
+  return Applications.find({}, { limit: 30 });
 });

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AppCard from './AppCard';
-import Pagination from '../Pagination/pagination';
 
 const useStyles = makeStyles(() => ({
   cardContainer: {
@@ -14,35 +13,25 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function AppCardList({ title, content }) {
+function AppCardList({ applications, isUpperCase }) {
   const classes = useStyles();
 
   return (
-    <>
-      <Pagination nbPages={20} page={1} />
-      <span className={classes.cardContainer}>
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-        <AppCard title={title} content={content} />
-      </span>
-      <Pagination nbPages={20} page={1} />
-    </>
+    <span className={classes.cardContainer}>
+      {applications.map((app) => {
+        let { description } = app;
+        if (isUpperCase(app.description)) {
+          description = app.description.toLowerCase();
+        }
+        return <AppCard title={app.nom} content={description} />;
+      })}
+    </span>
   );
 }
 
 AppCardList.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  applications: PropTypes.node.isRequired,
+  isUpperCase: PropTypes.func.isRequired,
 };
 
 export default AppCardList;
