@@ -3,8 +3,8 @@
     "appsettings": {
       "labels": {}
     },
-    "applications":{
-      "labels":{
+    "applications": {
+      "labels": {
         "identification": "Identification",
         "name": "Name",
         "description": "Description",
@@ -13,11 +13,11 @@
         "url": "URL"
       }
     },
-    "packs":{
-      "labels":{
-        "name":"Nom",
+    "packs": {
+      "labels": {
+        "name": "Nom",
         "creationDate": "Date de création",
-        "isValidated":"A été validé",
+        "isValidated": "A été validé",
         "applications": "Applications"
       }
     },
@@ -172,21 +172,6 @@
     "UserAvatarGallery": {
       "title": "Créer votre avatar",
       "subtitle": "depuis la galerie d'images"
-    },
-    "UserAvatarCamCapture": {
-      "title": "Créer votre avatar",
-      "subtitle": "à partir de la webcam",
-      "takePicture": "Prendre une photo",
-      "cancel": "Annuler"
-    },
-    "UserAvatarEdit": {
-      "title": "Créer votre avatar",
-      "subtitle": "à partir d'une image",
-      "zoom": "Zoom",
-      "turnLeft": "Pivoter à gauche",
-      "turnRight": "Pivoter à droite",
-      "sendImage": "Envoyer cet avatar",
-      "cancel": "Annuler"
     }
   },
   "layouts": {
