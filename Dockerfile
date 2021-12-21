@@ -39,6 +39,7 @@ FROM hub.eole.education/proxyhub/library/node:14.18.1-alpine
 
 ENV APP_BUNDLE_FOLDER /opt/bundle
 ENV SCRIPTS_FOLDER /docker
+ENV MONGO_URL=${MONGO_URL}
 
 # Install OS runtime dependencies
 RUN apk --no-cache add \

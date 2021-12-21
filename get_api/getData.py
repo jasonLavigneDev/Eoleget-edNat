@@ -2,19 +2,16 @@ import glob
 import os
 import yaml
 import subprocess
-import time
 from pymongo import MongoClient
-import json
 
 
 class Application:
-    def __init__(self, identification, nom, description, version, tags=[]):
+    def __init__(self, identification, nom, description, version):
         self.identification = identification
         self.nom = nom
         self.description = description
-        self.tags = tags
-        self.versions = []
-        self.versions.append(version)
+        self.tags = []
+        self.versions = [version]
         self.url = ""
 
     def append_version(self, version):
@@ -26,7 +23,7 @@ def get_yaml_files(yamlFiles):
     yamlFiles_without_doublon = []
     for yamlFile in yamlFiles:
         stream = open(yamlFile, "r")
-        data = yaml.load(stream)
+        data = yaml.load(stream, Loader=yaml.SafeLoader)
         stream.close()
 
         if "PackageUrl" not in data.keys():
@@ -36,22 +33,14 @@ def get_yaml_files(yamlFiles):
             app.identification == data["PackageIdentifier"]
             for app in yamlFiles_without_doublon
         ):
+            appli = Application(
+                data["PackageIdentifier"],
+                data["PackageName"],
+                data["ShortDescription"],
+                data["PackageVersion"],
+            )
             if "Tags" in data.keys():
-                appli = Application(
-                    data["PackageIdentifier"],
-                    data["PackageName"],
-                    data["ShortDescription"],
-                    data["PackageVersion"],
-                    data["Tags"],
-                )
-            else:
-                appli = Application(
-                    data["PackageIdentifier"],
-                    data["PackageName"],
-                    data["ShortDescription"],
-                    data["PackageVersion"],
-                )
-
+                appli.tags = data["Tags"]
             if "PublisherUrl" in data.keys():
                 appli.url = data["PublisherUrl"]
 
@@ -62,39 +51,38 @@ def get_yaml_files(yamlFiles):
     return yamlFiles_without_doublon
 
 
-# insert data to the database
-def insertData(apps, manifest_dir=""):
+def get_collection():
+    mongoURL = "mongodb://127.0.0.1:3001/meteor"
+    if "MONGO_URL" in os.environ:
+        mongoURL = os.environ["MONGO_URL"]
     try:
-        conn = conn = MongoClient("127.0.0.1", 3001)
-        print(conn.list_database_names())
-        print("Connected successfully!!!")
+        conn = MongoClient(mongoURL)
+        print("Connected successfully to MongoDB")
     except:
         print("Could not connect to MongoDB")
 
     db = conn.meteor
+    return db.applications
 
-    collection = db.applications
+
+# insert data to the database
+def insertData(apps, manifest_dir=""):
+    collection = get_collection()
     for app in apps:
         collection.insert_one(app.__dict__)
+    print("Database updated")
 
 
 def removeData():
-
-    try:
-        conn = conn = MongoClient("127.0.0.1", 3001)
-        print("Connected successfully!!!")
-    except:
-        print("Could not connect to MongoDB")
-
-    db = conn.meteor
-    collection = db.applications
+    collection = get_collection()
     collection.delete_many({})
     print("applications deleted")
 
 
 def clone_winget_repo(eoleGetPath):
 
-    winget_pkgs = eoleGetPath + "/winget-pkgs"
+    winget_pkgs = os.path.join(eoleGetPath, "winget-pkgs")
+    needs_update = False
 
     if not os.path.exists(winget_pkgs):
         p = subprocess.Popen(
@@ -102,52 +90,32 @@ def clone_winget_repo(eoleGetPath):
             cwd=eoleGetPath,
         )
         p.wait()
-        print("repo cloned")
-
-        winget_dir = ""
-        list_subfolders_with_paths = [
-            f.path for f in os.scandir(eoleGetPath) if f.is_dir()
-        ]
-        for dir in list_subfolders_with_paths:
-            print(dir)
-            if dir.endswith("winget-pkgs"):
-                winget_dir = dir
-                break
-
-        manifest_dir = winget_dir + "/manifests"
-
-        yamlFiles = glob.glob(manifest_dir + "/**/*.locale.en-US.yaml", recursive=True)
-
-        apps = get_yaml_files(yamlFiles)
-        insertData(apps)
-
+        print("winget-pkgs repository cloned")
+        needs_update = True
     else:
-        list_subfolders_with_paths = [
-            f.path for f in os.scandir(eoleGetPath) if f.is_dir()
-        ]
-        for dir in list_subfolders_with_paths:
-            if dir.endswith("winget-pkgs"):
-                winget_dir = dir
-                break
-        manifest_dir = winget_dir + "/manifests"
-
         print("folder winget-pkgs already exist")
-        from subprocess import PIPE
-
+        # update and check repository (forced english output)
         with subprocess.Popen(
-            "git pull", stdout=PIPE, stderr=None, shell=True
+            'LANG="en-US" git pull',
+            stdout=subprocess.PIPE,
+            stderr=None,
+            shell=True,
+            cwd=winget_pkgs,
         ) as process:
             output = process.communicate()[0].decode("utf-8")
-            print(output)
         if "Already up to date" not in output:
+            needs_update = True
 
-            yamlFiles = glob.glob(
-                manifest_dir + "/**/*.locale.en-US.yaml", recursive=True
-            )
-            apps = get_yaml_files(yamlFiles)
-            print("out ", output)
-            removeData()
-            insertData(apps, manifest_dir)
+    if needs_update:
+        print("Updating applications from winget-pkgs repository")
+        removeData()
+        manifest_dir = os.path.join(winget_pkgs, "manifests")
+
+        yamlFiles = glob.glob(
+            os.path.join(manifest_dir, "**/*.locale.en-US.yaml"), recursive=True
+        )
+        apps = get_yaml_files(yamlFiles)
+        insertData(apps, manifest_dir)
 
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
