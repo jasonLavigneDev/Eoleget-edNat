@@ -22,6 +22,11 @@ const reducer = (state, action) => {
         ...newState,
         event: { ...data },
       };
+    case 'appPage':
+      return {
+        ...newState,
+        appPage: { ...data },
+      };
     case 'mobile':
       return {
         ...newState,

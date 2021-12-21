@@ -55,12 +55,10 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 function DetailApp() {
-  const applications = useTracker(() => {
+  /*const applications = useTracker(() => {
     Meteor.subscribe('applications.all');
     return Applications.find({}).fetch();
-  });
-
-  console.log(`test`, applications);
+  });*/
 
   const classes = useStyle();
 

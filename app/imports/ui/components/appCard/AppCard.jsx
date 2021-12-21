@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppCard({ title, content }) {
+function AppCard({ nom, description, versions, url }) {
   const classes = useStyles();
   const [selected, setSelected] = useState(false);
   const isSelected = selected ? `${classes.card} ${classes.cardSelected}` : classes.card;
@@ -50,10 +50,16 @@ function AppCard({ title, content }) {
     setSelected(selected);
   }, [selected]);
 
+  const isUpperCase = (str) => {
+    return str === str.toUpperCase();
+  };
+
+  const des = isUpperCase(description) ? description.toLowerCase() : description;
+
   return (
     <Card className={isSelected}>
       <CardHeader
-        title={<Typography variant="h6">{title}</Typography>}
+        title={<Typography variant="h6">{nom}</Typography>}
         avatar={
           <AppBadge>
             <AppAvatar detailApp={false} />
@@ -75,13 +81,13 @@ function AppCard({ title, content }) {
       />
       <CardContent>
         <Typography variant="body1" component="div">
-          Description: {content}
+          Description: {des}
         </Typography>
         <Typography variant="body2" component="div">
-          Version: {content}
+          Version: {versions === undefined ? 'N/A' : versions[0]}
         </Typography>
         <Typography variant="body2" component="div">
-          URL: {content}
+          URL: {url === undefined ? 'N/A' : url}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
@@ -94,8 +100,10 @@ function AppCard({ title, content }) {
 }
 
 AppCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  nom: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  versions: PropTypes.arrayOf(String),
+  url: PropTypes.string,
 };
 
 export default AppCard;

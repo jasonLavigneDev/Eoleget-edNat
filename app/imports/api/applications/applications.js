@@ -45,10 +45,10 @@ Applications.schema = new SimpleSchema({
 
 Applications.publicFields = {
   nom: 1,
-  identificationName: 1,
+  identification: 1,
   description: 1,
   tags: 1,
-  version: 1,
+  versions: 1,
   url: 1,
 };
 
