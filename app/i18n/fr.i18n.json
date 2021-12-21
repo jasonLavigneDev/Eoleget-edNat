@@ -13,6 +13,14 @@
         "url": "URL"
       }
     },
+    "packs":{
+      "labels":{
+        "name":"Nom",
+        "creationDate": "Date de création",
+        "isValidated":"A été validé",
+        "applications": "Applications"
+      }
+    },
     "methods": {},
     "users": {
       "mustBeLoggedIn": "Vous devez être connecté.",
