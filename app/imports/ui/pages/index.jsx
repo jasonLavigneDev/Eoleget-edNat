@@ -13,9 +13,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
 
+import { useTracker } from 'meteor/react-meteor-data';
 import SearchBarApp from '../components/search/SearchBarApp';
 import AppCardList from '../components/appCard/AppCardList';
 import AppList from '../components/appCard/AppList';
+import Applications from '../../api/applications/applications';
 // import { useAppContext } from '../contexts/context';
 // import { usePagination } from '../../api/utils/hooks';
 
@@ -62,34 +64,14 @@ export default function Index() {
   const [showSearchApp, setShowSearchApp] = useState(false);
   const [showModeList, setModeList] = useState(false);
   const classes = useStyles();
-  // Add when data will be up
-  // const [filterChecked, setFilterChecked] = React.useState(true);
-  // const [{ user }] = useAppContext();
-  // const isAdmin = user ? Roles.userIsInRole(user._id, 'admin') : false;
-
-  // const { changePage, page, items, total } = !filterChecked
-  //   ? usePagination('groups.all', {}, {}, {}, { sort: { name: 1 } }, ITEM_PER_PAGE)
-  //   : usePagination('groups.memberOf', {}, {}, {}, { sort: { name: 1 } }, ITEM_PER_PAGE);
-
-  // const handleChangePage = (event, value) => {
-  //   changePage(value);
-  // };
-
-  // React.useEffect(() => {
-  //   setModeList(showModeList);
-  // }, [showSearchApp]);
-
-  // React.useEffect(() => {
-  //   if (page !== 1) {
-  //     changePage(1);
-  //   }
-  // }, [search]);
-
-  //  const updateFilterCheck = () => {
-  //    setFilterChecked(!filterChecked);
-  //    changePage(1);
-  //  };
-
+  const applications = useTracker(() => {
+    Meteor.subscribe('applications.all');
+    return Applications.find({}).fetch();
+  });
+  const isUpperCase = (str) => {
+    return str === str.toUpperCase();
+  };
+  console.log(`applications`, applications);
   return (
     <Fade in>
       <div className={classes.main}>
@@ -131,12 +113,12 @@ export default function Index() {
             <Paper>
               <div className={classes.cardContainer}>
                 <Collapse in={!showModeList} collapsedsize={0}>
-                  <AppCardList title="ça claque" content="Je suis un super contenu qui déchire." />
+                  <AppCardList applications={applications} isUpperCase={isUpperCase} />
                 </Collapse>
               </div>
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
-              <AppList title="ça claque" content="Je suis un super contenu qui déchire." />
+              <AppList applications={applications} isUpperCase={isUpperCase} />
             </Collapse>
           </div>
         </div>

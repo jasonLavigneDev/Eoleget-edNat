@@ -4,7 +4,7 @@ import i18n from 'meteor/universe:i18n';
 
 import MaterialTable from '@material-table/core';
 
-function AppList({ title, content }) {
+function AppList({ applications, isUpperCase }) {
   const columns = [
     {
       title: i18n.__('components.AppList.application'),
@@ -37,21 +37,21 @@ function AppList({ title, content }) {
     },
   };
 
-  const data = [
-    { application: title, description: content, version: content, url: content },
-    { application: title, description: content, version: content, url: content },
-    { application: title, description: content, version: content, url: content },
-    { application: title, description: content, version: content, url: content },
-    { application: title, description: content, version: content, url: content },
-    { application: title, description: content, version: content, url: content },
-  ];
+  const data = [];
+  applications.map((app) => {
+    let { description } = app;
+    if (isUpperCase(app.description)) {
+      description = app.description.toLowerCase();
+    }
+    return data.push({ application: app.nom, description, version: 'content', url: 'content' });
+  });
 
   return <MaterialTable columns={columns} data={data} title="Liste des applications" options={options} />;
 }
 
 AppList.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  applications: PropTypes.node.isRequired,
+  isUpperCase: PropTypes.func.isRequired,
 };
 
 export default AppList;
