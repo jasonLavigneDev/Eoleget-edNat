@@ -25,8 +25,29 @@ variables:
 
 stages:
   - initial-checks
+  - deps
+  - test
   - build
   - release
+
+# Common setup for all meteor based jobs
+.meteor:
+  extends: .not-on-stable
+  image: hub.eole.education/proxyhub/geoffreybooth/meteor-base:2.5
+  before_script:
+    - cd app
+  cache:
+    key:
+      files:
+        # Generate new cache when one of the file changes
+        - app/package.json
+        - app/package-lock.json
+    paths:
+      - app/node_modules/
+    # Only use the cache created by `cache-dependencies` job
+    policy: pull
+  variables:
+    METEOR_ALLOW_SUPERUSER: "true"
 
 
 ###############################################################################
@@ -35,6 +56,38 @@ stages:
 # Execute `commitlint` before resource heavy jobs
 commitlint:
   stage: initial-checks
+
+
+###############################################################################
+# `deps` stage: to download and cache dependencies
+###############################################################################
+cache-dependencies:
+  stage: deps
+  extends: .meteor
+  cache:
+    # This job update dependencies
+    policy: pull-push
+  script:
+    - meteor npm ci && meteor npm install
+
+
+###############################################################################
+# `test` stage: `meteor-lint`, `meteor-tests`
+###############################################################################
+# The test does not run on the builded container so do them before
+# building the container
+meteor-lint:
+  stage: test
+  extends: .meteor
+  script:
+    - meteor npm install --only=dev
+    - meteor npm run lint
+
+meteor-tests:
+  stage: test
+  extends: .meteor
+  script:
+    - meteor npm test
 
 
 ###############################################################################
