@@ -3,9 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import Applications from '../applications';
 
 // A supprimer quand le fichier utils.js sera commit
-function isActive() {
-  return false;
-}
+// function isActive() {
+//   return false;
+// }
 
 // Meteor.publish('applications.all', function () {
 //   console.log(Applications.find({}).fetch());
