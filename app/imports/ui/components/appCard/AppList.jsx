@@ -17,7 +17,7 @@ function AppList({ applications, isUpperCase }) {
     },
     {
       title: i18n.__('components.AppList.version'),
-      field: 'version',
+      field: 'versions',
     },
     {
       title: i18n.__('components.AppList.url'),
@@ -43,14 +43,14 @@ function AppList({ applications, isUpperCase }) {
     if (isUpperCase(app.description)) {
       description = app.description.toLowerCase();
     }
-    return data.push({ application: app.nom, description, version: 'content', url: 'content' });
+    return data.push({ application: app.nom, description, versions: app.versions[0], url: app.url });
   });
 
   return <MaterialTable columns={columns} data={data} title="Liste des applications" options={options} />;
 }
 
 AppList.propTypes = {
-  applications: PropTypes.node.isRequired,
+  applications: PropTypes.arrayOf(PropTypes.object).isRequired,
   isUpperCase: PropTypes.func.isRequired,
 };
 
