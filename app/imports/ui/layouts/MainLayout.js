@@ -24,7 +24,10 @@ const useStyles = makeStyles(() => ({
     position: 'relative',
   },
   content: {
+    display: 'flex',
     marginTop: 48,
+    flexGrow: 1,
+    width: '100%',
   },
 }));
 
@@ -36,32 +39,30 @@ const MainLayout = () => {
   return (
     <div className={classes.root}>
       <TopBar />
-      <main id="main">
-        <div id="content" className={classes.content}>
-          <Suspense fallback={<Spinner />}>
-            <Switch>
-              {user ? (
-                loadingUser || !authenticated ? (
-                  <Spinner />
-                ) : !verifyEmail || isVerified(user) ? (
-                  <Switch>
-                    <Route exact path="/" component={Index} />
-                    <Route exact path="/packs" component={Packs} />
-                    <Route exact path="/detailApp" component={DetailApp} />
-                    <Route exact path="/detailPack" component={DetailPack} />
-                    <Route exact path="/profilePage" component={ProfilePage} />
-                  </Switch>
-                ) : (
-                  <Route path="/" component={VerifyNeeded} />
-                )
+      <main id="main" className={classes.content}>
+        <Suspense fallback={<Spinner />}>
+          <Switch>
+            {user ? (
+              loadingUser || !authenticated ? (
+                <Spinner />
+              ) : !verifyEmail || isVerified(user) ? (
+                <Switch>
+                  <Route exact path="/" component={Index} />
+                  <Route exact path="/packs" component={Packs} />
+                  <Route exact path="/detailApp" component={DetailApp} />
+                  <Route exact path="/detailPack" component={DetailPack} />
+                  <Route exact path="/profilePage" component={ProfilePage} />
+                </Switch>
               ) : (
-                <Route path="/" component={NotLoggedIn} />
-              )}
+                <Route path="/" component={VerifyNeeded} />
+              )
+            ) : (
+              <Route path="/" component={NotLoggedIn} />
+            )}
 
-              <Redirect from="*" to="/" />
-            </Switch>
-          </Suspense>
-        </div>
+            <Redirect from="*" to="/" />
+          </Switch>
+        </Suspense>
       </main>
     </div>
   );
