@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
-//import { createNotification } from './notifications/methods';
+// import { createNotification } from './notifications/methods';
 
 const levels = ['info', 'warning', 'error'];
 
@@ -10,13 +10,13 @@ function logServer(message, level = 'info', userNotify = null) {
   if (userNotify) {
     const user = Meteor.users.findOne(userNotify);
     if (user) {
-      const notifData = {
-        userId: userNotify,
-        title: i18n.__(`api.logging.${level}`),
-        content: message,
-        type: level,
-      };
-      //createNotification._execute({}, { data: notifData });
+      // const notifData = {
+      //   userId: userNotify,
+      //   title: i18n.__(`api.logging.${level}`),
+      //   content: message,
+      //   type: level,
+      // };
+      // createNotification._execute({}, { data: notifData });
     }
   }
 }

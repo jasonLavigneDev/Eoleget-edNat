@@ -99,6 +99,12 @@ function AppCard({ nom, description, versions, url }) {
   );
 }
 
+AppCard.defaultProps = {
+  description: '',
+  versions: [],
+  url: '',
+};
+
 AppCard.propTypes = {
   nom: PropTypes.string.isRequired,
   description: PropTypes.string,

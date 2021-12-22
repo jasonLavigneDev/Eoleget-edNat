@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTracker } from 'meteor/react-meteor-data';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -15,7 +14,6 @@ import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 
 import AppAvatar from '../components/appCard/AppAvatar';
-import Applications from '../../api/applications/applications';
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -59,10 +57,10 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 function DetailApp() {
-  /*const applications = useTracker(() => {
+  /* const applications = useTracker(() => {
     Meteor.subscribe('applications.all');
     return Applications.find({}).fetch();
-  });*/
+  }); */
 
   const classes = useStyle();
 

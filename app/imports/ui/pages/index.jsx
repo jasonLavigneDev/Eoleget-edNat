@@ -17,6 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
+import Pagination from '@material-ui/lab/Pagination';
 import Spinner from '../components/system/Spinner';
 
 import { useAppContext } from '../contexts/context';
@@ -26,7 +27,6 @@ import AppCard from '../components/appCard/AppCard';
 
 import AppList from '../components/appCard/AppList';
 import Applications from '../../api/applications/applications';
-import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles(() => ({
   root: {
