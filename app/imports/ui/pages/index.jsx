@@ -18,13 +18,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
 import Pagination from '@material-ui/lab/Pagination';
-import Spinner from '../components/system/Spinner';
 
 import { useAppContext } from '../contexts/context';
 import { usePagination } from '../../api/utils/hooks';
 
 import AppCard from '../components/appCard/AppCard';
-
+import Spinner from '../components/system/Spinner';
 import AppList from '../components/appCard/AppList';
 import Applications from '../../api/applications/applications';
 
@@ -92,12 +91,10 @@ function Index() {
   const applications = useTracker(() => {
     Meteor.subscribe('applications.table.all');
     const data = Applications.find({}).fetch();
-    console.log(data);
     return data;
   });
 
   const handleChangePage = (event, value) => {
-    console.log('changement page');
     changePage(value);
   };
 

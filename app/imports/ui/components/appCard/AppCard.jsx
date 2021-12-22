@@ -16,7 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
-import lightTheme from '../../themes/light';
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -24,8 +23,13 @@ const useStyles = makeStyles((theme) => ({
     width: '300px',
     height: '300px',
     margin: '1%',
-    backgroundColor: lightTheme.palette.primary.light,
     boxShadow: theme.shadows[3],
+  },
+  cardContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'auto',
+    maxHeight: '150px',
   },
   cardSelected: {
     outline: 'solid #011CAA',
@@ -36,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardActions: {
     position: 'absolute',
-    bottom: '0',
+    bottom: '-1%',
     right: '30%',
   },
 }));
@@ -60,6 +64,11 @@ function AppCard({ nom, description, versions, url }) {
     <Card className={isSelected}>
       <CardHeader
         title={<Typography variant="h6">{nom}</Typography>}
+        subheader={
+          <Typography variant="body2" component="div">
+            {versions === undefined ? 'N/A' : versions[0]}
+          </Typography>
+        }
         avatar={
           <AppBadge>
             <AppAvatar detailApp={false} />
@@ -79,16 +88,11 @@ function AppCard({ nom, description, versions, url }) {
         }
         className={classes.cardHeader}
       />
-      <CardContent>
+      <CardContent className={classes.cardContent}>
         <Typography variant="body1" component="div">
-          Description: {des}
+          {des}
         </Typography>
-        <Typography variant="body2" component="div">
-          Version: {versions === undefined ? 'N/A' : versions[0]}
-        </Typography>
-        <Typography variant="body2" component="div">
-          URL: {url === undefined ? 'N/A' : url}
-        </Typography>
+        {url !== undefined ? <a href={url}>{url}</a> : null}
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Link to="/detailapp" className={classes.imgLogo}>
