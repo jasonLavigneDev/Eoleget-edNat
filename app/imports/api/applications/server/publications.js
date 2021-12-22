@@ -1,5 +1,5 @@
 import { FindFromPublication } from 'meteor/percolate:find-from-publication';
-import { checkPaginationParams, isActive } from '../../utils';
+import { checkPaginationParams } from '../../utils';
 import logServer from '../../logging';
 import Applications from '../applications';
 
@@ -21,9 +21,6 @@ const queryAllApplications = ({ search }) => {
 
 // publish all existing applications
 FindFromPublication.publish('applications.all', function applicationsAll({ page, search, itemPerPage, ...rest }) {
-  /*if (!isActive(this.userId)) {
-    return this.ready();
-  }*/
   try {
     checkPaginationParams.validate({ page, itemPerPage, search });
   } catch (err) {
@@ -58,8 +55,5 @@ Meteor.methods({
 });
 
 Meteor.publish('applications.table.all', function publishApps() {
-  /*if (!isActive(this.userId)) {
-    return this.ready();
-  }*/
   return Applications.find({});
 });

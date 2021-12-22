@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
+import Pagination from '@material-ui/lab/Pagination';
+import { makeStyles } from '@material-ui/core/styles';
 import { useAppContext } from '../../contexts/context';
 import { usePagination } from '../../../api/utils/hooks';
-
-import { makeStyles } from '@material-ui/core/styles';
 
 import AppCard from './AppCard';
 import Applications from '../../../api/applications/applications';
@@ -19,7 +20,7 @@ const useStyles = makeStyles(() => ({
 function AppCardList({ isUpperCase }) {
   const ITEM_PER_PAGE = 15;
   const classes = useStyles();
-  const [{ appPage, userId }, dispatch] = useAppContext();
+  const appPage = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
   const { changePage, page, items, total } = usePagination(
