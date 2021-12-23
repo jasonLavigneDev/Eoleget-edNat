@@ -131,3 +131,26 @@ removed now.
 BREAKING CHANGE: the old API `foo.baz` was deprecated since version 1.2.6 and is
 removed now.
 ```
+
+
+## pre-commit
+
+[pre-commit](https://pre-commit.com) is configured for this
+repository, which you may optionally use to ease the steps involved in
+submitting your changes, including checking the formatting of your
+commit messages.
+
+First install the `pre-commit` package manager locally using the
+appropriate [method](https://pre-commit.com/#installation), then run
+`pre-commit` in the formula's root directory and now pre-commit
+will run automatically on each git commit.
+
+```
+$ pre-commit install -t pre-commit -t commit-msg
+pre-commit installed at .git/hooks/pre-commit
+pre-commit installed at .git/hooks/commit-msg
+```
+
+If some hook is in your way, you can [temporarily disable a
+hooks](https://pre-commit.com/#temporarily-disabling-hooks) with the
+`SKIP` environnment variable.
