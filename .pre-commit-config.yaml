@@ -13,3 +13,11 @@ repos:
         stages: [commit-msg]
         language: docker_image
         entry: hub.eole.education/eole/commitlint:latest commitlint --edit
+      - id: meteor:lint
+        name: Lint meteor code
+        description: Lint javascript code with 'meteor npm run eslint'
+        types: [file, javascript]
+        language: docker_image
+        entry: |
+          hub.eole.education/proxyhub/geoffreybooth/meteor-base:2.5
+          /bin/bash -c 'cd app && meteor npm install && meteor npm run eslint'
