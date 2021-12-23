@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppCard({ nom, description, versions, url }) {
+function AppCard({ nom, identification, description, versions, url }) {
   const classes = useStyles();
   const [selected, setSelected] = useState(false);
   const isSelected = selected ? `${classes.card} ${classes.cardSelected}` : classes.card;
@@ -91,7 +91,7 @@ function AppCard({ nom, description, versions, url }) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Link to="/detailapp" className={classes.imgLogo}>
+        <Link to={`/detailapp/${identification}`} className={classes.imgLogo}>
           <Button variant="contained">Voir plus</Button>
         </Link>
       </CardActions>
@@ -107,9 +107,17 @@ AppCard.defaultProps = {
 
 AppCard.propTypes = {
   nom: PropTypes.string.isRequired,
+  identification: PropTypes.string,
   description: PropTypes.string,
   versions: PropTypes.arrayOf(String),
   url: PropTypes.string,
+};
+
+AppCard.defaultProps = {
+  identification: '',
+  description: '',
+  versions: [''],
+  url: '',
 };
 
 export default AppCard;

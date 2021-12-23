@@ -89,6 +89,18 @@
       "noModifications": "Aucun changement à appliquer",
       "logoutType": "Portée de la déconnexion",
       "uploadSuccess": "Chargement des données réussi"
+    },
+    "detailApp":{
+      "title": "Détail de l'application",
+      "winget": "Commande winget",
+      "versions": "Versions",
+      "redirect": "Vers le site de l'application",
+      "redirectLabel": "Vers le site",
+      "download": "Télécharger l'application",
+      "downloadLabel": "Télécharger",
+      "Licence": "Licence",
+      "Tags": "Tag",
+      "Save": "Enregistrer l'application"
     }
   },
   "components": {
