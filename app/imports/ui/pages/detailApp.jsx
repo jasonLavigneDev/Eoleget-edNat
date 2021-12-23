@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { withTracker } from 'meteor/react-meteor-data';
+import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import LanguageIcon from '@material-ui/icons/Language';
@@ -12,7 +14,9 @@ import Fade from '@material-ui/core/Fade';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
+import Spinner from '../components/system/Spinner';
 
+import Applications from '../../api/applications/applications';
 import AppAvatar from '../components/appCard/AppAvatar';
 
 const useStyle = makeStyles((theme) => ({
@@ -56,54 +60,51 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function DetailApp() {
-  /* const applications = useTracker(() => {
-    Meteor.subscribe('applications.all');
-    return Applications.find({}).fetch();
-  }); */
-
+const detailApp = ({ app, ready }) => {
   const classes = useStyle();
 
-  return (
+  return !ready ? (
+    <Spinner full />
+  ) : (
     <Fade in>
       <Container className={classes.root}>
         <Paper className={classes.rootPaper}>
           <Typography variant="h4" component="div">
-            Détail de lapplication
+            {i18n.__('pages.detailApp.title')}
           </Typography>
           <Grid container className={classes.main}>
             <Grid item xs={8} style={{ paddingLeft: '18px' }}>
               <Typography variant="h6" component="div">
-                Nom de lapplication
+                {app.nom}
               </Typography>
               <Typography variant="body1" component="div" wrap="nowrap">
-                Description de lapplication
+                {app.description}
               </Typography>
-              <p>commande winget</p>
-              <p>Verison v 1.1.1.1.1.1.1.1.1.1.1.1.1.1</p>
+              <p>{i18n.__('pages.detailApp.winget')}</p>
+              <p>{app.versions[0]}</p>
               <span className={classes.iconSpan}>
-                <IconButton title="Vers le site de l'application">
+                <IconButton title={i18n.__('pages.detailApp.redirect')}>
                   <LanguageIcon />
                 </IconButton>
-                <p>Vers le site</p>
+                <p>{i18n.__('pages.detailApp.redirectLabel')}</p>
               </span>
               <span className={classes.iconSpan}>
-                <IconButton title="Télecharger l'application">
+                <IconButton title={i18n.__('pages.detailApp.download')}>
                   <GetAppIcon />
                 </IconButton>
-                <p>Télécharger</p>
+                <p>{i18n.__('pages.detailApp.downloadLabel')}</p>
               </span>
               <span className={classes.iconSpan}>
                 <IconButton disabled>
                   <MonetizationOnIcon />
                 </IconButton>
-                <p>Licence</p>
+                <p>{i18n.__('pages.detailApp.Licence')}</p>
               </span>
               <span className={classes.iconSpan}>
                 <IconButton disabled>
                   <LocalOfferIcon />
                 </IconButton>
-                <p>Tags</p>
+                <p>{i18n.__('pages.detailApp.Tags')}</p>
               </span>
               <span className={classes.iconSpan}>
                 <Button variant="outlined">Tag 1</Button>
@@ -114,12 +115,32 @@ function DetailApp() {
             <AppAvatar detailApp />
           </Grid>
           <div className={classes.buttonSave}>
-            <Button variant="contained">Enregistrer lapplication</Button>
+            <Button variant="contained">{i18n.__('pages.detailApp.Save')}</Button>
           </div>
         </Paper>
       </Container>
     </Fade>
   );
-}
+};
 
-export default DetailApp;
+export default withTracker(
+  ({
+    match: {
+      params: { identification },
+    },
+  }) => {
+    const subApp = Meteor.subscribe('applications.single', { identification });
+    const app = Applications.findOne({ identification }) || {};
+
+    const ready = subApp.ready();
+    return {
+      app,
+      ready,
+    };
+  },
+)(detailApp);
+
+detailApp.propTypes = {
+  app: PropTypes.objectOf(PropTypes.any).isRequired,
+  ready: PropTypes.bool.isRequired,
+};

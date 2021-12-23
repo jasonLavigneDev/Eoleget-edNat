@@ -94,6 +94,18 @@
       "logoutType": "Logout perimeter",
       "noModifications": "No changes to apply",
       "uploadSuccess": "Datas uploaded with success"
+    },
+    "detailApp":{
+      "title": "Application details",
+      "winget": "Winget command",
+      "versions": "Versions",
+      "redirect": "To the site of the application",
+      "redirectLabel": "To the site",
+      "download": "Download application",
+      "downloadLabel": "Download",
+      "Licence": "Licence",
+      "Tags": "Tag",
+      "Save": "Save application"
     }
   },
   "components": {

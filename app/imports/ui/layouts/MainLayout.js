@@ -49,7 +49,7 @@ const MainLayout = () => {
                 <Switch>
                   <Route exact path="/" component={Index} />
                   <Route exact path="/packs" component={Packs} />
-                  <Route exact path="/detailApp" component={DetailApp} />
+                  <Route exact path="/detailApp/:identification" component={DetailApp} />
                   <Route exact path="/detailPack" component={DetailPack} />
                   <Route exact path="/profilePage" component={ProfilePage} />
                 </Switch>

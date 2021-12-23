@@ -92,12 +92,10 @@ function Index() {
   const applications = useTracker(() => {
     Meteor.subscribe('applications.table.all');
     const data = Applications.find({}).fetch();
-    console.log(data);
     return data;
   });
 
   const handleChangePage = (event, value) => {
-    console.log('changement page');
     changePage(value);
   };
 
@@ -236,6 +234,7 @@ function Index() {
                       <AppCard
                         key={app._id}
                         nom={app.nom}
+                        identification={app.identification}
                         description={app.description}
                         versions={app.versions}
                         url={app.url}
