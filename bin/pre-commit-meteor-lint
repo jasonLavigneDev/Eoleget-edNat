@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+cd app
+meteor npm install
+
+# Remove `app/` prefix from all file names passed as argument
+meteor npm run eslint ${@#app/}
