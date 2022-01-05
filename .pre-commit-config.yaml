@@ -20,4 +20,4 @@ repos:
         language: docker_image
         entry: |
           hub.eole.education/proxyhub/geoffreybooth/meteor-base:2.5
-          /bin/bash -c 'cd app && meteor npm install && meteor npm run eslint'
+          env HOME=/tmp /bin/bash -c 'cd app && meteor npm install && meteor npm run eslint'
