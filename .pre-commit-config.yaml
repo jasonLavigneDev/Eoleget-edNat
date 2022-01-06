@@ -16,7 +16,8 @@ repos:
       - id: meteor:lint
         name: Lint meteor code
         description: Lint javascript code with 'meteor npm run eslint'
-        types: [file, javascript]
+        types: [file]
+        types_or: [javascript, jsx, ts, tsx]
         language: docker_image
         entry: |
           hub.eole.education/proxyhub/geoffreybooth/meteor-base:2.5
