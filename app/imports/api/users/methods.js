@@ -107,4 +107,20 @@ export const setName = new ValidatedMethod({
   },
 });
 
+export const setLanguage = new ValidatedMethod({
+  name: 'users.setLanguage',
+  validate: new SimpleSchema({
+    language: { type: String, label: getLabel('api.users.labels.language') },
+  }).validator(),
+
+  run({ language }) {
+    if (!this.userId) {
+      throw new Meteor.Error('api.users.setLanguage.notPermitted', i18n.__('api.users.mustBeLoggedIn'));
+    }
+    Meteor.users.update(this.userId, {
+      $set: { language },
+    });
+  },
+});
+
 export { setLogoutType, verifyEmail };

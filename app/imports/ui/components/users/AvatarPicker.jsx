@@ -46,8 +46,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   avatar: {
+    width: '250px',
+    height: '250px',
+  },
+  avatarDefault: {
     width: 250,
     height: 250,
+    backgroundColor: theme.palette.primary.main,
   },
   avatarMobile: {
     width: 100,
@@ -56,11 +61,6 @@ const useStyles = makeStyles((theme) => ({
   avatarMobileDefault: {
     width: 100,
     height: 100,
-    backgroundColor: theme.palette.primary.main,
-  },
-  avatarDefault: {
-    width: 250,
-    height: 250,
     backgroundColor: theme.palette.primary.main,
   },
 }));
@@ -75,17 +75,9 @@ const AvatarPicker = ({ userAvatar, userFirstName, onAssignAvatar }) => {
       <Grid container>
         <Grid item xs={12} className={classes.buttonWrapper}>
           {isMobile ? (
-            <UserAvatar
-              customClass={userAvatar ? classes.avatarMobile : classes.avatarMobileDefault}
-              userAvatar={userAvatar || ''}
-              userFirstName={userFirstName || ''}
-            />
+            <UserAvatar userAvatar={userAvatar || ''} userFirstName={userFirstName || ''} />
           ) : (
-            <UserAvatar
-              customClass={userAvatar ? classes.avatar : classes.avatarDefault}
-              userAvatar={userAvatar || ''}
-              userFirstName={userFirstName || ''}
-            />
+            <UserAvatar big userAvatar={userAvatar || ''} userFirstName={userFirstName || ''} />
           )}
         </Grid>
         <Grid item xs={12} className={classes.buttonWrapper}>
