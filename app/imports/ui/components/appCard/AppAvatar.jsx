@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Avatar from '@material-ui/core/Avatar';
-import { makeStyles } from '@material-ui/core/styles';
-import Badge from '@material-ui/core/Badge';
+import Avatar from '@mui/material/Avatar';
+import { makeStyles } from '@mui/styles';
+import Badge from '@mui/material/Badge';
 
 const useStyles = makeStyles(() => ({
   badge: {

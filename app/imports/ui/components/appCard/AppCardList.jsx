@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import Pagination from '@material-ui/lab/Pagination';
-import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
+import { makeStyles } from '@mui/styles';
 import { useAppContext } from '../../contexts/context';
 import { usePagination } from '../../../api/utils/hooks';
 

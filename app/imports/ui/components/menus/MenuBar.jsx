@@ -1,10 +1,10 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
 import { useLocation, useHistory } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@mui/styles';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 export const links = [
   {
@@ -70,7 +70,7 @@ const MenuBar = ({ mobile }) => {
       textColor="primary"
       aria-label="menu links"
       variant="scrollable"
-      scrollButtons="on"
+      scrollButtons
     >
       {links.map((link, index) => (
         <Tab

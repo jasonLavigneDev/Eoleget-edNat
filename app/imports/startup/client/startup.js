@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
 import { registerSchemaMessages, getLang } from '../../api/utils/functions';
@@ -12,5 +12,5 @@ Meteor.startup(() => {
   i18n.setLocale(getLang());
   // setup translated validation messages
   registerSchemaMessages();
-  render(<App />, document.getElementById('root')); // eslint-disable-line
+  ReactDOM.render(<App />, document.getElementById('root'));
 });
