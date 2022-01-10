@@ -110,7 +110,11 @@ function PackCard() {
 
 PackCard.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
-  expand: PropTypes.bool.isRequired,
+  expand: PropTypes.bool,
+};
+
+PackCard.defaultProps = {
+  expand: false,
 };
 
 export default PackCard;

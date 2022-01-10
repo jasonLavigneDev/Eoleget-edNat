@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import { makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,12 +13,6 @@ import AppVersion from '../system/AppVersion';
 import LogoutDialog from '../system/LogoutDialog';
 import UserAvatar from '../users/UserAvatar';
 
-const useStyles = makeStyles((theme) => ({
-  avatar: {
-    marginLeft: theme.spacing(1),
-  },
-}));
-
 export const userMenu = [
   {
     path: '/profilePage',
@@ -28,7 +21,6 @@ export const userMenu = [
 ];
 
 const MainMenu = ({ user = {} }) => {
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [openLogout, setOpenLogout] = useState(false);
   const history = useHistory();
@@ -82,7 +74,7 @@ const MainMenu = ({ user = {} }) => {
         endIcon={<ExpandMoreIcon />}
       >
         {user.firstName || ''}
-        <UserAvatar customClass={classes.avatar} />
+        <UserAvatar />
       </Button>
       <Menu
         id="main-menu"

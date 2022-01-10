@@ -1,40 +1,33 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 import React from 'react';
-import { makeStyles } from '@mui/styles';
 import Avatar from '@mui/material/Avatar';
 import PropTypes from 'prop-types';
 import { useAppContext } from '../../contexts/context';
 
-const useStyles = makeStyles((theme) => ({
-  avatar: {
-    backgroundColor: theme.palette.primary.main,
-  },
-}));
-
-const UserAvatar = ({ userAvatar, customClass }) => {
+const UserAvatar = ({ userAvatar, big }) => {
   const [
     {
       user: { avatar, firstName },
     },
   ] = useAppContext();
   const localAvatar = userAvatar || avatar;
-  const classes = useStyles();
-  const getClasse = () => {
-    if (customClass) return customClass;
-    if (localAvatar) return '';
-    return classes.avatar;
-  };
-  return <Avatar alt={firstName} src={localAvatar || firstName} className={getClasse()} />;
+  return (
+    <Avatar
+      alt={firstName}
+      src={localAvatar || firstName}
+      sx={big ? { width: 250, height: 250 } : { width: 40, height: 40 }}
+    />
+  );
 };
 
 UserAvatar.defaultProps = {
   userAvatar: '',
-  customClass: '',
+  big: false,
 };
 
 UserAvatar.propTypes = {
   userAvatar: PropTypes.string,
-  customClass: PropTypes.string,
+  big: PropTypes.bool,
 };
 
 export default UserAvatar;

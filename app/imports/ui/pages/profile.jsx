@@ -298,7 +298,8 @@ function ProfilePage() {
                       value={userData.username}
                       error={errors.username !== ''}
                       onChange={onUpdateField}
-                      labelWidth={labelUsernameWidth}
+                      labelwidth={labelUsernameWidth}
+                      label={i18n.__('api.users.labels.username')}
                       endAdornment={
                         <InputAdornment position="end">
                           <Tooltip
@@ -319,7 +320,7 @@ function ProfilePage() {
                     </FormHelperText>
                   </FormControl>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} sx={{ height: 1 / 1 }}>
                   <AvatarPicker
                     userAvatar={userData.avatar || ''}
                     userFirstName={userData.firstName || ''}

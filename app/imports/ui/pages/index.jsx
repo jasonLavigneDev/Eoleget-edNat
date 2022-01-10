@@ -150,7 +150,7 @@ function Index() {
         <TextField
           margin="normal"
           id="search"
-          label={i18n.__('pages.GroupsPage.searchText')}
+          label={i18n.__('components.Search.searchingApp')}
           name="search"
           fullWidth
           onChange={updateSearch}
