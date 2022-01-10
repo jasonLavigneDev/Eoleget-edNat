@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import { useHistory, useLocation } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Divider from '@material-ui/core/Divider';
 
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { makeStyles } from '@mui/styles';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import PropTypes from 'prop-types';
 import AppVersion from '../system/AppVersion';
 import LogoutDialog from '../system/LogoutDialog';
@@ -89,7 +90,6 @@ const MainMenu = ({ user = {} }) => {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',

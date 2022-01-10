@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 
-import AddIcon from '@material-ui/icons/Add';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
+import { makeStyles } from '@mui/styles';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 
-import { Link } from 'react-router-dom';
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
 

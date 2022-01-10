@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+import { makeStyles } from '@mui/styles';
+import AppBar from '@mui/material/AppBar';
 import MenuBar from './MenuBar';
 import MainMenu from './MainMenu';
 import { useAppContext } from '../../contexts/context';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.tertiary.main,
-    display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: theme.spacing(2),
@@ -46,7 +43,7 @@ function TopBar() {
   const LOGO = `/images/${isMobile ? SMALL_LOGO : LONG_LOGO}`;
 
   return (
-    <AppBar position="fixed" className={classes.root}>
+    <AppBar position="fixed" className={classes.root} color="tertiary" sx={{ display: 'flex', flexDirection: 'row' }}>
       <Link to="/" className={classes.imgLogo}>
         <img src={LOGO} className={classes.imgLogo} alt="Logo" />
       </Link>

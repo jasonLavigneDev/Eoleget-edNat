@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
-import PaginationMui from '@material-ui/lab/Pagination';
+import { makeStyles } from '@mui/styles';
+import PaginationMui from '@mui/material/Pagination';
 
 const useStyles = makeStyles(() => ({
   paginationContainer: {

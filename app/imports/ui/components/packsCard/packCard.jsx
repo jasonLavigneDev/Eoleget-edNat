@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
 
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import { makeStyles, styled } from '@material-ui/core/styles';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import IconButton from '@material-ui/core/IconButton';
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
-import Tooltip from '@material-ui/core/Tooltip';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import { makeStyles, styled } from '@mui/styles';
+import Collapse from '@mui/material/Collapse';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import IconButton from '@mui/material/IconButton';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Tooltip from '@mui/material/Tooltip';
 
 import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
@@ -40,20 +41,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
-
 function PackCard() {
   const [showMore, setShowMore] = useState(false);
   const classes = useStyles();
+  const ExpandMore = styled(
+    React.forwardRef((props, ref) => {
+      const { expand, ...other } = props;
+      return <IconButton {...other} ref={ref} />;
+    }),
+  )(({ theme, expand }) => ({
+    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  }));
 
   React.useEffect(() => {
     setShowMore(showMore);
@@ -105,5 +107,10 @@ function PackCard() {
     </div>
   );
 }
+
+PackCard.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
+  expand: PropTypes.bool.isRequired,
+};
 
 export default PackCard;

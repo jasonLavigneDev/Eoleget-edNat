@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
+import { makeStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
 
 import AppPacksCard from '../components/packsCard/appPacksCard';
 

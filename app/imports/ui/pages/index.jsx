@@ -2,28 +2,27 @@ import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 // import { Roles } from 'meteor/alanning:roles';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Collapse from '@material-ui/core/Collapse';
+import { makeStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
+import Collapse from '@mui/material/Collapse';
 import { useTracker } from 'meteor/react-meteor-data';
-import SearchIcon from '@material-ui/icons/Search';
-import ClearIcon from '@material-ui/icons/Clear';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Grid from '@material-ui/core/Grid';
-import ListIcon from '@material-ui/icons/ViewList';
-import CardIcon from '@material-ui/icons/Dashboard';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
-import Pagination from '@material-ui/lab/Pagination';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
+import Pagination from '@mui/material/Pagination';
+import SearchIcon from '@mui/icons-material/Search';
+import CardIcon from '@mui/icons-material/Dashboard';
+import ListIcon from '@mui/icons-material/ViewList';
+import ClearIcon from '@mui/icons-material/Clear';
 
+import Spinner from '../components/system/Spinner';
 import { useAppContext } from '../contexts/context';
 import { usePagination } from '../../api/utils/hooks';
-
 import AppCard from '../components/appCard/AppCard';
-import Spinner from '../components/system/Spinner';
 import AppList from '../components/appCard/AppList';
 import Applications from '../../api/applications/applications';
 
@@ -249,7 +248,9 @@ function Index() {
               </div>
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
-              <AppList applications={applications} isUpperCase={isUpperCase} />
+              <div style={{ height: 100 }}>
+                <AppList applications={applications} isUpperCase={isUpperCase} />
+              </div>
             </Collapse>
           </div>
         </div>

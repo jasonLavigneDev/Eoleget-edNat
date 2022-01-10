@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import Collapse from '@material-ui/core/Collapse';
-import ListIcon from '@material-ui/icons/ViewList';
-import CardIcon from '@material-ui/icons/Dashboard';
-import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
+import SearchIcon from '@mui/icons-material/Search';
+import ListIcon from '@mui/icons-material/ViewList';
+import CardIcon from '@mui/icons-material/Dashboard';
 
 import SearchBarApp from '../components/search/SearchBarApp';
 import PackCardList from '../components/packsCard/packCardList';

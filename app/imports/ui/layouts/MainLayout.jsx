@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 import { useAppContext } from '../contexts/context';
 import TopBar from '../components/menus/TopBar';

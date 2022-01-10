@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 
-import Fade from '@material-ui/core/Fade';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import MailIcon from '@material-ui/icons/Mail';
-import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/IconButton';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@mui/styles';
+import Fade from '@mui/material/Fade';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import FormHelperText from '@mui/material/FormHelperText';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import MailIcon from '@mui/icons-material/Mail';
 
 import { useAppContext } from '../contexts/context';
 import { useObjectState } from '../../api/utils/hooks';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(40),
   },
   rootPaper: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(5),
   },
   form: {
     marginTop: theme.spacing(2),

@@ -1,9 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
+import { makeStyles } from '@mui/styles';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
 import i18n from 'meteor/universe:i18n';
 import { useAppContext } from '../../contexts/context';
 

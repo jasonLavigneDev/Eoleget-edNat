@@ -2,8 +2,8 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Switch, Route, useHistory } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import Spinner from '../components/system/Spinner';
 import MsgHandler from '../components/system/MsgHandler';
@@ -46,11 +46,11 @@ function App() {
 }
 
 export default () => (
-  <MuiThemeProvider theme={lightTheme}>
+  <ThemeProvider theme={lightTheme}>
     <BrowserRouter>
       <DynamicStore>
         <App />
       </DynamicStore>
     </BrowserRouter>
-  </MuiThemeProvider>
+  </ThemeProvider>
 );

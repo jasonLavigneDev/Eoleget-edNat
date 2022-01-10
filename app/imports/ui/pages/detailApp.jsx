@@ -1,21 +1,22 @@
 import React from 'react';
-import { withTracker } from 'meteor/react-meteor-data';
 import i18n from 'meteor/universe:i18n';
+import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import LanguageIcon from '@material-ui/icons/Language';
-import IconButton from '@material-ui/core/IconButton';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import Button from '@material-ui/core/Button';
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-import Fade from '@material-ui/core/Fade';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
-import Spinner from '../components/system/Spinner';
 
+import { makeStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
+import Fade from '@mui/material/Fade';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
+import LanguageIcon from '@mui/icons-material/Language';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+
+import Spinner from '../components/system/Spinner';
 import Applications from '../../api/applications/applications';
 import AppAvatar from '../components/appCard/AppAvatar';
 
