@@ -6,23 +6,24 @@ import { makeStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
 import Collapse from '@mui/material/Collapse';
 import { useTracker } from 'meteor/react-meteor-data';
+import SearchIcon from '@mui/icons-material/Search';
+import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
+import ListIcon from '@mui/icons-material/ViewList';
+import CardIcon from '@mui/icons-material/Dashboard';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
-import SearchIcon from '@mui/icons-material/Search';
-import CardIcon from '@mui/icons-material/Dashboard';
-import ListIcon from '@mui/icons-material/ViewList';
-import ClearIcon from '@mui/icons-material/Clear';
 
-import Spinner from '../components/system/Spinner';
 import { useAppContext } from '../contexts/context';
 import { usePagination } from '../../api/utils/hooks';
+
 import AppCard from '../components/appCard/AppCard';
+
 import AppList from '../components/appCard/AppList';
 import Applications from '../../api/applications/applications';
 
@@ -34,6 +35,8 @@ const useStyles = makeStyles(() => ({
   pagination: {
     display: 'flex',
     justifyContent: 'flex-end',
+    // position: 'relative',
+    // left: '10%',
   },
   main: {
     display: 'flex',
@@ -43,7 +46,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: '2%',
   },
   storeTitleContainer: {
-    width: '100%',
+    minWidth: '100%',
   },
   storeTitleContent: {
     display: 'flex',
@@ -64,8 +67,11 @@ const useStyles = makeStyles(() => ({
   },
   cardContainer: {
     display: 'flex',
-    flexWrap: 'wrap',
     justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  paper: {
+    minWidth: '1000px',
   },
 }));
 
@@ -78,7 +84,7 @@ function Index() {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
-  const { changePage, page, items, total, loading } = usePagination(
+  const { changePage, page, items, total } = usePagination(
     'applications.all',
     { search, sort: { nom: 1 } },
     Applications,
@@ -112,7 +118,7 @@ function Index() {
   }, [search]);
 
   const filterApp = (app) => {
-    let searchText = app.nom || '';
+    let searchText = app.nom + app.description || '';
     searchText = searchText.toLowerCase();
     if (!search) return true;
     return searchText.indexOf(search.toLowerCase()) > -1;
@@ -150,7 +156,7 @@ function Index() {
         <TextField
           margin="normal"
           id="search"
-          label={i18n.__('components.Search.searchingApp')}
+          label={i18n.__('pages.Store.searchText')}
           name="search"
           fullWidth
           onChange={updateSearch}
@@ -181,9 +187,7 @@ function Index() {
     </Grid>
   );
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <Fade in>
       <div className={classes.main}>
         <div className={classes.storeTitleContainer}>
@@ -219,38 +223,56 @@ function Index() {
             </Tooltip>
           </span>
           <div>
-            <Paper>
-              <div className={classes.cardContainer}>
-                <Collapse in={!showModeList} collapsedsize={0}>
-                  {total > ITEM_PER_PAGE && (
-                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
-                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                    </Grid>
-                  )}
-                  <span className={classes.cardContainer}>
-                    {mapList((app) => (
-                      <AppCard
-                        key={app._id}
-                        nom={app.nom}
-                        identification={app.identification}
-                        description={app.description}
-                        versions={app.versions}
-                        url={app.url}
-                      />
-                    ))}
-                  </span>
-                  {total > ITEM_PER_PAGE && (
-                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
-                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                    </Grid>
-                  )}
-                </Collapse>
-              </div>
+            <Paper className={classes.paper}>
+              {total > 0 ? (
+                <div>
+                  <Collapse in={!showModeList} collapsedsize={0}>
+                    {total > ITEM_PER_PAGE && (
+                      <Grid
+                        item
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={12}
+                        className={classes.pagination}
+                        style={Math.ceil(total / ITEM_PER_PAGE) === page ? { marginLeft: '50%' } : {}}
+                      >
+                        <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                      </Grid>
+                    )}
+                    <span className={classes.cardContainer} style={Math.ceil(total / ITEM_PER_PAGE) === page ? {} : {}}>
+                      {mapList((app) => (
+                        <AppCard
+                          key={app._id}
+                          nom={app.nom}
+                          description={app.description}
+                          versions={app.versions}
+                          url={app.url}
+                        />
+                      ))}
+                    </span>
+
+                    {total > ITEM_PER_PAGE && (
+                      <Grid
+                        item
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={12}
+                        className={classes.pagination}
+                        style={Math.ceil(total / ITEM_PER_PAGE) === page ? { marginLeft: '50%' } : {}}
+                      >
+                        <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                      </Grid>
+                    )}
+                  </Collapse>
+                </div>
+              ) : (
+                <p>{i18n.__('pages.Store.noStore')}</p>
+              )}
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
-              <div style={{ height: 100 }}>
-                <AppList applications={applications} isUpperCase={isUpperCase} />
-              </div>
+              <AppList applications={applications} isUpperCase={isUpperCase} />
             </Collapse>
           </div>
         </div>

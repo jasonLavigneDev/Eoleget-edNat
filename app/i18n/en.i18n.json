@@ -89,7 +89,9 @@
     },
     "Store": {
       "storeTitle": "Applications store",
-      "searchApp": "Search for an application"
+      "searchApp": "Search for an application",
+      "noStore": "There are no applications to display",
+      "searchText": "What application are you looking for?"
     },
     "Packs": {
       "packsStoreTitle": "Packs store",
