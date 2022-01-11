@@ -22,6 +22,14 @@ Packs.schema = new SimpleSchema(
       type: Array,
       label: getLabel('api.packs.labels.applications'),
     },
+    'applications.$': {
+      type: Object,
+      label: getLabel('api.packs.labels.applications'),
+    },
+    owner: {
+      type: String,
+      label: getLabel('api.packs.labels.owner'),
+    },
   },
   { tracker: Tracker },
 );
@@ -31,6 +39,7 @@ Packs.publicField = {
   creationDate: 1,
   isValidated: 1,
   applications: 1,
+  owner: 1,
 };
 
 Packs.attachSchema(Packs.schema);
