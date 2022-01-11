@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-// import { isActive } from '../../utils';
 import Packs from '../packs';
 
 // A supprimer quand le fichier utils.js sera commit

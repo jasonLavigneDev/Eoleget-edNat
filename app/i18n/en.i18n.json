@@ -5,7 +5,7 @@
     },
     "applications": {
       "labels": {
-        "identification": "Identification",
+        "id": "Identification",
         "name": "Name",
         "description": "Description",
         "tags": "Tags",
@@ -18,7 +18,23 @@
         "name": "Name",
         "creationDate": "Creation date",
         "isValidated": "Is Validated",
-        "applications": "Applications"
+        "applications": "Applications",
+        "owner": "Owner ID"
+      },
+      "duplicateName": "A pack already have this name",
+      "packAlreadyExist": "This pack already exists",
+      "unknownPack": "Unkown pack",
+      "packNotFound": "Pack not found",
+      "needToBeOwner": "You need to be owner of this pack",
+      "createPack": {
+        "notLoggedIn": "You're not logged in",
+        "mustBeLoggedIn": "You must be logged in."
+      },
+      "removePack": {
+        "notPermitted": "You don't have sufficient rights."
+      },
+      "updateGroup": {
+        "notPermitted": "You don't have sufficient rights."
       }
     },
     "methods": {},
