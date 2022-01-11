@@ -85,7 +85,9 @@
     },
     "Store": {
       "storeTitle": "Magasin d'applications",
-      "searchApp": "Chercher une application"
+      "searchApp": "Chercher une application",
+      "noStore": "Il n'y a aucune application à afficher",
+      "searchText": "Quel application cherchez-vous ?"
     },
     "Packs": {
       "packsStoreTitle": "Magasin des packs",
