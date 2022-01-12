@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
@@ -13,7 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import { makeStyles } from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
 
@@ -45,28 +44,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppCard({ nom, identification, description, versions, url }) {
+function AppCard({ app, cart }) {
   const classes = useStyles();
-  const [selected, setSelected] = useState(false);
-  const isSelected = selected ? `${classes.card} ${classes.cardSelected}` : classes.card;
 
-  React.useEffect(() => {
-    setSelected(selected);
-  }, [selected]);
+  const addAppToCart = () => {
+    cart.push(app);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
 
   const isUpperCase = (str) => {
     return str === str.toUpperCase();
   };
 
-  const des = isUpperCase(description) ? description.toLowerCase() : description;
+  const des = isUpperCase(app.description) ? app.description.toLowerCase() : app.description;
 
   return (
-    <Card className={isSelected}>
+    <Card className={classes.card}>
       <CardHeader
-        title={<Typography variant="h6">{nom}</Typography>}
+        title={<Typography variant="h6">{app.nom}</Typography>}
         subheader={
           <Typography variant="body2" component="div">
-            {versions === undefined ? 'N/A' : versions[0]}
+            {app.versions === undefined ? 'N/A' : app.versions[0]}
           </Typography>
         }
         avatar={
@@ -79,7 +77,7 @@ function AppCard({ nom, identification, description, versions, url }) {
             <IconButton
               aria-label="add"
               onClick={() => {
-                setSelected(!selected);
+                addAppToCart();
               }}
             >
               <AddIcon fontSize="large" />
@@ -92,10 +90,10 @@ function AppCard({ nom, identification, description, versions, url }) {
         <Typography variant="body1" component="div">
           {des}
         </Typography>
-        {url !== undefined ? <a href={url}>{url}</a> : null}
+        {app.url !== undefined ? <a href={app.url}>{app.url}</a> : null}
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Link to={`/detailapp/${identification}`} className={classes.imgLogo}>
+        <Link to={`/detailapp/${app.identification}`} className={classes.imgLogo}>
           <Button variant="contained">Voir plus</Button>
         </Link>
       </CardActions>
@@ -103,25 +101,9 @@ function AppCard({ nom, identification, description, versions, url }) {
   );
 }
 
-AppCard.defaultProps = {
-  description: '',
-  versions: [],
-  url: '',
-};
-
 AppCard.propTypes = {
-  nom: PropTypes.string.isRequired,
-  identification: PropTypes.string,
-  description: PropTypes.string,
-  versions: PropTypes.arrayOf(String),
-  url: PropTypes.string,
-};
-
-AppCard.defaultProps = {
-  identification: '',
-  description: '',
-  versions: [''],
-  url: '',
+  app: PropTypes.objectOf(PropTypes.any).isRequired,
+  cart: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
 };
 
 export default AppCard;

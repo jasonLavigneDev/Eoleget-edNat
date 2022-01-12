@@ -87,6 +87,14 @@
       "success": "Email verified",
       "inProgress": "Email verification in progress"
     },
+    "packCreation":{
+      "title": "Pack creation",
+      "color": "Pack color",
+      "add": "Add",
+      "delete": "Delete",
+      "packName": "Pack name",
+      "packDescription": "Pack description"
+    },
     "Store": {
       "storeTitle": "Applications store",
       "searchApp": "Search for an application",
