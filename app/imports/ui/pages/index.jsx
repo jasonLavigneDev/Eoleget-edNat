@@ -99,6 +99,14 @@ function Index() {
     return data;
   });
 
+  const cart = useState(() => {
+    // getting stored value
+    // localStorage.removeItem('cart');
+    const saved = localStorage.getItem('cart');
+    const initialValue = saved ? JSON.parse(saved) : [];
+    return initialValue;
+  });
+
   const handleChangePage = (event, value) => {
     changePage(value);
   };
@@ -223,53 +231,26 @@ function Index() {
             </Tooltip>
           </span>
           <div>
-            <Paper className={classes.paper}>
-              {total > 0 ? (
-                <div>
-                  <Collapse in={!showModeList} collapsedsize={0}>
-                    {total > ITEM_PER_PAGE && (
-                      <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        className={classes.pagination}
-                        style={Math.ceil(total / ITEM_PER_PAGE) === page ? { marginLeft: '50%' } : {}}
-                      >
-                        <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                      </Grid>
-                    )}
-                    <span className={classes.cardContainer} style={Math.ceil(total / ITEM_PER_PAGE) === page ? {} : {}}>
-                      {mapList((app) => (
-                        <AppCard
-                          key={app._id}
-                          nom={app.nom}
-                          description={app.description}
-                          versions={app.versions}
-                          url={app.url}
-                        />
-                      ))}
-                    </span>
-
-                    {total > ITEM_PER_PAGE && (
-                      <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        className={classes.pagination}
-                        style={Math.ceil(total / ITEM_PER_PAGE) === page ? { marginLeft: '50%' } : {}}
-                      >
-                        <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                      </Grid>
-                    )}
-                  </Collapse>
-                </div>
-              ) : (
-                <p>{i18n.__('pages.Store.noStore')}</p>
-              )}
+            <Paper>
+              <div className={classes.cardContainer}>
+                <Collapse in={!showModeList} collapsedsize={0}>
+                  {total > ITEM_PER_PAGE && (
+                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
+                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                    </Grid>
+                  )}
+                  <span className={classes.cardContainer}>
+                    {mapList((app) => (
+                      <AppCard app={app} cart={cart[0]} />
+                    ))}
+                  </span>
+                  {total > ITEM_PER_PAGE && (
+                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
+                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                    </Grid>
+                  )}
+                </Collapse>
+              </div>
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
               <AppList applications={applications} isUpperCase={isUpperCase} />

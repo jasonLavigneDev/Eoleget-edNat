@@ -1,12 +1,11 @@
-import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef, useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import { makeStyles } from '@mui/styles';
 import { useAppContext } from '../../contexts/context';
+import AppCard from './AppCard';
 import { usePagination } from '../../../api/utils/hooks';
 
-import AppCard from './AppCard';
 import Applications from '../../../api/applications/applications';
 
 const useStyles = makeStyles(() => ({
@@ -17,7 +16,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function AppCardList({ isUpperCase }) {
+function AppCardList() {
   const ITEM_PER_PAGE = 15;
   const classes = useStyles();
   const appPage = useAppContext();
@@ -31,6 +30,13 @@ function AppCardList({ isUpperCase }) {
     { sort: { nom: 1 } },
     ITEM_PER_PAGE,
   );
+
+  const cart = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem('cart');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
 
   const handleChangePage = (event, value) => {
     changePage(value);
@@ -66,11 +72,7 @@ function AppCardList({ isUpperCase }) {
         </Grid>
       )}
       {mapList((app) => {
-        let { description } = app;
-        if (isUpperCase(app.description)) {
-          description = app.description.toLowerCase();
-        }
-        return <AppCard title={app.nom} description={description} versions={app.versions} url={app.url} />;
+        <AppCard app={app} cart={cart} />;
       })}
       {total > ITEM_PER_PAGE && (
         <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
@@ -80,9 +82,5 @@ function AppCardList({ isUpperCase }) {
     </span>
   );
 }
-
-AppCardList.propTypes = {
-  isUpperCase: PropTypes.func.isRequired,
-};
 
 export default AppCardList;

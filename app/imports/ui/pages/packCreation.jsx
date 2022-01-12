@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import i18n from 'meteor/universe:i18n';
 
 import {
   Button,
@@ -43,6 +44,13 @@ const paperStyle = {
 // End Style //
 
 function CreatePackPage() {
+  const cart = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem('cart');
+    const initialValue = saved ? JSON.parse(saved) : [];
+    return initialValue;
+  });
+
   const columns = [
     {
       title: 'id',
@@ -51,18 +59,18 @@ function CreatePackPage() {
       hide: true,
     },
     {
-      title: 'appName',
+      title: i18n.__('components.AppList.application'),
       field: 'appName',
       editable: 'never',
       width: 250,
     },
     {
-      title: 'description',
+      title: i18n.__('components.AppList.description'),
       field: 'description',
       width: 500,
     },
     {
-      title: 'version',
+      title: i18n.__('components.AppList.version'),
       field: 'version',
       width: 100,
     },
@@ -83,20 +91,23 @@ function CreatePackPage() {
     },
   ];
 
-  const data = [
-    {
-      id: 1,
-      appName: 'app1',
-      description: 'Lorem ipsum dolor sit amet consectetur',
-      version: 'V0.0.01',
-    },
-  ];
+  const data = [];
+  let _id = 0;
+  cart[0].map((app) => {
+    _id += 1;
+    return data.push({
+      id: _id,
+      appName: app.nom,
+      description: app.description,
+      version: app.versions[0],
+    });
+  });
 
   return (
     <Fade in>
       <Container sx={containerStyle}>
         <Typography variant="h3" component="div">
-          Création du pack
+          {i18n.__('pages.packCreation.title')}
         </Typography>
         <Paper sx={paperStyle}>
           <form noValidate autoComplete="off">
@@ -104,7 +115,7 @@ function CreatePackPage() {
               fullWidth
               margin="normal"
               id="packName"
-              label="nomDuPack"
+              label={i18n.__('pages.packCreation.packName')}
               name="packName"
               type="text"
               variant="outlined"
@@ -113,7 +124,7 @@ function CreatePackPage() {
               fullWidth
               margin="normal"
               id="packDescription"
-              label="descriptionPack"
+              label={i18n.__('pages.packCreation.packDescription')}
               name="packDescription"
               type="text"
               variant="outlined"
@@ -125,7 +136,7 @@ function CreatePackPage() {
             <FormControlLabel control={<Checkbox />} label="isPublic" labelPlacement="start" />
             <Divider />
             <Typography variant="h6" component="div">
-              Couleur du pack
+              {i18n.__('pages.packCreation.color')}
             </Typography>
             <ColorRadioButton />
             <Divider />
@@ -133,8 +144,8 @@ function CreatePackPage() {
               <DataGrid hideFooterPagination columns={columns} rows={data} />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained">Ajouter</Button>
-              <Button variant="contained">Supprimer</Button>
+              <Button variant="contained">{i18n.__('pages.packCreation.add')}</Button>
+              <Button variant="contained">{i18n.__('pages.packCreation.delete')}</Button>
             </div>
           </form>
         </Paper>

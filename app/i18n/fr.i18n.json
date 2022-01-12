@@ -21,7 +21,6 @@
         "applications": "Applications",
         "owner": "ID du propriétaire"
       },
-
       "duplicateName": "Un pack possède déjà ce nom.",
       "packAlreadyExist": "Ce pack existe déjà.",
       "unknownPack": "Pack inconnu",
@@ -82,6 +81,14 @@
       "error": "Votre adresse email n'a pas pu être vérifiée",
       "success": "Votre adresse email est vérifiée",
       "inProgress": "Vérification de votre adresse email en cours"
+    },
+    "packCreation":{
+      "title": "Création de pack",
+      "color": "Couleur du pack",
+      "add": "Ajouer",
+      "delete": "Supprimer",
+      "packName": "Nom du pack",
+      "packDescription": "Description du pack"
     },
     "Store": {
       "storeTitle": "Magasin d'applications",

@@ -28,7 +28,7 @@ function _updatePack(packId, packData, oldPack) {
     return [packData, oldPack];
   } catch (error) {
     if (error.code === 11000) {
-      throw new Meteor.Error('api.packs.createPack.duplicateName', i18n.__('api.packs.packAlreadyExist'));
+      throw new Meteor.Error('api.packs.duplicateName', i18n.__('api.packs.packAlreadyExist'));
     } else {
       throw error;
     }
