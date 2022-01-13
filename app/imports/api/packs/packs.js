@@ -23,12 +23,16 @@ Packs.schema = new SimpleSchema(
       label: getLabel('api.packs.labels.applications'),
     },
     'applications.$': {
-      type: Object,
+      type: String,
       label: getLabel('api.packs.labels.applications'),
     },
     owner: {
       type: String,
       label: getLabel('api.packs.labels.owner'),
+    },
+    description: {
+      type: String,
+      label: getLabel('api.packs.labels.description'),
     },
   },
   { tracker: Tracker },

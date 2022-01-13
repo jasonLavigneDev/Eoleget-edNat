@@ -1,10 +1,10 @@
 import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import i18n from 'meteor/universe:i18n';
-import { isActive, getLabel } from '../utils/functions';
+import { getLabel } from '../utils/functions';
 import Packs from './packs';
 
-function _createPack({ name, applications, creationDate, isValidated, owner }) {
+function _createPack({ name, applications, creationDate, isValidated, owner, description }) {
   try {
     Packs.insert({
       name,
@@ -12,6 +12,7 @@ function _createPack({ name, applications, creationDate, isValidated, owner }) {
       isValidated,
       applications,
       owner,
+      description,
     });
   } catch (error) {
     if (error.code === 11000) {
@@ -40,16 +41,14 @@ export const createPack = new ValidatedMethod({
   validate: new SimpleSchema({
     name: { type: String, min: 1, label: getLabel('api.packs.labels.name') },
     applications: { type: Array, label: getLabel('api.packs.labels.applications') },
-    'applications.$': { type: Object, label: getLabel('api.packs.labels.applications') },
+    'applications.$': { type: String, label: getLabel('api.packs.labels.applications') },
     creationDate: { type: Date, label: getLabel('api.packs.labels.creationDate') },
     isValidated: { type: Boolean, label: getLabel('api.packs.labels.isValidated') },
+    description: { type: String, label: getLabel('api.packs.labels.description') },
   }).validator({ clean: true }),
 
-  run({ name, applications, creationDate, isValidated }) {
-    if (!isActive(this.userId)) {
-      throw new Meteor.Error('api.packs.createPack.notLoggedIn', i18n.__('api.createPack.mustBeLoggedIn'));
-    }
-    return _createPack({ name, applications, creationDate, isValidated, owner: this.userId });
+  run({ name, applications, creationDate, isValidated, description }) {
+    return _createPack({ name, applications, creationDate, isValidated, owner: this.userId, description });
   },
 });
 
@@ -93,8 +92,9 @@ export const updatePack = new ValidatedMethod({
     },
     'data.isValidated': { type: Boolean, optional: true, label: getLabel('api.packs.labels.isValidated') },
     'data.applications': { type: Array, optional: true, label: getLabel('api.packs.labels.applications') },
-    'data.applications.$': { type: Object, label: getLabel('api.packs.labels.applications') },
+    'data.applications.$': { type: String, label: getLabel('api.packs.labels.applications') },
     'data.owner': { type: String, optional: true, label: getLabel('api.packs.labels.owner') },
+    'data.description': { type: String, optional: true, label: getLabel('api.packs.labels.description') },
   }).validator({ clean: true }),
 
   run({ packId, data }) {
@@ -115,6 +115,7 @@ export const updatePack = new ValidatedMethod({
     if (data.isValidated) packData.isValidated = data.isValidated;
     if (data.applications) packData.applications = data.applications;
     if (data.owner) packData.owner = data.owner;
+    if (data.description) packData.description = data.description;
 
     return _updatePack(packId, packData, pack);
   },

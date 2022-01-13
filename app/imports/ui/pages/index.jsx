@@ -100,8 +100,6 @@ function Index() {
   });
 
   const cart = useState(() => {
-    // getting stored value
-    // localStorage.removeItem('cart');
     const saved = localStorage.getItem('cart');
     const initialValue = saved ? JSON.parse(saved) : [];
     return initialValue;
