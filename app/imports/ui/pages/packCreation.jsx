@@ -51,6 +51,9 @@ function CreatePackPage() {
     return initialValue;
   });
 
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+
   const columns = [
     {
       title: 'id',
@@ -99,9 +102,35 @@ function CreatePackPage() {
       id: _id,
       appName: app.nom,
       description: app.description,
+      identification: app.identification,
       version: app.versions[0],
     });
   });
+
+  const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
+
+  const dataId = data.map((app) => app.identification);
+
+  const onUpdateName = (event) => {
+    setName(event.target.value);
+  };
+
+  const onUpdateDescription = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const createPack = () => {
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    const date = today.toUTCString();
+    Meteor.call(
+      'packs.createPack',
+      { name, applications: dataId, creationDate: date, isValidated: true, description },
+      (err) => {
+        if (err) console.log(err);
+      },
+    );
+  };
 
   return (
     <Fade in>
@@ -119,6 +148,7 @@ function CreatePackPage() {
               name="packName"
               type="text"
               variant="outlined"
+              onChange={onUpdateName}
             />
             <TextField
               fullWidth
@@ -129,9 +159,8 @@ function CreatePackPage() {
               type="text"
               variant="outlined"
               multiline
-              rows={4}
-              maxRows={4}
               inputProps={{ maxLength: 512 }}
+              onChange={onUpdateDescription}
             />
             <FormControlLabel control={<Checkbox />} label="isPublic" labelPlacement="start" />
             <Divider />
@@ -144,7 +173,9 @@ function CreatePackPage() {
               <DataGrid hideFooterPagination columns={columns} rows={data} />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained">{i18n.__('pages.packCreation.add')}</Button>
+              <Button variant="contained" onClick={createPack} disabled={isDisable}>
+                {i18n.__('pages.packCreation.add')}
+              </Button>
               <Button variant="contained">{i18n.__('pages.packCreation.delete')}</Button>
             </div>
           </form>

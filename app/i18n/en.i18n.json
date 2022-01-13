@@ -19,7 +19,8 @@
         "creationDate": "Creation date",
         "isValidated": "Is Validated",
         "applications": "Applications",
-        "owner": "Owner ID"
+        "owner": "Owner ID",
+        "description": "Pack description"
       },
       "duplicateName": "A pack already have this name",
       "packAlreadyExist": "This pack already exists",
@@ -90,8 +91,8 @@
     "packCreation":{
       "title": "Pack creation",
       "color": "Pack color",
-      "add": "Add",
-      "delete": "Delete",
+      "add": "Create pack",
+      "delete": "Cancel",
       "packName": "Pack name",
       "packDescription": "Pack description"
     },
