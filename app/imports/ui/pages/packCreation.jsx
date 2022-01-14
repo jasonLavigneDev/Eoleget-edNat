@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DataGrid } from '@mui/x-data-grid';
-import ColorRadioButton from '../components/colorRadioButton';
+import ColorRadioButton from '../components/packCreation/colorRadioButton';
 
 // Style CSS //
 const containerStyle = {

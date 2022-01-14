@@ -26,6 +26,7 @@ import AppCard from '../components/appCard/AppCard';
 
 import AppList from '../components/appCard/AppList';
 import Applications from '../../api/applications/applications';
+import AppCart from '../components/appCart/appCart';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -35,8 +36,6 @@ const useStyles = makeStyles(() => ({
   pagination: {
     display: 'flex',
     justifyContent: 'flex-end',
-    // position: 'relative',
-    // left: '10%',
   },
   main: {
     display: 'flex',
@@ -197,6 +196,8 @@ function Index() {
     <Fade in>
       <div className={classes.main}>
         <div className={classes.storeTitleContainer}>
+          <AppCart />
+
           <div className={classes.storeTitleContent}>
             <Typography variant="h4" component="div">
               {`${i18n.__('pages.Store.storeTitle')} (${total})`}
