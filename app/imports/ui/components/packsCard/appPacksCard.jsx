@@ -33,7 +33,7 @@ function AppPacksCard() {
   return (
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
-        <AppBadge>
+        <AppBadge invisible>
           <AppAvatar detailApp={false} />
         </AppBadge>
         <Typography variant="body1">Nom application</Typography>
