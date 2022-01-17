@@ -53,6 +53,43 @@ function CreatePackPage() {
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  let data = [];
+
+  let _id = 0;
+  cart[0].map((app) => {
+    _id += 1;
+    return data.push({
+      id: _id,
+      appName: app.nom,
+      description: app.description,
+      identification: app.identification,
+      version: app.versions[0],
+    });
+  });
+
+  const [rows, setRows] = useState(data);
+
+  const deleteAppFromCart = (e) => {
+    if (e.row.id > -1) {
+      cart[0].splice(e.row.id - 1, 1);
+    }
+
+    data = [];
+    _id = 0;
+    cart[0].map((app) => {
+      _id += 1;
+      return data.push({
+        id: _id,
+        appName: app.nom,
+        description: app.description,
+        identification: app.identification,
+        version: app.versions[0],
+      });
+    });
+    setRows(data);
+
+    localStorage.setItem('cart', JSON.stringify(cart[0]));
+  };
 
   const columns = [
     {
@@ -68,6 +105,12 @@ function CreatePackPage() {
       width: 250,
     },
     {
+      title: 'identification',
+      field: 'identification',
+      editable: 'never',
+      hide: true,
+    },
+    {
       title: i18n.__('components.AppList.description'),
       field: 'description',
       width: 500,
@@ -81,9 +124,10 @@ function CreatePackPage() {
       field: 'action',
       headerName: 'Action',
       sortable: false,
-      renderCell: () => {
+      renderCell: (cellValues) => {
         const onClick = (e) => {
           e.stopPropagation(); // don't select this row after clicking
+          deleteAppFromCart(cellValues);
         };
         return (
           <IconButton onClick={onClick}>
@@ -93,19 +137,6 @@ function CreatePackPage() {
       },
     },
   ];
-
-  const data = [];
-  let _id = 0;
-  cart[0].map((app) => {
-    _id += 1;
-    return data.push({
-      id: _id,
-      appName: app.nom,
-      description: app.description,
-      identification: app.identification,
-      version: app.versions[0],
-    });
-  });
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
@@ -170,7 +201,7 @@ function CreatePackPage() {
             <ColorRadioButton />
             <Divider />
             <div style={divDatagridStyle}>
-              <DataGrid hideFooterPagination columns={columns} rows={data} />
+              <DataGrid hideFooterPagination columns={columns} rows={rows} />
             </div>
             <div style={divButtonStyle}>
               <Button variant="contained" onClick={createPack} disabled={isDisable}>
