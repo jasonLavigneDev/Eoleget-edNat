@@ -83,7 +83,7 @@
       "success": "Votre adresse email est vérifiée",
       "inProgress": "Vérification de votre adresse email en cours"
     },
-    "packCreation":{
+    "packCreation": {
       "title": "Création de pack",
       "color": "Couleur du pack",
       "add": "Créer le pack",
@@ -117,7 +117,7 @@
       "logoutType": "Portée de la déconnexion",
       "uploadSuccess": "Chargement des données réussi"
     },
-    "detailApp":{
+    "detailApp": {
       "title": "Détail de l'application",
       "winget": "Commande winget",
       "versions": "Versions",
@@ -128,6 +128,13 @@
       "Licence": "Licence",
       "Tags": "Tag",
       "Save": "Enregistrer l'application"
+    },
+    "packEditPage": {
+      "packName": "Nom du pack",
+      "packDescription": "Description du pack",
+      "color": "Couleur du pack",
+      "edit": "Editer",
+      "cancel": "Annuler"
     }
   },
   "components": {
@@ -139,7 +146,8 @@
     },
     "MainMenu": {
       "menuLogoutLabel": "Se déconnecter",
-      "menuProfile": "Mon profil"
+      "menuProfile": "Mon profil",
+      "userPack": "Mes packs"
     },
     "AppVersion": {
       "title": "Version"
