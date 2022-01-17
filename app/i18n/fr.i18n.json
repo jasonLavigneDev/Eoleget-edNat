@@ -89,7 +89,8 @@
       "add": "Créer le pack",
       "delete": "Annuler",
       "packName": "Nom du pack",
-      "packDescription": "Description du pack"
+      "packDescription": "Description du pack",
+      "createPackSuccess": "Pack créé avec succès."
     },
     "Store": {
       "storeTitle": "Magasin d'applications",
@@ -138,6 +139,9 @@
     }
   },
   "components": {
+    "AppCard": {
+      "addAppli": "Application ajoutée au panier"
+    },
     "MenuBar": {
       "menuApp": "Applications",
       "menuPacks": "Packs",

@@ -50,6 +50,7 @@ function AppCard({ app, cart }) {
   const addAppToCart = () => {
     cart.push(app);
     localStorage.setItem('cart', JSON.stringify(cart));
+    msg.success(i18n.__('components.AppCard.addAppli'));
   };
 
   const isUpperCase = (str) => {

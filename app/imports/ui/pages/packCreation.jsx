@@ -158,7 +158,8 @@ function CreatePackPage() {
       'packs.createPack',
       { name, applications: dataId, creationDate: date, isValidated: true, description },
       (err) => {
-        if (err) console.log(err);
+        if (err) msg.error(err.reason);
+        else msg.success(i18n.__('pages.packCreation.createPackSuccess'));
       },
     );
   };
