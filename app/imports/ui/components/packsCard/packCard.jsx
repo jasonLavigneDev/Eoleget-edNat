@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -12,6 +13,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import IconButton from '@mui/material/IconButton';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Tooltip from '@mui/material/Tooltip';
+import EditIcon from '@mui/icons-material/Edit';
 
 import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
@@ -41,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PackCard() {
+const PackCard = ({ isUserPack }) => {
   const [showMore, setShowMore] = useState(false);
   const classes = useStyles();
+  const history = useHistory();
   const ExpandMore = styled(
     React.forwardRef((props, ref) => {
       const { expand, ...other } = props;
@@ -56,10 +59,13 @@ function PackCard() {
       duration: theme.transitions.duration.shortest,
     }),
   }));
-
   React.useEffect(() => {
     setShowMore(showMore);
   }, [showMore]);
+
+  const handleEditButton = () => {
+    history.push('/editPack');
+  };
 
   return (
     <div className={classes.cardContainer}>
@@ -68,11 +74,20 @@ function PackCard() {
           title="Pack trop super"
           className={classes.cardHeader}
           action={
-            <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
-              <IconButton className={classes.iconButton}>
-                <OpenInNewIcon />
-              </IconButton>
-            </Tooltip>
+            <>
+              <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
+                <IconButton className={classes.iconButton}>
+                  <OpenInNewIcon />
+                </IconButton>
+              </Tooltip>
+              {isUserPack ? (
+                <Tooltip title="Editer le pack">
+                  <IconButton className={classes.iconButton} onClick={handleEditButton}>
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
+              ) : null}
+            </>
           }
         />
         <CardContent>
@@ -106,15 +121,17 @@ function PackCard() {
       </Card>
     </div>
   );
-}
+};
 
 PackCard.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   expand: PropTypes.bool,
+  isUserPack: PropTypes.bool,
 };
 
 PackCard.defaultProps = {
   expand: false,
+  isUserPack: false,
 };
 
 export default PackCard;

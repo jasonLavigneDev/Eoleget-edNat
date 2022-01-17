@@ -18,6 +18,10 @@ export const userMenu = [
     path: '/profilePage',
     content: 'menuProfile',
   },
+  {
+    path: '/userPack',
+    content: 'userPack',
+  },
 ];
 
 const MainMenu = ({ user = {} }) => {

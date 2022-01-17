@@ -88,7 +88,7 @@
       "success": "Email verified",
       "inProgress": "Email verification in progress"
     },
-    "packCreation":{
+    "packCreation": {
       "title": "Pack creation",
       "color": "Pack color",
       "add": "Create pack",
@@ -122,7 +122,7 @@
       "noModifications": "No changes to apply",
       "uploadSuccess": "Datas uploaded with success"
     },
-    "detailApp":{
+    "detailApp": {
       "title": "Application details",
       "winget": "Winget command",
       "versions": "Versions",
@@ -133,6 +133,13 @@
       "Licence": "Licence",
       "Tags": "Tag",
       "Save": "Save application"
+    },
+    "packEditPage": {
+      "packName": "Pack name",
+      "packDescription": "Pack description",
+      "color": "Pack color",
+      "edit": "Edit",
+      "cancel": "Cancel"
     }
   },
   "components": {
@@ -144,7 +151,8 @@
     },
     "MainMenu": {
       "menuLogoutLabel": "Logout",
-      "menuProfile": "My Profile"
+      "menuProfile": "My Profile",
+      "userPack": "My packs"
     },
     "AppVersion": {
       "title": "Version"
