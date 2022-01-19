@@ -88,6 +88,10 @@
       "success": "Email verified",
       "inProgress": "Email verification in progress"
     },
+    "detailPack": {
+      "details": "Pack details",
+      "getPack": "Get this pack"
+    },
     "packCreation": {
       "title": "Pack creation",
       "color": "Pack color",
@@ -138,23 +142,18 @@
       "Save": "Save application"
     },
     "packEditPage": {
-      "title": "Edit pack",
+      "title": "Edit Pack",
       "packName": "Pack name",
       "packDescription": "Pack description",
       "color": "Pack color",
-      "edit": "Update",
+      "edit": "Edit",
       "cancel": "Cancel",
-      "updateSuccess": "Pack edited successfully"
+      "updateSuccess": "Pack updated"
     }
   },
   "components": {
     "AppCard": {
       "addAppli": "Application add to cart"
-    },
-    "PackCard": {
-      "editPack": "Edit pack",
-      "extendPack": "Extend pack",
-      "packTooltip": "See pack"
     },
     "MenuBar": {
       "menuApp": "Applications",
@@ -230,6 +229,11 @@
     },
     "AppPacksCard": {
       "infoTooltip": "Show application"
+    },
+    "PacksCard": {
+      "packTooltip": "Show pack",
+      "extendPack": "Extend pack",
+      "editPack": "Edit Pack"
     },
     "UserAvatarGallery": {
       "title": "Create your avatar",

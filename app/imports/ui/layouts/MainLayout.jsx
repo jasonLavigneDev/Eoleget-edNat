@@ -54,7 +54,7 @@ const MainLayout = () => {
                   <Route exact path="/detailApp/:identification" component={DetailApp} />
 
                   <Route exact path="/packs" component={Packs} />
-                  <Route exact path="/packs/detail" component={DetailPack} />
+                  <Route exact path="/packs/detail/:_id" component={DetailPack} />
                   <Route exact path="/packs/creation" component={CreationPackPage} />
                   <Route exact path="/packs/user" component={UserPack} />
                   <Route exact path="/packs/edit/:_id" component={EditPack} />
