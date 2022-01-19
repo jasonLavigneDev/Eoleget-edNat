@@ -135,7 +135,8 @@
       "downloadLabel": "Download",
       "Licence": "Licence",
       "Tags": "Tag",
-      "Save": "Save application"
+      "Save": "Save application",
+      "addAppSuccess": "Application added to cart"
     },
     "packEditPage": {
       "title": "Edit pack",
