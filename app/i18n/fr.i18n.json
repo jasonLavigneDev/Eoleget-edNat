@@ -134,7 +134,8 @@
       "downloadLabel": "Télécharger",
       "Licence": "Licence",
       "Tags": "Tag",
-      "Save": "Enregistrer l'application"
+      "Save": "Enregistrer l'application",
+      "addAppSuccess": "Application ajoutée au panier"
     },
     "packEditPage": {
       "title": "Edition de pack",

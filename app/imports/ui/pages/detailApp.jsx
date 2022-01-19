@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -64,6 +64,21 @@ const useStyle = makeStyles((theme) => ({
 const detailApp = ({ app, ready }) => {
   const classes = useStyle();
 
+  const cart = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem('cart');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
+
+  const addAppToCart = () => {
+    cart[0].push(app);
+    localStorage.setItem('cart', JSON.stringify(cart[0]));
+    msg.success(i18n.__('pages.detailApp.addAppSuccess'));
+  };
+
+  const mapList = (func) => app.tags.map(func);
+
   return !ready ? (
     <Spinner full />
   ) : (
@@ -108,15 +123,17 @@ const detailApp = ({ app, ready }) => {
                 <p>{i18n.__('pages.detailApp.Tags')}</p>
               </span>
               <span className={classes.iconSpan}>
-                <Button variant="outlined">Tag 1</Button>
-                <Button variant="outlined">Tag 2</Button>
-                <Button variant="outlined">Tag 3</Button>
+                {mapList((tag) => (
+                  <Button variant="outlined">{tag}</Button>
+                ))}
               </span>
             </Grid>
             <AppAvatar detailApp />
           </Grid>
           <div className={classes.buttonSave}>
-            <Button variant="contained">{i18n.__('pages.detailApp.Save')}</Button>
+            <Button variant="contained" onClick={addAppToCart}>
+              {i18n.__('pages.detailApp.Save')}
+            </Button>
           </div>
         </Paper>
       </Container>
