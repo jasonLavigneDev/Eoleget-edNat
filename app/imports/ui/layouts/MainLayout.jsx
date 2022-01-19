@@ -57,7 +57,7 @@ const MainLayout = () => {
                   <Route exact path="/packs/detail" component={DetailPack} />
                   <Route exact path="/packs/creation" component={CreationPackPage} />
                   <Route exact path="/packs/user" component={UserPack} />
-                  <Route exact path="/packs/edit" component={EditPack} />
+                  <Route exact path="/packs/edit/:_id" component={EditPack} />
 
                   <Route exact path="/profil" component={ProfilePage} />
                 </Switch>

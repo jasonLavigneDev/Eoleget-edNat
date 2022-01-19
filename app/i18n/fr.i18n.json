@@ -133,16 +133,23 @@
       "Save": "Enregistrer l'application"
     },
     "packEditPage": {
+      "title": "Editer un pack",
       "packName": "Nom du pack",
       "packDescription": "Description du pack",
       "color": "Couleur du pack",
-      "edit": "Editer",
-      "cancel": "Annuler"
+      "edit": "Mettre à jour",
+      "cancel": "Annuler",
+      "updateSuccess": "Pack éditer avec succès"
     }
   },
   "components": {
     "AppCard": {
       "addAppli": "Application ajoutée au panier"
+    },
+    "PackCard": {
+      "editPack": "Editer un pack",
+      "extendPack": "Etendre le pack",
+      "packTooltip": "Voir le pack"
     },
     "MenuBar": {
       "menuApp": "Applications",
@@ -218,9 +225,6 @@
     },
     "AppPacksCard": {
       "infoTooltip": "Voir l'application"
-    },
-    "PacksCard": {
-      "packTooltip": "Voir le pack"
     },
     "UserAvatarGallery": {
       "title": "Créer votre avatar",

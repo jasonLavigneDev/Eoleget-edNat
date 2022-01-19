@@ -138,16 +138,23 @@
       "Save": "Save application"
     },
     "packEditPage": {
+      "title": "Edit pack",
       "packName": "Pack name",
       "packDescription": "Pack description",
       "color": "Pack color",
-      "edit": "Edit",
-      "cancel": "Cancel"
+      "edit": "Update",
+      "cancel": "Cancel",
+      "updateSuccess": "Pack edited successfully"
     }
   },
   "components": {
     "AppCard": {
       "addAppli": "Application add to cart"
+    },
+    "PackCard": {
+      "editPack": "Edit pack",
+      "extendPack": "Extend pack",
+      "packTooltip": "See pack"
     },
     "MenuBar": {
       "menuApp": "Applications",
@@ -223,9 +230,6 @@
     },
     "AppPacksCard": {
       "infoTooltip": "Show application"
-    },
-    "PacksCard": {
-      "packTooltip": "Show pack"
     },
     "UserAvatarGallery": {
       "title": "Create your avatar",

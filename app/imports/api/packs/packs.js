@@ -44,6 +44,7 @@ Packs.publicField = {
   isValidated: 1,
   applications: 1,
   owner: 1,
+  description: 1,
 };
 
 Packs.attachSchema(Packs.schema);

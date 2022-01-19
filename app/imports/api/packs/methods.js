@@ -23,10 +23,10 @@ function _createPack({ name, applications, creationDate, isValidated, owner, des
   }
 }
 
-function _updatePack(packId, packData, oldPack) {
+function _updatePack(_id, name, applications, description) {
   try {
-    Packs.update({ _id: packId }, { $set: packData });
-    return [packData, oldPack];
+    Packs.update(_id, { $set: { name, applications, description } });
+    return null;
   } catch (error) {
     if (error.code === 11000) {
       throw new Meteor.Error('api.packs.duplicateName', i18n.__('api.packs.packAlreadyExist'));
@@ -77,29 +77,15 @@ export const removePack = new ValidatedMethod({
 export const updatePack = new ValidatedMethod({
   name: 'packs.updatePack',
   validate: new SimpleSchema({
-    packId: { type: String, regEx: SimpleSchema.RegEx.Id, label: getLabel('api.packs.labels.id') },
-    data: Object,
-    'data.name': {
-      type: String,
-      min: 1,
-      optional: true,
-      label: getLabel('api.packs.labels.name'),
-    },
-    'data.creationDate': {
-      type: Date,
-      optional: true,
-      label: getLabel('api.packs.labels.creationDate'),
-    },
-    'data.isValidated': { type: Boolean, optional: true, label: getLabel('api.packs.labels.isValidated') },
-    'data.applications': { type: Array, optional: true, label: getLabel('api.packs.labels.applications') },
-    'data.applications.$': { type: String, label: getLabel('api.packs.labels.applications') },
-    'data.owner': { type: String, optional: true, label: getLabel('api.packs.labels.owner') },
-    'data.description': { type: String, optional: true, label: getLabel('api.packs.labels.description') },
+    _id: { type: String, regEx: SimpleSchema.RegEx.Id },
+    name: { type: String, min: 1, label: getLabel('api.packs.labels.name') },
+    applications: { type: Array, label: getLabel('api.packs.labels.applications') },
+    'applications.$': { type: String, label: getLabel('api.packs.labels.applications') },
+    description: { type: String, label: getLabel('api.packs.labels.description') },
   }).validator({ clean: true }),
 
-  run({ packId, data }) {
-    // check pack existence
-    const pack = Packs.findOne({ _id: packId });
+  run({ _id, name, applications, description }) {
+    const pack = Packs.findOne(_id);
     if (pack === undefined) {
       throw new Meteor.Error('api.packs.unknownPack', i18n.__('api.packs.unknownPack'));
     }
@@ -108,15 +94,8 @@ export const updatePack = new ValidatedMethod({
     if (!authorized) {
       throw new Meteor.Error('api.packs.updatePack.notPermitted', i18n.__('api.packs.needToBeOwner'));
     }
-    const packData = {};
 
-    if (data.name) packData.name = data.name;
-    if (data.creationDate) packData.creationDate = data.creationDate;
-    if (data.isValidated) packData.isValidated = data.isValidated;
-    if (data.applications) packData.applications = data.applications;
-    if (data.owner) packData.owner = data.owner;
-    if (data.description) packData.description = data.description;
-
-    return _updatePack(packId, packData, pack);
+    _updatePack(_id, name, applications, description);
+    return null;
   },
 });

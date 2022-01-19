@@ -73,7 +73,7 @@ const PackCard = ({ pack }) => {
   }, [showMore]);
 
   const handleEditButton = () => {
-    history.push('/packs/edit');
+    history.push(`/packs/edit/${pack._id}`);
   };
 
   const mapList = (func) => appli.slice(0, 2).map(func);
@@ -88,13 +88,13 @@ const PackCard = ({ pack }) => {
           className={classes.cardHeader}
           action={
             <>
-              <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
+              <Tooltip title={i18n.__('components.PackCard.packTooltip')}>
                 <IconButton className={classes.iconButton}>
                   <OpenInNewIcon />
                 </IconButton>
               </Tooltip>
               {pack.owner === userId ? (
-                <Tooltip title="Editer le pack">
+                <Tooltip title={i18n.__('components.PackCard.editPack')}>
                   <IconButton className={classes.iconButton} onClick={handleEditButton}>
                     <EditIcon />
                   </IconButton>
@@ -114,7 +114,7 @@ const PackCard = ({ pack }) => {
           </Collapse>
         </CardContent>
         <CardActions>
-          <Tooltip title="Etendre le pack">
+          <Tooltip title={i18n.__('components.PackCard.extendPack')}>
             <ExpandMore
               expand={showMore}
               onClick={() => {
