@@ -27,6 +27,11 @@ const reducer = (state, action) => {
         ...newState,
         appPage: { ...data },
       };
+    case 'packPage':
+      return {
+        ...newState,
+        packPage: { ...data },
+      };
     case 'mobile':
       return {
         ...newState,
