@@ -51,13 +51,15 @@ const MainLayout = () => {
               ) : !verifyEmail || isVerified(user) ? (
                 <Switch>
                   <Route exact path="/" component={Index} />
-                  <Route exact path="/packs" component={Packs} />
                   <Route exact path="/detailApp/:identification" component={DetailApp} />
-                  <Route exact path="/detailPack" component={DetailPack} />
-                  <Route exact path="/profilePage" component={ProfilePage} />
-                  <Route exact path="/creationPack" component={CreationPackPage} />
-                  <Route exact path="/userPack" component={UserPack} />
-                  <Route exact path="/editPack" component={EditPack} />
+
+                  <Route exact path="/packs" component={Packs} />
+                  <Route exact path="/packs/detail" component={DetailPack} />
+                  <Route exact path="/packs/creation" component={CreationPackPage} />
+                  <Route exact path="/packs/user" component={UserPack} />
+                  <Route exact path="/packs/edit" component={EditPack} />
+
+                  <Route exact path="/profil" component={ProfilePage} />
                 </Switch>
               ) : (
                 <Route path="/" component={VerifyNeeded} />

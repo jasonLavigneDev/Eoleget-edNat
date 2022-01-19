@@ -15,11 +15,11 @@ import UserAvatar from '../users/UserAvatar';
 
 export const userMenu = [
   {
-    path: '/profilePage',
-    content: 'menuProfile',
+    path: '/profil',
+    content: 'menuProfil',
   },
   {
-    path: '/userPack',
+    path: '/packs/user',
     content: 'userPack',
   },
 ];
