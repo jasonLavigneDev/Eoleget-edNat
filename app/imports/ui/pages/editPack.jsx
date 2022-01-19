@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 
 import {
   Button,
@@ -15,7 +18,10 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DataGrid } from '@mui/x-data-grid';
+import Spinner from '../components/system/Spinner';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
+import Packs from '../../api/packs/packs';
+import Applications from '../../api/applications/applications';
 
 // Style CSS //
 const containerStyle = {
@@ -43,16 +49,50 @@ const paperStyle = {
 };
 // End Style //
 
-function EditPackPage() {
-  const cart = useState(() => {
-    // getting stored value
-    const saved = localStorage.getItem('cart');
-    const initialValue = saved ? JSON.parse(saved) : [];
-    return initialValue;
-  });
+const EditPackPage = ({ pack, apps, ready }) => {
+  if (!ready) return <Spinner full />;
 
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [name, setName] = useState(pack.name);
+  const [description, setDescription] = useState(pack.description);
+
+  let data = [];
+
+  let _id = 0;
+  apps.map((app) => {
+    _id += 1;
+    return data.push({
+      id: _id,
+      appName: app.nom,
+      description: app.description,
+      identification: app.identification,
+      version: app.versions[0],
+    });
+  });
+  let dataId = data.map((app) => app.identification);
+
+  const [rows, setRows] = useState(data);
+
+  const deleteAppFromPack = (e) => {
+    if (e.row.id > -1) {
+      apps.splice(e.row.id - 1, 1);
+    }
+
+    data = [];
+    dataId = [];
+    _id = 0;
+    apps.map((app) => {
+      _id += 1;
+      return data.push({
+        id: _id,
+        appName: app.nom,
+        description: app.description,
+        identification: app.identification,
+        version: app.versions[0],
+      });
+    });
+    dataId = data.map((app) => app.identification);
+    setRows(data);
+  };
 
   const columns = [
     {
@@ -81,9 +121,10 @@ function EditPackPage() {
       field: 'action',
       headerName: 'Action',
       sortable: false,
-      renderCell: () => {
+      renderCell: (cellValues) => {
         const onClick = (e) => {
           e.stopPropagation(); // don't select this row after clicking
+          deleteAppFromPack(cellValues);
         };
         return (
           <IconButton onClick={onClick}>
@@ -94,22 +135,7 @@ function EditPackPage() {
     },
   ];
 
-  const data = [];
-  let _id = 0;
-  cart[0].map((app) => {
-    _id += 1;
-    return data.push({
-      id: _id,
-      appName: app.nom,
-      description: app.description,
-      identification: app.identification,
-      version: app.versions[0],
-    });
-  });
-
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
-
-  const dataId = data.map((app) => app.identification);
 
   const onUpdateName = (event) => {
     setName(event.target.value);
@@ -120,23 +146,19 @@ function EditPackPage() {
   };
 
   const editPack = () => {
-    const timeElapsed = Date.now();
-    const today = new Date(timeElapsed);
-    const date = today.toUTCString();
-    Meteor.call(
-      'packs.updatePack',
-      { name, applications: dataId, creationDate: date, isValidated: true, description },
-      (err) => {
-        if (err) console.log(err);
-      },
-    );
+    Meteor.call('packs.updatePack', { _id: pack._id, name, applications: dataId, description }, (err) => {
+      if (err) msg.error(err.reason);
+      else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
+    });
   };
 
-  return (
+  return !ready ? (
+    <Spinner full />
+  ) : (
     <Fade in>
       <Container sx={containerStyle}>
         <Typography variant="h3" component="div">
-          Editer un pack
+          {i18n.__('pages.packEditPage.title')}
         </Typography>
         <Paper sx={paperStyle}>
           <form noValidate autoComplete="off">
@@ -148,6 +170,7 @@ function EditPackPage() {
               name="packName"
               type="text"
               variant="outlined"
+              value={name}
               onChange={onUpdateName}
             />
             <TextField
@@ -159,6 +182,7 @@ function EditPackPage() {
               type="text"
               variant="outlined"
               multiline
+              value={description}
               inputProps={{ maxLength: 512 }}
               onChange={onUpdateDescription}
             />
@@ -170,7 +194,7 @@ function EditPackPage() {
             <ColorRadioButton />
             <Divider />
             <div style={divDatagridStyle}>
-              <DataGrid hideFooterPagination columns={columns} rows={data} />
+              <DataGrid hideFooterPagination columns={columns} rows={rows} />
             </div>
             <div style={divButtonStyle}>
               <Button variant="contained" onClick={editPack} disabled={isDisable}>
@@ -183,6 +207,39 @@ function EditPackPage() {
       </Container>
     </Fade>
   );
-}
+};
 
-export default EditPackPage;
+export default withTracker(
+  ({
+    match: {
+      params: { _id },
+    },
+  }) => {
+    const subPack = Meteor.subscribe('packs.single', { _id });
+    let subApp;
+    let apps;
+    const pack = Packs.findOne(_id);
+    if (pack !== undefined) {
+      subApp = Meteor.subscribe('applications.pack', { packAppli: pack.applications });
+      apps = Applications.find({ identification: { $in: pack.applications } }).fetch();
+    }
+
+    const ready = subPack.ready() && subApp.ready();
+    return {
+      pack,
+      apps,
+      ready,
+    };
+  },
+)(EditPackPage);
+
+EditPackPage.propTypes = {
+  pack: PropTypes.objectOf(PropTypes.any),
+  apps: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
+  ready: PropTypes.bool.isRequired,
+};
+
+EditPackPage.defaultProps = {
+  pack: {},
+  apps: [],
+};

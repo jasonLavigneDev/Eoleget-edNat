@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { FindFromPublication } from 'meteor/percolate:find-from-publication';
+import { publishComposite } from 'meteor/reywood:publish-composite';
+import SimpleSchema from 'simpl-schema';
 import { checkPaginationParams } from '../../utils';
 import logServer from '../../logging';
 import Packs from '../packs';
@@ -64,4 +66,24 @@ Meteor.publish('packs.user', function packOfUser() {
     return this.ready();
   }
   return Packs.find({ owner: this.userId }, { fields: Packs.publicFields, sort: { name: 1 }, limit: 5000 });
+});
+
+publishComposite('packs.single', function packSingle({ _id }) {
+  try {
+    new SimpleSchema({
+      _id: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id,
+      },
+    }).validate({ _id });
+  } catch (err) {
+    logServer(`publish packs.single : ${err}`);
+    this.error(err);
+  }
+
+  return {
+    find() {
+      return Packs.find({ _id }, { fields: Packs.publicFields, limit: 1, sort: { name: -1 } });
+    },
+  };
 });
