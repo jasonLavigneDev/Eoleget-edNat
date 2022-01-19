@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 
 import { makeStyles } from '@mui/styles';
@@ -12,9 +12,19 @@ import SearchIcon from '@mui/icons-material/Search';
 import ListIcon from '@mui/icons-material/ViewList';
 import CardIcon from '@mui/icons-material/Dashboard';
 
-import SearchBarApp from '../components/search/SearchBarApp';
-import PackCardList from '../components/packsCard/packCardList';
+import { useTracker } from 'meteor/react-meteor-data';
+import ClearIcon from '@mui/icons-material/Clear';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
 import PackList from '../components/packsCard/packList';
+import PackCard from '../components/packsCard/packCard';
+
+import { useAppContext } from '../contexts/context';
+import { usePagination } from '../../api/utils/hooks';
+
+import Packs from '../../api/packs/packs';
 
 const useStyle = makeStyles(() => ({
   main: {
@@ -49,14 +59,117 @@ const useStyle = makeStyles(() => ({
   },
 }));
 
-function Packs() {
-  const [showSearchApp, setShowSearchApp] = useState(false);
+const ITEM_PER_PAGE = 15;
+
+function PackPage() {
   const [showModeList, setModeList] = useState(false);
   const classes = useStyle();
 
-  React.useEffect(() => {
-    setModeList(showModeList);
-  }, [showSearchApp]);
+  const [{ packPage }, dispatch] = useAppContext();
+  const { search = '', searchToggle = false } = packPage;
+
+  const { changePage, page, items, total } = usePagination(
+    'packs.all',
+    { search, sort: { name: 1 } },
+    Packs,
+    {},
+    { sort: { name: 1 } },
+    ITEM_PER_PAGE,
+  );
+
+  const packs = useTracker(() => {
+    Meteor.subscribe('packs.table.all');
+    const data = Packs.find({}).fetch();
+    return data;
+  });
+
+  const handleChangePage = (event, value) => {
+    changePage(value);
+  };
+
+  const inputRef = useRef(null);
+  // focus on search input when it appears
+  useEffect(() => {
+    if (inputRef.current && searchToggle) {
+      inputRef.current.focus();
+    }
+  }, [searchToggle]);
+
+  useEffect(() => {
+    if (page !== 1) {
+      changePage(1);
+    }
+  }, [search]);
+
+  const filterPack = (pack) => {
+    let searchText = pack.name + pack.description || '';
+    searchText = searchText.toLowerCase();
+    if (!search) return true;
+    return searchText.indexOf(search.toLowerCase()) > -1;
+  };
+  const isUpperCase = (str) => {
+    return str === str.toUpperCase();
+  };
+
+  const mapList = (func) => items.filter((pack) => filterPack(pack)).map(func);
+
+  const updateGlobalState = (key, value) =>
+    dispatch({
+      type: 'packPage',
+      data: {
+        ...packPage,
+        [key]: value,
+      },
+    });
+
+  const toggleSearch = () => updateGlobalState('searchToggle', !searchToggle);
+  const updateSearch = (e) => updateGlobalState('search', e.target.value);
+  const resetSearch = () => updateGlobalState('search', '');
+  const checkEscape = (e) => {
+    if (e.keyCode === 27) {
+      // ESCAPE key
+      packPage.search = '';
+      packPage.searchToggle = false;
+      updateGlobalState('searchToggle', false);
+    }
+  };
+
+  const searchField = (
+    <Grid item xs={12} sm={12} md={6} className={searchToggle ? null : classes.small}>
+      <Collapse in={searchToggle} collapsedSize={0}>
+        <TextField
+          margin="normal"
+          id="search"
+          label={i18n.__('pages.Packs.searchText')}
+          name="search"
+          fullWidth
+          onChange={updateSearch}
+          onKeyDown={checkEscape}
+          type="text"
+          value={search}
+          variant="outlined"
+          inputProps={{
+            ref: inputRef,
+          }}
+          // eslint-disable-next-line react/jsx-no-duplicate-props
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+            endAdornment: search ? (
+              <InputAdornment position="end">
+                <IconButton onClick={resetSearch}>
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+            ) : null,
+          }}
+        />
+      </Collapse>
+    </Grid>
+  );
 
   return (
     <Fade in>
@@ -66,15 +179,13 @@ function Packs() {
             <Typography variant="h4" component="div">
               {i18n.__('pages.Packs.packsStoreTitle')}
             </Typography>
-            <Tooltip title={i18n.__('pages.Packs.packsSearchApp')}>
-              <IconButton onClick={() => setShowSearchApp(!showSearchApp)}>
+            <Tooltip title={i18n.__('pages.Packs.searchApp')}>
+              <IconButton onClick={toggleSearch}>
                 <SearchIcon fontSize="large" />
               </IconButton>
             </Tooltip>
           </div>
-          <Collapse in={showSearchApp} collapsedsize={0} className={classes.searchBar}>
-            <SearchBarApp opened={showSearchApp} app={false} />
-          </Collapse>
+          {searchField}
           <span className={classes.iconListe}>
             <Tooltip title="Mode liste">
               <IconButton
@@ -99,12 +210,26 @@ function Packs() {
             <Paper>
               <div className={classes.cardContainer}>
                 <Collapse in={!showModeList} collapsedsize={0}>
-                  <PackCardList />
+                  {total > ITEM_PER_PAGE && (
+                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
+                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                    </Grid>
+                  )}
+                  <span className={classes.cardContainer}>
+                    {mapList((pack) => (
+                      <PackCard pack={pack} />
+                    ))}
+                  </span>
+                  {total > ITEM_PER_PAGE && (
+                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
+                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                    </Grid>
+                  )}
                 </Collapse>
               </div>
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
-              <PackList />
+              <PackList packs={packs} isUpperCase={isUpperCase} />
             </Collapse>
           </div>
         </div>
@@ -113,4 +238,4 @@ function Packs() {
   );
 }
 
-export default Packs;
+export default PackPage;

@@ -15,6 +15,7 @@ const initialState = {
   loggingIn: Accounts.loggingIn(),
   authenticated: false,
   appPage: {},
+  packPage: {},
 };
 
 const logger = (state, action) => {

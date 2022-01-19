@@ -14,9 +14,12 @@ import IconButton from '@mui/material/IconButton';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
+import { useTracker } from 'meteor/react-meteor-data';
 
 import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
+import { useAppContext } from '../../contexts/context';
+import Applications from '../../../api/applications/applications';
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
@@ -43,9 +46,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PackCard = ({ isUserPack }) => {
+const PackCard = ({ pack }) => {
   const [showMore, setShowMore] = useState(false);
+  const [{ userId }] = useAppContext();
   const classes = useStyles();
+  const appli = useTracker(() => {
+    Meteor.subscribe('applications.pack', { packAppli: pack.applications });
+    return Applications.find({ identification: { $in: pack.applications } }).fetch();
+  });
+
   const history = useHistory();
   const ExpandMore = styled(
     React.forwardRef((props, ref) => {
@@ -67,11 +76,15 @@ const PackCard = ({ isUserPack }) => {
     history.push('/editPack');
   };
 
+  const mapList = (func) => appli.slice(0, 2).map(func);
+
+  const mapTotalList = (func) => appli.slice(2, appli.length).map(func);
+
   return (
     <div className={classes.cardContainer}>
       <Card className={classes.card}>
         <CardHeader
-          title="Pack trop super"
+          title={pack.name}
           className={classes.cardHeader}
           action={
             <>
@@ -80,7 +93,7 @@ const PackCard = ({ isUserPack }) => {
                   <OpenInNewIcon />
                 </IconButton>
               </Tooltip>
-              {isUserPack ? (
+              {pack.owner === userId ? (
                 <Tooltip title="Editer le pack">
                   <IconButton className={classes.iconButton} onClick={handleEditButton}>
                     <EditIcon />
@@ -91,16 +104,13 @@ const PackCard = ({ isUserPack }) => {
           }
         />
         <CardContent>
-          <AppPacksCard />
-          <AppPacksCard />
+          {mapList((app) => (
+            <AppPacksCard app={app} />
+          ))}
           <Collapse in={showMore} unmountOnExit>
-            <AppPacksCard />
-            <AppPacksCard />
-            <AppPacksCard />
-            <AppPacksCard />
-            <AppPacksCard />
-            <AppPacksCard />
-            <AppPacksCard />
+            {mapTotalList((app) => (
+              <AppPacksCard app={app} />
+            ))}
           </Collapse>
         </CardContent>
         <CardActions>
@@ -126,12 +136,11 @@ const PackCard = ({ isUserPack }) => {
 PackCard.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   expand: PropTypes.bool,
-  isUserPack: PropTypes.bool,
+  pack: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 PackCard.defaultProps = {
   expand: false,
-  isUserPack: false,
 };
 
 export default PackCard;

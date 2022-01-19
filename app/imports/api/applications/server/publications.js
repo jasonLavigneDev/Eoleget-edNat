@@ -60,6 +60,10 @@ Meteor.publish('applications.table.all', function publishApps() {
   return Applications.find({});
 });
 
+Meteor.publish('applications.pack', function publishPacksApps({ packAppli }) {
+  return Applications.find({ identification: { $in: packAppli } });
+});
+
 publishComposite('applications.single', function publishOneApp({ identification }) {
   try {
     new SimpleSchema({

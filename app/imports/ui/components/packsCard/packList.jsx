@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // import MaterialTable from '@material-table/core';
 import { DataGrid } from '@mui/x-data-grid';
+import { useTracker } from 'meteor/react-meteor-data';
+import Applications from '../../../api/applications/applications';
 
-function PackList() {
+function PackList({ packs }) {
   const columns = [
     {
       title: 'id',
@@ -17,8 +20,8 @@ function PackList() {
       width: '250',
     },
     {
-      title: 'Catégorie',
-      field: 'category',
+      title: 'Description',
+      field: 'description',
       width: '250',
     },
     {
@@ -28,38 +31,23 @@ function PackList() {
     },
   ];
 
-  const data = [
-    {
-      id: 1,
-      packName: 'pack',
-      category: 'catégorie',
-      applications: ['app1 ', 'app2 ', 'app3 ', 'app4 ', 'app5 ', 'app6 ', 'app7 '],
-    },
-    {
-      id: 2,
-      packName: 'pack',
-      category: 'catégorie',
-      applications: ['app1 ', 'app2 ', 'app3 ', 'app4 ', 'app5 ', 'app6 ', 'app7 '],
-    },
-    {
-      id: 3,
-      packName: 'pack',
-      category: 'catégorie',
-      applications: ['app1 ', 'app2 ', 'app3 ', 'app4 ', 'app5 ', 'app6 ', 'app7 '],
-    },
-    {
-      id: 4,
-      packName: 'pack',
-      category: 'catégorie',
-      applications: ['app1 ', 'app2 ', 'app3 ', 'app4 ', 'app5 ', 'app6 ', 'app7 '],
-    },
-    {
-      id: 5,
-      packName: 'pack',
-      category: 'catégorie',
-      applications: ['app1 ', 'app2 ', 'app3 ', 'app4 ', 'app5 ', 'app6 ', 'app7 '],
-    },
-  ];
+  const data = [];
+  let _id = 0;
+  packs.map((pack) => {
+    const appli = useTracker(() => {
+      Meteor.subscribe('applications.pack', { packAppli: pack.applications });
+      return Applications.find({ identification: { $in: pack.applications } }).fetch();
+    });
+
+    const tab = appli.map((app) => app.nom);
+    _id += 1;
+    return data.push({
+      id: _id,
+      packName: pack.name,
+      description: pack.description,
+      applications: tab,
+    });
+  });
 
   return (
     <div style={{ height: 600 }}>
@@ -68,5 +56,9 @@ function PackList() {
   );
   // return <MaterialTable columns={columns} data={data} title="Liste des applications" options={options} />;
 }
+
+PackList.propTypes = {
+  packs: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default PackList;

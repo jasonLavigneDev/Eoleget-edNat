@@ -101,11 +101,13 @@
       "storeTitle": "Applications store",
       "searchApp": "Search for an application",
       "noStore": "There are no applications to display",
-      "searchText": "What application are you looking for?"
+      "searchText": "Which application are you looking for?"
     },
     "Packs": {
       "packsStoreTitle": "Packs store",
-      "packsSearchApp": "Search for a pack"
+      "packsSearchApp": "Search for a pack",
+      "searchText": "Which pack are you looking for ?",
+      "searchPack": "Search Pack"
     },
     "ProfilePage": {
       "title": "My settings",

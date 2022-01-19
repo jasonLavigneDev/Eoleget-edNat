@@ -2,6 +2,7 @@ import React from 'react';
 import i18n from 'meteor/universe:i18n';
 import { Link } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
@@ -27,7 +28,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function AppPacksCard() {
+function AppPacksCard({ app }) {
   const classes = useStyles();
 
   return (
@@ -36,7 +37,7 @@ function AppPacksCard() {
         <AppBadge invisible>
           <AppAvatar detailApp={false} />
         </AppBadge>
-        <Typography variant="body1">Nom application</Typography>
+        <Typography variant="body1">{app.nom}</Typography>
         <CardActions>
           <Tooltip title={i18n.__('components.AppPacksCard.infoTooltip')}>
             <IconButton>
@@ -50,5 +51,9 @@ function AppPacksCard() {
     </Card>
   );
 }
+
+AppPacksCard.propTypes = {
+  app: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default AppPacksCard;
