@@ -7,7 +7,13 @@ import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 
+import i18n from 'meteor/universe:i18n';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import Spinner from '../components/system/Spinner';
 import AppPacksCard from '../components/packsCard/appPacksCard';
+import Applications from '../../api/applications/applications';
+import Packs from '../../api/packs/packs';
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -37,27 +43,32 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function DetailPack() {
+function DetailPack({ pack, apps, ready }) {
+  if (!ready) return <Spinner full />;
+
   const classes = useStyle();
 
-  return (
+  const mapList = (func) => apps.map(func);
+
+  return !ready ? (
+    <Spinner full />
+  ) : (
     <Fade in>
       <Container className={classes.root}>
         <Paper className={classes.rootPaper}>
           <Typography variant="h4" component="div">
-            Détail du pack
+            {i18n.__('pages.detailPack.details')}
           </Typography>
           <div className={classes.mainContent}>
             <Typography variant="h6" component="div">
-              Nom du pack
+              {pack.name}
             </Typography>
-            <p>Description du pack</p>
-            <AppPacksCard />
-            <AppPacksCard />
-            <AppPacksCard />
-            <AppPacksCard />
+            <p>{pack.description}</p>
+            {mapList((app) => (
+              <AppPacksCard app={app} />
+            ))}
             <Button variant="contained" className={classes.getPackButton}>
-              Obtenir le pack
+              {i18n.__('pages.detailPack.getPack')}
             </Button>
           </div>
         </Paper>
@@ -65,5 +76,38 @@ function DetailPack() {
     </Fade>
   );
 }
+export default withTracker(
+  ({
+    match: {
+      params: { _id },
+    },
+  }) => {
+    console.log(_id);
+    let subApp;
+    let apps;
+    const subPack = Meteor.subscribe('packs.single', { _id });
+    const pack = Packs.findOne(_id);
+    if (pack !== undefined) {
+      subApp = Meteor.subscribe('applications.pack', { packAppli: pack.applications });
+      apps = Applications.find({ identification: { $in: pack.applications } }).fetch();
+    }
 
-export default DetailPack;
+    const ready = subPack.ready() && subApp.ready();
+    return {
+      pack,
+      apps,
+      ready,
+    };
+  },
+)(DetailPack);
+
+DetailPack.propTypes = {
+  pack: PropTypes.objectOf(PropTypes.any),
+  apps: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
+  ready: PropTypes.bool.isRequired,
+};
+
+DetailPack.defaultProps = {
+  pack: {},
+  apps: [],
+};

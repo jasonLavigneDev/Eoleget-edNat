@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
+import { useHistory } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -52,6 +53,7 @@ const paperStyle = {
 const EditPackPage = ({ pack, apps, ready }) => {
   if (!ready) return <Spinner full />;
 
+  const history = useHistory();
   const [name, setName] = useState(pack.name);
   const [description, setDescription] = useState(pack.description);
 
@@ -152,6 +154,10 @@ const EditPackPage = ({ pack, apps, ready }) => {
     });
   };
 
+  const goBack = () => {
+    history.push('/packs');
+  };
+
   return !ready ? (
     <Spinner full />
   ) : (
@@ -200,7 +206,9 @@ const EditPackPage = ({ pack, apps, ready }) => {
               <Button variant="contained" onClick={editPack} disabled={isDisable}>
                 {i18n.__('pages.packEditPage.edit')}
               </Button>
-              <Button variant="contained">{i18n.__('pages.packEditPage.cancel')}</Button>
+              <Button variant="contained" onClick={goBack}>
+                {i18n.__('pages.packEditPage.cancel')}
+              </Button>
             </div>
           </form>
         </Paper>

@@ -41,7 +41,7 @@ function AppPacksCard({ app }) {
         <CardActions>
           <Tooltip title={i18n.__('components.AppPacksCard.infoTooltip')}>
             <IconButton>
-              <Link to="/detailapp" className={classes.imgLogo}>
+              <Link to={`/detailapp/${app.identification}`} className={classes.imgLogo}>
                 <InfoIcon />
               </Link>
             </IconButton>

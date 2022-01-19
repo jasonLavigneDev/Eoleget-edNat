@@ -83,6 +83,10 @@
       "success": "Votre adresse email est vérifiée",
       "inProgress": "Vérification de votre adresse email en cours"
     },
+    "detailPack": {
+      "details": "Détails du pack",
+      "getPack": "Obtenir le pack"
+    },
     "packCreation": {
       "title": "Création de pack",
       "color": "Couleur du pack",
@@ -133,23 +137,18 @@
       "Save": "Enregistrer l'application"
     },
     "packEditPage": {
-      "title": "Editer un pack",
+      "title": "Edition de pack",
       "packName": "Nom du pack",
       "packDescription": "Description du pack",
       "color": "Couleur du pack",
-      "edit": "Mettre à jour",
+      "edit": "Editer",
       "cancel": "Annuler",
-      "updateSuccess": "Pack éditer avec succès"
+      "updateSuccess": "Pack mis à jour"
     }
   },
   "components": {
     "AppCard": {
       "addAppli": "Application ajoutée au panier"
-    },
-    "PackCard": {
-      "editPack": "Editer un pack",
-      "extendPack": "Etendre le pack",
-      "packTooltip": "Voir le pack"
     },
     "MenuBar": {
       "menuApp": "Applications",
@@ -225,6 +224,11 @@
     },
     "AppPacksCard": {
       "infoTooltip": "Voir l'application"
+    },
+    "PacksCard": {
+      "packTooltip": "Voir le pack",
+      "extendPack": "Etendre le pack",
+      "editPack": "Editer le pack"
     },
     "UserAvatarGallery": {
       "title": "Créer votre avatar",

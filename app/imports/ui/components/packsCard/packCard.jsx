@@ -80,6 +80,10 @@ const PackCard = ({ pack }) => {
 
   const mapTotalList = (func) => appli.slice(2, appli.length).map(func);
 
+  const openDetailPack = () => {
+    history.push(`packs/detail/${pack._id}`);
+  };
+
   return (
     <div className={classes.cardContainer}>
       <Card className={classes.card}>
@@ -88,13 +92,13 @@ const PackCard = ({ pack }) => {
           className={classes.cardHeader}
           action={
             <>
-              <Tooltip title={i18n.__('components.PackCard.packTooltip')}>
-                <IconButton className={classes.iconButton}>
+              <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
+                <IconButton className={classes.iconButton} onClick={openDetailPack}>
                   <OpenInNewIcon />
                 </IconButton>
               </Tooltip>
               {pack.owner === userId ? (
-                <Tooltip title={i18n.__('components.PackCard.editPack')}>
+                <Tooltip title={i18n.__('components.PacksCard.editPack')}>
                   <IconButton className={classes.iconButton} onClick={handleEditButton}>
                     <EditIcon />
                   </IconButton>
@@ -114,7 +118,7 @@ const PackCard = ({ pack }) => {
           </Collapse>
         </CardContent>
         <CardActions>
-          <Tooltip title={i18n.__('components.PackCard.extendPack')}>
+          <Tooltip title={i18n.__('components.PacksCard.extendPack')}>
             <ExpandMore
               expand={showMore}
               onClick={() => {
