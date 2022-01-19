@@ -73,7 +73,7 @@ const PackCard = ({ pack }) => {
   }, [showMore]);
 
   const handleEditButton = () => {
-    history.push('/editPack');
+    history.push('/packs/edit');
   };
 
   const mapList = (func) => appli.slice(0, 2).map(func);
