@@ -16,7 +16,7 @@ import UserAvatar from '../users/UserAvatar';
 export const userMenu = [
   {
     path: '/profil',
-    content: 'menuProfil',
+    content: 'menuProfile',
   },
   {
     path: '/packs/user',
