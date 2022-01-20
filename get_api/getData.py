@@ -11,11 +11,11 @@ class Application:
         self.nom = nom
         self.description = description
         self.tags = []
-        self.versions = [version]
+        self.versions = [str(version)]
         self.url = ""
 
     def append_version(self, version):
-        self.versions.append(version)
+        self.versions.append(str(version))
 
 
 def get_yaml_files(yamlFiles):
