@@ -20,7 +20,8 @@
         "isValidated": "A été validé",
         "applications": "Applications",
         "owner": "ID du propriétaire",
-        "description": "Description du pack"
+        "description": "Description du pack",
+        "color": "Couleur du pack"
       },
       "duplicateName": "Un pack possède déjà ce nom.",
       "packAlreadyExist": "Ce pack existe déjà.",

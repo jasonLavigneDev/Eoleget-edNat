@@ -33,9 +33,29 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: lightTheme.palette.primary.light,
     boxShadow: theme.shadows[3],
   },
-  cardHeader: {
+  cardHeaderPurple: {
     display: 'flex',
     background: 'linear-gradient(#6e1bdc,#f138a7 100%)',
+    color: 'white',
+  },
+  cardHeaderGreen: {
+    display: 'flex',
+    background: 'linear-gradient(0deg,#a8e063,#56ab2f)',
+    color: 'white',
+  },
+  cardHeaderRed: {
+    display: 'flex',
+    background: 'linear-gradient(0deg,#ff0844,#ebaf35)',
+    color: 'white',
+  },
+  cardHeaderYellow: {
+    display: 'flex',
+    background: 'linear-gradient(0deg,#F6FC14,#E6D107)',
+    color: 'white',
+  },
+  cardHeaderBlue: {
+    display: 'flex',
+    background: 'linear-gradient(0deg,#6a11cb,#2575fc)',
     color: 'white',
   },
   expendMore: {
@@ -84,12 +104,37 @@ const PackCard = ({ pack }) => {
     history.push(`packs/detail/${pack._id}`);
   };
 
+  const GetClassName = () => {
+    let col;
+    switch (pack.color) {
+      case 'green':
+        col = classes.cardHeaderGreen;
+        break;
+      case 'yellow':
+        col = classes.cardHeaderYellow;
+        break;
+      case 'red':
+        col = classes.cardHeaderRed;
+        break;
+      case 'blue':
+        col = classes.cardHeaderBlue;
+        break;
+      case 'purple':
+        col = classes.cardHeaderPurple;
+        break;
+      default:
+        col = classes.cardHeaderPurple;
+        break;
+    }
+    return col;
+  };
+
   return (
     <div className={classes.cardContainer}>
       <Card className={classes.card}>
         <CardHeader
           title={pack.name}
-          className={classes.cardHeader}
+          className={GetClassName()}
           action={
             <>
               <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>

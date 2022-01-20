@@ -82,7 +82,6 @@ export default withTracker(
       params: { _id },
     },
   }) => {
-    console.log(_id);
     let subApp;
     let apps;
     const subPack = Meteor.subscribe('packs.single', { _id });

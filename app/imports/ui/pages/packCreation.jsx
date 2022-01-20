@@ -154,9 +154,10 @@ function CreatePackPage() {
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
     const date = today.toUTCString();
+    const color = JSON.parse(localStorage.getItem('color'));
     Meteor.call(
       'packs.createPack',
-      { name, applications: dataId, creationDate: date, isValidated: true, description },
+      { name, applications: dataId, creationDate: date, isValidated: true, description, color },
       (err) => {
         if (err) msg.error(err.reason);
         else msg.success(i18n.__('pages.packCreation.createPackSuccess'));
