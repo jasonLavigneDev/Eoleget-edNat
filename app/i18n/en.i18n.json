@@ -20,7 +20,8 @@
         "isValidated": "Is Validated",
         "applications": "Applications",
         "owner": "Owner ID",
-        "description": "Pack description"
+        "description": "Pack description",
+        "color": "Pack color"
       },
       "duplicateName": "A pack already have this name",
       "packAlreadyExist": "This pack already exists",

@@ -34,6 +34,10 @@ Packs.schema = new SimpleSchema(
       type: String,
       label: getLabel('api.packs.labels.description'),
     },
+    color: {
+      type: String,
+      label: getLabel('api.packs.labels.color'),
+    },
   },
   { tracker: Tracker },
 );
@@ -45,6 +49,7 @@ Packs.publicField = {
   applications: 1,
   owner: 1,
   description: 1,
+  color: 1,
 };
 
 Packs.attachSchema(Packs.schema);

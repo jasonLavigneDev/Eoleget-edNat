@@ -148,7 +148,8 @@ const EditPackPage = ({ pack, apps, ready }) => {
   };
 
   const editPack = () => {
-    Meteor.call('packs.updatePack', { _id: pack._id, name, applications: dataId, description }, (err) => {
+    const color = JSON.parse(localStorage.getItem('color'));
+    Meteor.call('packs.updatePack', { _id: pack._id, name, applications: dataId, description, color }, (err) => {
       if (err) msg.error(err.reason);
       else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
     });
@@ -197,7 +198,7 @@ const EditPackPage = ({ pack, apps, ready }) => {
             <Typography variant="h6" component="div">
               {i18n.__('pages.packEditPage.color')}
             </Typography>
-            <ColorRadioButton />
+            <ColorRadioButton pack={pack} />
             <Divider />
             <div style={divDatagridStyle}>
               <DataGrid hideFooterPagination columns={columns} rows={rows} />

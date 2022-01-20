@@ -4,7 +4,7 @@ import i18n from 'meteor/universe:i18n';
 import { getLabel } from '../utils/functions';
 import Packs from './packs';
 
-function _createPack({ name, applications, creationDate, isValidated, owner, description }) {
+function _createPack({ name, applications, creationDate, isValidated, owner, description, color }) {
   try {
     Packs.insert({
       name,
@@ -13,6 +13,7 @@ function _createPack({ name, applications, creationDate, isValidated, owner, des
       applications,
       owner,
       description,
+      color,
     });
   } catch (error) {
     if (error.code === 11000) {
@@ -23,9 +24,9 @@ function _createPack({ name, applications, creationDate, isValidated, owner, des
   }
 }
 
-function _updatePack(_id, name, applications, description) {
+function _updatePack(_id, name, applications, description, color) {
   try {
-    Packs.update(_id, { $set: { name, applications, description } });
+    Packs.update(_id, { $set: { name, applications, description, color } });
     return null;
   } catch (error) {
     if (error.code === 11000) {
@@ -45,10 +46,11 @@ export const createPack = new ValidatedMethod({
     creationDate: { type: Date, label: getLabel('api.packs.labels.creationDate') },
     isValidated: { type: Boolean, label: getLabel('api.packs.labels.isValidated') },
     description: { type: String, label: getLabel('api.packs.labels.description') },
+    color: { type: String, label: getLabel('api.packs.labels.color') },
   }).validator({ clean: true }),
 
-  run({ name, applications, creationDate, isValidated, description }) {
-    return _createPack({ name, applications, creationDate, isValidated, owner: this.userId, description });
+  run({ name, applications, creationDate, isValidated, description, color }) {
+    return _createPack({ name, applications, creationDate, isValidated, owner: this.userId, description, color });
   },
 });
 
@@ -82,9 +84,10 @@ export const updatePack = new ValidatedMethod({
     applications: { type: Array, label: getLabel('api.packs.labels.applications') },
     'applications.$': { type: String, label: getLabel('api.packs.labels.applications') },
     description: { type: String, label: getLabel('api.packs.labels.description') },
+    color: { type: String, label: getLabel('api.packs.labels.color') },
   }).validator({ clean: true }),
 
-  run({ _id, name, applications, description }) {
+  run({ _id, name, applications, description, color }) {
     const pack = Packs.findOne(_id);
     if (pack === undefined) {
       throw new Meteor.Error('api.packs.unknownPack', i18n.__('api.packs.unknownPack'));
@@ -95,7 +98,7 @@ export const updatePack = new ValidatedMethod({
       throw new Meteor.Error('api.packs.updatePack.notPermitted', i18n.__('api.packs.needToBeOwner'));
     }
 
-    _updatePack(_id, name, applications, description);
+    _updatePack(_id, name, applications, description, color);
     return null;
   },
 });

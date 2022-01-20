@@ -11,10 +11,11 @@ const divContainerStyle = {
 // End Style //
 
 export default function ColorRadioButtons() {
-  const [selectedValue, setSelectedValue] = React.useState('green');
+  const [selectedValue, setSelectedValue] = React.useState('');
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
+    localStorage.setItem('color', JSON.stringify(event.target.value));
   };
 
   const controlProps = (item) => ({
