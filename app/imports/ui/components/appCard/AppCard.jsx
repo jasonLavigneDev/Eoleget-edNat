@@ -11,43 +11,37 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
-import { makeStyles } from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import AppBadge from './AppBadge';
 import AppAvatar from './AppAvatar';
 
-const useStyles = makeStyles((theme) => ({
-  card: {
-    position: 'relative',
-    width: '300px',
-    height: '300px',
-    margin: '1%',
-    boxShadow: theme.shadows[3],
-  },
-  cardContent: {
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'auto',
-    maxHeight: '150px',
-  },
-  cardSelected: {
-    outline: 'solid #011CAA',
-  },
-  cardHeader: {
-    background: 'linear-gradient(#5aa1d8,#555BE6 100%)',
-    color: 'white',
-  },
-  cardActions: {
-    position: 'absolute',
-    bottom: '-1%',
-    right: '30%',
-  },
-}));
+// Styles CSS //
+const cardStyle = {
+  position: 'relative',
+  width: '300px',
+  height: '300px',
+  margin: '1%',
+  boxShadow: 3,
+};
+const cardContentStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  overflow: 'auto',
+  maxHeight: '150px',
+};
+const cardHeaderStyle = {
+  background: 'linear-gradient(#5aa1d8,#555BE6 100%)',
+  color: 'white',
+};
+const cardActionsStyle = {
+  position: 'absolute',
+  bottom: '-1%',
+  right: '30%',
+};
+// End styles //
 
 function AppCard({ app, cart }) {
-  const classes = useStyles();
-
   const checkAppAllreadyAdded = () => {
     let res;
     const tab = [];
@@ -82,7 +76,7 @@ function AppCard({ app, cart }) {
   const des = isUpperCase(app.description) ? app.description.toLowerCase() : app.description;
 
   return (
-    <Card className={classes.card}>
+    <Card sx={cardStyle}>
       <CardHeader
         title={<Typography variant="h6">{app.nom}</Typography>}
         subheader={
@@ -120,16 +114,16 @@ function AppCard({ app, cart }) {
             </Tooltip>
           )
         }
-        className={classes.cardHeader}
+        sx={cardHeaderStyle}
       />
-      <CardContent className={classes.cardContent}>
+      <CardContent sx={cardContentStyle}>
         <Typography variant="body1" component="div">
           {des}
         </Typography>
         {app.url !== undefined ? <a href={app.url}>{app.url}</a> : null}
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Link to={`/detailapp/${app.identification}`} className={classes.imgLogo}>
+      <CardActions sx={cardActionsStyle}>
+        <Link to={`/detailapp/${app.identification}`}>
           <Button variant="contained">{i18n.__('components.Card.showMore')}</Button>
         </Link>
       </CardActions>

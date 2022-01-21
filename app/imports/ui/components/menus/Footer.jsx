@@ -1,40 +1,39 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@mui/styles';
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 import i18n from 'meteor/universe:i18n';
 import { useAppContext } from '../../contexts/context';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  link: {
-    color: theme.palette.tertiary.main,
-    textDecoration: 'none',
-    outline: 'none',
-    marginRight: 25,
-    fontFamily: 'WorkSansBold',
-  },
-  mobileLink: {
-    flexDirection: 'column',
-    color: theme.palette.tertiary.main,
-    textDecoration: 'none',
-    outline: 'none',
-    marginRight: 25,
-    fontFamily: 'WorkSansBold',
-  },
-  blog: {
-    color: theme.palette.tertiary.main,
-    fontFamily: 'WorkSansBold',
-  },
-  li: {
-    listStyle: 'none',
-  },
-}));
+// Styles CSS //
+const toolbarStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+};
+const linkStyle = {
+  color: 'tertiary.main',
+  textDecoration: 'none',
+  outline: 'none',
+  marginRight: 25,
+  fontFamily: 'WorkSansBold',
+};
+const linkMobileStyle = {
+  flexDirection: 'column',
+  color: 'tertiary.main',
+  textDecoration: 'none',
+  outline: 'none',
+  marginRight: 25,
+  fontFamily: 'WorkSansBold',
+};
+const blogLinkStyle = {
+  color: 'tertiary.main',
+  fontFamily: 'WorkSansBold',
+};
+const liStyle = {
+  listStyle: 'none',
+};
+// End styles
 
 export const LEGAL_ROUTES = {
   legal: 'legalnotice',
@@ -44,7 +43,6 @@ export const LEGAL_ROUTES = {
 };
 
 const Footer = () => {
-  const classes = useStyles();
   const [{ isMobile }] = useAppContext();
   const externalBlog = Meteor.settings.public.laboiteBlogURL;
   const settingsData = [];
@@ -54,23 +52,23 @@ const Footer = () => {
       <>
         {settingsData.map(({ key, external, link, text }) => {
           return isMobile ? (
-            <li key={key} className={classes.li}>
+            <li key={key} style={liStyle}>
               {external ? (
-                <a className={classes.mobileLink} href={link} target="_blank" rel="noreferrer noopener">
+                <a style={linkMobileStyle} href={link} target="_blank" rel="noreferrer noopener">
                   {i18n.__(`components.Footer.${text}`)}
                 </a>
               ) : (
-                <Link className={classes.mobileLink} to={`/legal/${link}`}>
+                <Link sx={linkMobileStyle} to={`/legal/${link}`}>
                   {i18n.__(`components.Footer.${text}`)}
                 </Link>
               )}
             </li>
           ) : external ? (
-            <a key={key} className={classes.link} href={link} target="_blank" rel="noreferrer noopener">
+            <a key={key} style={linkStyle} href={link} target="_blank" rel="noreferrer noopener">
               {i18n.__(`components.Footer.${text}`)}
             </a>
           ) : (
-            <Link key={key} className={classes.link} to={`/legal/${link}`}>
+            <Link key={key} sx={linkStyle} to={`/legal/${link}`}>
               {i18n.__(`components.Footer.${text}`)}
             </Link>
           );
@@ -81,23 +79,23 @@ const Footer = () => {
 
   const blogLink = () => {
     return isMobile ? (
-      <li key="blogLinkKey" className={classes.li}>
+      <li key="blogLinkKey" style={liStyle}>
         {externalBlog === '' ? (
-          <Link className={classes.link} to="/public">
+          <Link sx={linkStyle} to="/public">
             Publications
           </Link>
         ) : (
-          <a href={externalBlog} className={classes.blog} target="_blank" rel="noreferrer noopener">
+          <a href={externalBlog} style={blogLinkStyle} target="_blank" rel="noreferrer noopener">
             Publications
           </a>
         )}
       </li>
     ) : externalBlog === '' ? (
-      <Link key="blogLinkKey" className={classes.link} to="/public">
+      <Link key="blogLinkKey" sx={linkStyle} to="/public">
         Publications
       </Link>
     ) : (
-      <a key="blogLinkKey" href={externalBlog} className={classes.blog} target="_blank" rel="noreferrer noopener">
+      <a key="blogLinkKey" href={externalBlog} style={blogLinkStyle} target="_blank" rel="noreferrer noopener">
         Publications
       </a>
     );
@@ -106,11 +104,11 @@ const Footer = () => {
   return (
     <AppBar position="relative">
       {isMobile ? (
-        <Toolbar className={classes.root}>
+        <Toolbar sx={toolbarStyle}>
           <ul>
             {toolbarContent()}
-            <li key="contactKey" className={classes.li}>
-              <Link className={classes.link} to="/contact">
+            <li key="contactKey" style={liStyle}>
+              <Link sx={linkStyle} to="/contact">
                 {i18n.__(`components.Footer.contact`)}
               </Link>
             </li>
@@ -118,10 +116,10 @@ const Footer = () => {
           </ul>
         </Toolbar>
       ) : (
-        <Toolbar className={classes.root}>
+        <Toolbar sx={toolbarStyle}>
           <div>{toolbarContent()}</div>
           <div>
-            <Link key="contactKey" className={classes.link} to="/contact">
+            <Link key="contactKey" sx={linkStyle} to="/contact">
               {i18n.__(`components.Footer.contact`)}
             </Link>
             {blogLink()}

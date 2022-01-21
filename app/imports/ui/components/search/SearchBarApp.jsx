@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@mui/styles';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 
-const useStyles = makeStyles(() => ({
-  searchBar: {
-    width: '100%',
-  },
-}));
+// Styles CSS //
+const searchBarStyle = {
+  width: '100%',
+};
+// End CSS //
 
 function SearchBarApp({ opened, app }) {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [isApp, setApp] = useState(false);
 
@@ -30,7 +28,7 @@ function SearchBarApp({ opened, app }) {
     <TextField
       label={isApp ? i18n.__('components.Search.searchingApp') : i18n.__('components.Search.searchingPack')}
       variant="outlined"
-      className={classes.searchBar}
+      sx={searchBarStyle}
       open={open}
       InputProps={{
         startAdornment: (

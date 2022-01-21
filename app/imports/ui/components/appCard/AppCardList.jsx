@@ -1,24 +1,20 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
-import { makeStyles } from '@mui/styles';
-import { useAppContext } from '../../contexts/context';
-import AppCard from './AppCard';
-import { usePagination } from '../../../api/utils/hooks';
 
+import AppCard from './AppCard';
+import { useAppContext } from '../../contexts/context';
+import { usePagination } from '../../../api/utils/hooks';
 import Applications from '../../../api/applications/applications';
 
-const useStyles = makeStyles(() => ({
-  cardContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-  },
-}));
+const cardContainerStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+};
 
 function AppCardList() {
   const ITEM_PER_PAGE = 15;
-  const classes = useStyles();
   const appPage = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -65,9 +61,9 @@ function AppCardList() {
   const mapList = (func) => items.filter((app) => filterApp(app)).map(func);
 
   return (
-    <span className={classes.cardContainer}>
+    <span style={cardContainerStyle}>
       {total > ITEM_PER_PAGE && (
-        <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
         </Grid>
       )}
@@ -75,7 +71,7 @@ function AppCardList() {
         <AppCard app={app} cart={cart} />;
       })}
       {total > ITEM_PER_PAGE && (
-        <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
         </Grid>
       )}

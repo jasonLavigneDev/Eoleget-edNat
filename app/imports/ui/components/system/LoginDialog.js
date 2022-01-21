@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Accounts } from 'meteor/accounts-base';
 import i18n from 'meteor/universe:i18n';
-import { makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -9,43 +8,40 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
-
-const useStyles = (isMobile) =>
-  makeStyles(() => ({
-    root: {
-      width: '100%',
-    },
-    actions: {
-      display: 'flex',
-      justifyContent: 'center',
-    },
-    paper: {
-      overflow: 'auto',
-      position: 'absolute',
-      width: isMobile ? '95%' : '25%',
-      maxHeight: '100%',
-      top: isMobile ? 0 : '50%',
-      left: isMobile ? '2.5%' : '50%',
-      transform: isMobile ? 'translateY(50%)' : 'translate(-50%, -50%)',
-    },
-    link: {
-      color: 'blue',
-    },
-    marginTop: {
-      marginTop: '8px;',
-    },
-    textButton: {
-      textTransform: 'none',
-    },
-    buttonRight: {
-      marginTop: '8px;',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'end',
-    },
-  }));
+import { useAppContext } from '../../contexts/context';
 
 const LoginDialog = () => {
+  const [{ isMobile }] = useAppContext();
+  // Styles CSS //
+  const dialogStyle = {
+    width: '100%',
+  };
+  const DialogActionStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+  };
+  const paperStyle = {
+    overflow: 'auto',
+    position: 'absolute',
+    width: isMobile ? '95%' : '25%',
+    maxHeight: '100%',
+    top: isMobile ? 0 : '50%',
+    left: isMobile ? '2.5%' : '50%',
+    transform: isMobile ? 'translateY(50%)' : 'translate(-50%, -50%)',
+  };
+  const textfieldStyle = {
+    marginTop: '8px;',
+  };
+  const textButtonStyle = {
+    textTransform: 'none',
+  };
+  const divButtonRight = {
+    marginTop: '8px;',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'end',
+  };
+  // End Styles //
   const [open, setOpen] = useState(true);
   const [mode, setMode] = useState('signin');
   const [username, setUsername] = useState('');
@@ -55,7 +51,6 @@ const LoginDialog = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [isValid, setIsValid] = useState(false);
-  const classes = useStyles(false)();
 
   useEffect(() => {
     if (mode === 'signup') {
@@ -107,8 +102,8 @@ const LoginDialog = () => {
   };
 
   return (
-    <div className={classes.paper}>
-      <Dialog open={open} className={classes.root}>
+    <div style={paperStyle}>
+      <Dialog open={open} sx={dialogStyle}>
         <DialogTitle>{i18n.__(`components.LoginDialog.${mode}Title`)}</DialogTitle>
         <DialogContent>
           {mode === 'reset' ? (
@@ -130,7 +125,7 @@ const LoginDialog = () => {
           />
           {mode !== 'reset' ? (
             <TextField
-              className={classes.marginTop}
+              sx={textfieldStyle}
               value={password}
               name="password"
               onKeyDown={handleKeyDown}
@@ -144,7 +139,7 @@ const LoginDialog = () => {
           {mode === 'signup' ? (
             <>
               <TextField
-                className={classes.marginTop}
+                sx={textfieldStyle}
                 value={verify}
                 name="verify"
                 error={!!verify && verify !== password}
@@ -155,7 +150,7 @@ const LoginDialog = () => {
                 fullWidth
               />
               <TextField
-                className={classes.marginTop}
+                sx={textfieldStyle}
                 value={firstName}
                 name="firstName"
                 label={i18n.__('components.LoginDialog.labelFirstName')}
@@ -165,7 +160,7 @@ const LoginDialog = () => {
                 fullWidth
               />
               <TextField
-                className={classes.marginTop}
+                sx={textfieldStyle}
                 value={lastName}
                 name="lastName"
                 label={i18n.__('components.LoginDialog.labelLastName')}
@@ -175,7 +170,7 @@ const LoginDialog = () => {
                 fullWidth
               />
               <TextField
-                className={classes.marginTop}
+                sx={textfieldStyle}
                 value={email}
                 name="email"
                 label={i18n.__('components.LoginDialog.labelEmail')}
@@ -186,24 +181,24 @@ const LoginDialog = () => {
               />
             </>
           ) : null}
-          <div className={classes.buttonRight}>
+          <div style={divButtonRight}>
             {mode === 'signin' ? (
               <>
-                <Button className={classes.textButton} variant="text" color="primary" onClick={() => setMode('signup')}>
+                <Button sx={textButtonStyle} variant="text" color="primary" onClick={() => setMode('signup')}>
                   {i18n.__('components.LoginDialog.toSignup')}
                 </Button>
-                <Button className={classes.textButton} variant="text" color="primary" onClick={() => setMode('reset')}>
+                <Button sx={textButtonStyle} variant="text" color="primary" onClick={() => setMode('reset')}>
                   {i18n.__('components.LoginDialog.toResetPwd')}
                 </Button>
               </>
             ) : (
-              <Button className={classes.textButton} variant="text" color="primary" onClick={() => setMode('signin')}>
+              <Button sx={textButtonStyle} variant="text" color="primary" onClick={() => setMode('signin')}>
                 {i18n.__('components.LoginDialog.toSignin')}
               </Button>
             )}
           </div>
         </DialogContent>
-        <DialogActions className={classes.actions}>
+        <DialogActions sx={DialogActionStyle}>
           <Button
             onClick={mode === 'signup' ? dosignup : mode === 'reset' ? doreset : dosignin}
             disabled={!isValid}

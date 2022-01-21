@@ -1,20 +1,18 @@
 import React from 'react';
-import { makeStyles } from '@mui/styles';
 import AppBar from '@mui/material/AppBar';
 import MenuBar from './MenuBar';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.tertiary.main,
-    bottom: 0,
-    top: 'auto',
-  },
-}));
+// Styles CSS //
+const appBarStyle = {
+  backgroundColor: 'tertiary.main',
+  bottom: 0,
+  top: 'auto',
+};
+// End styles //
 
 const MobileMenu = () => {
-  const classes = useStyles();
   return (
-    <AppBar position="fixed" className={classes.root}>
+    <AppBar position="fixed" sx={appBarStyle}>
       <MenuBar mobile />
     </AppBar>
   );

@@ -7,7 +7,7 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import { makeStyles, styled } from '@mui/styles';
+import { styled } from '@mui/styles';
 import Collapse from '@mui/material/Collapse';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import IconButton from '@mui/material/IconButton';
@@ -21,55 +21,54 @@ import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
 import Applications from '../../../api/applications/applications';
 
-const useStyles = makeStyles((theme) => ({
-  cardContainer: {
-    margin: '1%',
-  },
-  card: {
-    position: 'relative',
-    width: '28em',
-    height: 'auto',
-    margin: '1%',
-    backgroundColor: lightTheme.palette.primary.light,
-    boxShadow: theme.shadows[3],
-  },
-  cardHeaderPurple: {
-    display: 'flex',
-    background: 'linear-gradient(#6e1bdc,#f138a7 100%)',
-    color: 'white',
-  },
-  cardHeaderGreen: {
-    display: 'flex',
-    background: 'linear-gradient(0deg,#a8e063,#56ab2f)',
-    color: 'white',
-  },
-  cardHeaderRed: {
-    display: 'flex',
-    background: 'linear-gradient(0deg,#ff0844,#ebaf35)',
-    color: 'white',
-  },
-  cardHeaderYellow: {
-    display: 'flex',
-    background: 'linear-gradient(0deg,#F6FC14,#E6D107)',
-    color: 'white',
-  },
-  cardHeaderBlue: {
-    display: 'flex',
-    background: 'linear-gradient(0deg,#6a11cb,#2575fc)',
-    color: 'white',
-  },
-  expendMore: {
-    marginRight: '42%',
-  },
-  iconButton: {
-    color: 'white',
-  },
-}));
+// Styles CSS //
+const divCardContainerStyle = {
+  margin: '1%',
+};
+const cardStyle = {
+  position: 'relative',
+  width: '28em',
+  height: 'auto',
+  margin: '1%',
+  backgroundColor: lightTheme.palette.primary.light,
+  boxShadow: 4,
+};
+const expendMoreStyle = {
+  marginRight: '42%',
+};
+const iconButtonStyle = {
+  color: 'white',
+};
+const cardHeaderPurple = {
+  display: 'flex',
+  background: 'linear-gradient(#6e1bdc,#f138a7 100%)',
+  color: 'white',
+};
+const cardHeaderGreen = {
+  display: 'flex',
+  background: 'linear-gradient(0deg,#a8e063,#56ab2f)',
+  color: 'white',
+};
+const cardHeaderRed = {
+  display: 'flex',
+  background: 'linear-gradient(0deg,#ff0844,#ebaf35)',
+  color: 'white',
+};
+const cardHeaderYellow = {
+  display: 'flex',
+  background: 'linear-gradient(0deg,#F6FC14,#E6D107)',
+  color: 'white',
+};
+const cardHeaderBlue = {
+  display: 'flex',
+  background: 'linear-gradient(0deg,#6a11cb,#2575fc)',
+  color: 'white',
+};
+// End Style //
 
 const PackCard = ({ pack }) => {
   const [showMore, setShowMore] = useState(false);
   const [{ userId }] = useAppContext();
-  const classes = useStyles();
   const appli = useTracker(() => {
     Meteor.subscribe('applications.pack', { packAppli: pack.applications });
     return Applications.find({ identification: { $in: pack.applications } }).fetch();
@@ -108,43 +107,43 @@ const PackCard = ({ pack }) => {
     let col;
     switch (pack.color) {
       case 'green':
-        col = classes.cardHeaderGreen;
+        col = cardHeaderGreen;
         break;
       case 'yellow':
-        col = classes.cardHeaderYellow;
+        col = cardHeaderYellow;
         break;
       case 'red':
-        col = classes.cardHeaderRed;
+        col = cardHeaderRed;
         break;
       case 'blue':
-        col = classes.cardHeaderBlue;
+        col = cardHeaderBlue;
         break;
       case 'purple':
-        col = classes.cardHeaderPurple;
+        col = cardHeaderPurple;
         break;
       default:
-        col = classes.cardHeaderPurple;
+        col = cardHeaderPurple;
         break;
     }
     return col;
   };
 
   return (
-    <div className={classes.cardContainer}>
-      <Card className={classes.card}>
+    <div style={divCardContainerStyle}>
+      <Card sx={cardStyle}>
         <CardHeader
           title={pack.name}
-          className={GetClassName()}
+          sx={GetClassName()}
           action={
             <>
               <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
-                <IconButton className={classes.iconButton} onClick={openDetailPack}>
+                <IconButton sx={iconButtonStyle} onClick={openDetailPack}>
                   <OpenInNewIcon />
                 </IconButton>
               </Tooltip>
               {pack.owner === userId ? (
                 <Tooltip title={i18n.__('components.PacksCard.editPack')}>
-                  <IconButton className={classes.iconButton} onClick={handleEditButton}>
+                  <IconButton sx={iconButtonStyle} onClick={handleEditButton}>
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
@@ -171,7 +170,7 @@ const PackCard = ({ pack }) => {
               }}
               aria-expanded={showMore}
               aria-label="show more"
-              className={classes.expendMore}
+              sx={expendMoreStyle}
             >
               <ExpandMoreIcon fontSize="large" />
             </ExpandMore>
