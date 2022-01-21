@@ -91,7 +91,8 @@
     },
     "detailPack": {
       "details": "Pack details",
-      "getPack": "Get this pack"
+      "getPack": "Get this pack",
+      "back": "Back"
     },
     "packCreation": {
       "title": "Pack creation",
@@ -142,7 +143,8 @@
       "Tags": "Tag",
       "Save": "Save application",
       "Remove": "Remove app from cart",
-      "addAppSuccess": "Application added to cart"
+      "addAppSuccess": "Application added to cart",
+      "back": "Back"
     },
     "packEditPage": {
       "title": "Edit Pack",
@@ -150,7 +152,7 @@
       "packDescription": "Pack description",
       "color": "Pack color",
       "edit": "Edit",
-      "cancel": "Cancel",
+      "back": "Back",
       "updateSuccess": "Pack updated"
     }
   },

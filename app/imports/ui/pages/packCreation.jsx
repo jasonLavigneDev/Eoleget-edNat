@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
+import { useHistory } from 'react-router-dom';
 
 import {
   Button,
@@ -164,6 +165,11 @@ function CreatePackPage() {
       },
     );
   };
+  const history = useHistory();
+  const goBack = () => {
+    history.push('/');
+    window.location.reload();
+  };
 
   return (
     <Fade in>
@@ -209,7 +215,9 @@ function CreatePackPage() {
               <Button variant="contained" onClick={createPack} disabled={isDisable}>
                 {i18n.__('pages.packCreation.add')}
               </Button>
-              <Button variant="contained">{i18n.__('pages.packCreation.delete')}</Button>
+              <Button variant="contained" onClick={goBack}>
+                {i18n.__('pages.packCreation.delete')}
+              </Button>
             </div>
           </form>
         </Paper>

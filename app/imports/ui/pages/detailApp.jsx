@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -39,14 +40,22 @@ const iconSpanStyle = {
   display: 'flex',
   flexDirection: 'row',
 };
-const buttonSaveStyle = {
+const divButtonStyle = {
+  marginTop: 20,
+  marginBottom: 5,
+  width: '100%',
   display: 'flex',
-  justifyContent: 'center',
-  marginTop: '5%',
+  alignItems: 'center',
+  justifyContent: 'space-evenly',
 };
 // End styles //
 
 const detailApp = ({ app, ready }) => {
+  const history = useHistory();
+  const goBack = () => {
+    history.push('/');
+    window.location.reload();
+  };
   const cart = useState(() => {
     // getting stored value
     const saved = localStorage.getItem('cart');
@@ -142,7 +151,7 @@ const detailApp = ({ app, ready }) => {
             </Grid>
             <AppAvatar detailApp />
           </Grid>
-          <div style={buttonSaveStyle}>
+          <div style={divButtonStyle}>
             {checkAppAllreadyAdded() ? (
               <Button variant="contained" style={{ backgroundColor: 'red' }} onClick={removeAppFromCart}>
                 {i18n.__('pages.detailApp.Remove')}
@@ -152,6 +161,9 @@ const detailApp = ({ app, ready }) => {
                 {i18n.__('pages.detailApp.Save')}
               </Button>
             )}
+            <Button variant="contained" onClick={goBack}>
+              {i18n.__('pages.detailApp.back')}
+            </Button>
           </div>
         </Paper>
       </Container>
