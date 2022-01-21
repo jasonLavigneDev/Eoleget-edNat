@@ -29,7 +29,7 @@ const containerStyle = {
   marginTop: '5%',
 };
 const divDatagridStyle = {
-  height: 400,
+  height: 350,
   width: '90%',
   display: 'block',
   marginLeft: 'auto',
