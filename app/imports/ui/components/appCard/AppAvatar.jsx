@@ -10,8 +10,8 @@ const avatarStyle = {
   height: 40,
 };
 const avatarDetailsStyle = {
-  width: 150,
-  height: 150,
+  width: 200,
+  height: 200,
 };
 // End styles //
 
