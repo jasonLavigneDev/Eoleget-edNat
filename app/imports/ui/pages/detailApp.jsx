@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -54,7 +54,7 @@ const useStyle = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
   },
-  buttonSave: {
+  buttons: {
     display: 'flex',
     justifyContent: 'center',
     marginTop: '5%',
@@ -71,10 +71,39 @@ const detailApp = ({ app, ready }) => {
     return initialValue || [];
   });
 
+  const [loadingCart, setLoadingCart] = useState(true);
+
+  useEffect(() => {
+    // update cart in localStorage when it's updated (except for initial load)
+    // eslint-disable-next-line no-unused-expressions
+    loadingCart ? setLoadingCart(false) : localStorage.setItem('cart', JSON.stringify(cart[0]));
+  }, [cart[0]]);
+
+  const checkAppAllreadyAdded = () => {
+    let res;
+    const tab = [];
+    cart[0].map((appli) => tab.push(appli.identification));
+    if (tab.includes(app.identification)) res = true;
+    else res = false;
+    return res;
+  };
+
   const addAppToCart = () => {
-    cart[0].push(app);
-    localStorage.setItem('cart', JSON.stringify(cart[0]));
-    msg.success(i18n.__('pages.detailApp.addAppSuccess'));
+    if (checkAppAllreadyAdded()) {
+      msg.error(i18n.__('components.Card.addAppError'));
+    } else {
+      cart[1]([...cart[0], app]);
+      msg.success(i18n.__('components.Card.addAppSuccess'));
+    }
+  };
+
+  const removeAppFromCart = () => {
+    if (checkAppAllreadyAdded()) {
+      cart[1](cart[0].filter((appli) => appli.identification !== app.identification));
+      msg.success(i18n.__('components.Card.removeAppSuccess'));
+    } else {
+      msg.error(i18n.__('components.Card.removeAppError'));
+    }
   };
 
   const mapList = (func) => app.tags.map(func);
@@ -130,10 +159,16 @@ const detailApp = ({ app, ready }) => {
             </Grid>
             <AppAvatar detailApp />
           </Grid>
-          <div className={classes.buttonSave}>
-            <Button variant="contained" onClick={addAppToCart}>
-              {i18n.__('pages.detailApp.Save')}
-            </Button>
+          <div className={classes.buttons}>
+            {checkAppAllreadyAdded() ? (
+              <Button variant="contained" style={{ backgroundColor: 'red' }} onClick={removeAppFromCart}>
+                {i18n.__('pages.detailApp.Remove')}
+              </Button>
+            ) : (
+              <Button variant="contained" onClick={addAppToCart}>
+                {i18n.__('pages.detailApp.Save')}
+              </Button>
+            )}
           </div>
         </Paper>
       </Container>
