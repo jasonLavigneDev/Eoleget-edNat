@@ -22,8 +22,7 @@ import lightTheme from '../themes/light';
 
 // Styles CSS //
 const containerStyle = {
-  marginTop: lightTheme.spacing(15),
-  marginLeft: lightTheme.spacing(60),
+  marginTop: lightTheme.spacing(10),
   maxWidth: '1000px',
   minWidth: '550px',
 };
