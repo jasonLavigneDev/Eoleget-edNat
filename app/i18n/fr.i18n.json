@@ -86,7 +86,8 @@
     },
     "detailPack": {
       "details": "Détails du pack",
-      "getPack": "Obtenir le pack"
+      "getPack": "Obtenir le pack",
+      "back": "Retour"
     },
     "packCreation": {
       "title": "Création de pack",
@@ -137,7 +138,8 @@
       "Tags": "Tag",
       "Save": "Enregistrer l'application",
       "Remove": "Retirer l'application du pack",
-      "addAppSuccess": "Application ajoutée au panier"
+      "addAppSuccess": "Application ajoutée au panier",
+      "back": "Retour"
     },
     "packEditPage": {
       "title": "Edition de pack",
@@ -145,7 +147,7 @@
       "packDescription": "Description du pack",
       "color": "Couleur du pack",
       "edit": "Editer",
-      "cancel": "Annuler",
+      "back": "Retour",
       "updateSuccess": "Pack mis à jour"
     }
   },

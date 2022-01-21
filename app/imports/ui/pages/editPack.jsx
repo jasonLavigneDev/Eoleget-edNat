@@ -147,16 +147,17 @@ const EditPackPage = ({ pack, apps, ready }) => {
     setDescription(event.target.value);
   };
 
+  const goBack = () => {
+    history.push('/packs');
+    window.location.reload();
+  };
+
   const editPack = () => {
     const color = JSON.parse(localStorage.getItem('color'));
     Meteor.call('packs.updatePack', { _id: pack._id, name, applications: dataId, description, color }, (err) => {
       if (err) msg.error(err.reason);
       else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
     });
-  };
-
-  const goBack = () => {
-    history.push('/packs');
   };
 
   return !ready ? (
@@ -208,7 +209,7 @@ const EditPackPage = ({ pack, apps, ready }) => {
                 {i18n.__('pages.packEditPage.edit')}
               </Button>
               <Button variant="contained" onClick={goBack}>
-                {i18n.__('pages.packEditPage.cancel')}
+                {i18n.__('pages.packEditPage.back')}
               </Button>
             </div>
           </form>

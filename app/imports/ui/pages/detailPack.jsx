@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -17,8 +18,7 @@ import theme from '../themes/light';
 
 // Styles CSS //
 const containerStyle = {
-  marginTop: theme.spacing(15),
-  marginLeft: theme.spacing(60),
+  marginTop: theme.spacing(10),
   maxWidth: '1000px',
   minWidth: '550px',
 };
@@ -32,12 +32,23 @@ const divMainContentStyle = {
 };
 const ButtonGetPackStyle = {
   width: '30%',
-  marginLeft: '35%',
   marginTop: '2%',
+};
+const divButtonStyle = {
+  marginTop: 10,
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-evenly',
 };
 // End styles //
 
 function DetailPack({ pack, apps, ready }) {
+  const history = useHistory();
+  const goBack = () => {
+    history.push('/packs');
+    window.location.reload();
+  };
   if (!ready) return <Spinner full />;
 
   const mapList = (func) => apps.map(func);
@@ -59,9 +70,14 @@ function DetailPack({ pack, apps, ready }) {
             {mapList((app) => (
               <AppPacksCard app={app} />
             ))}
-            <Button variant="contained" sx={ButtonGetPackStyle}>
-              {i18n.__('pages.detailPack.getPack')}
-            </Button>
+            <div style={divButtonStyle}>
+              <Button variant="contained" sx={ButtonGetPackStyle}>
+                {i18n.__('pages.detailPack.getPack')}
+              </Button>
+              <Button variant="contained" sx={ButtonGetPackStyle} onClick={goBack}>
+                {i18n.__('pages.detailPack.back')}
+              </Button>
+            </div>
           </div>
         </Paper>
       </Container>
