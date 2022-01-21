@@ -141,8 +141,8 @@
       "downloadLabel": "Download",
       "Licence": "Licence",
       "Tags": "Tag",
-      "Save": "Save application",
-      "Remove": "Remove app from cart",
+      "Save": "Add to pack",
+      "Remove": "Remove from cart",
       "addAppSuccess": "Application added to cart",
       "back": "Back"
     },

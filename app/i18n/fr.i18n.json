@@ -136,8 +136,8 @@
       "downloadLabel": "Télécharger",
       "Licence": "Licence",
       "Tags": "Tag",
-      "Save": "Enregistrer l'application",
-      "Remove": "Retirer l'application du pack",
+      "Save": "Ajouter au pack",
+      "Remove": "Retirer du pack",
       "addAppSuccess": "Application ajoutée au panier",
       "back": "Retour"
     },
