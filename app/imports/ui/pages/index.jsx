@@ -104,6 +104,14 @@ function Index() {
     return initialValue;
   });
 
+  const [loadingCart, setLoadingCart] = useState(true);
+
+  useEffect(() => {
+    // update cart in localStorage when it's updated (except for initial load)
+    // eslint-disable-next-line no-unused-expressions
+    loadingCart ? setLoadingCart(false) : localStorage.setItem('cart', JSON.stringify(cart[0]));
+  }, [cart[0]]);
+
   const handleChangePage = (event, value) => {
     changePage(value);
   };
@@ -196,7 +204,7 @@ function Index() {
     <Fade in>
       <div className={classes.main}>
         <div className={classes.storeTitleContainer}>
-          <AppCart />
+          <AppCart cart={cart} />
 
           <div className={classes.storeTitleContent}>
             <Typography variant="h4" component="div">
@@ -240,7 +248,7 @@ function Index() {
                   )}
                   <span className={classes.cardContainer}>
                     {mapList((app) => (
-                      <AppCard app={app} cart={cart[0]} />
+                      <AppCard app={app} cart={cart} />
                     ))}
                   </span>
                   {total > ITEM_PER_PAGE && (

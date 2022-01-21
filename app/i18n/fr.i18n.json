@@ -135,6 +135,7 @@
       "Licence": "Licence",
       "Tags": "Tag",
       "Save": "Enregistrer l'application",
+      "Remove": "Retirer l'application du pack",
       "addAppSuccess": "Application ajoutée au panier"
     },
     "packEditPage": {
@@ -210,7 +211,12 @@
       "doVerify": "Envoyer un courriel"
     },
     "Card": {
-      "addButtonTooltip": "Ajouter l'application"
+      "addButtonTooltip": "Ajouter l'application",
+      "showMore": "Voir plus",
+      "addAppSuccess": "Application ajoutée au panier.",
+      "removeAppSuccess": "Application retirée du panier.",
+      "addAppError": "Cette application est déjà dans le panier.",
+      "removeAppError": "Cette application n'est pas dans le panier."
     },
     "Search": {
       "searchingApp": "Quelle app cherchez vous ?",
@@ -234,6 +240,9 @@
     "UserAvatarGallery": {
       "title": "Créer votre avatar",
       "subtitle": "depuis la galerie d'images"
+    },
+    "appCart": {
+      "createPack": "Créer le Pack"
     }
   },
   "layouts": {

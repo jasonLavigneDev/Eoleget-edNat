@@ -140,6 +140,7 @@
       "Licence": "Licence",
       "Tags": "Tag",
       "Save": "Save application",
+      "Remove": "Remove app from cart",
       "addAppSuccess": "Application added to cart"
     },
     "packEditPage": {
@@ -215,7 +216,12 @@
       "doVerify": "Send an email"
     },
     "Card": {
-      "addButtonTooltip": "Add this app"
+      "addButtonTooltip": "Add this app",
+      "showMore": "Show more",
+      "addAppSuccess": "Application added to cart",
+      "removeAppSuccess": "Application removed from cart",
+      "addAppError": "This application is already in cart",
+      "removeAppError": "This application is not in cart"
     },
     "Search": {
       "searchingApp": "Which app are you looking for ?",
@@ -239,6 +245,9 @@
     "UserAvatarGallery": {
       "title": "Create your avatar",
       "subtitle": "from image gallery"
+    },
+    "appCart": {
+      "createPack": "Create Pack"
     }
   },
   "layouts": {

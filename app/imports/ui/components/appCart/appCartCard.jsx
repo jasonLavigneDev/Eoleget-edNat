@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardActions, CardContent, Tooltip, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import PropTypes from 'prop-types';
 
 // Style CSS //
 const cardContentStyle = {
@@ -16,15 +17,18 @@ const cardContentStyle = {
   },
 };
 
-// End Style //
-export default function AppCardCart() {
+function AppCardCart({ app, cart }) {
+  const RemoveAppFromCart = () => {
+    cart[1](cart[0].filter((appli) => appli.identification !== app.identification));
+  };
+
   return (
     <Card>
       <CardContent sx={cardContentStyle}>
-        nom de lapplication
+        {app.nom}
         <CardActions>
           <Tooltip title="delete">
-            <IconButton>
+            <IconButton onClick={RemoveAppFromCart}>
               <CloseIcon />
             </IconButton>
           </Tooltip>
@@ -33,3 +37,10 @@ export default function AppCardCart() {
     </Card>
   );
 }
+
+AppCardCart.propTypes = {
+  app: PropTypes.objectOf(PropTypes.any).isRequired,
+  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
+
+export default AppCardCart;

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { IconButton, Collapse, Paper, Box, Divider, Button } from '@mui/material';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import i18n from 'meteor/universe:i18n';
 import AppCardCart from './appCartCard';
 
 const divStyle = {
@@ -22,11 +25,18 @@ const paperStyle = {
   alignItems: 'center',
 };
 
-export default function AppCart() {
+function AppCart({ cart }) {
   const [showMore, setShowMore] = useState(false);
+  const history = useHistory();
   React.useEffect(() => {
     setShowMore(showMore);
   }, [showMore]);
+
+  const mapList = (func) => cart[0].map(func);
+
+  const isDisable = cart[0].lenght > 0;
+
+  const handleCreatePackButton = () => history.push('/packs/creation');
 
   return (
     <div style={divStyle}>
@@ -42,15 +52,13 @@ export default function AppCart() {
         </IconButton>
         <Collapse in={showMore} orientation="horizontal" unmountOnExit>
           <Paper sx={paperStyle}>
-            <AppCardCart />
-            <AppCardCart />
-            <AppCardCart />
-            <AppCardCart />
-            <AppCardCart />
+            {mapList((app) => (
+              <AppCardCart app={app} cart={cart} />
+            ))}
             <Divider />
-            <Button sx={buttonCreateStyle} variant="contained">
+            <Button sx={buttonCreateStyle} variant="contained" disabled={isDisable} onClick={handleCreatePackButton}>
               {' '}
-              Creer le pack
+              {i18n.__('components.appCart.createPack')}
             </Button>
           </Paper>
         </Collapse>
@@ -58,3 +66,9 @@ export default function AppCart() {
     </div>
   );
 }
+
+AppCart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
+
+export default AppCart;

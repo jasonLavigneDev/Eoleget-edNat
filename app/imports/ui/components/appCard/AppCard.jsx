@@ -4,6 +4,7 @@ import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 
 import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -47,10 +48,31 @@ const useStyles = makeStyles((theme) => ({
 function AppCard({ app, cart }) {
   const classes = useStyles();
 
+  const checkAppAllreadyAdded = () => {
+    let res;
+    const tab = [];
+    cart[0].map((appli) => tab.push(appli.identification));
+    if (tab.includes(app.identification)) res = true;
+    else res = false;
+    return res;
+  };
+
   const addAppToCart = () => {
-    cart.push(app);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    msg.success(i18n.__('components.AppCard.addAppli'));
+    if (checkAppAllreadyAdded()) {
+      msg.error(i18n.__('components.Card.addAppError'));
+    } else {
+      cart[1]([...cart[0], app]);
+      msg.success(i18n.__('components.Card.addAppSuccess'));
+    }
+  };
+
+  const removeAppToCart = () => {
+    if (checkAppAllreadyAdded()) {
+      cart[1](cart[0].filter((appli) => appli.identification !== app.identification));
+      msg.success(i18n.__('components.Card.removeAppSuccess'));
+    } else {
+      msg.error(i18n.__('components.Card.removeAppError'));
+    }
   };
 
   const isUpperCase = (str) => {
@@ -74,16 +96,29 @@ function AppCard({ app, cart }) {
           </AppBadge>
         }
         action={
-          <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
-            <IconButton
-              aria-label="add"
-              onClick={() => {
-                addAppToCart();
-              }}
-            >
-              <AddIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
+          !checkAppAllreadyAdded() ? (
+            <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
+              <IconButton
+                aria-label="add"
+                onClick={() => {
+                  addAppToCart();
+                }}
+              >
+                <AddIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
+              <IconButton
+                aria-label="remove"
+                onClick={() => {
+                  removeAppToCart();
+                }}
+              >
+                <RemoveIcon fontSize="large" />
+              </IconButton>
+            </Tooltip>
+          )
         }
         className={classes.cardHeader}
       />
@@ -95,7 +130,7 @@ function AppCard({ app, cart }) {
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Link to={`/detailapp/${app.identification}`} className={classes.imgLogo}>
-          <Button variant="contained">Voir plus</Button>
+          <Button variant="contained">{i18n.__('components.Card.showMore')}</Button>
         </Link>
       </CardActions>
     </Card>
@@ -104,7 +139,7 @@ function AppCard({ app, cart }) {
 
 AppCard.propTypes = {
   app: PropTypes.objectOf(PropTypes.any).isRequired,
-  cart: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
+  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default AppCard;
