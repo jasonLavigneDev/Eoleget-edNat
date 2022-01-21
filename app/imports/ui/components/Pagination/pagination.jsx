@@ -2,22 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@mui/styles';
 import PaginationMui from '@mui/material/Pagination';
 
-const useStyles = makeStyles(() => ({
-  paginationContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '10px 0',
-  },
-}));
+// Styles CSS //
+const paginationContainerStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  margin: '10px 0',
+};
+// End CSS //
 
 function Pagination({ nbPages, page }) {
-  const classes = useStyles();
-
   return (
-    <div className={classes.paginationContainer}>
+    <div style={paginationContainerStyle}>
       <PaginationMui count={nbPages} page={page} size="large" />
     </div>
   );

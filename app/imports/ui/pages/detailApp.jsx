@@ -3,7 +3,6 @@ import i18n from 'meteor/universe:i18n';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
@@ -19,51 +18,36 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import Spinner from '../components/system/Spinner';
 import Applications from '../../api/applications/applications';
 import AppAvatar from '../components/appCard/AppAvatar';
+import lightTheme from '../themes/light';
 
-const useStyle = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(15),
-    marginLeft: theme.spacing(60),
-    maxWidth: '1000px',
-    minWidth: '550px',
-  },
-  rootPaper: {
-    padding: theme.spacing(1),
-  },
-  main: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyItems: 'center',
-  },
-  content: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: '20px',
-  },
-  listIcon: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  iconButtonList: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  iconSpan: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '5%',
-  },
-}));
+// Styles CSS //
+const containerStyle = {
+  marginTop: lightTheme.spacing(15),
+  marginLeft: lightTheme.spacing(60),
+  maxWidth: '1000px',
+  minWidth: '550px',
+};
+const paperStyle = {
+  padding: lightTheme.spacing(1),
+};
+const gridContainerStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyItems: 'center',
+};
+const iconSpanStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+};
+const buttonSaveStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '5%',
+};
+// End styles //
 
 const detailApp = ({ app, ready }) => {
-  const classes = useStyle();
-
   const cart = useState(() => {
     // getting stored value
     const saved = localStorage.getItem('cart');
@@ -112,12 +96,12 @@ const detailApp = ({ app, ready }) => {
     <Spinner full />
   ) : (
     <Fade in>
-      <Container className={classes.root}>
-        <Paper className={classes.rootPaper}>
+      <Container sx={containerStyle}>
+        <Paper sx={paperStyle}>
           <Typography variant="h4" component="div">
             {i18n.__('pages.detailApp.title')}
           </Typography>
-          <Grid container className={classes.main}>
+          <Grid container sx={gridContainerStyle}>
             <Grid item xs={8} style={{ paddingLeft: '18px' }}>
               <Typography variant="h6" component="div">
                 {app.nom}
@@ -127,31 +111,31 @@ const detailApp = ({ app, ready }) => {
               </Typography>
               <p>{i18n.__('pages.detailApp.winget')}</p>
               <p>{app.versions[0]}</p>
-              <span className={classes.iconSpan}>
+              <span style={iconSpanStyle}>
                 <IconButton title={i18n.__('pages.detailApp.redirect')}>
                   <LanguageIcon />
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.redirectLabel')}</p>
               </span>
-              <span className={classes.iconSpan}>
+              <span style={iconSpanStyle}>
                 <IconButton title={i18n.__('pages.detailApp.download')}>
                   <GetAppIcon />
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.downloadLabel')}</p>
               </span>
-              <span className={classes.iconSpan}>
+              <span style={iconSpanStyle}>
                 <IconButton disabled>
                   <MonetizationOnIcon />
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.Licence')}</p>
               </span>
-              <span className={classes.iconSpan}>
+              <span style={iconSpanStyle}>
                 <IconButton disabled>
                   <LocalOfferIcon />
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.Tags')}</p>
               </span>
-              <span className={classes.iconSpan}>
+              <span style={iconSpanStyle}>
                 {mapList((tag) => (
                   <Button variant="outlined">{tag}</Button>
                 ))}
@@ -159,7 +143,7 @@ const detailApp = ({ app, ready }) => {
             </Grid>
             <AppAvatar detailApp />
           </Grid>
-          <div className={classes.buttons}>
+          <div style={buttonSaveStyle}>
             {checkAppAllreadyAdded() ? (
               <Button variant="contained" style={{ backgroundColor: 'red' }} onClick={removeAppFromCart}>
                 {i18n.__('pages.detailApp.Remove')}

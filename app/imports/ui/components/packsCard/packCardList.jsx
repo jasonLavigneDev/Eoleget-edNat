@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@mui/styles';
-
 import PackCard from './packCard';
 import Pagination from '../Pagination/pagination';
 
-const useStyles = makeStyles(() => ({
-  cardContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-  },
-}));
+// Styles CSS //
+const cardContainerStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+};
+// End styles //
 
 // eslint-disable-next-line no-unused-vars
 const PackCardList = ({ isUserPack }) => {
-  const classes = useStyles();
-
   return (
     <>
       <Pagination nbPages={20} page={1} />
-      <span className={classes.cardContainer}>
+      <span style={cardContainerStyle}>
         <PackCard isUserPack={isUserPack} />
         <PackCard isUserPack={isUserPack} />
         <PackCard isUserPack={isUserPack} />

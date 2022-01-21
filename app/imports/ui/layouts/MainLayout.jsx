@@ -2,8 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { makeStyles } from '@mui/styles';
-
 import { useAppContext } from '../contexts/context';
 import TopBar from '../components/menus/TopBar';
 import VerifyNeeded from '../components/system/VerifyNeeded';
@@ -21,28 +19,27 @@ const CreationPackPage = lazy(() => import('../pages/packCreation'));
 const UserPack = lazy(() => import('../pages/userPack'));
 const EditPack = lazy(() => import('../pages/editPack'));
 
-const useStyles = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    position: 'relative',
-  },
-  content: {
-    display: 'flex',
-    marginTop: 40,
-    flexGrow: 1,
-    width: '100%',
-  },
-}));
+// Styles CSS //
+const rootDivStyle = {
+  display: 'flex',
+  position: 'relative',
+};
+const mainStyle = {
+  display: 'flex',
+  marginTop: 40,
+  flexGrow: 1,
+  width: '100%',
+};
+// End styles //
 
 const MainLayout = () => {
-  const classes = useStyles();
   const [{ user, loadingUser, authenticated }] = useAppContext();
   const verifyEmail = Meteor.settings.public.emailValidation === true;
 
   return (
-    <div className={classes.root}>
+    <div style={rootDivStyle}>
       <TopBar />
-      <main id="main" className={classes.content}>
+      <main id="main" style={mainStyle}>
         <Suspense fallback={<Spinner />}>
           <Switch>
             {user ? (

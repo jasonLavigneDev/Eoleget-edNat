@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 
-import { makeStyles } from '@mui/styles';
 import Fade from '@mui/material/Fade';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -23,60 +22,34 @@ import { useObjectState } from '../../api/utils/hooks';
 import LanguageSwitcher from '../components/system/LanguageSwitcher';
 import AvatarPicker from '../components/users/AvatarPicker';
 import Spinner from '../components/system/Spinner';
+import theme from '../themes/light';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(20),
-    marginLeft: theme.spacing(40),
-  },
-  rootPaper: {
-    padding: theme.spacing(5),
-  },
-  form: {
-    marginTop: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  buttonGroup: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    marginTop: '10px',
-  },
-  keycloakMessage: {
-    padding: theme.spacing(1),
-  },
-  inputFile: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    opacity: 0,
-  },
-  fileWrap: {
-    position: 'relative',
-  },
-  buttonWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  maxWidth: {
-    maxWidth: '88vw',
-  },
-  labelLanguage: {
-    fontSize: 16,
-    margin: 10,
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  keycloakLink: {
-    textDecoration: 'underline',
-    '&:hover, &:focus': {
-      color: theme.palette.secondary.main,
-      outline: 'none',
-    },
-  },
-}));
+// Styles CSS //
+const containerStyle = {
+  marginTop: theme.spacing(20),
+  marginLeft: theme.spacing(40),
+};
+const paperStyle = {
+  padding: theme.spacing(5),
+};
+const gridFormStyle = {
+  marginTop: theme.spacing(2),
+  display: 'flex',
+  flexDirection: 'column',
+};
+const buttonGroupStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-evenly',
+  marginTop: '10px',
+};
+const labelLanguageStyle = {
+  fontSize: 16,
+  margin: 10,
+  marginTop: 20,
+  marginBottom: 20,
+};
+// End styles //
 
 const defaultState = {
   username: '',
@@ -87,7 +60,6 @@ const defaultState = {
 };
 
 function ProfilePage() {
-  const classes = useStyles();
   const [userData, setUserData] = useState(defaultState);
   const [submitOk, setSubmitOk] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -234,11 +206,11 @@ function ProfilePage() {
 
   return (
     <Fade in>
-      <Container className={classes.root}>
-        <Paper className={classes.rootPaper}>
+      <Container sx={containerStyle}>
+        <Paper sx={paperStyle}>
           <Typography variant="h4">{i18n.__('pages.ProfilePage.title')}</Typography>
           <form noValidate autoComplete="off">
-            <Grid container className={classes.form} spacing={2}>
+            <Grid container sx={gridFormStyle} spacing={2}>
               <Grid container spacing={2} style={{ alignItems: 'center' }}>
                 <Grid item xs={8} style={{ paddingLeft: '18px' }}>
                   <TextField
@@ -331,11 +303,11 @@ function ProfilePage() {
             </Grid>
             <Grid item>
               <Grid container spacing={2} style={{ alignItems: 'center' }}>
-                <p className={classes.labelLanguage}>{i18n.__('pages.ProfilePage.languageLabel')}</p>
+                <p style={labelLanguageStyle}>{i18n.__('pages.ProfilePage.languageLabel')}</p>
                 <LanguageSwitcher relative />
               </Grid>
             </Grid>
-            <div className={classes.buttonGroup}>
+            <div style={buttonGroupStyle}>
               <Button variant="contained" onClick={resetForm}>
                 {i18n.__('pages.ProfilePage.reset')}
               </Button>

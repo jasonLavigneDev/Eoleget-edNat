@@ -1,6 +1,5 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import { makeStyles } from '@mui/styles';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
@@ -22,25 +21,25 @@ const LanguageSwitcher = ({ topbar, relative }) => {
     dispatch({ type: 'language', data: { language: lan } });
   };
 
-  const useStyles = makeStyles(() => ({
-    switcher: {
-      color: 'red',
-      marginTop: topbar || relative ? null : 60,
-    },
-    flag: {
-      height: 15,
-    },
-  }));
-  const classes = useStyles();
+  // Styles CSS //
+  const switcherStyle = {
+    color: 'red',
+    marginTop: topbar || relative ? null : 60,
+  };
+  const flagStyle = {
+    height: 15,
+  };
+  // End Styles //
+
   const flag = (
     <img
       alt={`flag for ${i18n.getLanguageNativeName(language)}`}
-      className={classes.flag}
+      style={flagStyle}
       src={`/images/i18n/${language}.png`}
     />
   );
   return (
-    <div className={classes.switcher}>
+    <div style={switcherStyle}>
       {topbar ? (
         <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
           {flag}

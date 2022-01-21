@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 
-import { makeStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
@@ -26,44 +25,40 @@ import { usePagination } from '../../api/utils/hooks';
 
 import Packs from '../../api/packs/packs';
 
-const useStyle = makeStyles(() => ({
-  main: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginTop: '5%',
-    padding: '0 15%',
-    marginBottom: '2%',
-  },
-  packsTitleContainer: {
-    width: '100%',
-  },
-  packsTitleContent: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  searchBar: {
-    width: '35%',
-  },
-  iconListe: {
-    display: 'flex',
-    flexDirection: 'row-reverse',
-    width: '100%',
-  },
-  cardContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f1f1fc',
-  },
-}));
+// Styles CSS //
+const divMainStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  minWidth: '100%',
+  marginTop: '5%',
+  padding: '0 15%',
+  marginBottom: '2%',
+};
+const divPackTitleContainerStyle = {
+  minWidth: '100%',
+};
+const divPackTitleContentStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+};
+const spanIconListStyle = {
+  display: 'flex',
+  flexDirection: 'row-reverse',
+  width: '100%',
+};
+const divCardContainerStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+// End styles //
 
 const ITEM_PER_PAGE = 15;
 
 function PackPage() {
   const [showModeList, setModeList] = useState(false);
-  const classes = useStyle();
 
   const [{ packPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
@@ -135,7 +130,7 @@ function PackPage() {
   };
 
   const searchField = (
-    <Grid item xs={12} sm={12} md={6} className={searchToggle ? null : classes.small}>
+    <Grid item xs={12} sm={12} md={6}>
       <Collapse in={searchToggle} collapsedSize={0}>
         <TextField
           margin="normal"
@@ -173,9 +168,9 @@ function PackPage() {
 
   return (
     <Fade in>
-      <div className={classes.main}>
-        <div className={classes.packsTitleContainer}>
-          <div className={classes.packsTitleContent}>
+      <div style={divMainStyle}>
+        <div style={divPackTitleContainerStyle}>
+          <div style={divPackTitleContentStyle}>
             <Typography variant="h4" component="div">
               {i18n.__('pages.Packs.packsStoreTitle')}
             </Typography>
@@ -186,7 +181,7 @@ function PackPage() {
             </Tooltip>
           </div>
           {searchField}
-          <span className={classes.iconListe}>
+          <span style={spanIconListStyle}>
             <Tooltip title="Mode liste">
               <IconButton
                 onClick={() => {
@@ -208,25 +203,23 @@ function PackPage() {
           </span>
           <div>
             <Paper>
-              <div className={classes.cardContainer}>
-                <Collapse in={!showModeList} collapsedsize={0}>
-                  {total > ITEM_PER_PAGE && (
-                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
-                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                    </Grid>
-                  )}
-                  <span className={classes.cardContainer}>
-                    {mapList((pack) => (
-                      <PackCard pack={pack} />
-                    ))}
-                  </span>
-                  {total > ITEM_PER_PAGE && (
-                    <Grid item xs={12} sm={12} md={12} lg={12} className={classes.pagination}>
-                      <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                    </Grid>
-                  )}
-                </Collapse>
-              </div>
+              <Collapse in={!showModeList} collapsedsize={0}>
+                {total > ITEM_PER_PAGE && (
+                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                  </Grid>
+                )}
+                <span style={divCardContainerStyle}>
+                  {mapList((pack) => (
+                    <PackCard pack={pack} />
+                  ))}
+                </span>
+                {total > ITEM_PER_PAGE && (
+                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                  </Grid>
+                )}
+              </Collapse>
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
               <PackList packs={packs} isUpperCase={isUpperCase} />
