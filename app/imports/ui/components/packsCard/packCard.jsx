@@ -173,11 +173,11 @@ const PackCard = ({ pack }) => {
         />
         <CardContent>
           {mapList((app) => (
-            <AppPacksCard app={app} />
+            <AppPacksCard key={app.identification} app={app} />
           ))}
           <Collapse in={showMore} unmountOnExit>
             {mapTotalList((app) => (
-              <AppPacksCard app={app} />
+              <AppPacksCard key={app.identification} app={app} />
             ))}
           </Collapse>
         </CardContent>

@@ -68,7 +68,7 @@ function DetailPack({ pack, apps, ready }) {
             </Typography>
             <p>{pack.description}</p>
             {mapList((app) => (
-              <AppPacksCard app={app} />
+              <AppPacksCard key={app.identification} app={app} />
             ))}
             <div style={divButtonStyle}>
               <Button variant="contained" sx={ButtonGetPackStyle}>

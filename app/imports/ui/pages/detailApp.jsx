@@ -149,7 +149,9 @@ const detailApp = ({ app, ready }) => {
               </span>
               <span style={iconSpanStyle}>
                 {mapList((tag) => (
-                  <Button variant="outlined">{tag}</Button>
+                  <Button key={tag} variant="outlined">
+                    {tag}
+                  </Button>
                 ))}
               </span>
             </Grid>

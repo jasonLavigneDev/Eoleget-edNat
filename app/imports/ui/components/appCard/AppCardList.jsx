@@ -68,7 +68,7 @@ function AppCardList() {
         </Grid>
       )}
       {mapList((app) => {
-        <AppCard app={app} cart={cart} />;
+        <AppCard key={app.identification} app={app} cart={cart} />;
       })}
       {total > ITEM_PER_PAGE && (
         <Grid item xs={12} sm={12} md={12} lg={12}>

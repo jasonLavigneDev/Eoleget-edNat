@@ -26,6 +26,7 @@ import AppCard from '../components/appCard/AppCard';
 import AppList from '../components/appCard/AppList';
 import Applications from '../../api/applications/applications';
 import AppCart from '../components/appCart/appCart';
+import { debounce } from '../utils';
 
 // Styles CSS //
 const gridPaginationStyle = {
@@ -135,15 +136,18 @@ function Index() {
       },
     });
 
+  const searchRef = useRef();
   const toggleSearch = () => updateGlobalState('searchToggle', !searchToggle);
-  const updateSearch = (e) => updateGlobalState('search', e.target.value);
+  const updateSearch = () => updateGlobalState('search', searchRef.current.value);
   const resetSearch = () => updateGlobalState('search', '');
+  const debouncedSearch = debounce(updateSearch, 300);
   const checkEscape = (e) => {
     if (e.keyCode === 27) {
       // ESCAPE key
       appPage.search = '';
       appPage.searchToggle = false;
       updateGlobalState('searchToggle', false);
+      updateGlobalState('search', '');
     }
   };
 
@@ -156,10 +160,10 @@ function Index() {
           label={i18n.__('pages.Store.searchText')}
           name="search"
           fullWidth
-          onChange={updateSearch}
+          onChange={debouncedSearch}
           onKeyDown={checkEscape}
           type="text"
-          value={search}
+          inputRef={searchRef}
           variant="outlined"
           inputProps={{
             ref: inputRef,
@@ -231,7 +235,7 @@ function Index() {
                   )}
                   <span style={divCardContainerStyle}>
                     {mapList((app) => (
-                      <AppCard app={app} cart={cart} />
+                      <AppCard key={app.identification} app={app} cart={cart} />
                     ))}
                   </span>
                   {total > ITEM_PER_PAGE && (

@@ -211,7 +211,7 @@ function PackPage() {
                 )}
                 <span style={divCardContainerStyle}>
                   {mapList((pack) => (
-                    <PackCard pack={pack} />
+                    <PackCard key={pack._id} pack={pack} />
                   ))}
                 </span>
                 {total > ITEM_PER_PAGE && (
