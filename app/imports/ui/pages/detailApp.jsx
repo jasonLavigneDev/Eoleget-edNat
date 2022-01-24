@@ -20,6 +20,7 @@ import Spinner from '../components/system/Spinner';
 import Applications from '../../api/applications/applications';
 import AppAvatar from '../components/appCard/AppAvatar';
 import lightTheme from '../themes/light';
+import ListVersion from '../components/version/listVersion';
 
 // Styles CSS //
 const containerStyle = {
@@ -118,7 +119,10 @@ const detailApp = ({ app, ready }) => {
                 {app.description}
               </Typography>
               <p>{i18n.__('pages.detailApp.winget')}</p>
-              <p>{app.versions[0]}</p>
+              <div style={{ display: 'flex' }}>
+                <p style={{ paddingRight: 5 }}>Versions :</p>
+                <ListVersion versions={app.versions} />
+              </div>
               <span style={iconSpanStyle}>
                 <IconButton title={i18n.__('pages.detailApp.redirect')}>
                   <LanguageIcon />
