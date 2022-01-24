@@ -14,12 +14,14 @@ import IconButton from '@mui/material/IconButton';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
+import ClearIcon from '@mui/icons-material/Clear';
 import { useTracker } from 'meteor/react-meteor-data';
 
 import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
 import Applications from '../../../api/applications/applications';
+import PackDelete from './packDelete';
 
 // Styles CSS //
 const divCardContainerStyle = {
@@ -68,6 +70,7 @@ const cardHeaderBlue = {
 
 const PackCard = ({ pack }) => {
   const [showMore, setShowMore] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [{ userId }] = useAppContext();
   const appli = useTracker(() => {
     Meteor.subscribe('applications.pack', { packAppli: pack.applications });
@@ -93,6 +96,10 @@ const PackCard = ({ pack }) => {
 
   const handleEditButton = () => {
     history.push(`/packs/edit/${pack._id}`);
+  };
+
+  const handleDeleteButton = () => {
+    setOpenModal(true);
   };
 
   const mapList = (func) => appli.slice(0, 2).map(func);
@@ -136,18 +143,31 @@ const PackCard = ({ pack }) => {
           sx={GetClassName()}
           action={
             <>
-              <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
-                <IconButton sx={iconButtonStyle} onClick={openDetailPack}>
-                  <OpenInNewIcon />
-                </IconButton>
-              </Tooltip>
               {pack.owner === userId ? (
-                <Tooltip title={i18n.__('components.PacksCard.editPack')}>
-                  <IconButton sx={iconButtonStyle} onClick={handleEditButton}>
-                    <EditIcon />
+                <div>
+                  <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
+                    <IconButton sx={iconButtonStyle} onClick={openDetailPack}>
+                      <OpenInNewIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title={i18n.__('components.PacksCard.editPack')}>
+                    <IconButton sx={iconButtonStyle} onClick={handleEditButton}>
+                      <EditIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title={i18n.__('components.PacksCard.deletePack')}>
+                    <IconButton sx={iconButtonStyle} onClick={handleDeleteButton}>
+                      <ClearIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+              ) : (
+                <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
+                  <IconButton sx={iconButtonStyle} onClick={openDetailPack}>
+                    <OpenInNewIcon />
                   </IconButton>
                 </Tooltip>
-              ) : null}
+              )}
             </>
           }
         />
@@ -177,6 +197,7 @@ const PackCard = ({ pack }) => {
           </Tooltip>
         </CardActions>
       </Card>
+      {openModal ? <PackDelete pack={pack} open={openModal} onClose={() => setOpenModal(false)} /> : null}
     </div>
   );
 };

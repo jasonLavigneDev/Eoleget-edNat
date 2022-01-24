@@ -152,6 +152,13 @@
     }
   },
   "components": {
+    "packDelete":{
+      "deleteSuccess": "Pack supprimé",
+      "title": "Suppression de pack",
+      "mainText": "Souhaitez-vous réellement supprimer ce pack ? Cette action est irréversible.",
+      "cancel": "Annuler",
+      "validateForm": "Valider"
+    },
     "AppCard": {
       "addAppli": "Application ajoutée au panier"
     },
@@ -238,7 +245,8 @@
     "PacksCard": {
       "packTooltip": "Voir le pack",
       "extendPack": "Etendre le pack",
-      "editPack": "Editer le pack"
+      "editPack": "Editer le pack",
+      "deletePack": "Supprimer le pack"
     },
     "UserAvatarGallery": {
       "title": "Créer votre avatar",
