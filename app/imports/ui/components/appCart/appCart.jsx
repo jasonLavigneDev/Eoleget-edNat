@@ -53,7 +53,7 @@ function AppCart({ cart }) {
         <Collapse in={showMore} orientation="horizontal" unmountOnExit>
           <Paper sx={paperStyle}>
             {mapList((app) => (
-              <AppCardCart app={app} cart={cart} />
+              <AppCardCart key={app.identification} app={app} cart={cart} />
             ))}
             <Divider />
             <Button sx={buttonCreateStyle} variant="contained" disabled={isDisable} onClick={handleCreatePackButton}>
