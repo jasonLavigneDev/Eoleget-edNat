@@ -24,6 +24,7 @@ import { useAppContext } from '../contexts/context';
 import { usePagination } from '../../api/utils/hooks';
 
 import Packs from '../../api/packs/packs';
+import { debounce } from '../utils';
 
 // Styles CSS //
 const divMainStyle = {
@@ -117,15 +118,20 @@ function PackPage() {
       },
     });
 
+  const searchRef = useRef();
   const toggleSearch = () => updateGlobalState('searchToggle', !searchToggle);
-  const updateSearch = (e) => updateGlobalState('search', e.target.value);
-  const resetSearch = () => updateGlobalState('search', '');
+  const updateSearch = () => updateGlobalState('search', searchRef.current.value);
+  const resetSearch = () => {
+    updateGlobalState('search', '');
+    searchRef.current.value = '';
+  };
+  const debouncedSearch = debounce(updateSearch, 300);
   const checkEscape = (e) => {
     if (e.keyCode === 27) {
       // ESCAPE key
-      packPage.search = '';
-      packPage.searchToggle = false;
       updateGlobalState('searchToggle', false);
+      updateGlobalState('search', '');
+      searchRef.current.value = '';
     }
   };
 
@@ -138,11 +144,12 @@ function PackPage() {
           label={i18n.__('pages.Packs.searchText')}
           name="search"
           fullWidth
-          onChange={updateSearch}
+          onChange={debouncedSearch}
           onKeyDown={checkEscape}
           type="text"
           value={search}
           variant="outlined"
+          inputRef={searchRef}
           inputProps={{
             ref: inputRef,
           }}
