@@ -28,16 +28,30 @@ const cardContentStyle = {
   display: 'flex',
   flexDirection: 'column',
   overflow: 'auto',
-  maxHeight: '150px',
+  maxHeight: 180,
 };
 const cardHeaderStyle = {
   background: 'linear-gradient(#5aa1d8,#555BE6 100%)',
   color: 'white',
+  maxHeight: 80,
 };
 const cardActionsStyle = {
   position: 'absolute',
   bottom: '-1%',
   right: '30%',
+};
+const typographieHeaderStyle = {
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  width: '11rem',
+};
+const typographieContentStyle = {
+  overflow: 'scroll',
+  textOverflow: 'ellipsis',
+};
+const cardContentLinkStyle = {
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 };
 // End styles //
 
@@ -78,7 +92,11 @@ function AppCard({ app, cart }) {
   return (
     <Card sx={cardStyle}>
       <CardHeader
-        title={<Typography variant="h6">{app.nom}</Typography>}
+        title={
+          <Typography variant="body1" style={typographieHeaderStyle}>
+            {app.nom}
+          </Typography>
+        }
         subheader={
           <Typography variant="body2" component="div">
             {app.versions === undefined ? 'N/A' : app.versions[0]}
@@ -117,10 +135,14 @@ function AppCard({ app, cart }) {
         sx={cardHeaderStyle}
       />
       <CardContent sx={cardContentStyle}>
-        <Typography variant="body1" component="div">
+        <Typography sx={typographieContentStyle} variant="body1" component="div">
           {des}
         </Typography>
-        {app.url !== undefined ? <a href={app.url}>{app.url}</a> : null}
+        {app.url !== undefined ? (
+          <a style={cardContentLinkStyle} href={app.url}>
+            {app.url}
+          </a>
+        ) : null}
       </CardContent>
       <CardActions sx={cardActionsStyle}>
         <Link to={`/detailapp/${app.identification}`}>
