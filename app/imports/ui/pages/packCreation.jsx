@@ -70,11 +70,7 @@ function CreatePackPage() {
 
   const [rows, setRows] = useState(data);
 
-  const deleteAppFromCart = (e) => {
-    if (e.row.id > -1) {
-      cart[0].splice(e.row.id - 1, 1);
-    }
-
+  const reloadData = () => {
     data = [];
     _id = 0;
     cart[0].map((app) => {
@@ -88,6 +84,14 @@ function CreatePackPage() {
       });
     });
     setRows(data);
+  };
+
+  const deleteAppFromCart = (e) => {
+    if (e.row.id > -1) {
+      cart[0].splice(e.row.id - 1, 1);
+    }
+
+    reloadData();
 
     localStorage.setItem('cart', JSON.stringify(cart[0]));
   };
@@ -161,7 +165,12 @@ function CreatePackPage() {
       { name, applications: dataId, creationDate: date, isValidated: true, description, color },
       (err) => {
         if (err) msg.error(err.reason);
-        else msg.success(i18n.__('pages.packCreation.createPackSuccess'));
+        else {
+          msg.success(i18n.__('pages.packCreation.createPackSuccess'));
+          cart[0] = [];
+          reloadData();
+          localStorage.setItem('cart', JSON.stringify(cart[0]));
+        }
       },
     );
   };
