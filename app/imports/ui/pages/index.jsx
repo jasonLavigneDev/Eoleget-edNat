@@ -139,15 +139,17 @@ function Index() {
   const searchRef = useRef();
   const toggleSearch = () => updateGlobalState('searchToggle', !searchToggle);
   const updateSearch = () => updateGlobalState('search', searchRef.current.value);
-  const resetSearch = () => updateGlobalState('search', '');
+  const resetSearch = () => {
+    updateGlobalState('search', '');
+    searchRef.current.value = '';
+  };
   const debouncedSearch = debounce(updateSearch, 300);
   const checkEscape = (e) => {
     if (e.keyCode === 27) {
       // ESCAPE key
-      appPage.search = '';
-      appPage.searchToggle = false;
       updateGlobalState('searchToggle', false);
       updateGlobalState('search', '');
+      searchRef.current.value = '';
     }
   };
 
