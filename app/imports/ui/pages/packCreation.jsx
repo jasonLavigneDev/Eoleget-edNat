@@ -155,6 +155,8 @@ function CreatePackPage() {
     setDescription(event.target.value);
   };
 
+  const history = useHistory();
+
   const createPack = () => {
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
@@ -173,8 +175,9 @@ function CreatePackPage() {
         }
       },
     );
+    history.push('/packs');
+    window.location.reload();
   };
-  const history = useHistory();
   const goBack = () => {
     history.push('/');
     window.location.reload();
@@ -197,6 +200,7 @@ function CreatePackPage() {
               type="text"
               variant="outlined"
               onChange={onUpdateName}
+              inputProps={{ maxLength: 32 }}
             />
             <TextField
               fullWidth
