@@ -16,6 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Typography } from '@mui/material';
 
 import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
@@ -65,6 +66,11 @@ const cardHeaderBlue = {
   display: 'flex',
   background: 'linear-gradient(0deg,#6a11cb,#2575fc)',
   color: 'white',
+};
+const typographieHeaderStyle = {
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  width: '18rem',
 };
 // End Style //
 
@@ -139,7 +145,11 @@ const PackCard = ({ pack }) => {
     <div style={divCardContainerStyle}>
       <Card sx={cardStyle}>
         <CardHeader
-          title={pack.name}
+          title={
+            <Typography variant="h6" style={typographieHeaderStyle}>
+              {pack.name}
+            </Typography>
+          }
           sx={GetClassName()}
           action={
             <>

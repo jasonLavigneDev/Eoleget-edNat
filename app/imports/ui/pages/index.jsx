@@ -60,7 +60,7 @@ const divCardContainerStyle = {
 };
 // End styles //
 
-const ITEM_PER_PAGE = 15;
+const ITEM_PER_PAGE = 16;
 
 function Index() {
   const [showModeList, setModeList] = useState(false);

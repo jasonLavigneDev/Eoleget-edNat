@@ -32,7 +32,7 @@ const divMainStyle = {
   flexDirection: 'column',
   minWidth: '100%',
   marginTop: '5%',
-  padding: '0 15%',
+  padding: '0 10%',
   marginBottom: '2%',
 };
 const divPackTitleContainerStyle = {
@@ -56,7 +56,7 @@ const divCardContainerStyle = {
 };
 // End styles //
 
-const ITEM_PER_PAGE = 15;
+const ITEM_PER_PAGE = 9;
 
 function PackPage() {
   const [showModeList, setModeList] = useState(false);
