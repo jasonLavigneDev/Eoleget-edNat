@@ -120,7 +120,7 @@ function AppCard({ app, cart }) {
               </IconButton>
             </Tooltip>
           ) : (
-            <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
+            <Tooltip title={i18n.__('components.Card.removeButtonTooltip')}>
               <IconButton
                 aria-label="remove"
                 onClick={() => {

@@ -226,7 +226,8 @@
       "doVerify": "Send an email"
     },
     "Card": {
-      "addButtonTooltip": "Add this app",
+      "addButtonTooltip": "Add this app to cart",
+      "removeButtonTooltip": "Remove this app to cart",
       "showMore": "Show more",
       "addAppSuccess": "Application added to cart",
       "removeAppSuccess": "Application removed from cart",
