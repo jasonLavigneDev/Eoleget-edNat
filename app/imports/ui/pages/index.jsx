@@ -121,9 +121,6 @@ function Index() {
     if (!search) return true;
     return searchText.indexOf(search.toLowerCase()) > -1;
   };
-  const isUpperCase = (str) => {
-    return str === str.toUpperCase();
-  };
 
   const mapList = (func) => items.filter((app) => filterApp(app)).map(func);
 
@@ -249,7 +246,7 @@ function Index() {
               </div>
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
-              <AppList applications={applications} isUpperCase={isUpperCase} />
+              <AppList applications={applications} cart={cart} />
             </Collapse>
           </div>
         </div>

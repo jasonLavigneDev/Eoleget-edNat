@@ -1,63 +1,209 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
+import { Link } from 'react-router-dom';
 
-// import MaterialTable from '@material-table/core';
-import { DataGrid } from '@mui/x-data-grid';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Checkbox from '@mui/material/Checkbox';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import TablePagination from '@mui/material/TablePagination';
+import Button from '@mui/material/Button';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
-function AppList({ applications, isUpperCase }) {
-  const columns = [
-    {
-      title: 'id',
-      field: 'id',
-      editable: 'never',
-      hide: true,
-    },
-    {
-      title: i18n.__('components.AppList.application'),
-      field: 'application',
-      editable: 'never',
-      width: 250,
-    },
-    {
-      title: i18n.__('components.AppList.description'),
-      field: 'description',
-      width: 700,
-    },
-    {
-      title: i18n.__('components.AppList.version'),
-      field: 'versions',
-      width: 130,
-    },
-    {
-      title: i18n.__('components.AppList.url'),
-      field: 'url',
-      width: 250,
-    },
-  ];
+import ListVersion from '../version/listVersion';
+import EnhancedTableHead from '../appTable/tableHead';
 
-  const data = [];
-  let _id = 0;
-  applications.map((app) => {
-    _id += 1;
-    let { description } = app;
-    if (isUpperCase(app.description)) {
-      description = app.description.toLowerCase();
+function AppList({ applications, cart }) {
+  function descendingComparator(a, b, orderBy) {
+    if (b[orderBy] < a[orderBy]) {
+      return -1;
     }
-    return data.push({ id: _id, application: app.nom, description, versions: app.versions[0], url: app.url });
-  });
+    if (b[orderBy] > a[orderBy]) {
+      return 1;
+    }
+    return 0;
+  }
+
+  function getComparator(order, orderBy) {
+    return order === 'desc'
+      ? (a, b) => descendingComparator(a, b, orderBy)
+      : (a, b) => -descendingComparator(a, b, orderBy);
+  }
+
+  // This method is created for cross-browser compatibility, if you don't
+  // need to support IE11, you can use Array.prototype.sort() directly
+  function stableSort(array, comparator) {
+    const stabilizedThis = array.map((el, index) => [el, index]);
+    stabilizedThis.sort((a, b) => {
+      const order = comparator(a[0], b[0]);
+      if (order !== 0) {
+        return order;
+      }
+      return a[1] - b[1];
+    });
+    return stabilizedThis.map((el) => el[0]);
+  }
+
+  const [order, setOrder] = React.useState('asc');
+  const [orderBy, setOrderBy] = React.useState('application');
+  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+
+  const handleRequestSort = (event, property) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
+  };
+
+  const checkAppAllreadyAdded = (app) => {
+    let res;
+    const tab = [];
+    cart[0].map((appli) => tab.push(appli.identification));
+    if (tab.includes(app.identification)) res = true;
+    else res = false;
+    return res;
+  };
+
+  const isSelected = (app) => {
+    return checkAppAllreadyAdded(app);
+  };
+
+  const addAppToCart = (app) => {
+    if (checkAppAllreadyAdded(app)) {
+      msg.error(i18n.__('components.Card.addAppError'));
+    } else {
+      cart[1]([...cart[0], app]);
+      msg.success(i18n.__('components.Card.addAppSuccess'));
+    }
+  };
+
+  const removeAppToCart = (app) => {
+    if (checkAppAllreadyAdded(app)) {
+      cart[1](cart[0].filter((appli) => appli.identification !== app.identification));
+      msg.success(i18n.__('components.Card.removeAppSuccess'));
+    } else {
+      msg.error(i18n.__('components.Card.removeAppError'));
+    }
+  };
+
+  const handleClick = (event, app) => {
+    const selectedIndex = selected.indexOf(app.identification);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      addAppToCart(app);
+      newSelected = newSelected.concat(selected, app.identification);
+    } else if (selectedIndex === 0) {
+      removeAppToCart(app);
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      removeAppToCart(app);
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      removeAppToCart(app);
+      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
+    }
+
+    setSelected(newSelected);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <div style={{ height: 600 }}>
-      <DataGrid columns={columns} rows={data} rowHeight={30} />
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+          <TableBody>
+            {stableSort(applications, getComparator(order, orderBy))
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((app, index) => {
+                const isItemSelected = isSelected(app);
+                const labelId = `enhanced-table-checkbox-${index}`;
+                return (
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    aria-checked={isItemSelected}
+                    tabIndex={-1}
+                    key={app.identification}
+                    selected={isItemSelected}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        color="primary"
+                        checked={isItemSelected}
+                        onClick={(event) => handleClick(event, app)}
+                        inputProps={{
+                          'aria-labelledby': labelId,
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell>{app.nom}</TableCell>
+                    <TableCell>{app.description}</TableCell>
+                    <ListVersion versions={app.versions} />
+                    <TableCell>{app.url}</TableCell>
+                    <TableCell>
+                      <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
+                        <Link to={`/detailapp/${app.identification}`}>
+                          <IconButton>
+                            <OpenInNewIcon />
+                          </IconButton>
+                        </Link>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={applications.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+      <Button
+        aria-label="add"
+        onClick={() => {
+          addAppToCart();
+        }}
+      >
+        Ajouter au panier
+      </Button>
+      <Button
+        aria-label="remove"
+        onClick={() => {
+          removeAppToCart();
+        }}
+      >
+        Annuler
+      </Button>
     </div>
   );
-  // return <MaterialTable columns={columns} data={data} title="Liste des applications" options={options} />;
 }
 
 AppList.propTypes = {
   applications: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isUpperCase: PropTypes.func.isRequired,
+  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default AppList;
