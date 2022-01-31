@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:image" content="images/icon-microstockr-webclip.png">
+    <meta property="og:image:secure_url" content="images/icon-microstockr-webclip.png">
+    <title>Microstockr</title>
+    <meta name="description" content="Microstock photography made easy. Microstockr is a mobile and desktop app that lets you track portfolio earnings in real-time across multiple agencies.">
+    <!-- Bootstrap -->
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/public/css/normalize.css" rel="stylesheet">
+    <link href="/public/css/animate.css" rel="stylesheet">
+    <link href="/public/css/styles.css" rel="stylesheet">
+    <!---------------->
+    <link rel="shortcut icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/public/images/icon-microstockr-webclip.png">
+    <link rel="shortcut icon" href="/public/images/icon-microstockr-webclip.png">
+</head>
+
+<body class="error-page clearfix">
+    <div class="cookie-policy"><span class="disclaimer">We use cookies to operate our website as expected and for performance and analytics purposes. By using our website, you agree to our use of cookies as described in our <a href="/privacy-policy#cookies"><span data-hover="Cookie Policy.">Cookie Policy.</span></a></span> <a href="" onclick="Site.saveCookieConsent(event)" class="button button-xs">I Accept</a></div>
+    <header>
+        <a class="logo" href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45.906" height="45.9" viewBox="0 0 45.906 45.9">
+                <style type="text/css">
+                .shadow-fill {
+                    opacity: 0.16;
+                }
+
+                .logo-fill {
+                    fill: #fff;
+                }
+                </style>
+
+                <circle class="shadow-fill" cx="9.53" cy="8.828" r="1.772" />
+                <path class="shadow-fill" d="M23.473,32.966a9.541,9.541,0,1,0-9.541-9.541A9.552,9.552,0,0,0,23.473,32.966Zm0-17.331a7.791,7.791,0,1,1-7.791,7.79A7.8,7.8,0,0,1,23.473,15.635Z" transform="translate(0 0)" />
+                <path class="shadow-fill" d="M35.75.95H11.112A10.168,10.168,0,0,0,.956,11.106V35.744A10.168,10.168,0,0,0,11.112,45.9H35.75A10.168,10.168,0,0,0,45.906,35.744V11.106A10.168,10.168,0,0,0,35.75.95ZM11.112,2.7H35.75a8.416,8.416,0,0,1,8.406,8.406v8.332c-1.093-2.832-2.277-5-4.528-5-1.726,0-3.048,1.184-4.4,3.165a13.115,13.115,0,0,0-24.871,5.818,13.263,13.263,0,0,0,.138,1.808C6.3,20.97,5.068,19.946,2.706,20.168V11.106A8.416,8.416,0,0,1,11.112,2.7ZM2.706,21.939c1.952-.26,2.622.557,8.768,6.779a13.02,13.02,0,0,0,1.754,2.893c-1.409,1.8-2.307,2.309-2.635,2.309-2.164,0-3.742-6.3-7.887-5.534Zm9.4,1.486a11.37,11.37,0,1,1,11.369,11.37A11.37,11.37,0,0,1,12.1,23.425ZM35.75,44.15H11.112a8.416,8.416,0,0,1-8.406-8.406V30.167c3.039-.889,4.492,5.5,7.887,5.5.42,0,1.62-.01,3.836-2.758a13.108,13.108,0,0,0,22.165-9.487,13.163,13.163,0,0,0-.567-3.835c1.491-2.419,2.53-3.4,3.6-3.4,1.517,0,2.529,2.813,3.624,5.854l.875,2.426.029-.01V35.744A8.416,8.416,0,0,1,35.75,44.15Z" transform="translate(0 0)" />
+
+                <circle class="logo-fill" cx="8.574" cy="7.878" r="1.772" />
+                <path class="logo-fill" d="M22.517,32.015a9.541,9.541,0,1,0-9.541-9.54A9.551,9.551,0,0,0,22.517,32.015Zm0-17.331a7.791,7.791,0,1,1-7.791,7.791A7.8,7.8,0,0,1,22.517,14.684Z" transform="translate(0 0)" />
+                <path class="logo-fill" d="M34.794,0H10.157A10.168,10.168,0,0,0,0,10.156V34.794A10.168,10.168,0,0,0,10.157,44.95H34.794A10.168,10.168,0,0,0,44.95,34.794V10.156A10.168,10.168,0,0,0,34.794,0ZM10.157,1.75H34.794A8.416,8.416,0,0,1,43.2,10.156v8.331c-1.092-2.832-2.277-4.995-4.528-4.995-1.756,0-3.085,1.231-4.4,3.162A13.115,13.115,0,0,0,9.4,22.475a13.272,13.272,0,0,0,.138,1.807c-4.147-4.216-5.4-5.288-7.786-5.064V10.156A8.416,8.416,0,0,1,10.157,1.75ZM1.75,20.989c2.036-.271,2.786.762,8.768,6.781a13.021,13.021,0,0,0,1.755,2.893C10.527,32.9,9.728,32.97,9.637,32.97c-2.164,0-3.719-6.3-7.886-5.534Zm9.4,1.486a11.37,11.37,0,1,1,11.369,11.37A11.37,11.37,0,0,1,11.148,22.475ZM34.794,43.2H10.157A8.416,8.416,0,0,1,1.75,34.794V29.217c3.1-.908,4.435,5.5,7.886,5.5,1.09,0,2.35-.9,3.839-2.755a13.108,13.108,0,0,0,22.161-9.49,13.163,13.163,0,0,0-.569-3.84c1.495-2.434,2.513-3.393,3.6-3.393,1.918,0,3.027,4.485,4.528,8.284V34.794A8.416,8.416,0,0,1,34.794,43.2Z" transform="translate(0 0)" />
+            </svg>
+        </a>
+        <nav>
+            <a href="/pricing"><span data-hover="Pricing">Pricing</span></a>
+            <a href="/faq"><span data-hover="F.A.Q.">F.A.Q.</span></a>
+            <a href="/privacy-policy"><span data-hover="Privacy Policy">Privacy Policy</span></a>
+            <a href="/terms-conditions"><span data-hover="Terms of Service">Terms of Service</span></a>
+            <a href="/privacy-policy#cookies"><span data-hover="Cookies">Cookies</span></a>
+            <a href="/contact"><span data-hover="Contact">Contact</span></a>
+        </nav>
+        <a href="#" class="hamburger">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="24px" height="18px" viewBox="0 0 24 18" style="enable-background:new 0 0 24 18;" xml:space="preserve">
+            <style type="text/css">
+                .hamburger-fill{fill:none;stroke:#fff;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+            </style>
+            <path class="hamburger-fill ham-stroke1" d="M0.9,0.9h22.3"/>
+            <path class="hamburger-fill ham-stroke2" d="M0.9,8.6h22.3"/>
+            <path class="hamburger-fill ham-stroke3" d="M0.9,16.4h22.3"/>
+            </svg>
+        </a>
+    </header>
+
+    <div class="content clearfix">
+        <section>
+            <div class="wrapper">
+                <img src="/public/images/icon-error-page.svg" alt="" class="error-icon">
+                <h2>Page not found</h2>
+                <p>The link you clicked may be broken or the page might have been removed.</p>
+                <p>Go to <a href="/"><span data-hover="HOMEPAGE.">HOMEPAGE.</span></a></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <nav class="wow fadeInUp">
+            <a href="/pricing"><span data-hover="Pricing">Pricing</span></a>
+            <a href="/faq"><span data-hover="F.A.Q.">F.A.Q.</span></a>
+            <a href="/privacy-policy"><span data-hover="Privacy Policy">Privacy Policy</span></a>
+            <a href="/terms-conditions"><span data-hover="Terms of Service">Terms of Service</span></a>
+            <a href="/privacy-policy#cookies"><span data-hover="Cookies">Cookies</span></a>
+            <a href="/contact"><span data-hover="Contact">Contact</span></a>
+        </nav>
+        <div class="contact">
+            <a href="https://twitter.com/Microstockr" target="_blank">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33.1px" height="26.2px" viewBox="-361.4 228.8 33.1 26.2" style="enable-background:new -361.4 228.8 33.1 26.2;" xml:space="preserve">
+                    <style type="text/css">
+                    .shadow {
+                        opacity: 0.16;
+                        fill: none;
+                        stroke: #000000;
+                        stroke-width: 1.5;
+                        stroke-linecap: square;
+                    }
+
+                    .footer-contact {
+                        fill: none;
+                        stroke: #42555D;
+                        stroke-width: 1.5;
+                        stroke-linecap: square;
+                    }
+                    </style>
+                    <path class="shadow" d="M-330.1,232.9c-1.6,0.3-4.2,0-5.6-0.3c-4.1-4.3-11.4-0.5-10,5.3c-4.9-0.2-9.2-2.6-12.1-6.1
+                c-1.5,2.6-0.8,6.1,1.8,7.8c-1,0-1.9-0.3-2.7-0.7v0.1c0,2.8,2,5.2,4.7,5.7c-0.9,0.2-1.8,0.3-2.7,0.1c0.7,2.3,2.9,4,5.5,4.1
+                c-2.5,2-5.4,2.7-8.7,2.4c2.6,1.7,5.7,2.6,9,2.6c14.8,0.1,17.3-11.1,16.4-15.8C-332.6,237.7-331.2,235.3-330.1,232.9z" />
+                    <path class="footer-contact" d="M-331.1,231.9c-1.6,0.3-4.2,0-5.6-0.3c-4.1-4.3-11.4-0.5-10,5.3c-4.9-0.2-9.2-2.6-12.1-6.1
+                c-1.5,2.6-0.8,6.1,1.8,7.8c-1,0-1.9-0.3-2.7-0.7v0.1c0,2.8,2,5.2,4.7,5.7c-0.9,0.2-1.8,0.3-2.7,0.1c0.7,2.3,2.9,4,5.5,4.1
+                c-2.5,2-5.4,2.7-8.7,2.4c2.6,1.7,5.7,2.6,9,2.6c14.8,0.1,17.3-11.1,16.4-15.8C-333.6,236.7-332.2,234.3-331.1,231.9z" />
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/Microstockr" target="_blank">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="13.3px" height="25px" viewBox="0 0 13.3 25" style="enable-background:new 0 0 13.3 25;" xml:space="preserve">
+                    <style type="text/css">
+                    .shadow {
+                        opacity: 0.16;
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                        fill: none;
+                        stroke: #000000;
+                        stroke-width: 2;
+                    }
+
+                    .footer-contact {
+                        fill-rule: evenodd;
+                        clip-rule: evenodd;
+                        fill: none;
+                        stroke: #42555D;
+                        stroke-width: 2;
+                    }
+                    </style>
+                    <path class="shadow" d="M12.2,1.8H9c0,0-5.1-0.5-5.1,4.8c0,1.1,0,2.2,0,2.2H1.8l0,4.2h2.1V24h4.8V12.9h2.8l0.7-4.2H8.7V7
+                    c0,0-0.3-1.4,1.4-1.4h2.1L12.2,1.8z" />
+                    <path class="footer-contact" d="M11.5,1H8.2c0,0-5.1-0.5-5.1,4.8c0,1.1,0,2.2,0,2.2H1l0,4.2h2.1v11.1h4.8V12.1h2.8L11.4,8H7.9V6.3
+                    c0,0-0.3-1.4,1.4-1.4h2.1L11.5,1z" />
+                </svg>
+            </a>
+            <a href="mailto:support@microstockr.com" target="_blank">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="33.1px" height="26.3px" viewBox="-366 227.5 33.1 26.3" style="enable-background:new -366 227.5 33.1 26.3;" xml:space="preserve">
+                    <style type="text/css">
+                    .shadow {
+                        opacity: 0.16;
+                        fill: none;
+                        stroke: #000000;
+                        stroke-width: 1.5;
+                    }
+
+                    .footer-contact {
+                        fill: none;
+                        stroke: #42555D;
+                        stroke-width: 1.5;
+                    }
+                    </style>
+                    <path class="shadow" d="M-337,229.5h-24c-1.6,0-3,1.3-3,2.9v17.5c0,1.6,1.3,2.9,3,2.9h24.1c1.6,0,3-1.3,3-2.9v-17.5
+                C-334,230.8-335.3,229.5-337,229.5z" />
+                    <polyline class="shadow" points="-337.6,233.8 -349,243.7 -360.4,233.9 " />
+                    <line class="shadow" x1="-360.4" y1="247.9" x2="-354" y2="243.1" />
+                    <line class="shadow" x1="-344.2" y1="242.9" x2="-337.6" y2="247.9" />
+                    <path class="footer-contact" d="M-338,228.5h-24c-1.6,0-3,1.3-3,2.9v17.5c0,1.6,1.3,2.9,3,2.9h24.1c1.6,0,3-1.3,3-2.9v-17.5
+                C-335,229.8-336.3,228.5-338,228.5z" />
+                    <polyline class="footer-contact" points="-338.6,232.8 -350,242.7 -361.4,232.9 " />
+                    <line class="footer-contact" x1="-361.4" y1="246.9" x2="-355" y2="242.1" />
+                    <line class="footer-contact" x1="-345.2" y1="241.9" x2="-338.6" y2="246.9" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/site.js"></script>
+
+</body>
+
+</html>

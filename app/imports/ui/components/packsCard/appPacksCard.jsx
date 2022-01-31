@@ -32,7 +32,7 @@ function AppPacksCard({ app }) {
     <Card sx={cardStyle}>
       <CardContent sx={cardContentStyle}>
         <AppBadge invisible>
-          <AppAvatar detailApp={false} />
+          <AppAvatar nameApp={app.identification} isDetailApp={false} />
         </AppBadge>
         <Typography variant="body1">{app.nom}</Typography>
         <CardActions>

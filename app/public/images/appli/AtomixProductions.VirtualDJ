@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+		<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+		<!--[if IE 7]>    <html class="lt-ie9 lt-ie8"> <![endif]-->
+		<!--[if IE 8]>    <html class="lt-ie9"> <![endif]-->
+		<!--[if gt IE 8]><!--> <html class="" lang="en"> <!--<![endif]-->
+		<head>
+		<link rel="canonical" href="https://www.virtualdj.com/"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+		<!-- Old Explorer HTML5 enabling codeenable use of HTML5 sectioning elements in Internet Explorer 6-9, Safari 4.x (and iPhone 3.x), and Firefox 3.x.
+		-->
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<style type="text/css">
+		.clear {
+		zoom: 1;
+		display: block;
+		}
+		</style>
+		<![endif]--><script async src="https://www.googletagmanager.com/gtag/js?id=UA-7811656-1"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-7811656-1');</script><title>VirtualDJ - The #1 Most Popular DJ Software</title>
+<meta name="description" content="With over 100,000,000 downloads, VirtualDJ packs the most advanced DJ technology. Both perfect to start DJing, and perfect for advanced pro DJs."/>
+<meta name="keywords" content="dj software,mixing software,mix mp3,virtualdj,virtual dj,mp3 mix,dj,video,vj,software,download,bpm,turntable,mixer,disc jockey,beat,beat matching,seamless,loops,party,atomix,atomixmp3,atomix productions,numark,cue,vinyl,serato,ssl,automated,recording,cd,cd burning,pitch,tempo,master tempo,skins,plugins,player,turntables,radio,broadcasting,shoutcast,winamp,playlist,scratch,sync,nightclub,night club,night,club,hercules,dj,virtual vinyl,timecode,timecoded,vinyl,timecoded vinyl,tcv"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="revisit-after" content="5 days"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
+<!-- Apple Android - retina and non retina -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png"/>
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png"/>
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"/>
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png"/>
+<meta name="apple-mobile-web-app-title" content="VirtualDJ Website"/>
+<!-- ICO file for IE and old browsers -->
+<link rel="icon" type="image/icon" href="/favicon.ico?ver=8.0"/>
+<link rel="shortcut icon" type="image/icon" href="/favicon.ico?ver=8.0"/> 
+<!-- modern icons all other browsers - png -->
+<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192"/>
+<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160"/>
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"/>
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"/>
+<!-- Win8 tile -->
+<meta name="msapplication-TileColor" content="#ff0045"/>
+<meta name="msapplication-TileImage" content="/mstile-144x144.png"/>
+<meta name="application-name" content="VirtualDJ Website" />
+<!-- IE11 tiles -->
+<meta name="msapplication-square70x70logo" content="/mstile-70x70.png"/>
+<meta name="msapplication-square150x150logo" content="/mstile-150x150.png"/>
+<meta name="msapplication-wide310x150logo" content="/mstile-310x150.png"/>
+<meta name="msapplication-square310x310logo" content="/mstile-310x310.png"/>
+
+<meta property="og:title" content="VirtualDJ - The #1 Most Popular DJ Software" /><meta property="og:type" content="article" /><meta property="og:url" content="https://www.virtualdj.com/"/><meta property="og:site_name" content="VirtualDJ Website"/><meta property="og:description" content="With over 100,000,000 downloads, VirtualDJ packs the most advanced DJ technology. Both perfect to start DJing, and perfect for advanced pro DJs." /><meta property="og:image" content="" /><meta property="fb:admins" content="stephane.clavel,1347391771"/><link rel="stylesheet" href="/css/v9-core.css?foo=20211130" type="text/css"/><link rel="stylesheet" href="/css/slider.css?foo=20211130" type="text/css"/><link rel="stylesheet" href="/css/in-view.css?foo=20211130" type="text/css"/><link rel="stylesheet" href="/css/magnific-popup.css?foo=20211130" type="text/css"/><link rel="stylesheet" href="/css/frontpage-v4.css?foo=20211130" type="text/css"/><link rel="stylesheet" href="/css/ytinline-video.css?foo=20211130" type="text/css"/><link rel="stylesheet" href="/css/frontpage2020-banner.css?foo=20211130" type="text/css"/><script src="/js/jquery-1.11.0.min.js" language="javascript" type="text/javascript"></script><script src="/js/common.js?foo=20211130" language="javascript" type="text/javascript"></script><script src="/js/reflection.js?foo=20211130" language="javascript" type="text/javascript"></script><script src="/js/slider.js?foo=20211130" language="javascript" type="text/javascript"></script><script src="/js/in-view.js?foo=20211130" language="javascript" type="text/javascript"></script><script src="/js/jquery.magnific-popup.min.js?foo=20211130" language="javascript" type="text/javascript"></script><script src="/js/frontpage2021-banner.js?foo=20211130" language="javascript" type="text/javascript"></script><script src="/js/ytinline-video.js?foo=20211130" language="javascript" type="text/javascript"></script><script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=1c8e9398-bc90-42af-bea0-b998896f3ac0"> </script>
+<script>
+window.zESettings = { webWidget: { 
+  contactOptions: { enabled: true },
+  helpCenter: { 
+    originalArticleButton: false
+  },
+  contactForm: {
+    tags: ['ip.194.167.18.244']
+  }
+} };
+zE('webWidget', 'helpCenter:setSuggestions', { labels: ['main'] });
+</script><base target="_top"></head><body id="body"><section id="outer-wrapper">
+  	<section id="inner-wrapper">
+	  <!-- HEADER -->
+	  <header id="pageheader">
+		<div id="headerwrap">
+			<a href="http://www.virtualdj.com"><div id="headerlogo"></div></a>
+	     	<div id="headerslogan">
+				<span class="text-white" id="sloganfirst">THE #1 MOST POPULAR DJ SOFTWARE</span>
+				<span class="text-light" id="sloganlast"> FOR AUDIO & VIDEO MIXING</span>
+			 </div>
+		 </div>
+	  </header>
+		<!-- NAVIGATION -->
+		<nav id="top-menu">
+		<ul id="topmenu-full">
+		<li class="topmenu-level1 nolink" id="menu-logo">
+			<a href="http://www.virtualdj.com"><img id="mobile-logo" src="/images/v9/menu/logo.png"/></a>
+		</li>
+		<li class="topmenu-level1"><a href="/products/virtualdj/features.html">Products</a>
+		<div class="mega-dropdown">
+			<section class="fullgrid">
+				<article class="grid-1-1 grid-large-1-24">&nbsp;</article>
+				<article class="grid-1-3 grid-medium-1-3 grid-large-6-24">
+					<b>VirtualDJ</b>
+						<a href="/download/index.html" class="menu-link"><i class="icon-caret-right"></i> Download</a>
+						<a href="/buy/index.html" class="menu-link"><i class="icon-caret-right"></i> Buy</a>
+						<a href="/products/virtualdj/features.html" class="menu-link"><i class="icon-caret-right"></i> Features</a>
+						<a href="/products/virtualdj/price.html" class="menu-link"><i class="icon-caret-right"></i> Price & Licenses</a>
+						<a href="/products/virtualdj/screenshot.html" class="menu-link"><i class="icon-caret-right"></i> Screenshots</a>
+				</article>
+				<article class="grid-1-3 grid-medium-1-3 grid-large-6-24">
+						<b>Online Music Catalogs</b>
+						<a href="/products/onlinecatalogs.html" class="menu-link"><i class="icon-caret-right"></i> Content Subscriptions</a>
+						<br>
+						<b>DJ Hardware</b>
+						<a href="/products/hardware.html" class="menu-link"><i class="icon-caret-right"></i> Controllers & Mixers</a>
+						<a href="/buy/controlvinyl.html" class="menu-link"><i class="icon-caret-right"></i> DVS Timecode Vinyl</a>
+				</article>
+				<article class="grid-1-3 grid-medium-1-3 grid-large-6-24">
+						<b>Other products</b>
+						<a href="/products/vdjremote.html" class="menu-link"><i class="icon-caret-right"></i> Remote for Android & iOS</a>
+						<a href="/buy/clothing.html" class="menu-link"><i class="icon-caret-right"></i> Clothing & Swag</a>
+						<br>
+						<b>Legacy Products</b>
+						<a href="/products/legacy.html" class="menu-link"><i class="icon-caret-right"></i> Old versions</a>
+				</article>
+				<article class="grid-1-1 grid-medium-1-1 grid-large-5-24 menu-image-container">
+					<center>
+					<img class="menu-image menu-image-vdj" src="/images/v9/menu/menu-products.png?ver=2020" />
+					<a href="/download/index.html"><button class="button button-gray hover-blue">Download</button></a>&nbsp;&nbsp;
+					<a href="/buy/index.html"><button class="button button-gray hover-blue">Buy</button></a>
+					</center>
+				</article>
+			</section>
+		</div>
+		</li>
+		<li class="topmenu-level1"><a href="/download/index.html">Download</a>
+			<div class="mega-dropdown">
+				<section class="fullgrid">
+					<article class="grid-1-1 grid-large-1-24">&nbsp;</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>VirtualDJ</b>
+							<a href="/download/index.html" class="menu-link"><i class="icon-caret-right"></i> Download</a>
+							<a href="/manuals/virtualdj/index.html" class="menu-link"><i class="icon-caret-right"></i> User Manual</a>
+							<a href="/manuals/hardware/index.html" class="menu-link"><i class="icon-caret-right"></i> Hardware Manuals</a>
+							<br>
+							<a href="/download/index.html"><button class="button button-gray hover-blue">Download</button></a>
+					</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>Plugins & Addons</b>
+							<a href="/plugins/index.html?category=effects&subcat=1" class="menu-link"><i class="icon-caret-right"></i> Audio Effects</a>
+							<a href="/plugins/index.html?category=effects&subcat=2" class="menu-link"><i class="icon-caret-right"></i> Video Effects</a>
+							<a href="/plugins/index.html?category=skins" class="menu-link"><i class="icon-caret-right"></i> Interface/Skins</a>
+							<a href="/plugins/index.html?category=samples" class="menu-link"><i class="icon-caret-right"></i> Sample Packs</a>
+					</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>DVS Timecode</b>
+							<a href="/products/timecode/cd.html" class="menu-link"><i class="icon-caret-right"></i> Timecode CD</a>
+					</article>
+					<article class="grid-1-1 grid-large-1-24">&nbsp;</article>
+					<article class="grid-1-1 grid-large-4-24 menu-image-container">
+						<center>
+							<img class="menu-image" src="/images/v9/menu/menu-download.png" />
+						</center>
+					</article>
+				</section>
+			</div>
+		</li>
+		<li class="topmenu-level1"><a href="/buy/index.html">Buy</a>
+			<div class="mega-dropdown">
+				<section class="fullgrid">
+					<article class="grid-1-1 grid-medium-1-1 grid-large-5-24 menu-image-container">
+						<center>
+						<img class="menu-image menu-image-vdj" src="/images/v9/menu/menu-products.png?ver=2020" />
+						<a href="/buy/index.html?product=promonthly"><button class="button button-gray hover-blue">Buy Now</button></a>
+						</center>
+					</article>
+					<article class="grid-1-1 grid-large-1-24">&nbsp;</article>
+					<article class="grid-1-3 grid-medium-1-3 grid-large-6-24">
+						<b>VirtualDJ</b>
+						<a href="/buy/index.html" class="menu-link"><i class="icon-caret-right"></i> Buy License</a>
+						<a href="/products/virtualdj/price.html" class="menu-link"><i class="icon-caret-right"></i> Licensing Options</a>
+						<a href="/products/business.html" class="menu-link"><i class="icon-caret-right"></i> Business License</a>
+						<a href="/products/virtualdj/price.html#comparison" class="menu-link"><i class="icon-caret-right"></i> Comparison Chart</a>
+					</article>
+					<article class="grid-1-3 grid-medium-1-3 grid-large-6-24">
+						<b>Content Catalogs</b>
+						<a href="/buy/index.html?product=cuaudio" class="menu-link"><i class="icon-caret-right"></i> Buy Audio Catalog</a>
+						<a href="/buy/index.html?product=cuvideo" class="menu-link"><i class="icon-caret-right"></i> Buy Video Catalog</a>
+						<a href="/buy/index.html?product=cukaraoke" class="menu-link"><i class="icon-caret-right"></i> Buy Karaoke Catalog</a>
+					</article>
+					<article class="grid-1-3 grid-medium-1-3 grid-large-6-24">
+						<b>Other products</b>
+						<a href="/products/vdjremote.html" class="menu-link"><i class="icon-caret-right"></i> Remote for Android & iOS</a>
+						<a href="/buy/controlvinyl.html" class="menu-link"><i class="icon-caret-right"></i> DVS Timecode Vinyl</a>
+						<a href="/buy/clothing.html" class="menu-link"><i class="icon-caret-right"></i> Clothing & Swag</a>
+					</article>
+				</section>
+			</div>
+
+		</li>
+		<li class="topmenu-level1"><a href="/forums/index.html">Community</a>
+			<div class="mega-dropdown">
+				<section class="fullgrid">
+					<article class="grid-1-1 grid-large-1-24">&nbsp;</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>Create & Contribute</b>
+							<a href="/wiki/Developers.html" class="menu-link"><i class="icon-caret-right"></i> Developer SDK</a>
+							<a href="/wiki/PluginSDK8.html" class="menu-link"><i class="icon-caret-right"></i> Create Plugins</a>
+							<a href="/wiki/Skin%20SDK%208.html" class="menu-link"><i class="icon-caret-right"></i> Create Skins</a>
+							<a href="/wiki/Modify%20a%20Skin.html" class="menu-link"><i class="icon-caret-right"></i> Modify a skin</a>
+					</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>Networks</b>
+							<a href="/cloudlists/index.html" class="menu-link"><i class="icon-caret-right"></i> CloudLists</a>
+							<a href="/djs/index.html" class="menu-link"><i class="icon-caret-right"></i> Featured DJs</a>
+							<a href="/users/index.html" class="menu-link"><i class="icon-caret-right"></i> User Network</a>
+					</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>Forums</b>
+							<a href="/forums/81/VirtualDJ_Technical_Support.html" class="menu-link"><i class="icon-caret-right"></i> Technical Support</a>
+							<a href="/forums/30/General_Discussion.html" class="menu-link"><i class="icon-caret-right"></i> General Topics</a>
+							<a href="/forums/18/Wishes_and_new_features.html" class="menu-link"><i class="icon-caret-right"></i> Wishes for new features</a>
+							<br>
+							<a href="/forums/index.html"><button class="button button-gray hover-blue">Forums</button></a>
+					</article>
+					<article class="grid-1-1 grid-large-4-24 menu-image-container">
+						<center>
+							<img class="menu-image" src="/images/v9/menu/menu-community.png" />
+						</center>
+					</article>
+				</section>
+			</div>
+		</li>
+		<li class="topmenu-level1"><a href="/help/">Support</a>
+			<div class="mega-dropdown">
+				<section class="fullgrid">
+					<article class="grid-1-1 grid-large-4-24 menu-image-container">
+						<center>
+							<br>
+							<img class="menu-image" src="/images/v9/menu/menu-support.png" />
+						</center>
+					</article>
+					<article class="grid-1-1 grid-large-2-24">&nbsp;</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>Knowledge Articles</b>
+							<a href="/wiki/FAQ.html" class="menu-link"><i class="icon-caret-right"></i> Questions & Answers</a>
+							<a href="/wiki/index.html" class="menu-link"><i class="icon-caret-right"></i> Knowledge database (wiki)</a>
+					</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>Manuals</b>
+							<a href="/manuals/virtualdj/index.html" class="menu-link"><i class="icon-caret-right"></i> Software Manual</a>
+							<a href="/manuals/hardware/index.html" class="menu-link"><i class="icon-caret-right"></i> Hardware Manuals</a>
+						<br>
+						<b>Tutorials</b>
+							<a href="/help/videotutorials.html?view=gettingstarted" class="menu-link"><i class="icon-caret-right"></i> Getting Started</a>
+							<a href="/help/videotutorials.html?view=quicktips" class="menu-link"><i class="icon-caret-right"></i> Quick Tips</a>
+					</article>
+					<article class="grid-1-3 grid-large-6-24">
+						<b>Help & Support</b>
+							<a href="/help/" class="menu-link"><i class="icon-caret-right"></i> Help Center</a>
+         
+							<br>
+							<a href="/help/"><button class="button button-gray hover-blue">Get Help</button></a>
+					</article>
+				</section>
+			</div>
+		</li>
+				<li class="topmenu-level1"><a href="/users/connect.html">Connect</a>
+			<div class="mega-dropdown">
+				<section class="fullgrid">
+					<article  class="grid-1-1 grid-large-4-24 menu-image-container">
+						<center>
+							<img class="menu-image" src="/images/v9/menu/menu-login.png" />
+						</center>
+					</article>
+					<article class="grid-1-1 grid-large-1-24 menu-image-container">&nbsp;</article>
+					<article class="grid-1-3 grid-large-3-24 menu-image-container">
+						<br><br>
+						<b>Connect & Login</b>
+							<a href="/users/create.html" class="menu-link"><i class="icon-caret-right"></i> Create Account</a>
+							<a href="/contact/cantlogin.html" class="menu-link"><i class="icon-caret-right"></i> Forgot Password</a>
+					</article>
+					<article class="grid-1-1 grid-medium-1-1 grid-large-16-24">
+						<div id="menu-sociallogin">
+							<b>Connect & login with your social media account or email</b>
+							<form action="/users/connect.html" method="POST">
+								<input type="hidden" name="returnUrl" value="/index.html">
+								<button class="button button-gray hover-blue" type="submit" name="MailLogin" ><i class="icon-envelope"></i>&nbsp;Email</button>
+								<button class="button button-gray hover-blue" type="submit" name="FacebookLogin"><i class="icon-facebook-sign"></i>&nbsp;Facebook</button>
+								<button class="button button-gray hover-blue" type="submit" name="MicrosoftLogin"><i class="icon-windows"></i>&nbsp;Microsoft</button>
+								<button class="button button-gray hover-blue" type="submit" name="AppleLogin"><i class="icon-apple"></i>&nbsp;Apple</button>
+								<button class="button button-gray hover-blue" type="submit" name="GoogleLogin"><i class="icon-google-plus"></i>&nbsp;Google</button>
+							</form>
+						</div>
+					</article>
+				</section>
+			</div>
+		</li>
+				<li class="topmenu-level1" id="topmenu-last">&nbsp;</li>
+	</ul>
+	<div id="mobilemenu-button" class="mobilemenu-button">
+		<span id="mobilemenu-toggle">
+			  <div class="bar1"></div>
+			  <div class="bar2"></div>
+			  <div class="bar3"></div>
+		</span>
+	</div>
+</nav>	
+
+<div id="mobilemenu-wrapper">	
+	<nav id="mobile-menu">
+			<ul id="topmenu-mobile" class="mobilemenu-hidden">
+				<li class="topmobile-level1">
+					<label for="mobiledrop-1">Products</label>
+					<input type="radio" name="mobilemenu-selected" id="mobiledrop-1"/>
+					<div class="mobile-megamenu">
+					   <b>VirtualDJ</b>
+						<a href="/download/index.html" class="menu-link"><i class="icon-caret-right"></i> Download</a>
+						<a href="/buy/index.html" class="menu-link"><i class="icon-caret-right"></i> Buy</a>
+						<a href="/products/virtualdj/features.html" class="menu-link"><i class="icon-caret-right"></i> Features</a>
+						<a href="/products/virtualdj/price.html" class="menu-link"><i class="icon-caret-right"></i> Price & Licenses</a>
+						<a href="/products/virtualdj/screenshot.html" class="menu-link"><i class="icon-caret-right"></i> Screenshots</a>
+						<b>Online Catalogs</b>
+						<a href="/products/onlinecatalogs.html" class="menu-link"><i class="icon-caret-right"></i> Content Subscriptions</a>
+						<br>
+						<b>Hardware</b>
+						<a href="/products/hardware.html" class="menu-link"><i class="icon-caret-right"></i> Controllers & Mixers</a>
+						<a href="/buy/controlvinyl.html" class="menu-link"><i class="icon-caret-right"></i> DVS Timecode Vinyl & CD</a>
+						<b>Other products</b>
+						<a href="/products/vdjremote.html" class="menu-link"><i class="icon-caret-right"></i> Remote for Android & iOS</a>
+						<a href="/buy/clothing.html" class="menu-link"><i class="icon-caret-right"></i> Clothing & Swag</a>
+						<br>
+						<b>Legacy Products</b>
+						<a href="/products/legacy.html" class="menu-link"><i class="icon-caret-right"></i> Old versions</a>
+					</div>
+				</li>
+				<li class="topmobile-level1">
+					<label for="mobiledrop-2">Download</label>
+					<input type="radio" name="mobilemenu-selected" id="mobiledrop-2"/>
+					<div class="mobile-megamenu">
+						<b>VirtualDJ</b>
+							<a href="/download/index.html" class="menu-link"><i class="icon-caret-right"></i> Download</a>
+							<a href="/manuals/virtualdj/index.html" class="menu-link"><i class="icon-caret-right"></i> User Manual</a>
+							<a href="/manuals/hardware/index.html" class="menu-link"><i class="icon-caret-right"></i> Hardware Manuals</a>
+						<b>Plugins & Addons</b>
+							<a href="/plugins/index.html?category=effects&subcat=1" class="menu-link"><i class="icon-caret-right"></i> Audio Effects</a>
+							<a href="/plugins/index.html?category=effects&subcat=2" class="menu-link"><i class="icon-caret-right"></i> Video Effects</a>
+							<a href="/plugins/index.html?category=skins" class="menu-link"><i class="icon-caret-right"></i> Interface/Skins</a>
+							<a href="/plugins/index.html?category=samples" class="menu-link"><i class="icon-caret-right"></i> Sample Packs</a>
+						<b>DVS Timecode</b>
+							<a href="/products/timecode/cd.html" class="menu-link"><i class="icon-caret-right"></i> Timecode CD signal</a>
+					</div>
+				</li>
+				<li class="topmobile-level1">
+					<a href="/buy/index.html"><label>Buy</label></a>
+				</li>
+				<li class="topmobile-level1">
+					<label for="mobiledrop-3">Community</label>
+					<input type="radio" name="mobilemenu-selected" id="mobiledrop-3"/>
+					<div class="mobile-megamenu">
+						<b>Forums</b>
+              <a href="/forums/index.html" class="menu-link"><i class="icon-caret-right"></i> All Forums</a>
+							<a href="/forums/81/VirtualDJ_Technical_Support.html" class="menu-link"><i class="icon-caret-right"></i> Technical Support</a>
+							<a href="/forums/30/General_Discussion.html" class="menu-link"><i class="icon-caret-right"></i> General Topics</a>
+							<a href="/forums/18/Wishes_and_new_features.html" class="menu-link"><i class="icon-caret-right"></i> Wishes for new features</a>
+						<b>Networks</b>
+							<a href="/cloudlists/index.html" class="menu-link"><i class="icon-caret-right"></i> CloudLists</a>
+							<a href="/djs/index.html" class="menu-link"><i class="icon-caret-right"></i> Featured DJs</a>
+							<a href="/users/index.html" class="menu-link"><i class="icon-caret-right"></i> User Network</a>
+						<b>Create & Contribute</b>
+							<a href="/wiki/Developers.html" class="menu-link"><i class="icon-caret-right"></i> Developer SDK</a>
+							<a href="/wiki/PluginSDK8.html" class="menu-link"><i class="icon-caret-right"></i> Create Plugin</a>
+							<a href="/wiki/Skin%20SDK%208.html" class="menu-link"><i class="icon-caret-right"></i> Create Skins</a>
+							<a href="/wiki/Modify%20a%20Skin.html" class="menu-link"><i class="icon-caret-right"></i> Modify a skins</a>
+					</div>
+				</li>
+				<li class="topmobile-level1">
+					<label for="mobiledrop-5">Support</label>
+					<input type="radio" name="mobilemenu-selected" id="mobiledrop-5"/>
+					<div class="mobile-megamenu">
+						<b>Help & Support</b>
+							<a href="/help/" class="menu-link"><i class="icon-caret-right"></i> Help Center</a>
+							<a href="/contact/tickets.html" class="menu-link"><i class="icon-caret-right"></i> Your Tickets</a>
+						<b>Manuals</b>
+							<a href="/manuals/virtualdj/index.html" class="menu-link"><i class="icon-caret-right"></i> Software Manual</a>
+							<a href="/manuals/hardware/index.html" class="menu-link"><i class="icon-caret-right"></i> Hardware Manuals</a>
+						<b>Knowledge Articles</b>
+							<a href="/wiki/FAQ.html" class="menu-link"><i class="icon-caret-right"></i> Questions & Answers</a>
+							<a href="/wiki/index.html" class="menu-link"><i class="icon-caret-right"></i> Knowledge database (wiki)</a>
+						<b>Tutorials</b>
+							<a href="/totd/" class="menu-link"><i class="icon-caret-right"></i> Video Tips</a>
+					</div>
+				</li>
+								<li class="topmobile-level1">
+					<label for="mobiledrop-4">Connect</label>
+					<input type="radio" name="mobilemenu-selected" id="mobiledrop-4"/>
+					<div class="mobile-megamenu">
+						<br>
+						<b>Connect & login<br>with your social media account or email</b> 
+						<form action="/users/connect.html" method="POST">
+							<input type="hidden" name="returnUrl" value="/index.html">
+							<button class="button button-gray button-medium hover-blue" type="submit" name="FacebookLogin"><i class="icon-facebook-sign"></i>&nbsp;Facebook</button><br><br>
+							<button class="button button-gray button-medium hover-blue" type="submit" name="MicrosoftLogin"><i class="icon-windows"></i>&nbsp;Microsoft</button><br><br>
+							<button class="button button-gray button-medium hover-blue" type="submit" name="AppleLogin"><i class="icon-apple"></i>&nbsp;Apple</button><br><br>
+							<button class="button button-gray button-medium hover-blue" type="submit" name="GoogleLogin"><i class="icon-google-plus"></i>&nbsp;Google</button><br><br>
+							<button class="button button-gray button-medium hover-blue" type="submit" name="MailLogin" ><i class="icon-envelope"></i>&nbsp;Email / Login</button>
+						</form>
+						<br><br>
+						<b>Account</b>
+							<a href="/users/create.html" class="menu-link"><i class="icon-caret-right"></i> Create Account</a>
+							<a href="/contact/cantlogin.html" class="menu-link"><i class="icon-caret-right"></i> Forgot Password</a>		
+					</div>
+				</li>
+							</ul>
+	</nav>
+	<div class="clearfix"></div>
+</div>
+
+<!-- content -->
+<section class="content-full" id="content">
+<div id="menu-flags">
+	<a href="http://www.virtualdj.com/index.html" title="English"><img src="/images/v8/menuflags/english.png"/></a>
+	<a href="http://es.virtualdj.com/index.html" title="Spanish language"><img src="/images/v8/menuflags/spanish.png"/></a>
+	<a href="http://fr.virtualdj.com/index.html" title="French language"><img src="/images/v8/menuflags/french.png"/></a>
+	<a href="http://de.virtualdj.com/index.html" title="German language"><img src="/images/v8/menuflags/german.png"/></a>
+	<a href="http://it.virtualdj.com/index.html" title="Italian language"><img src="/images/v8/menuflags/italian.png"/></a>
+	<a href="http://cn.virtualdj.com/index.html" title="Chinese language"><img src="/images/v8/menuflags/chinese.png"/></a>
+</div><div id="frontpage-topbanner">
+	<div class="topbanner-loader" id="carousel-loader">
+        <img src="/images/v9/frontpage/spinner.gif" id="carouselloader-img"/>
+	</div>	
+	<div id="topbanner-slide">	
+		<div id="frontpage-videobox">
+			<video id="frontpage-video" preload="auto" playsinline muted></video>
+			<video id="frontpage-video2" preload="auto" playsinline muted loop></video>
+		</div>
+		<div id="frontpage-banner-box">
+			<div id="frontpage-banner"></div>
+			<div id="frontpage-banner-m"></div>
+		</div>
+			<div id="frontpage-titler">
+				<center><h1 class="tracking-in-contract">UNLEASH YOUR CREATIVITY</h1><h2 class="focus-in-expand">MIX BETTER WITH INNOVATIVE TECHNOLOGY FOR DJS</h2></center>
+			</div>
+			<div id="frontpage-quotes-box">
+				<div class="quote-frontpage fade" id="quote-1">
+			    	<span class="frontpage-quote-avatar"><img src="/images/v2020/frontpage/carousel/quoteavatar-dg.jpg"/></span>
+			        <span class="frontpage-quotes-textblock">
+			        	<span class="frontpage-quote-text">
+								VirtualDJ is something you can try very easily.<br/>
+								But if you play in club, its also amazing...<br/>
+								I was super impressed, its very cool			        	</span>
+			        	<span class="frontpage-quote-text-bottom">
+			        		<span class="frontpage-quote-author">David Guetta</span>
+			        		<span class="frontpage-quote-tagline">Multi-platinum DJ & Producer</span>
+			        	</span>
+			        </span>
+				</div>	
+				<div class="quote-frontpage fade" id="quote-2">
+			    	<span class="frontpage-quote-avatar"><img src="/images/v2020/frontpage/carousel/quoteavatar-dm.jpg"/></span>
+			        <span class="frontpage-quotes-textblock">
+			        	<span class="frontpage-quote-text">
+							VirtualDJ is a killer piece of software...<br/>
+							There are innovations that simply<br/>
+							don’t exist on competing software.			        	</span>
+			        	<span class="frontpage-quote-text-bottom">
+			        		<span class="frontpage-quote-author">DJ Mag</span>
+			        		<span class="frontpage-quote-tagline">Reference DJ magazine</span>
+			        	</span>
+			        </span>
+				</div>
+				<div class="quote-frontpage fade" id="quote-3">
+					<span class="frontpage-quote-avatar"><img src="/images/v2020/frontpage/carousel/quoteavatar-qb.jpg"/></span>
+			        <span class="frontpage-quotes-textblock">
+			        	<span class="frontpage-quote-text">
+			        		If you are a scratcher, a technical scratcher..<br/>
+			        		you gonna love this! Advanced & accurate.<br/>
+							VirtualDJ... right on!			        	</span>
+			        	<span class="frontpage-quote-text-bottom">
+			        		<span class="frontpage-quote-author">Qbert</span>
+			        		<span class="frontpage-quote-tagline">Legendary DJ Champion</span>
+			        	</span>
+			        </span>
+				</div>	
+			</div>	
+     </div>
+</div>
+<div class="frontpage-wrapper" id="frontpage2">
+	<div id="frontpage2-buttonbar" class="content-wide">
+		<h1>GET STARTED WITH VIRTUALDJ <b><i>TODAY!</i></b></h1>
+		<a href="/download/index.html"><button class="button-medium button-blue">DOWNLOAD</button></a>
+		<a href="/buy/index.html"><button class="button-medium button-blue">BUY</button></a>
+	</div>
+</div>
+
+
+<div class="frontpage-wrapper" id="frontpage2021">
+	<div class="grid-1-1 frontpage-fullimg in-view fade-in lazybg" rel="/images/v2021/frontpage/stems_header.jpg"></div>
+		<div id="frontpage2021-titler">
+			<center><h1 class="tracking-in-contract">THE FUTURE OF DJING IS HERE NOW</h1><h2 class="focus-in-expand">STEM SEPERATION | DJING REINVENTED</h2></center>
+		</div>
+</div>
+<div class="frontpage-wrapper" id="frontpage2021text">	
+	<section class="fullgrid content-regular">
+		<article class="grid-1-1 grid-large-1-2">
+			<br><br>
+				<div class="performance-text in-view fade-in">
+				<h2>REAL-TIME TRACK SEPARATION</h2>
+				<br>
+				<p>
+				<b>VirtualDJ 2021</b> uses advanced technology and the power of modern computers to revolutionize what DJs can do. With this new version you can mix in real-time the various components of your tracks (vocals, instruments, kicks, hihats, etc). This opens the door to new ways of mixing that were simply not possible before, and will forever change the way DJs mix.				<br><br>
+				With real-time stem separation on any track, perfect live mashups and seamless transitions are now the new normal:<br><br>
+				<ul>
+					<li><b>ModernEQs</b> can achieve a much more accurate separation than traditional frequency-based equalizers, and help achieve perfect transitions like never before.<br><br></li>
+					<li>The new <b>Stem pads</b> will let you create live mash-ups and remixes in real-time easily. Let your creativity fly free.<br><br></li>
+				</ul>	
+				<br>
+				<a href="/stems/"><button class="button-regular button-blue button-big in-view bounce-up">Learn More</button></a>
+				 </p>
+				</div>
+				<br>
+		</article>
+		<article class="grid-1-1 grid-large-1-2 in-view bounce-in">
+			<br>
+			<img src="/images/v2021/frontpage/2021_stems_seperations.png" class="frontpage2021-img" />
+		</article>
+
+	</section>
+</div>
+
+
+<div class="frontpage-wrapper" id="section_stems3box">
+	<section class="fullgrid content-wide">
+		<article class="grid-1-1 grid-large-1-3 in-view bounce-up">
+			<span class="presentationlist-iconholder">
+				<span class="presentationlist-icon">
+					<img src="/images/v2021/icon-acapella.png">
+				</span>
+			</span>
+			<div class="presentationlist-text center">
+				<h3>Instant Acapella & Instrumental</h3>
+				This new technology gives the DJ access to instant acapella and instrumental on any song, live during the mix! Real-time stems separation lets you easily remove or isolate parts of the song.			</div>
+			<br/>
+		</article>	
+		<article class="grid-1-1 grid-large-1-3 in-view bounce-up">
+			<span class="presentationlist-iconholder">
+				<span class="presentationlist-icon">
+					<img src="/images/v2021/icon-mashup.png">
+				</span>
+			</span>
+			<div class="presentationlist-text center">
+				<h3>On-The-Fly Mashups</h3>
+				Mix and remix songs live on the fly. Put vocals from one song over the beats from another song and explore new ways of mixing your tracks previously not possible. 
+			</div>	
+			<br/>	
+		</article>	
+		<article class="grid-1-1 grid-large-1-3 in-view bounce-up">
+			<span class="presentationlist-iconholder">
+				<span class="presentationlist-icon">
+					<img src="/images/v2021/icon-transition.png">
+				</span>
+			</span>
+			<div class="presentationlist-text center">
+				<h3>Seamless Transitions</h3>
+				Stem separation right on the EQs allows the DJ to transition seamlessly in whole new ways, allowing the DJ to fine-tune different elements of the songs live in the mix.			</div>
+			<br/><br/>
+		</article>	
+	</section>	
+</div>
+
+<div id="frontpage_stemsvideo" class="content-wrapper in-view fade-in ytinline ytwide" data-yt="zg8-SEUoBI4">
+	<div class="ytinline_preview in-view lazybg" rel="/images/stems/david-wide.jpg">
+		<div class="ytinline_title">VirtualDJ 2021 | Real-Time Stems</div>
+		<div class="ytinline_playbutton"><i class="fas fa-play-circle"></i></div>
+	</div>
+	<div class="ytinline_videoarea"> 
+		<div class="ytinline_close"><i class="fas fa-window-close"></i></div>
+		<div class="ytinline_overlay"></div>
+		<div class="ytinline_wrapper"></div>
+	</div>
+</div>
+
+<div class="frontpage-wrapper" id="frontpage3">
+	<section class="fullgrid content-wide">
+		<article class="grid-1-1 grid-large-1-2 in-view bounce-in">
+			<img src="/images/v2020/frontpage/frontview.png" class="frontpage3-img" />
+		</article>
+		<article class="grid-1-1 grid-large-1-2">
+		<div class="presentationbox-text">
+		<div class="presentationbox-listing in-view bounce-up">
+        <span class="presentationlist-iconholder">
+          <span class="presentationlist-icon">
+            <img src="/images/v9/frontpage/icon-mostpopular2.png" />
+          </span>
+        </span>
+        <span class="presentationlist-text">
+          <h3>#1 MOST POPULAR DJ SOFTWARE</h3>
+          <p>
+      VirtualDJ is by far the most used DJ software on the planet, with over 100,000,000 downloads.      There’s a reason why everybody starts with VirtualDJ.          </p>
+        </span>
+      </div>
+      <div class="presentationbox-listing in-view bounce-up">
+        <span class="presentationlist-iconholder">
+          <span class="presentationlist-icon">
+            <img src="/images/v9/frontpage/icon-power2.png" />
+          </span>
+        </span>
+        <span class="presentationlist-text">
+          <h3>Powerful, yet easy to use</h3>
+          <p>
+      Packing the most advanced smart DJ technology, and intuitive features, VirtualDJ is easy to learn and master for any starter DJ.      And it’s free for non-professional use.          </p>
+        </span>
+      </div> 
+	      <div class="presentationbox-listing in-view bounce-up">
+	        <span class="presentationlist-iconholder">
+	          <span class="presentationlist-icon">
+	            <img src="/images/v9/frontpage/icon-mixing.png" />
+	          </span>
+	        </span>
+	        <span class="presentationlist-text">
+	          <h3>EMPOWER YOUR CONTROLLER</h3>
+	          <p>
+	      For professional DJs, by using VirtualDJ instead of the limited software that comes with your controller, you will have the most advanced technology at your fingertips and perform even better mixes.	          </p>
+	        </span>
+	      </div>
+			<div class="clearfix"></div>
+			<center>
+				<a href="/products/virtualdj/features.html">
+					<button class="button-regular button-gray in-view bounce-up">Learn more</button>
+				</a>
+			</center>
+		</article>
+	</section>
+	<br>
+</div>
+<div class="frontpage-wrapper" id="frontpage3c">
+	<div class="grid-1-1 frontpage-fullimg in-view fade-in lazybg" rel="/images/v2020/frontpage/full01.jpg"></div>
+	<section class="fullgrid content-regular">
+		<article class="grid-1-1"><br>
+			<h2>20 YEARS OF BEING THE #1 DJ SOFTWARE</h2>
+		</article>
+		<article class="grid-1-1 grid-medium-1-2 in-view bounce-up">
+			<div class="presentationbox-paragraph">
+			With more than hundred million downloads, VirtualDJ is by far the most used DJ software on the planet. Ask around, most DJs are familiar with VirtualDJ and likely have used VirtualDJ at some point. No matter if you are a beginner or an accomplished DJ, VirtualDJ will always provide you with the latest cutting-edge features, which will help you mix better, and give you an advantage.			</div><br>
+		</article>
+		<article class="grid-1-1 grid-medium-1-2 in-view bounce-up">
+			<div class="presentationbox-paragraph">
+			The professional press is unanimous: VirtualDJ keeps pioneering the DJ world by introducing features years before the competition, with new technologies that will shape the DJing world of tomorrow. Don't let others have better tools and mix better than you! Use the most advanced software yourself straight away, and perform the best mixes you can!			</div>
+		</article>
+		<article class="grid-1-1">
+			<br>
+			<section class="fullgrid in-view bounce-up" id="quotes2">
+					<article class="grid-1-2 grid-medium-1-4">
+						<img src="/images/v9/frontpage/logos/logo_djworx.png" />
+						<span class="quotes2">... putting the other choices to shame with a wealth of features...</span>
+						<br>
+					</article>
+					<article class="grid-1-2 grid-medium-1-4">
+						<img src="/images/v9/frontpage/logos/logo_djtechtools.png" />
+						<span class="quotes2">... outmatches the competition in innovation, no other DJ software comes close</span>
+						<br>
+					</article>
+					<article class="grid-1-2 grid-medium-1-4">
+						<img src="/images/v9/frontpage/logos/logo_digitaldjtips.png" />
+						<span class="quotes2">... at the cutting edge of digital DJing today. An impressive feature set...</span>
+						<br>
+					</article>
+					<article class="grid-1-2 grid-medium-1-4">
+						<img src="/images/v9/frontpage/logos/logo_djmag.png" />
+						<span class="quotes2">... a killer piece of software - with features that don’t exist on competing software</span>
+						<br>
+					</article>
+			</section>
+		</article>
+	</section>
+	<br><br>
+</div>
+<div class="frontpage-wrapper" id="frontpage3b">
+	<section class="fullgrid content-regular">
+		<article class="grid-1-1 grid-medium-1-2">
+			<div class="presentationbox-text">
+				<div class="presentationbox-listing in-view bounce-up">
+				<span class="presentationlist-iconholder">
+					<span class="presentationlist-icon">
+						<img src="/images/v9/frontpage/icon-standalone.png" />
+					</span>
+				</span>
+				<span class="presentationlist-text in-view fade-in">
+					<h3>Stand-Alone DJ Mixer</h3>
+					<p>
+					VirtualDJ lets you start mixing as a DJ right away, with just your computer. To practice & learn, or prepare sets & playlists.          VirtualDJ works for for every type of DJ, with or without hardware.					</p>
+				</span>
+				</div>
+			<div class="presentationbox-listing in-view bounce-up">
+				<span class="presentationlist-iconholder">
+					<span class="presentationlist-icon">
+						<img src="/images/v9/frontpage/icon-library.png" />
+					</span>
+				</span>
+				<span class="presentationlist-text in-view fade-in">
+					<h3>Library Management</h3>
+					<p>
+					Superior song library management with fast search, smart folders, playlists, and more.          And with AI-suggestions, requests, and online catalogs.					</p>
+				</span>
+			</div>
+			</div>
+		</article>
+	  <article class="grid-1-1 grid-medium-1-2">
+		<div class="presentationbox-text">
+			<div class="presentationbox-listing in-view bounce-up">
+				<span class="presentationlist-iconholder">
+					<span class="presentationlist-icon">
+						<img src="/images/v9/frontpage/icon-audiovideo.png" />
+					</span>
+				</span>
+				<span class="presentationlist-text in-view fade-in">
+					<h3>Video & Audio Mixing</h3>
+					<p>
+					VirtualDJ supports a multitude of audio-, video- and karaoke formats. Entertain your guests with stunning visuals, video mixing or host karaoke events.					</p>
+				</span>
+			</div>
+			<div class="presentationbox-listing in-view bounce-up">
+				<span class="presentationlist-iconholder">
+					<span class="presentationlist-icon">
+						<img src="/images/v9/frontpage/icon-effects.png" />
+					</span>
+				</span>
+				<span class="presentationlist-text in-view fade-in">
+					<h3>Effects & Samples</h3>
+					<p>
+					Built-in professional audio- and video- effects to enhance your sound and mix. And unlimited sampler with easy control of sound and/or video loops.					</p>
+				</span>
+			</div>
+		</span>
+	</article>	
+</section>
+	<center>	
+		<a href="/products/virtualdj/features.html">
+		<button class="button-regular button-dark">See features</button>
+		</a>
+	</center>
+<br>
+	<div class="clearfix"></div>
+</div>
+<div class="frontpage-wrapper in-view lazybg" id="frontpage8" rel="/images/v9/frontpage/full05.jpg">
+	<section class="fullgrid content-regular">
+		<article class="grid-1-1 grid-medium-1-2">
+			<div class="performance-text in-view fade-in">
+				<br>
+				<h2>ROCK SOLID PERFORMANCE</h2>
+				</p>
+				Independent studies show that VirtualDJ has the lowest crash-ratio in the industry!        Using highly optimized, reliable, and well-tested code, VirtualDJ runs smoother and faster than any competitor's software, and can be trusted for your gigs.				<br><br>
+				Choose a platform for your DJ work that will not let you down!				</p>
+				<br>
+			</div>
+		</article>
+		<article class="grid-1-1 grid-medium-1-2 in-view bounce-right fade-in">
+			<img src="/images/v2020/frontpage/rocksolid.png" class="frontpage8-img in-view fade-in"/>
+		</article>
+	</section>
+</div>
+
+
+<div id="frontpage_stemsvideo2" class="content-wrapper in-view fade-in ytinline" data-yt="uO202UAAaVA">
+	<div class="ytinline_preview in-view lazybg" rel="/images/v2020/frontpage/full-qb.jpg">
+		<div class="ytinline_title">DJ Qbert</div>
+		<div class="ytinline_playbutton"><i class="fas fa-play-circle"></i></div>
+	</div>
+	<div class="ytinline_videoarea"> 
+		<div class="ytinline_close"><i class="fas fa-window-close"></i></div>
+		<div class="ytinline_overlay"></div>
+		<div class="ytinline_wrapper"></div>
+	</div>
+</div>
+
+
+<div class="frontpage-wrapper" id="frontpage4">
+	<section class="fullgrid content-regular">
+		<article class="grid-1-1 grid-medium-1-2 in-view bounce-left fade-in">
+			<center>
+				<img src="/images/v9/frontpage/hardware.png" class="frontpage4-img in-view fade-in"/>
+			</center>
+		</article>
+		<article class="grid-1-1 grid-medium-1-2">
+			<div class="hardware-text in-view bounce-up">
+				<h2>EXTENSIVE HARDWARE SUPPORT</h2>
+				<p>
+					VirtualDJ supports more DJ controllers and hardware than any other software.          With plug & play support for over 300+ controllers, the choice of gear is all yours.          From easy to use entry-level controllers to advanced club mixers, simply connect your controller and you are ready to mix.          Detection and setup is automatic, and the powerful built-in mapper lets you customize everything easily to set your controller to work exactly as you want it to.					<br><br>
+					Keep your options open and your gear fully under your control with VirtualDJ!				</p>
+				<br>
+				<a href="/products/hardware.html"><button class="button-regular button-gray">See hardware</button></a>
+			</div>
+		</article>
+	</section>
+	</div>
+</div>
+
+
+<div id="frontpage_stemsvideo2" class="content-wrapper in-view fade-in ytinline" data-yt="aBj_yXPsM48">
+	<div class="ytinline_preview in-view lazybg" rel="/images/v2020/frontpage/full-td.jpg">
+		<div class="ytinline_title">DJ Throdown</div>
+		<div class="ytinline_playbutton"><i class="fas fa-play-circle"></i></div>
+	</div>
+	<div class="ytinline_videoarea"> 
+		<div class="ytinline_close"><i class="fas fa-window-close"></i></div>
+		<div class="ytinline_overlay"></div>
+		<div class="ytinline_wrapper"></div>
+	</div>
+</div>
+
+
+<div class="frontpage-wrapper" id="frontpage7">
+	<br><br>
+	<div class="content-regular">
+	<div class="slider-wrapper in-view bounce-up">
+		<div class="slider">
+		  <div class="slide_viewer">
+		    <div class="slide_group">
+		      <div class="slide activeimage">
+		          <img src="/images/v2021/screenshots/skin-default.jpg" class="responsive">
+		          <span class="slidertext bottomtext">INTUITIVE INTERFACE</span>
+		      </div>
+          <div class="slide">
+              <img src="/images/v2021/screenshots/skin-videomix.jpg" class="responsive">
+              <span class="slidertext bottomtext">VIDEO & KARAOKE</span>
+          </div>
+          <div class="slide">
+              <img src="/images/v2021/screenshots/skin-effects.jpg" class="responsive">
+              <span class="slidertext bottomtext">MULTITUDE OF EFFECTS</span>
+          </div>
+		      <div class="slide">
+		          <img src="/images/v2021/screenshots/04_4deck.jpg" class="responsive">
+		          <span class="slidertext bottomtext">4 DECKS (OR MORE)</span>
+		      </div>
+		      <div class="slide">
+		          <img src="/images/v2021/screenshots/skin-sampler.jpg" class="responsive">
+		          <span class="slidertext bottomtext">UNLIMITED SAMPLER</span>
+		      </div>
+		      <div class="slide">
+		          <img src="/images/v2021/screenshots/skin-editors.jpg" class="responsive">
+		          <span class="slidertext bottomtext">POWERFUL EDITORS</span>
+		      </div>
+		      <div class="loader">
+		          <img src="/images/ajax-loader-fb.gif" class="loader-img"><br>
+		          Loading screenshots..		      </div>
+		    </div>
+		  </div><!-- slide_viewer --->
+		<!-- --->
+		  <div class="slide-textunder"></div>
+		  <div class="slide_buttons"></div>
+		  <div class="directional_nav">
+		      <div class="previous_btn" title="Previous"><i class="icon-chevron-left"></i></div>
+		      <div class="next_btn" title="Next"><i class="icon-chevron-right"></i></div>
+		  </div>
+		</div><!-- slider --->
+		<div class="clearfix"></div>
+	</div><!-- wrapper -->
+	<div class="clearfix"></div>
+	</div>
+</div>
+<div class="frontpage-wrapper in-view fade-in lazybg" id="frontpage_cu" rel="/images/v2020/frontpage/full04.jpg">
+	<section class="fullgrid content-regular in-view bounce-up">
+		<article class="grid-1-1 grid-medium-1-2">
+			<div class="hardware-text">
+				<h2>STREAM MILLIONS OF SONGS</h2>
+				<p>
+					VirtualDJ lets you stream tracks from our partner catalogs directly within the software.          Play anything from the millions of songs available, discover new tracks from tailored charts, and create your own playlists with ease.          From mainstream to underground, everything is available right at your fingertips. All in high-quality formats.          
+					<br><br>
+          You will always have access to the best versions and remixes intended specifically for DJ's, to karaoke and music videos, or to broader generalist catalogs like Deezer and SoundCloud.          You will never run out of music to play, or be unable to fulfill a client's request.				</p>
+				<br>
+				<a href="/products/contentcatalogs.html">
+				<button class="button-regular button-white">Learn more</button>
+				</a>
+				<br><br>
+			</div>
+		</article>
+		<article class="grid-1-1 grid-medium-1-2">&nbsp;</article>
+	</section>
+</div>
+<div class="frontpage-wrapper" id="frontpage6">
+	<section class="fullgrid content-regular">
+		<article class="grid-1-1 grid-medium-1-2">
+			<div class="keyfeatures-text in-view fade-in">
+			<br><br>
+			<h2>INDUSTRY LEADING FEATURE SET</h2>
+			VirtualDJ stacks more features than any other software, and new ground-breaking technology comes in VirtualDJ first.      With VirtualDJ you are always ahead of the curve with the latest technology and innovative features.			<br><br>
+			VirtualDJ lets you do more!. Unleash your creative potential...			<br><br>
+			<a href="/products/virtualdj/features.html">
+				<button class="button-regular button-dark">See features</button>
+			</a>
+			</div>
+		</article>
+		<article class="grid-1-1 grid-medium-1-2 in-view bounce-up">
+			<img src="/images/v2020/frontpage/keyfeatures2.png" class="frontpage6-img in-view bounce-up" />
+		</article>
+	</section>
+	<br><br>
+</div>
+<div class="frontpage-wrapper" id="download">
+	<div class="content-regular">
+		<center>
+		<hr>
+		<br>
+		<h2>Get VirtualDJ today!</h2>
+		<br>
+		<a href="/download/index.html"><button class="button button-red-solid button-big in-view bounce-up"><b>Download</b></button></a>
+		&nbsp;&nbsp;
+		<a href="/buy/index.html"><button class="button button-red-solid button-big in-view bounce-up"><b>Buy</b></button></a>
+		<br>
+		<br>
+		</center>
+	</div>
+	<br><br><br><br>
+</div>
+<div class="down-arrow bounce"></div>	
+<span class="back_to_top"><i class="icon-double-angle-up"></i></span> <!-- end forum transitional class -->
+<div class="clearfix"></div>
+</section><!-- end content -->
+<div class="clearfix"></div>
+</section><!-- end inner wrapper -->
+<footer id="pagefooter">
+<section class="grid-box" id="footerboxes">
+        <article id="footerbox-1" class="col small-col-half medium-col-1-4">
+
+              <div class="footerbox">
+                <h5><span class="text-blue"><i class="icon-play"></i></span> About VirtualDJ</h5>
+                <ul>
+                <li><a href="/download/">Download</a></li>
+                <li><a href="/buy/">Buy</a></li>
+                <li><a href="/products/virtualdj/features.html">Features</a></li>
+                <li><a href="/products/virtualdj/price.html">Price & Licenses</a></li>
+                <li><a href="/products/virtualdj/screenshot.html">Screenshots</a></li>
+                </ul>
+              </div>
+
+        </article>
+        <article id="footerbox-4" class="col small-col-half medium-col-1-4">
+              <div class="footerbox">
+                <h5><span class="text-blue"><i class="icon-play"></i></span> Support</h5>
+                <ul>
+                <li><a href="/help/">Contact Support</a></li>
+                <li><a href="/manuals/virtualdj/index.html">User Manual</a></li>
+                <li><a href="/wiki/FAQ.html">FAQ</a></li>
+                <li><a href="/wiki/index.html">VDJPedia (Wiki)</a></li>
+                <li><a href="/forums/">Forums</a></li>
+                </ul>
+              </div>
+        </article>
+        <article id="footerbox-4" class="col small-col-half medium-col-1-4">
+              <div class="footerbox">
+                <h5><span class="text-blue"><i class="icon-play"></i></span> Company</h5>
+                <ul>
+                <li><a href="/atomixproductions/">About Us</a></li>
+                <li><a href="/help/">Contact Us</a></li>
+                <li><a href="/atomixproductions/jobs.html">Job offers</a></li>
+                <li><a href="/privacy/">Privacy Policy</a></li>
+                <li><a href="/EULA/">EULA</a></li>
+                </ul>
+              </div>
+        </article>
+        <article id="footerbox-3" class="col small-col-half medium-col-1-4">
+              <div class="footerbox">
+                <h5><span class="text-blue"><i class="icon-play"></i></span> Follow Us</h5>
+                <span class="social-link">
+                 <ul>
+                 <li><a href="https://www.facebook.com/virtualdjsoftware" target="_blank"><i class="icon-facebook"></i>&nbsp;&nbsp;&nbsp;Facebook</a></li>
+                 <li><a href="https://www.youtube.com/user/virtualdjofficial" target="_blank"><i class="icon-youtube-play"></i> YouTube</a></li>
+                 <li><a href="https://instagram.com/virtualdjsoftware" target="_blank"><i class="icon-instagram"></i> Instagram #virtualdj</a></li>
+                 <li><a href="https://twitter.com/virtualdj" target="_blank"><i class="icon-twitter"></i> Twitter #virtualdj</a></li>
+                 </ul>
+                </span>
+             </div>
+        </article>
+   </section>
+<!-- bottom -->
+<section class="grid-box" role="copyright-footer" id="bottomfooter">
+        <article class="col compact-full medium-col-1-1">
+          <center><a href="/atomixproductions/">&copy; Atomix Productions</a></center>
+        </article>
+ </section>
+</footer>
+</section><!-- end outer wrapper section -->
+<!-- scripts -->
+<script type="text/javascript">
+window.onscroll = function() {
+  var menunodes = document.getElementById('topmenu-full').childNodes;
+    if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
+      document.getElementById("top-menu").style.position = "fixed";
+      document.getElementById("content").style.paddingTop = "60px";
+        for(var i=0; i<menunodes.length; i++) {
+            if (menunodes[i].nodeName == 'LI') {
+                 menunodes[i].style.width = "13%";
+             }
+        }
+        document.getElementById("mobile-logo").style.display = "block";
+    } else {
+      document.getElementById("content").style.paddingTop = "0px";
+       document.getElementById("top-menu").style.position = "relative";
+         for(var i=0; i<menunodes.length; i++) {
+            if (menunodes[i].nodeName == 'LI') {
+                 menunodes[i].style.width = "15%";
+             }
+          }
+           document.getElementById("topmenu-last").style.width = "5%";
+           document.getElementById("menu-logo").style.width = "5%";
+           document.getElementById("headerlogo").style.display = "block";
+           document.getElementById("mobile-logo").style.display = "none";
+         } 
+};
+var setCheck;
+var x = 0;
+var mobilemenu = document.getElementsByName('mobilemenu-selected');
+document.getElementById('mobilemenu-button').onclick = function() {
+    document.getElementById("mobilemenu-button").classList.toggle("mobilemenu-clicked");
+    document.getElementById("mobilemenu-wrapper").classList.toggle("menuvisible");
+    document.getElementById("body").classList.toggle("menu-moveright");
+    document.getElementById("body").classList.toggle("background-dark");
+    document.getElementById("mobilemenu-button").classList.toggle("menu-moveleft");
+    for(var i=0;i<mobilemenu.length;i++) mobilemenu[i].checked = false;
+}
+
+for(x = 0; x < mobilemenu.length; x++){
+  mobilemenu[x].onclick = function(){
+      if(setCheck != this){
+           setCheck = this;
+      } else{
+          this.checked = false;
+          setCheck = null;
+    }
+  };
+}
+
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1023988617671915&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script></body></html>

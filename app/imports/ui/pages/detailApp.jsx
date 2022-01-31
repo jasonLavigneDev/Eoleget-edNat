@@ -155,7 +155,7 @@ const detailApp = ({ app, ready }) => {
                 ))}
               </span>
             </Grid>
-            <AppAvatar detailApp />
+            <AppAvatar nameApp={app.identification} isDetailApp />
           </Grid>
           <div style={divButtonStyle}>
             {checkAppAllreadyAdded() ? (

@@ -1,0 +1,815 @@
+	<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+	<meta charset="UTF-8" />
+	
+	
+
+				<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://www.islide.cc/xmlrpc.php" />
+            <link rel="shortcut icon" type="image/x-icon" href="">
+        <link rel="apple-touch-icon" href=""/>
+    	<script type="application/javascript">var QodeAjaxUrl = "https://www.islide.cc/wp-admin/admin-ajax.php"</script><!-- Start of KF5 supportbox script -->
+<script type="text/javascript">
+    document.write('<script src="https:\/\/assets-cdn.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kchat-id="1005177" kf5-domain="islide.kf5.com" charset="utf-8"><\/script>');
+</script>
+<!-- End of KF5 supportbox script --><script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?176847567323500ec6e9719702f26e15';
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120859875-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120859875-1', {'optimize_id': 'GTM-MLLPXXM', 'linker': {'domains': ['www.islide.cc', 'en.islide.cc']}});
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PQC42VH');</script>
+<!-- End Google Tag Manager --><meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="alternate" hreflang="zh-hans" href="https://www.islide.cc" />
+
+	<!-- This site is optimized with the Yoast SEO plugin v17.9 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>iSlide- 让PPT设计简单起来 | PPT模板下载平台</title>
+	<meta name="description" content="iSlide - 简单，好用的PPT插件！拥有30万+ 原创可商用PPT模板，PPT主题素材，PPT案例，PPT图表，PPT图示，PPT图标，PPT插图和800万+正版图片。提供38个设计辅助实用功能，一键解决PPT设计制做中的难题。" />
+	<link rel="canonical" href="https://www.islide.cc/" />
+	<meta property="og:locale" content="zh_CN" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="iSlide- 让PPT设计简单起来 | PPT模板下载平台" />
+	<meta property="og:description" content="iSlide - 简单，好用的PPT插件！拥有30万+ 原创可商用PPT模板，PPT主题素材，PPT案例，PPT图表，PPT图示，PPT图标，PPT插图和800万+正版图片。提供38个设计辅助实用功能，一键解决PPT设计制做中的难题。" />
+	<meta property="og:url" content="https://www.islide.cc/" />
+	<meta property="og:site_name" content="iSlide- 让PPT设计简单起来~ | 中文官网" />
+	<meta property="article:publisher" content="http://bit.ly/islide-facebook" />
+	<meta property="article:modified_time" content="2022-01-19T08:11:55+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@iSlidePPT" />
+	<meta name="twitter:label1" content="预计阅读时间" />
+	<meta name="twitter:data1" content="4分" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.islide.cc/#organization","name":"iSlide","url":"https://www.islide.cc/","sameAs":["http://bit.ly/islide-facebook","http://bit.ly/islide-instagram","http://bit.ly/islide-youtube","https://twitter.com/iSlidePPT"],"logo":{"@type":"ImageObject","@id":"https://www.islide.cc/#logo","inLanguage":"zh-CN","url":"https://www.islide.cc/wp-content/uploads/2018/11/favicon.png","contentUrl":"https://www.islide.cc/wp-content/uploads/2018/11/favicon.png","width":1000,"height":1000,"caption":"iSlide"},"image":{"@id":"https://www.islide.cc/#logo"}},{"@type":"WebSite","@id":"https://www.islide.cc/#website","url":"https://www.islide.cc/","name":"iSlide- \u8ba9PPT\u8bbe\u8ba1\u7b80\u5355\u8d77\u6765~ | \u4e2d\u6587\u5b98\u7f51","description":"\u7b80\u5355\uff0c\u597d\u7528\u7684PPT\u63d2\u4ef6\uff01","publisher":{"@id":"https://www.islide.cc/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.islide.cc/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"zh-CN"},{"@type":"WebPage","@id":"https://www.islide.cc/#webpage","url":"https://www.islide.cc/","name":"iSlide- \u8ba9PPT\u8bbe\u8ba1\u7b80\u5355\u8d77\u6765 | PPT\u6a21\u677f\u4e0b\u8f7d\u5e73\u53f0","isPartOf":{"@id":"https://www.islide.cc/#website"},"about":{"@id":"https://www.islide.cc/#organization"},"datePublished":"2014-08-01T08:18:29+00:00","dateModified":"2022-01-19T08:11:55+00:00","description":"iSlide - \u7b80\u5355\uff0c\u597d\u7528\u7684PPT\u63d2\u4ef6\uff01\u62e5\u670930\u4e07+ \u539f\u521b\u53ef\u5546\u7528PPT\u6a21\u677f\uff0cPPT\u4e3b\u9898\u7d20\u6750\uff0cPPT\u6848\u4f8b\uff0cPPT\u56fe\u8868\uff0cPPT\u56fe\u793a\uff0cPPT\u56fe\u6807\uff0cPPT\u63d2\u56fe\u548c800\u4e07+\u6b63\u7248\u56fe\u7247\u3002\u63d0\u4f9b38\u4e2a\u8bbe\u8ba1\u8f85\u52a9\u5b9e\u7528\u529f\u80fd\uff0c\u4e00\u952e\u89e3\u51b3PPT\u8bbe\u8ba1\u5236\u505a\u4e2d\u7684\u96be\u9898\u3002","breadcrumb":{"@id":"https://www.islide.cc/#breadcrumb"},"inLanguage":"zh-CN","potentialAction":[{"@type":"ReadAction","target":["https://www.islide.cc/"]}]},{"@type":"BreadcrumbList","@id":"https://www.islide.cc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"\u9996\u9875"}]}]}</script>
+	<meta name="baidu-site-verification" content="U2c7wLR9rO6yAG5a" />
+	<meta name="google-site-verification" content="google0084892c0ec9d3fc" />
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//a.omappapi.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="iSlide- 让PPT设计简单起来~ | 中文官网 &raquo; Feed" href="https://www.islide.cc/feed" />
+<link rel="alternate" type="application/rss+xml" title="iSlide- 让PPT设计简单起来~ | 中文官网 &raquo; 评论Feed" href="https://www.islide.cc/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="iSlide- 让PPT设计简单起来~ | 中文官网 &raquo; 首页评论Feed" href="https://www.islide.cc/template-home/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.islide.cc\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.3"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-notification-bars-css'  href='https://www.islide.cc/wp-content/plugins/wp-notification-bars/public/css/wp-notification-bars-public.css?ver=1.0.5' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://www.islide.cc/wp-includes/css/dist/block-library/style.min.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='layerslider-css'  href='https://www.islide.cc/wp-content/plugins/LayerSlider/static/css/layerslider.css?ver=5.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://www.islide.cc/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='smartideo_css-css'  href='https://www.islide.cc/wp-content/plugins/smartideo/static/smartideo.css?ver=2.7.0' type='text/css' media='screen' />
+<link rel='stylesheet' id='default_style-css'  href='https://www.islide.cc/wp-content/themes/bridge/style.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='qode_font_awesome-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/font-awesome/css/font-awesome.min.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='qode_font_elegant-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/elegant-icons/style.min.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='qode_linea_icons-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/linea-icons/style.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='qode_dripicons-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/dripicons/dripicons.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='stylesheet-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/stylesheet.min.css?ver=5.8.3' type='text/css' media='all' />
+<style id='stylesheet-inline-css' type='text/css'>
+   .page-id-15462.disabled_footer_top .footer_top_holder, .page-id-15462.disabled_footer_bottom .footer_bottom_holder { display: none;}
+
+
+</style>
+<link rel='stylesheet' id='qode_print-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/print.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='style_dynamic-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/style_dynamic.css?ver=1642089406' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/responsive.min.css?ver=5.8.3' type='text/css' media='all' />
+<link rel='stylesheet' id='style_dynamic_responsive-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/style_dynamic_responsive.css?ver=1642089406' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_front-css'  href='https://www.islide.cc/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=6.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='custom_css-css'  href='https://www.islide.cc/wp-content/themes/bridge/css/custom_css.css?ver=1642089406' type='text/css' media='all' />
+<link rel='stylesheet' id='childstyle-css'  href='https://www.islide.cc/wp-content/themes/bridge-child/style.css?ver=5.8.3' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/LayerSlider/static/js/greensock.js?ver=1.11.8' id='greensock-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='layerslider-js-extra'>
+/* <![CDATA[ */
+var LS_Meta = {"v":"5.6.2"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/LayerSlider/static/js/layerslider.kreaturamedia.jquery.js?ver=5.6.2' id='layerslider-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/LayerSlider/static/js/layerslider.transitions.js?ver=5.6.2' id='layerslider-transitions-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/wp-notification-bars/public/js/wp-notification-bars-public.js?ver=1.0.5' id='wp-notification-bars-js'></script>
+<script type='text/javascript' id='wpml-xdomain-data-js-extra'>
+/* <![CDATA[ */
+var wpml_xdomain_data = {"css_selector":"wpml-ls-item","ajax_url":"https:\/\/www.islide.cc\/wp-admin\/admin-ajax.php","current_lang":"zh-hans"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/sitepress-multilingual-cms/res/js/xdomain-data.js?ver=4.2.1' id='wpml-xdomain-data-js'></script>
+<link rel="https://api.w.org/" href="https://www.islide.cc/wp-json/" /><link rel="alternate" type="application/json" href="https://www.islide.cc/wp-json/wp/v2/pages/15462" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.islide.cc/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.islide.cc/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.8.3" />
+<link rel='shortlink' href='https://www.islide.cc/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.islide.cc/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.islide.cc%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.islide.cc/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.islide.cc%2F&#038;format=xml" />
+<meta name="generator" content="WPML ver:4.2.1 stt:60,1;" />
+<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<link rel="icon" href="https://www.islide.cc/wp-content/uploads/2020/05/cropped-100x100px（圆）插图-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.islide.cc/wp-content/uploads/2020/05/cropped-100x100px（圆）插图-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.islide.cc/wp-content/uploads/2020/05/cropped-100x100px（圆）插图-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.islide.cc/wp-content/uploads/2020/05/cropped-100x100px（圆）插图-270x270.png" />
+<style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1607685341159{margin-bottom: 50px !important;}.vc_custom_1642088729655{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 0px !important;}.vc_custom_1642088729655{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 0px !important;}.vc_custom_1612750386922{margin-top: 20px !important;margin-bottom: 20px !important;}.vc_custom_1612780355691{margin-top: 20px !important;}.vc_custom_1607680734906{margin-top: 30px !important;}.vc_custom_1607679531744{margin-top: 30px !important;margin-bottom: 20px !important;}.vc_custom_1607679911998{margin-top: 60px !important;margin-bottom: 50px !important;}.vc_custom_1607679307249{margin-top: 20px !important;margin-bottom: 20px !important;}.vc_custom_1607686935793{margin-top: 20px !important;margin-bottom: 20px !important;}.vc_custom_1607679505275{margin-top: 20px !important;margin-bottom: 20px !important;}.vc_custom_1607686720640{margin-top: 20px !important;margin-bottom: 20px !important;}.vc_custom_1607679476792{margin-top: 20px !important;margin-bottom: 20px !important;}.vc_custom_1607687027789{margin-top: 20px !important;margin-bottom: 20px !important;}.vc_custom_1479902480952{padding-top: 0px !important;}.vc_custom_1608276798377{margin-top: 20px !important;}.vc_custom_1479902480952{padding-top: 0px !important;}.vc_custom_1607684320769{margin-top: 20px !important;}.vc_custom_1479902480952{padding-top: 0px !important;}.vc_custom_1607684232689{margin-top: 20px !important;}.vc_custom_1479902480952{padding-top: 0px !important;}.vc_custom_1607684313307{margin-top: 20px !important;}.vc_custom_1607680727174{margin-top: 30px !important;}.vc_custom_1607682519950{margin-right: 20px !important;}.vc_custom_1607685449825{margin-top: 50px !important;}.vc_custom_1607682656378{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682652188{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682660001{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682660001{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682660001{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682660001{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682660001{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682660001{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607682660001{margin-top: 60px !important;margin-right: 20px !important;}.vc_custom_1607686273709{margin-top: 30px !important;}.vc_custom_1642089300679{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 0px !important;}.vc_custom_1642579878899{margin-top: 20px !important;margin-bottom: 0px !important;border-bottom-width: 1px !important;padding-bottom: 20px !important;border-bottom-color: #3c4247 !important;border-bottom-style: solid !important;}</style><noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+
+<body class="home page-template page-template-full_width page-template-full_width-php page page-id-15462  qode-title-hidden qode-child-theme-ver-1.0.0 qode-theme-ver-16.3 qode-theme-bridge wpb-js-composer js-comp-ver-6.7.0 vc_responsive" itemscope itemtype="http://schema.org/WebPage">
+
+
+<div class="wrapper">
+	<div class="wrapper_inner">
+
+    
+    <!-- Google Analytics start -->
+        <!-- Google Analytics end -->
+
+	<header class=" scroll_header_top_area  stick scrolled_not_transparent page_header">
+	<div class="header_inner clearfix">
+				<div class="header_top_bottom_holder">
+			
+			<div class="header_bottom clearfix" style='' >
+								<div class="container">
+					<div class="container_inner clearfix">
+																				<div class="header_inner_left">
+																	<div class="mobile_menu_button">
+		<span>
+			<i class="qode_icon_font_awesome fa fa-bars " ></i>		</span>
+	</div>
+								<div class="logo_wrapper" >
+	<div class="q_logo">
+		<a itemprop="url" href="https://www.islide.cc/" >
+             <img itemprop="image" class="normal" src="https://www.islide.cc/wp-content/uploads/2020/05/logo-260.png" alt="Logo"/> 			 <img itemprop="image" class="light" src="https://www.islide.cc/wp-content/uploads/2020/05/web（260）-w.png" alt="Logo"/> 			 <img itemprop="image" class="dark" src="https://www.islide.cc/wp-content/uploads/2020/05/logo-260.png" alt="Logo"/> 			 <img itemprop="image" class="sticky" src="https://www.islide.cc/wp-content/uploads/2020/05/logo-260.png" alt="Logo"/> 			 <img itemprop="image" class="mobile" src="https://www.islide.cc/wp-content/uploads/2020/05/logo-260.png" alt="Logo"/> 					</a>
+	</div>
+	</div>															</div>
+															<div class="header_inner_right">
+									<div class="side_menu_button_wrapper right">
+																														<div class="side_menu_button">
+																																											</div>
+									</div>
+								</div>
+							
+							
+							<nav class="main_menu drop_down right">
+								<ul id="menu-top_menu" class=""><li id="nav-menu-item-16153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-15462 current_page_item active narrow"><a href="https://www.islide.cc/" class=" current "><i class="menu_icon blank fa"></i><span>首页</span><span class="plus"></span></a></li>
+<li id="nav-menu-item-18921" class="menu-item menu-item-type-post_type menu-item-object-page  narrow"><a href="https://www.islide.cc/download" class=""><i class="menu_icon fa-download fa"></i><span>下载</span><span class="plus"></span></a></li>
+<li id="nav-menu-item-31254" class="menu-item menu-item-type-custom menu-item-object-custom  narrow"><a target="_blank" href="https://www.islide.cc/ppt/member-intro" class=""><i class="menu_icon blank fa"></i><span>会员</span><span class="plus"></span></a></li>
+<li id="nav-menu-item-22777" class="menu-item menu-item-type-custom menu-item-object-custom  narrow"><a target="_blank" href="https://www.islide.cc/ppt/" class=""><i class="menu_icon blank fa"></i><span>PPT模板</span><span class="plus"></span></a></li>
+<li id="nav-menu-item-20116" class="menu-item menu-item-type-post_type menu-item-object-page  narrow"><a href="https://www.islide.cc/enterprise" class=""><i class="menu_icon blank fa"></i><span>企业服务</span><span class="plus"></span></a></li>
+<li id="nav-menu-item-22763" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub narrow"><a href="http://support.islide.cc" class=""><i class="menu_icon blank fa"></i><span>帮助中心</span><span class="plus"></span></a>
+<div class="second"><div class="inner"><ul>
+	<li id="nav-menu-item-22764" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="http://support.islide.cc/hc/kb/category/1040534/" class=""><i class="menu_icon blank fa"></i><span>常见问题</span><span class="plus"></span></a></li>
+	<li id="nav-menu-item-22765" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="http://support.islide.cc/hc/kb/category/1040535/" class=""><i class="menu_icon blank fa"></i><span>功能教程</span><span class="plus"></span></a></li>
+	<li id="nav-menu-item-22656" class="menu-item menu-item-type-custom menu-item-object-custom "><a target="_blank" href="https://www.islide.cc/ppt/course" class=""><i class="menu_icon blank fa"></i><span>免费课程</span><span class="plus"></span></a></li>
+	<li id="nav-menu-item-27002" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="https://www.islide.cc/template-home/blog" class=""><i class="menu_icon blank fa"></i><span>设计教程</span><span class="plus"></span></a></li>
+</ul></div></div>
+</li>
+<li id="nav-menu-item-22363" class="menu-item menu-item-type-custom menu-item-object-custom  narrow"><a href="https://en.islide.cc" class=""><i class="menu_icon fa-globe fa"></i><span>English</span><span class="plus"></span></a></li>
+</ul>							</nav>
+														<nav class="mobile_menu">
+	<ul id="menu-top_menu-1" class=""><li id="mobile-menu-item-16153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-15462 current_page_item active"><a href="https://www.islide.cc/" class=" current "><span>首页</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-18921" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.islide.cc/download" class=""><span>下载</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-31254" class="menu-item menu-item-type-custom menu-item-object-custom "><a target="_blank" href="https://www.islide.cc/ppt/member-intro" class=""><span>会员</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-22777" class="menu-item menu-item-type-custom menu-item-object-custom "><a target="_blank" href="https://www.islide.cc/ppt/" class=""><span>PPT模板</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-20116" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.islide.cc/enterprise" class=""><span>企业服务</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-22763" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub"><a href="http://support.islide.cc" class=""><span>帮助中心</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+<ul class="sub_menu">
+	<li id="mobile-menu-item-22764" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="http://support.islide.cc/hc/kb/category/1040534/" class=""><span>常见问题</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-22765" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="http://support.islide.cc/hc/kb/category/1040535/" class=""><span>功能教程</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-22656" class="menu-item menu-item-type-custom menu-item-object-custom "><a target="_blank" href="https://www.islide.cc/ppt/course" class=""><span>免费课程</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-27002" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="https://www.islide.cc/template-home/blog" class=""><span>设计教程</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+</ul>
+</li>
+<li id="mobile-menu-item-22363" class="menu-item menu-item-type-custom menu-item-object-custom "><a href="https://en.islide.cc" class=""><span>English</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+</ul></nav>																				</div>
+					</div>
+									</div>
+			</div>
+		</div>
+
+</header>	<a id="back_to_top" href="#">
+        <span class="fa-stack">
+            <i class="qode_icon_font_awesome fa fa-arrow-up " ></i>        </span>
+	</a>
+	
+	
+    
+    
+    <div class="content content_top_margin_none">
+        <div class="content_inner no_animation ">
+    								<div class="full_width">
+	<div class="full_width_inner" >
+										<div      class="vc_row wpb_row section vc_row-fluid  grid_section" style='background-color:#ffffff; padding-top:70px; padding-bottom:24px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center; font-size: 50px;"><span style="color: #333333;"><strong>让PPT设计简单起来</strong></span></h2>
+
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element  vc_custom_1612750386922">
+		<div class="wpb_wrapper">
+			<h4 style="text-align: center;">iSlide是一款基于PPT的插件工具</h4>
+<h4 style="text-align: center;">包含38个设计辅助功能，8大在线资源库超30万专业PPT模板/素材</h4>
+
+		</div> 
+	</div> <div      class="vc_row wpb_row section vc_row-fluid vc_inner " style=' text-align:center;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><a  itemprop="url" href="https://www.islide.cc/install" target="_self" data-hover-background-color=#ff6b42 data-hover-border-color=#ffffff data-hover-color=#ffffff class="qbutton  center enlarge qode-type1-gradient-left-to-right" style="color: #ffffff; border-color: #ffffff; font-style: normal; text-transform: none; border-radius: 8px;-moz-border-radius: 8px;-webkit-border-radius: 8px; background-color: #f84d4d;">下载Windows版<i class="qode_icon_font_awesome fa fa-windows qode_button_icon_element" style="" ></i></a><a id="view_video" itemprop="url" href="https://www.islide.cc/wp-content/uploads/2021/02/iSlide-video_CN_S2.mp4" target="_self" data-hover-background-color=#eaeaea data-hover-border-color=#ffffff data-hover-color=#2f2f2f class="qbutton  center default" style="color: #2f2f2f; border-color: #ffffff; font-style: normal; margin: 0 0 0 20px; border-radius: 8px;-moz-border-radius: 8px;-webkit-border-radius: 8px; background-color: #eaeaea;">观看视频<i class="qode_icon_font_awesome fa fa-play-circle qode_button_icon_element" style="color: #2f2f2f;" ></i></a></div></div></div></div></div>
+	<div class="wpb_text_column wpb_content_element  vc_custom_1612780355691">
+		<div class="wpb_wrapper">
+			<p style="text-align: center;"><span style="color: #333333;"><a style="color: #333333;" href="https://www.islide.cc/download">macOS 版 / 小程序</a></span></p>
+
+		</div> 
+	</div> 
+	<div class="wpb_raw_code wpb_raw_js" >
+		<div class="wpb_wrapper">
+			<script> 
+          document.getElementById('view_video').onclick = function(e) {
+          e.preventDefault()
+          var div = document.createElement('div');
+          div.id = 'video-container';
+          div.innerHTML = `
+<div style="position: fixed;width: 100%;height: 100%;background: rgba(0,0,0,.8);top:0;left:0;z-index: 9999;display: flex;align-items: center;justify-content: center">
+<span style="font-size: 50px;color:white;cursor: pointer;position: absolute;top:20px;right: 20px;padding: 16px;display: block;z-index: 9999"
+      onClick="document.getElementById('video-container').remove()"
+>
+  ×
+</span>
+      <video style="width:960px;height:540px" src='https://www.islide.cc/wp-content/uploads/2021/02/iSlide-video_CN_S2.mp4' controls autoplay></video>
+</div>
+`;
+          document.body.appendChild(div);
+          }
+</script>
+		</div>
+	</div>
+</div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  grid_section" style='background-color:#ffffff; padding-bottom:0px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="separator  normal   " style="background-color: #ffffff;height: 1px;"></div>
+
+	<div class="wpb_single_image wpb_content_element vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1792" height="614" src="https://www.islide.cc/wp-content/uploads/2020/11/H2-1.png" class="vc_single_image-img attachment-full" alt="iSlide ppt设计插件" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/11/H2-1.png 1792w, https://www.islide.cc/wp-content/uploads/2020/11/H2-1-300x103.png 300w, https://www.islide.cc/wp-content/uploads/2020/11/H2-1-1024x351.png 1024w, https://www.islide.cc/wp-content/uploads/2020/11/H2-1-768x263.png 768w, https://www.islide.cc/wp-content/uploads/2020/11/H2-1-1536x526.png 1536w, https://www.islide.cc/wp-content/uploads/2020/11/H2-1-700x240.png 700w" sizes="(max-width: 1792px) 100vw, 1792px" /></div>
+		</div>
+	</div>
+</div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  grid_section" style='background-color:#f3f7fa; padding-top:70px; padding-bottom:24px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607680734906">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center; font-size: 40px;"><span style="color: #333333;">解决做PPT的各种难题</span></h2>
+
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607679531744">
+		<div class="wpb_wrapper">
+			<h4 style="text-align: center;">满足你在PPT设计上的各种需求，无论是查找模板、图片、图标素材，还是设计配<br />
+色、页面布局、智能优化，都可以协助你更高效的创建出专业幻灯片文档。</h4>
+
+		</div> 
+	</div> <div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607679911998" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="752" height="520" src="https://www.islide.cc/wp-content/uploads/2020/12/ill-01@2x.png" class="vc_single_image-img attachment-full" alt="找ppt模板太麻烦" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/ill-01@2x.png 752w, https://www.islide.cc/wp-content/uploads/2020/12/ill-01@2x-300x207.png 300w, https://www.islide.cc/wp-content/uploads/2020/12/ill-01@2x-700x484.png 700w" sizes="(max-width: 752px) 100vw, 752px" /></div>
+		</div>
+	</div>
+
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607679307249">
+		<div class="wpb_wrapper">
+			<h4 style="text-align: center;"><strong>找模板太麻烦</strong></h4>
+
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607686935793">
+		<div class="wpb_wrapper">
+			<p style="text-align: center;">网络PPT模板鱼龙混杂，设计不规范，二次编辑工作量更大，同时还存在各种素材版权风险。</p>
+
+		</div> 
+	</div> </div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="752" height="520" src="https://www.islide.cc/wp-content/uploads/2020/12/ill-02@2x.png" class="vc_single_image-img attachment-full" alt="反复编辑修改ppt" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/ill-02@2x.png 752w, https://www.islide.cc/wp-content/uploads/2020/12/ill-02@2x-300x207.png 300w, https://www.islide.cc/wp-content/uploads/2020/12/ill-02@2x-700x484.png 700w" sizes="(max-width: 752px) 100vw, 752px" /></div>
+		</div>
+	</div>
+
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607679505275">
+		<div class="wpb_wrapper">
+			<h4 style="text-align: center;"><strong>反复编辑修改</strong></h4>
+
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607686720640">
+		<div class="wpb_wrapper">
+			<p style="text-align: center;">当“复制，粘贴”成为做PPT的常态，无休止的文本排版、编辑对齐、调整大小等繁琐的操作接踵而来。</p>
+
+		</div> 
+	</div> </div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="752" height="520" src="https://www.islide.cc/wp-content/uploads/2020/12/ill-03@2x.png" class="vc_single_image-img attachment-full" alt="ppt设计不专业" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/ill-03@2x.png 752w, https://www.islide.cc/wp-content/uploads/2020/12/ill-03@2x-300x207.png 300w, https://www.islide.cc/wp-content/uploads/2020/12/ill-03@2x-700x484.png 700w" sizes="(max-width: 752px) 100vw, 752px" /></div>
+		</div>
+	</div>
+
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607679476792">
+		<div class="wpb_wrapper">
+			<h4 style="text-align: center;"><strong>呈现不专业</strong></h4>
+
+		</div> 
+	</div> 
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607687027789">
+		<div class="wpb_wrapper">
+			<p style="text-align: center;">各种色彩搭配、图文排版让PPT设计变得更加纠结，最终又陷入“到处找模板，反复编辑拼凑”的循环中。</p>
+
+		</div> 
+	</div> </div></div></div></div></div></div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  image_to_bottom grid_section" style=' padding-top:50px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-8"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1024" height="789" src="https://www.islide.cc/wp-content/uploads/2020/12/home1-1-1024x789.png" class="vc_single_image-img attachment-large" alt="内置300,000+ ppt模板" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/home1-1-1024x789.png 1024w, https://www.islide.cc/wp-content/uploads/2020/12/home1-1-300x231.png 300w, https://www.islide.cc/wp-content/uploads/2020/12/home1-1-768x592.png 768w, https://www.islide.cc/wp-content/uploads/2020/12/home1-1-1536x1184.png 1536w, https://www.islide.cc/wp-content/uploads/2020/12/home1-1-700x540.png 700w, https://www.islide.cc/wp-content/uploads/2020/12/home1-1.png 1720w" sizes="(max-width: 1024px) 100vw, 1024px" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner vc_custom_1479902480952"><div class="wpb_wrapper"><div class="separator  transparent   " style="margin-top: 150px;"></div>
+
+	<div class="wpb_text_column wpb_content_element  vc_custom_1608276798377">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: left;"><strong>内置300,000+ PPT模板</strong></h2>
+
+		</div> 
+	</div> <div class="separator  transparent   " style="margin-top: 5px;"></div>
+
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h5 style="text-align: left;"><span style="color: #808080;">专业PPT模板设计团队，原创正版保障，快速检索一键插入PPT文档；各类图标/图片/插图可灵活原位置编辑替换，不必再为做PPT找素材所苦恼！</span></h5>
+
+		</div> 
+	</div> </div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  image_to_bottom grid_section" style='background-color:#ffffff; padding-top:50px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="separator  transparent   " style="margin-top: 150px;"></div>
+
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607684320769">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: left;"><strong>智能化对齐排版功能</strong></h2>
+
+		</div> 
+	</div> <div class="separator  transparent   " style="margin-top: 5px;"></div>
+
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h5 style="text-align: left;"><span style="color: #808080;">iSlide设计工具提供强大的各类对齐排版功能，无论是创建新文档，还是修改旧文档，都能帮你从繁琐的传统编辑中解脱，提升设计效率，呈现专业。</span></h5>
+
+		</div> 
+	</div> </div></div></div><div class="wpb_column vc_column_container vc_col-sm-8"><div class="vc_column-inner vc_custom_1479902480952"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1024" height="805" src="https://www.islide.cc/wp-content/uploads/2020/12/home1-4-1024x805.png" class="vc_single_image-img attachment-large" alt="ppt智能化对齐排版" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/home1-4-1024x805.png 1024w, https://www.islide.cc/wp-content/uploads/2020/12/home1-4-300x236.png 300w, https://www.islide.cc/wp-content/uploads/2020/12/home1-4-768x604.png 768w, https://www.islide.cc/wp-content/uploads/2020/12/home1-4-1536x1208.png 1536w, https://www.islide.cc/wp-content/uploads/2020/12/home1-4-700x550.png 700w, https://www.islide.cc/wp-content/uploads/2020/12/home1-4.png 1656w" sizes="(max-width: 1024px) 100vw, 1024px" /></div>
+		</div>
+	</div>
+</div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  image_to_bottom grid_section" style=' padding-top:50px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-8"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1024" height="824" src="https://www.islide.cc/wp-content/uploads/2020/12/home1-2-1024x824.png" class="vc_single_image-img attachment-large" alt="500强公司ppt配色参考" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/home1-2-1024x824.png 1024w, https://www.islide.cc/wp-content/uploads/2020/12/home1-2-300x241.png 300w, https://www.islide.cc/wp-content/uploads/2020/12/home1-2-768x618.png 768w, https://www.islide.cc/wp-content/uploads/2020/12/home1-2-1536x1236.png 1536w, https://www.islide.cc/wp-content/uploads/2020/12/home1-2-700x563.png 700w, https://www.islide.cc/wp-content/uploads/2020/12/home1-2.png 1720w" sizes="(max-width: 1024px) 100vw, 1024px" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner vc_custom_1479902480952"><div class="wpb_wrapper"><div class="separator  transparent   " style="margin-top: 130px;"></div>
+
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607684232689">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: left;"><strong>500强公司的配色参考</strong></h2>
+
+		</div> 
+	</div> <div class="separator  transparent   " style="margin-top: 5px;"></div>
+
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h5 style="text-align: left;"><span style="color: #808080;">iSlide将全球知名公司的色彩搭配方案共享上传，你可以在【色彩库】中浏览并一键应用于当前的PPT文档，即便不懂设计，也能呈现专业。</span></h5>
+
+		</div> 
+	</div> </div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  image_to_bottom grid_section" style='background-color:#ffffff; padding-top:50px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="separator  transparent   " style="margin-top: 150px;"></div>
+
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607684313307">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: left;"><strong>更富有吸引力的PPT图表</strong></h2>
+
+		</div> 
+	</div> <div class="separator  transparent   " style="margin-top: 5px;"></div>
+
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h5 style="text-align: left;"><span style="color: #808080;">iSlide 智能图表改变传统图表的单一样式，结合当下流行视觉化元素和风格，并提供各种参数化调节，让数据传达变得直观易懂。</span></h5>
+
+		</div> 
+	</div> </div></div></div><div class="wpb_column vc_column_container vc_col-sm-8"><div class="vc_column-inner vc_custom_1479902480952"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_center">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="1024" height="736" src="https://www.islide.cc/wp-content/uploads/2020/12/home1-3-1-1024x736.png" class="vc_single_image-img attachment-large" alt="更富吸引力的ppt图表" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/home1-3-1-1024x736.png 1024w, https://www.islide.cc/wp-content/uploads/2020/12/home1-3-1-300x216.png 300w, https://www.islide.cc/wp-content/uploads/2020/12/home1-3-1-768x552.png 768w, https://www.islide.cc/wp-content/uploads/2020/12/home1-3-1-1536x1104.png 1536w, https://www.islide.cc/wp-content/uploads/2020/12/home1-3-1-700x503.png 700w, https://www.islide.cc/wp-content/uploads/2020/12/home1-3-1.png 1720w" sizes="(max-width: 1024px) 100vw, 1024px" /></div>
+		</div>
+	</div>
+</div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  grid_section" style=' padding-top:70px; padding-bottom:24px; text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607680727174">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center; font-size: 40px;"><span style="color: #333333;">更多PPT设计辅助功能</span></h2>
+
+		</div> 
+	</div> </div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  vc_custom_1607685341159 grid_section" style=' text-align:center;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682656378" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_unified-font@3x-100x100.png" width="100" height="100" alt="ppt统一字体" title="icon_unified font@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>统一字体</strong></h4>
+<p><span style="color: #999999;">将PPT文档中使用的各种繁杂字体一键全部替换为指定字体。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682652188" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_photo@3x-100x100.png" width="100" height="100" alt="ppt裁剪图片" title="icon_photo@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>裁剪图片</strong></h4>
+<p><span style="color: #999999;">将多张图片统一裁剪成一致大小，并且保持图片比例一致，不变形。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682660001" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_photo-stitching@3x-100x100.png" width="100" height="100" alt="ppt拼图" title="icon_photo stitching@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>PPT拼图</strong></h4>
+<p><span style="color: #999999;">将PPT文档中的页面，按指定参数拼接并导出成长图。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner vc_custom_1607682519950"><div class="wpb_wrapper"><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682660001" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_layout@3x-100x100.png" width="100" height="100" alt="ppt矩阵布局" title="icon_layout@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>矩阵布局</strong></h4>
+<p><span style="color: #999999;">通过参数化设置，将一个图形快速复制或多个图形重新整齐排列为矩阵。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682660001" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_design-tool@3x-100x100.png" width="100" height="100" alt="ppt设计工具" title="icon_design tool@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>设计工具</strong></h4>
+<p><span style="color: #999999;">一组强大的排版布局功能合集，各种智能化对齐，专治设计强迫症。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682660001" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_small-ppt@3x-100x100.png" width="100" height="100" alt="ppt瘦身" title="icon_small ppt@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>PPT瘦身</strong></h4>
+<p><span style="color: #999999;">一键优化清理PPT中的冗余内容，并对包含的图片进行智能压缩。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682660001" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_circular-layout@3x-100x100.png" width="100" height="100" alt="ppt环形布局" title="icon_circular layout@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>环形布局</strong></h4>
+<p><span style="color: #999999;">将一个图形快速复制或选择多个图形重新整齐排列为环形或扇形。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682660001" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_animation@3x-100x100.png" width="100" height="100" alt="ppt补间动画" title="icon_animation@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>补间动画</strong></h4>
+<p><span style="color: #999999;">在两个图形之间按所设定的数量和参数，补充中间过渡形状及动画。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid vc_inner  vc_custom_1607682660001" style=' text-align:left;'><div class=" full_section_inner clearfix"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_single_image wpb_content_element vc_align_left">
+		<div class="wpb_wrapper">
+			
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="https://www.islide.cc/wp-content/uploads/2020/12/icon_time@3x-100x100.png" width="100" height="100" alt="ppt计时器" title="icon_time@3x" /></div>
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4><strong>计时器</strong></h4>
+<p><span style="color: #999999;">可设置演讲计时和时间提醒功能，辅助演讲者进行演示排练。</span></p>
+
+		</div> 
+	</div> </div></div></div></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner vc_custom_1607685449825"><div class="wpb_wrapper"><a  itemprop="url" href="https://www.islide.cc/download" target="_self" data-hover-background-color=#f84d4d data-hover-border-color=#f84d4d data-hover-color=#ffffff class="qbutton  center default" style="color: #f84d4d; border-color: #f84d4d; background-color: #ffffff;">立即使用</a></div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  grid_section" style=' padding-top:60px; padding-bottom:62px; text-align:left;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1607686273709">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center; font-size: 40px;"><span style="color: #333333;">不懂设计，也能做出专业PPT</span></h2>
+
+		</div> 
+	</div> <div class="separator  transparent   " style="margin-top: 0px;"></div>
+
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h4 style="text-align: center;">告别加班，开始做出改变！</h4>
+
+		</div> 
+	</div> <div class="separator  transparent   " style="margin-top: 40px;"></div>
+<div class="wpb_gallery wpb_content_element vc_clearfix"><div class="wpb_wrapper"><div class="wpb_gallery_slides wpb_image_grid" data-interval="3"><div class="gallery_holder"><ul class="gallery_inner gallery_with_space  v3"><li class="no_grayscale"><img width="800" height="449" src="https://www.islide.cc/wp-content/uploads/2020/12/HD-1.jpg" class="attachment-full" alt="ppt模版" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/HD-1.jpg 800w, https://www.islide.cc/wp-content/uploads/2020/12/HD-1-300x168.jpg 300w, https://www.islide.cc/wp-content/uploads/2020/12/HD-1-768x431.jpg 768w, https://www.islide.cc/wp-content/uploads/2020/12/HD-1-700x393.jpg 700w, https://www.islide.cc/wp-content/uploads/2020/12/HD-1-539x303.jpg 539w" sizes="(max-width: 800px) 100vw, 800px" /></li><li class="no_grayscale"><img width="800" height="449" src="https://www.islide.cc/wp-content/uploads/2020/12/HD-6.jpg" class="attachment-full" alt="ppt模版" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/HD-6.jpg 800w, https://www.islide.cc/wp-content/uploads/2020/12/HD-6-300x168.jpg 300w, https://www.islide.cc/wp-content/uploads/2020/12/HD-6-768x431.jpg 768w, https://www.islide.cc/wp-content/uploads/2020/12/HD-6-700x393.jpg 700w, https://www.islide.cc/wp-content/uploads/2020/12/HD-6-539x303.jpg 539w" sizes="(max-width: 800px) 100vw, 800px" /></li><li class="no_grayscale"><img width="800" height="449" src="https://www.islide.cc/wp-content/uploads/2020/12/HD-5-1.jpg" class="attachment-full" alt="ppt模版" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/HD-5-1.jpg 800w, https://www.islide.cc/wp-content/uploads/2020/12/HD-5-1-300x168.jpg 300w, https://www.islide.cc/wp-content/uploads/2020/12/HD-5-1-768x431.jpg 768w, https://www.islide.cc/wp-content/uploads/2020/12/HD-5-1-700x393.jpg 700w, https://www.islide.cc/wp-content/uploads/2020/12/HD-5-1-539x303.jpg 539w" sizes="(max-width: 800px) 100vw, 800px" /></li><li class="no_grayscale"><img width="800" height="449" src="https://www.islide.cc/wp-content/uploads/2020/12/HD-2.jpg" class="attachment-full" alt="ppt模版" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/HD-2.jpg 800w, https://www.islide.cc/wp-content/uploads/2020/12/HD-2-300x168.jpg 300w, https://www.islide.cc/wp-content/uploads/2020/12/HD-2-768x431.jpg 768w, https://www.islide.cc/wp-content/uploads/2020/12/HD-2-700x393.jpg 700w, https://www.islide.cc/wp-content/uploads/2020/12/HD-2-539x303.jpg 539w" sizes="(max-width: 800px) 100vw, 800px" /></li><li class="no_grayscale"><img width="800" height="449" src="https://www.islide.cc/wp-content/uploads/2020/12/HD-3.jpg" class="attachment-full" alt="ppt模版" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/HD-3.jpg 800w, https://www.islide.cc/wp-content/uploads/2020/12/HD-3-300x168.jpg 300w, https://www.islide.cc/wp-content/uploads/2020/12/HD-3-768x431.jpg 768w, https://www.islide.cc/wp-content/uploads/2020/12/HD-3-700x393.jpg 700w, https://www.islide.cc/wp-content/uploads/2020/12/HD-3-539x303.jpg 539w" sizes="(max-width: 800px) 100vw, 800px" /></li><li class="no_grayscale"><img width="800" height="449" src="https://www.islide.cc/wp-content/uploads/2020/12/HD-4.jpg" class="attachment-full" alt="ppt模版" loading="lazy" srcset="https://www.islide.cc/wp-content/uploads/2020/12/HD-4.jpg 800w, https://www.islide.cc/wp-content/uploads/2020/12/HD-4-300x168.jpg 300w, https://www.islide.cc/wp-content/uploads/2020/12/HD-4-768x431.jpg 768w, https://www.islide.cc/wp-content/uploads/2020/12/HD-4-700x393.jpg 700w, https://www.islide.cc/wp-content/uploads/2020/12/HD-4-539x303.jpg 539w" sizes="(max-width: 800px) 100vw, 800px" /></li></ul></div></div></div></div><div class="separator  transparent   " style="margin-top: 40px;"></div>
+</div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  vc_custom_1642088729655 grid_section" style='background-color:#2f2f2f; padding-top:0px; padding-bottom:0px; text-align:left;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill"><div class="vc_column-inner vc_custom_1642089300679"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1642579878899">
+		<div class="wpb_wrapper">
+			<p><span style="color: #787f87;"> <strong>友情链接    |    </strong><a style="color: #787f87;" href="https://www.hrxz.com/" target="_blank" rel="noopener">HR下载</a>    |    <a style="color: #787f87;" href="https://www.wgppt.com" target="_blank" rel="noopener">文稿PPT </a>   |    <a style="color: #787f87;" href="http://www.focusky.com.cn" target="_blank" rel="noopener">动态PPT制作</a>     |     <a style="color: #787f87;" href="https://www.fotor.com.cn" target="_blank" rel="noopener">在线作图软件</a>     |    <a style="color: #787f87;" href="https://www.alltoall.net" target="_blank" rel="noopener">word转pdf</a>     |    <a style="color: #787f87;" href="https://www.gif.cn/" target="_blank" rel="noopener">gif制作</a>     |    <a style="color: #787f87;" href="http://www.zku.net" target="_blank" rel="noopener">字库</a>    |    <a style="color: #787f87;" href="https://www.zhaotu.com" target="_blank" rel="noopener">找图设计</a>    |    <a style="color: #787f87;" href="https://www.fengtupic.com" target="_blank" rel="noopener">素材网</a>     |     <a style="color: #787f87;" href="http://www.tubiaoxiu.com" target="_blank" rel="noopener">图表秀</a></span></p>
+
+		</div> 
+	</div> </div></div></div></div></div></div><div      class="vc_row wpb_row section vc_row-fluid  vc_custom_1642088729655 grid_section" style='background-color:#2f2f2f; padding-top:0px; padding-bottom:0px; text-align:left;'><div class=" section_inner clearfix"><div class='section_inner_margin clearfix'><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div></div></div>
+										 
+												</div>
+	</div>
+				
+	</div>
+</div>
+
+
+
+	<footer >
+		<div class="footer_inner clearfix">
+				<div class="footer_top_holder">
+            			<div class="footer_top">
+								<div class="container">
+					<div class="container_inner">
+																	<div class="four_columns clearfix">
+								<div class="column1 footer_col1">
+									<div class="column_inner">
+										<div id="text-16" class="widget widget_text"><h5>产品与服务</h5>			<div class="textwidget"><p class="footer_text"><a href="https://www.islide.cc/features">PPT插件</a></p>
+<p class="footer_text"><a href="https://www.islide.cc/ppt/" target="_blank" rel="noopener">PPT模板</a></p>
+<p class="footer_text"><a href="https://none.h5.xeknow.com/st/7ZX170QMY" target="_blank" rel="nofollow noopener">免费课程</a></p>
+<p class="footer_text"><a href="https://www.islide.cc/enterprise">企业服务</a></p>
+<p class="footer_text"><a href="https://www.laihua.com/" target="_blank" rel="nofollow noopener">动画创作</a></p>
+</div>
+		</div>									</div>
+								</div>
+								<div class="column2 footer_col2">
+									<div class="column_inner">
+										<div id="text-5" class="widget widget_text"><h5>帮助与支持</h5>			<div class="textwidget"><p class="footer_text"><a href="http://support.islide.cc/hc/kb/category/1040534/?lang=zh_cn" target="_blank" rel="nofollow noopener">常见问题</a><p>
+<p class="footer_text"><a href="http://support.islide.cc/hc/kb/category/1040535/?lang=zh_cn" target="_blank" rel="nofollow noopener">功能教程</a></p>
+<p class="footer_text">
+<a href="https://www.islide.cc/copyright" rel="nofollow noopener" target="_blank">版权声明</a><p>
+<p class="footer_text"><a href="https://www.islide.cc/user-agreement" rel="nofollow noopener" target="_blank">用户协议</a><p>
+<p class="footer_text"><a href="https://www.islide.cc/premium-agreement" rel="nofollow noopener" target="_blank">会员协议</a><p></div>
+		</div>									</div>
+								</div>
+								<div class="column3 footer_col3">
+									<div class="column_inner">
+										<div id="text-7" class="widget widget_text"><h5>公司介绍</h5>			<div class="textwidget"><p class="footer_text"><a href="https://www.islide.cc/about-us" target="_blank" title="关于我们" rel="nofollow noopener">关于我们</a><p>
+<p class="footer_text"><a href="https://www.islide.cc/la" target="_blank" title="讲师联盟" rel="nofollow noopener">讲师联盟</a><p>
+<p class="footer_text"><a href="https://www.islide.cc/report" target="_blank" title="媒体报道" rel="nofollow noopener">媒体报道</a><p>
+<p class="footer_text"><a href="https://www.islide.cc/reviews" target="_blank" title="合作伙伴" rel="nofollow noopener">合作伙伴</a><p>
+<p class="footer_text"><a href="https://www.islide.cc/contact" target="_blank" title="联系我们" rel="nofollow noopener">联系方式</a><p>
+</div>
+		</div>									</div>
+								</div>
+								<div class="column4 footer_col4">
+									<div class="column_inner">
+										<div id="text-8" class="widget widget_text">			<div class="textwidget"><div class="footer_contact">
+    <img class="img" id="weixin" src="https://www.islide.cc/wp-content/uploads/2019/02/weixin-off.png" />
+    <a href="http://weibo.com/islide" target="_blank" rel="nofollow noopener">
+        <img class="img" id="weibo" src="https://www.islide.cc/wp-content/uploads/2019/02/weibo-off.png" />
+    </a>
+    <a href="https://www.zhihu.com/org/islide/activities" target="_blank"rel="nofollow"> 
+        <img class="img" id="zhihu" src="https://www.islide.cc/wp-content/uploads/2019/02/zhihu-off.png" />
+    </a>
+    <div class="footer_qrcode_box">
+        <img src="https://www.islide.cc/wp-content/uploads/2021/05/wei.png" style="display: none;" />
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(".img").mouseenter(function () {
+        $id = jQuery(this).attr('id');
+        jQuery(this).attr("src", "https://www.islide.cc/wp-content/uploads/2019/02/" + $id + "-on.png");
+        if ($id == "weixin") {
+            jQuery(".footer_qrcode_box>img").css('display', 'block')
+        }
+    });
+    jQuery(".img").mouseleave(function () {
+        $id = jQuery(this).attr('id');
+        jQuery(this).attr("src", "https://www.islide.cc/wp-content/uploads/2019/02/" + $id + "-off.png");
+        jQuery(".footer_qrcode_box>img").css('display', 'none');
+    });
+</script></div>
+		</div>									</div>
+								</div>
+							</div>
+															</div>
+				</div>
+							</div>
+					</div>
+							<div class="footer_bottom_holder">
+                                    <div style="background-color: #3d4751;height: 1px" class="footer_bottom_border in_grid"></div>
+                								<div class="container">
+					<div class="container_inner">
+										<div class="two_columns_50_50 footer_bottom_columns clearfix">
+					<div class="column1 footer_bottom_column">
+						<div class="column_inner">
+							<div class="footer_bottom">
+											<div class="textwidget"><span>© 2016-2021 iSlide  Corporation. 保留一切权利.  <br>成都艾斯莱德网络科技有限公司<br><a href="https://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">蜀ICP备16016339号-1  </a>/ <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51019002001019" target="_blank" rel="nofollow noopener">川公网安备 51019002001019号</a><span>
+
+		 </div>
+									</div>
+						</div>
+					</div>
+					<div class="column2 footer_bottom_column">
+						<div class="column_inner">
+							<div class="footer_bottom">
+								<h5 class="footer_text_title">知识产权顾问</h5>			<div class="textwidget"><p><a href="https://www.islide.cc/privacy-policy" target="_blank" rel="nofollow noopener">隐私声明</a></p>
+<p><a href="http://www.tahota.com" target="_blank" rel="nofollow noopener">知识产权顾问：泰和泰律师事务所</a></p>
+</div>
+									</div>
+						</div>
+					</div>
+				</div>
+											</div>
+			</div>
+						</div>
+				</div>
+	</footer>
+		
+</div>
+</div>
+			<div class="mtsnb mtsnb-shown mtsnb-top mtsnb-fixed" id="mtsnb-29772" data-mtsnb-id="29772" style="background-color:#f84d4d;color:#ffffff;">
+				<style type="text/css">
+					.mtsnb { position: fixed; -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);}
+					.mtsnb .mtsnb-container { width: 1080px; font-size: 15px;}
+					.mtsnb a { color: #f4a700;}
+					.mtsnb .mtsnb-button { background-color: #f4a700;}
+				</style>
+				<div class="mtsnb-container-outer">
+					<div class="mtsnb-container mtsnb-clearfix">
+												<div class="mtsnb-button-type mtsnb-content"><span class="mtsnb-text">参与VIP专属抽奖活动，100%中奖，最高抽中一年会员</span><a href="https://www.islide.cc/ppt/member-intro" class="mtsnb-button">了解详情</a></div>											</div>
+										<a href="#" class="mtsnb-show" style="background-color:#f84d4d;color:#ffffff;"><span>+</span></a>					<a href="#" class="mtsnb-hide" style="background-color:#f84d4d;color:#ffffff;"><span>+</span></a>
+									</div>
+			</div>
+			<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQC42VH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><script type="text/html" id="wpb-modifications"></script><script type='text/javascript' src='https://www.islide.cc/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.7' id='regenerator-runtime-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script type='text/javascript' id='contact-form-7-js-extra'>
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/www.islide.cc\/wp-json\/","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.5.4' id='contact-form-7-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/smartideo/static/smartideo.js?ver=2.7.0' id='smartideo_js-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/core.min.js?ver=1.12.1' id='jquery-ui-core-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/accordion.min.js?ver=1.12.1' id='jquery-ui-accordion-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/menu.min.js?ver=1.12.1' id='jquery-ui-menu-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/dist/dom-ready.min.js?ver=71883072590656bf22c74c7b887df3dd' id='wp-dom-ready-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/dist/hooks.min.js?ver=a7edae857aab69d69fa10d5aef23a5de' id='wp-hooks-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/dist/i18n.min.js?ver=5f1269854226b4dd90450db411a12b79' id='wp-i18n-js'></script>
+<script type='text/javascript' id='wp-i18n-js-after'>
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script type='text/javascript' id='wp-a11y-js-translations'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", {"translation-revision-date":"2021-11-05 11:55:27+0000","generator":"GlotPress\/3.0.0-alpha.2","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=1; plural=0;","lang":"zh_CN"},"Notifications":["\u901a\u77e5"]}},"comment":{"reference":"wp-includes\/js\/dist\/a11y.js"}} );
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/dist/a11y.min.js?ver=0ac8327cc1c40dcfdf29716affd7ac63' id='wp-a11y-js'></script>
+<script type='text/javascript' id='jquery-ui-autocomplete-js-extra'>
+/* <![CDATA[ */
+var uiAutocompleteL10n = {"noResults":"\u672a\u627e\u5230\u7ed3\u679c\u3002","oneResult":"\u627e\u52301\u4e2a\u7ed3\u679c\u3002\u4f7f\u7528\u4e0a\u4e0b\u65b9\u5411\u952e\u6765\u5bfc\u822a\u3002","manyResults":"\u627e\u5230%d\u4e2a\u7ed3\u679c\u3002\u4f7f\u7528\u4e0a\u4e0b\u65b9\u5411\u952e\u6765\u5bfc\u822a\u3002","itemSelected":"\u5df2\u9009\u62e9\u9879\u76ee\u3002"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/autocomplete.min.js?ver=1.12.1' id='jquery-ui-autocomplete-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/controlgroup.min.js?ver=1.12.1' id='jquery-ui-controlgroup-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/checkboxradio.min.js?ver=1.12.1' id='jquery-ui-checkboxradio-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/button.min.js?ver=1.12.1' id='jquery-ui-button-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.12.1' id='jquery-ui-datepicker-js'></script>
+<script type='text/javascript' id='jquery-ui-datepicker-js-after'>
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"\u5173\u95ed","currentText":"\u4eca\u5929","monthNames":["1\u6708","2\u6708","3\u6708","4\u6708","5\u6708","6\u6708","7\u6708","8\u6708","9\u6708","10\u6708","11\u6708","12\u6708"],"monthNamesShort":["1\u6708","2\u6708","3\u6708","4\u6708","5\u6708","6\u6708","7\u6708","8\u6708","9\u6708","10\u6708","11\u6708","12\u6708"],"nextText":"\u4e0b\u4e00\u6b65","prevText":"\u4e0a\u4e00\u6b65","dayNames":["\u661f\u671f\u65e5","\u661f\u671f\u4e00","\u661f\u671f\u4e8c","\u661f\u671f\u4e09","\u661f\u671f\u56db","\u661f\u671f\u4e94","\u661f\u671f\u516d"],"dayNamesShort":["\u5468\u65e5","\u5468\u4e00","\u5468\u4e8c","\u5468\u4e09","\u5468\u56db","\u5468\u4e94","\u5468\u516d"],"dayNamesMin":["\u65e5","\u4e00","\u4e8c","\u4e09","\u56db","\u4e94","\u516d"],"dateFormat":"yy\u5e74mm\u6708d\u65e5","firstDay":1,"isRTL":false});});
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/mouse.min.js?ver=1.12.1' id='jquery-ui-mouse-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/resizable.min.js?ver=1.12.1' id='jquery-ui-resizable-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/draggable.min.js?ver=1.12.1' id='jquery-ui-draggable-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/dialog.min.js?ver=1.12.1' id='jquery-ui-dialog-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/droppable.min.js?ver=1.12.1' id='jquery-ui-droppable-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/progressbar.min.js?ver=1.12.1' id='jquery-ui-progressbar-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/selectable.min.js?ver=1.12.1' id='jquery-ui-selectable-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/sortable.min.js?ver=1.12.1' id='jquery-ui-sortable-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/slider.min.js?ver=1.12.1' id='jquery-ui-slider-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/spinner.min.js?ver=1.12.1' id='jquery-ui-spinner-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/tooltip.min.js?ver=1.12.1' id='jquery-ui-tooltip-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/tabs.min.js?ver=1.12.1' id='jquery-ui-tabs-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect.min.js?ver=1.12.1' id='jquery-effects-core-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-blind.min.js?ver=1.12.1' id='jquery-effects-blind-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-bounce.min.js?ver=1.12.1' id='jquery-effects-bounce-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-clip.min.js?ver=1.12.1' id='jquery-effects-clip-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-drop.min.js?ver=1.12.1' id='jquery-effects-drop-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-explode.min.js?ver=1.12.1' id='jquery-effects-explode-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-fade.min.js?ver=1.12.1' id='jquery-effects-fade-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-fold.min.js?ver=1.12.1' id='jquery-effects-fold-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-highlight.min.js?ver=1.12.1' id='jquery-effects-highlight-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-pulsate.min.js?ver=1.12.1' id='jquery-effects-pulsate-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-size.min.js?ver=1.12.1' id='jquery-effects-size-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-scale.min.js?ver=1.12.1' id='jquery-effects-scale-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-shake.min.js?ver=1.12.1' id='jquery-effects-shake-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-slide.min.js?ver=1.12.1' id='jquery-effects-slide-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/jquery/ui/effect-transfer.min.js?ver=1.12.1' id='jquery-effects-transfer-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins.js?ver=5.8.3' id='plugins-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/jquery.carouFredSel-6.2.1.min.js?ver=5.8.3' id='carouFredSel-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/lemmon-slider.min.js?ver=5.8.3' id='lemmonSlider-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/jquery.fullPage.min.js?ver=5.8.3' id='one_page_scroll-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/jquery.mousewheel.min.js?ver=5.8.3' id='mousewheel-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/jquery.touchSwipe.min.js?ver=5.8.3' id='touchSwipe-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min.js?ver=6.7.0' id='isotope-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/packery-mode.pkgd.min.js?ver=5.8.3' id='packery-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/jquery.stretch.js?ver=5.8.3' id='stretch-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/imagesloaded.js?ver=5.8.3' id='imagesLoaded-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/TweenLite.min.js?ver=5.8.3' id='TweenLite-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/ScrollToPlugin.min.js?ver=5.8.3' id='ScrollToPlugin-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/smoothPageScroll.min.js?ver=5.8.3' id='smoothPageScroll-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/default_dynamic.php?ver=5.8.3' id='default_dynamic-js'></script>
+<script type='text/javascript' id='default-js-extra'>
+/* <![CDATA[ */
+var QodeAdminAjax = {"ajaxurl":"https:\/\/www.islide.cc\/wp-admin\/admin-ajax.php"};
+var qodeGlobalVars = {"vars":{"qodeAddingToCartLabel":"Adding to Cart..."}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/default.min.js?ver=5.8.3' id='default-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/custom_js.php?ver=5.8.3' id='custom_js-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-includes/js/comment-reply.min.js?ver=5.8.3' id='comment-reply-js'></script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=6.7.0' id='wpb_composer_front_js-js'></script>
+<script type='text/javascript' id='qode-like-js-extra'>
+/* <![CDATA[ */
+var qodeLike = {"ajaxurl":"https:\/\/www.islide.cc\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.islide.cc/wp-content/themes/bridge/js/plugins/qode-like.min.js?ver=5.8.3' id='qode-like-js'></script>
+<script>(function(d){var s=d.createElement("script");s.type="text/javascript";s.src="https://a.omappapi.com/app/js/api.min.js";s.async=true;s.id="omapi-script";d.getElementsByTagName("head")[0].appendChild(s);})(document);</script><script type='text/javascript' src='https://www.islide.cc/wp-includes/js/wp-embed.min.js?ver=5.8.3' id='wp-embed-js'></script>
+		<script type="text/javascript">var omapi_data = {"wc_cart":[],"object_id":15462,"object_key":"page","object_type":"post","term_ids":[]};</script>
+		</body>
+</html>
