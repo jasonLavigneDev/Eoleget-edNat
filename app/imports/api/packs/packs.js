@@ -20,11 +20,27 @@ Packs.schema = new SimpleSchema(
     },
     applications: {
       type: Array,
+      defaultValue: [],
       label: getLabel('api.packs.labels.applications'),
     },
     'applications.$': {
-      type: String,
+      type: Object,
       label: getLabel('api.packs.labels.applications'),
+    },
+    'applications.$.identification': { type: String, label: getLabel('api.applications.labels.identification') },
+    'applications.$.nom': {
+      type: String,
+      label: getLabel('api.applications.labels.name'),
+    },
+
+    'applications.$.description': {
+      type: String,
+      label: getLabel('api.applications.labels.description'),
+    },
+
+    'applications.$.version': {
+      type: String,
+      label: getLabel('api.applications.labels.version'),
     },
     owner: {
       type: String,

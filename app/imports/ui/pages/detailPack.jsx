@@ -12,7 +12,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Spinner from '../components/system/Spinner';
 import AppPacksCard from '../components/packsCard/appPacksCard';
-import Applications from '../../api/applications/applications';
 import Packs from '../../api/packs/packs';
 import theme from '../themes/light';
 
@@ -43,13 +42,15 @@ const divButtonStyle = {
 };
 // End styles //
 
-function DetailPack({ pack, apps, ready }) {
+function DetailPack({ pack, ready }) {
   const history = useHistory();
   const goBack = () => {
     history.push('/packs');
     window.location.reload();
   };
   if (!ready) return <Spinner full />;
+
+  const apps = pack.applications;
 
   const mapList = (func) => apps.map(func);
 
@@ -90,19 +91,12 @@ export default withTracker(
       params: { _id },
     },
   }) => {
-    let subApp;
-    let apps;
     const subPack = Meteor.subscribe('packs.single', { _id });
     const pack = Packs.findOne(_id);
-    if (pack !== undefined) {
-      subApp = Meteor.subscribe('applications.pack', { packAppli: pack.applications });
-      apps = Applications.find({ identification: { $in: pack.applications } }).fetch();
-    }
 
-    const ready = subPack.ready() && subApp.ready();
+    const ready = subPack.ready();
     return {
       pack,
-      apps,
       ready,
     };
   },
@@ -110,11 +104,9 @@ export default withTracker(
 
 DetailPack.propTypes = {
   pack: PropTypes.objectOf(PropTypes.any),
-  apps: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
   ready: PropTypes.bool.isRequired,
 };
 
 DetailPack.defaultProps = {
   pack: {},
-  apps: [],
 };

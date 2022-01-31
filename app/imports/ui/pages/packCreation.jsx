@@ -145,8 +145,6 @@ function CreatePackPage() {
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
-  const dataId = data.map((app) => app.identification);
-
   const onUpdateName = (event) => {
     setName(event.target.value);
   };
@@ -162,9 +160,25 @@ function CreatePackPage() {
     const today = new Date(timeElapsed);
     const date = today.toUTCString();
     const color = JSON.parse(localStorage.getItem('color'));
+    const apps = [];
+    cart[0].map((app) => {
+      return apps.push({
+        nom: app.nom,
+        description: app.description,
+        identification: app.identification,
+        version: app.versions[0],
+      });
+    });
     Meteor.call(
       'packs.createPack',
-      { name, applications: dataId, creationDate: date, isValidated: true, description, color },
+      {
+        name,
+        applications: apps,
+        creationDate: date,
+        isValidated: true,
+        description,
+        color,
+      },
       (err) => {
         if (err) msg.error(err.reason);
         else {
