@@ -152,7 +152,7 @@
     }
   },
   "components": {
-    "packDelete":{
+    "packDelete": {
       "deleteSuccess": "Pack supprimé",
       "title": "Suppression de pack",
       "mainText": "Souhaitez-vous réellement supprimer ce pack ? Cette action est irréversible.",
@@ -238,7 +238,8 @@
       "application": "Application",
       "description": "Description",
       "version": "Version",
-      "url": "URL"
+      "url": "URL",
+      "detailTooltip": "Voir l'application"
     },
     "AppPacksCard": {
       "infoTooltip": "Voir l'application"

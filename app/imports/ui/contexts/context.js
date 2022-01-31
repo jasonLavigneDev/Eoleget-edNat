@@ -16,6 +16,7 @@ const initialState = {
   authenticated: false,
   appPage: {},
   packPage: {},
+  appSelected: [],
 };
 
 const logger = (state, action) => {
