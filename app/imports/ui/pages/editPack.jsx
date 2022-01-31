@@ -22,7 +22,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import Spinner from '../components/system/Spinner';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import Packs from '../../api/packs/packs';
-import Applications from '../../api/applications/applications';
 
 // Style CSS //
 const containerStyle = {
@@ -50,12 +49,13 @@ const paperStyle = {
 };
 // End Style //
 
-const EditPackPage = ({ pack, apps, ready }) => {
+const EditPackPage = ({ pack, ready }) => {
   if (!ready) return <Spinner full />;
 
   const history = useHistory();
   const [name, setName] = useState(pack.name);
   const [description, setDescription] = useState(pack.description);
+  const apps = pack.applications;
 
   let data = [];
 
@@ -67,10 +67,9 @@ const EditPackPage = ({ pack, apps, ready }) => {
       appName: app.nom,
       description: app.description,
       identification: app.identification,
-      version: app.versions[0],
+      version: app.version,
     });
   });
-  let dataId = data.map((app) => app.identification);
 
   const [rows, setRows] = useState(data);
 
@@ -80,7 +79,6 @@ const EditPackPage = ({ pack, apps, ready }) => {
     }
 
     data = [];
-    dataId = [];
     _id = 0;
     apps.map((app) => {
       _id += 1;
@@ -89,10 +87,9 @@ const EditPackPage = ({ pack, apps, ready }) => {
         appName: app.nom,
         description: app.description,
         identification: app.identification,
-        version: app.versions[0],
+        version: app.version,
       });
     });
-    dataId = data.map((app) => app.identification);
     setRows(data);
   };
 
@@ -153,8 +150,17 @@ const EditPackPage = ({ pack, apps, ready }) => {
   };
 
   const editPack = () => {
+    const finalApps = [];
+    apps.map((app) => {
+      return finalApps.push({
+        nom: app.nom,
+        description: app.description,
+        identification: app.identification,
+        version: app.version,
+      });
+    });
     const color = JSON.parse(localStorage.getItem('color'));
-    Meteor.call('packs.updatePack', { _id: pack._id, name, applications: dataId, description, color }, (err) => {
+    Meteor.call('packs.updatePack', { _id: pack._id, name, applications: finalApps, description, color }, (err) => {
       if (err) msg.error(err.reason);
       else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
     });
@@ -226,18 +232,11 @@ export default withTracker(
     },
   }) => {
     const subPack = Meteor.subscribe('packs.single', { _id });
-    let subApp;
-    let apps;
     const pack = Packs.findOne(_id);
-    if (pack !== undefined) {
-      subApp = Meteor.subscribe('applications.pack', { packAppli: pack.applications });
-      apps = Applications.find({ identification: { $in: pack.applications } }).fetch();
-    }
 
-    const ready = subPack.ready() && subApp.ready();
+    const ready = subPack.ready();
     return {
       pack,
-      apps,
       ready,
     };
   },
@@ -245,11 +244,9 @@ export default withTracker(
 
 EditPackPage.propTypes = {
   pack: PropTypes.objectOf(PropTypes.any),
-  apps: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)),
   ready: PropTypes.bool.isRequired,
 };
 
 EditPackPage.defaultProps = {
   pack: {},
-  apps: [],
 };

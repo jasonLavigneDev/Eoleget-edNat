@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 // import MaterialTable from '@material-table/core';
 import { DataGrid } from '@mui/x-data-grid';
-import { useTracker } from 'meteor/react-meteor-data';
-import Applications from '../../../api/applications/applications';
 
 function PackList({ packs }) {
   const columns = [
@@ -34,10 +32,7 @@ function PackList({ packs }) {
   const data = [];
   let _id = 0;
   packs.map((pack) => {
-    const appli = useTracker(() => {
-      Meteor.subscribe('applications.pack', { packAppli: pack.applications });
-      return Applications.find({ identification: { $in: pack.applications } }).fetch();
-    });
+    const appli = pack.applications;
 
     const tab = appli.map((app) => app.nom);
     _id += 1;

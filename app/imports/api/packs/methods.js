@@ -42,7 +42,20 @@ export const createPack = new ValidatedMethod({
   validate: new SimpleSchema({
     name: { type: String, min: 1, label: getLabel('api.packs.labels.name') },
     applications: { type: Array, label: getLabel('api.packs.labels.applications') },
-    'applications.$': { type: String, label: getLabel('api.packs.labels.applications') },
+    'applications.$': { type: Object, label: getLabel('api.packs.labels.applications') },
+    'applications.$.identification': { type: String, label: getLabel('api.applications.labels.identification') },
+    'applications.$.nom': {
+      type: String,
+      label: getLabel('api.applications.labels.name'),
+    },
+    'applications.$.description': {
+      type: String,
+      label: getLabel('api.applications.labels.description'),
+    },
+    'applications.$.version': {
+      type: String,
+      label: getLabel('api.applications.labels.description'),
+    },
     creationDate: { type: Date, label: getLabel('api.packs.labels.creationDate') },
     isValidated: { type: Boolean, label: getLabel('api.packs.labels.isValidated') },
     description: { type: String, label: getLabel('api.packs.labels.description') },
@@ -82,7 +95,20 @@ export const updatePack = new ValidatedMethod({
     _id: { type: String, regEx: SimpleSchema.RegEx.Id },
     name: { type: String, min: 1, label: getLabel('api.packs.labels.name') },
     applications: { type: Array, label: getLabel('api.packs.labels.applications') },
-    'applications.$': { type: String, label: getLabel('api.packs.labels.applications') },
+    'applications.$': { type: Object, label: getLabel('api.packs.labels.applications') },
+    'applications.$.identification': { type: String, label: getLabel('api.applications.labels.identification') },
+    'applications.$.nom': {
+      type: String,
+      label: getLabel('api.applications.labels.name'),
+    },
+    'applications.$.description': {
+      type: String,
+      label: getLabel('api.applications.labels.description'),
+    },
+    'applications.$.version': {
+      type: String,
+      label: getLabel('api.applications.labels.description'),
+    },
     description: { type: String, label: getLabel('api.packs.labels.description') },
     color: { type: String, label: getLabel('api.packs.labels.color') },
   }).validator({ clean: true }),

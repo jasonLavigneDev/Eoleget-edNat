@@ -15,13 +15,11 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
-import { useTracker } from 'meteor/react-meteor-data';
 import { Typography } from '@mui/material';
 
 import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
-import Applications from '../../../api/applications/applications';
 import PackDelete from './packDelete';
 
 // Styles CSS //
@@ -78,10 +76,7 @@ const PackCard = ({ pack }) => {
   const [showMore, setShowMore] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [{ userId }] = useAppContext();
-  const appli = useTracker(() => {
-    Meteor.subscribe('applications.pack', { packAppli: pack.applications });
-    return Applications.find({ identification: { $in: pack.applications } }).fetch();
-  });
+  const appli = pack.applications;
 
   const history = useHistory();
   const ExpandMore = styled(
