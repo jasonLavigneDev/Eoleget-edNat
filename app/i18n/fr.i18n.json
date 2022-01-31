@@ -221,7 +221,8 @@
       "doVerify": "Envoyer un courriel"
     },
     "Card": {
-      "addButtonTooltip": "Ajouter l'application",
+      "addButtonTooltip": "Ajouter l'application au panier",
+      "removeButtonTooltip": "Retirer cette application du panier",
       "showMore": "Voir plus",
       "addAppSuccess": "Application ajoutée au panier.",
       "removeAppSuccess": "Application retirée du panier.",

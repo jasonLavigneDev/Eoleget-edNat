@@ -169,12 +169,11 @@ function CreatePackPage() {
         if (err) msg.error(err.reason);
         else {
           msg.success(i18n.__('pages.packCreation.createPackSuccess'));
-          cart[0] = [];
-          reloadData();
-          localStorage.setItem('cart', JSON.stringify(cart[0]));
         }
       },
     );
+    cart[0] = [];
+    localStorage.removeItem('cart');
     history.push('/packs');
     window.location.reload();
   };
