@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Avatar from '@mui/material/Avatar';
@@ -15,13 +15,8 @@ const avatarDetailsStyle = {
 };
 // End styles //
 
-function AppAvatar({ detailApp }) {
-  const [isDetailApp, setDetailApp] = useState(false);
-  const avatar = '/images/i18n/fr.png';
-
-  React.useEffect(() => {
-    setDetailApp(detailApp);
-  }, [isDetailApp]);
+function AppAvatar({ nameApp, isDetailApp }) {
+  const avatar = `/images/appli/${nameApp}`;
 
   return (
     <Badge
@@ -30,13 +25,14 @@ function AppAvatar({ detailApp }) {
         horizontal: 'right',
       }}
     >
-      <Avatar alt="group" src={avatar} sx={isDetailApp ? avatarDetailsStyle : avatarStyle} />
+      <Avatar alt={nameApp} src={avatar} sx={isDetailApp ? avatarDetailsStyle : avatarStyle} />
     </Badge>
   );
 }
 
 AppAvatar.propTypes = {
-  detailApp: PropTypes.bool.isRequired,
+  nameApp: PropTypes.string.isRequired,
+  isDetailApp: PropTypes.bool.isRequired,
 };
 
 export default AppAvatar;

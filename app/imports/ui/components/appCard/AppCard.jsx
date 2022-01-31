@@ -104,7 +104,7 @@ function AppCard({ app, cart }) {
         }
         avatar={
           <AppBadge>
-            <AppAvatar detailApp={false} />
+            <AppAvatar nameApp={app.identification} isDetailApp={false} />
           </AppBadge>
         }
         action={
