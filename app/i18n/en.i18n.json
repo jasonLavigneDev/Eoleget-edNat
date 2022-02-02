@@ -246,6 +246,12 @@
       "url": "URL",
       "detailTooltip": "Show app"
     },
+    "PackList": {
+      "name": "Pack name",
+      "description": "Description",
+      "number": "Pack applications number",
+      "detailTooltip": "Show pack"
+    },
     "AppPacksCard": {
       "infoTooltip": "Show application"
     },
