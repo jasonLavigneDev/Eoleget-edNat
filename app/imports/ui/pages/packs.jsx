@@ -144,7 +144,6 @@ function PackPage() {
           onChange={debouncedSearch}
           onKeyDown={checkEscape}
           type="text"
-          value={search}
           variant="outlined"
           inputRef={searchRef}
           inputProps={{
@@ -178,7 +177,7 @@ function PackPage() {
             <Typography variant="h4" component="div">
               {i18n.__('pages.Packs.packsStoreTitle')}
             </Typography>
-            <Tooltip title={i18n.__('pages.Packs.searchApp')}>
+            <Tooltip title={i18n.__('pages.Packs.searchPack')}>
               <IconButton onClick={toggleSearch}>
                 <SearchIcon fontSize="large" />
               </IconButton>
