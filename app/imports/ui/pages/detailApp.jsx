@@ -22,36 +22,40 @@ import AppAvatar from '../components/appCard/AppAvatar';
 import lightTheme from '../themes/light';
 import ListVersion from '../components/version/listVersion';
 
-// Styles CSS //
-const containerStyle = {
-  marginTop: lightTheme.spacing(10),
-  maxWidth: '1000px',
-  minWidth: '550px',
-};
-const paperStyle = {
-  padding: lightTheme.spacing(1),
-};
-const gridContainerStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyItems: 'center',
-};
-const iconSpanStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-};
-const divButtonStyle = {
-  marginTop: 20,
-  marginBottom: 5,
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-evenly',
-};
-// End styles //
-
 const detailApp = ({ app, ready }) => {
+  // Styles CSS //
+  const containerStyle = {
+    marginTop: lightTheme.spacing(10),
+    maxWidth: '1000px',
+    minWidth: '550px',
+  };
+  const paperStyle = {
+    padding: lightTheme.spacing(1),
+  };
+  const gridContainerStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyItems: 'center',
+  };
+  const iconSpanStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+  };
+  const iconStyle = {
+    '&:disabled': {
+      color: 'rgba(0, 0, 0, 0.54)',
+    },
+  };
+  const divButtonStyle = {
+    marginTop: 20,
+    marginBottom: 5,
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  };
+  // End styles //
   const history = useHistory();
   const goBack = () => {
     history.push('/');
@@ -101,6 +105,8 @@ const detailApp = ({ app, ready }) => {
 
   const mapList = (func) => app.tags.map(func);
 
+  const handleUrlButton = () => window.open(app.url, '_self');
+
   return !ready ? (
     <Spinner full />
   ) : (
@@ -124,7 +130,7 @@ const detailApp = ({ app, ready }) => {
                 <ListVersion versions={app.versions} />
               </div>
               <span style={iconSpanStyle}>
-                <IconButton title={i18n.__('pages.detailApp.redirect')}>
+                <IconButton title={i18n.__('pages.detailApp.redirect')} onClick={handleUrlButton} disabled={!app.url}>
                   <LanguageIcon />
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.redirectLabel')}</p>
@@ -136,13 +142,13 @@ const detailApp = ({ app, ready }) => {
                 <p>{i18n.__('pages.detailApp.downloadLabel')}</p>
               </span>
               <span style={iconSpanStyle}>
-                <IconButton disabled>
+                <IconButton disabled sx={iconStyle}>
                   <MonetizationOnIcon />
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.Licence')}</p>
               </span>
               <span style={iconSpanStyle}>
-                <IconButton disabled>
+                <IconButton disabled sx={iconStyle}>
                   <LocalOfferIcon />
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.Tags')}</p>
