@@ -67,7 +67,9 @@ function DetailPack({ pack, ready }) {
             <Typography variant="h6" component="div">
               {pack.name}
             </Typography>
-            <p>{pack.description}</p>
+            <textarea readOnly rows="8" style={{ resize: 'none', border: 0 }}>
+              {pack.description}
+            </textarea>
             {mapList((app) => (
               <AppPacksCard key={app.identification} app={app} />
             ))}

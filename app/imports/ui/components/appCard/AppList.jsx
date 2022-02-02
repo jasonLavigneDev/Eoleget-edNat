@@ -13,11 +13,10 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
-import Button from '@mui/material/Button';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 import ListVersion from '../version/listVersion';
-import EnhancedTableHead from '../appTable/tableHead';
+import EnhancedTableHead from '../packTable/tableHead';
 
 function AppList({ applications, cart }) {
   function descendingComparator(a, b, orderBy) {
@@ -181,22 +180,6 @@ function AppList({ applications, cart }) {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      <Button
-        aria-label="add"
-        onClick={() => {
-          addAppToCart();
-        }}
-      >
-        Ajouter au panier
-      </Button>
-      <Button
-        aria-label="remove"
-        onClick={() => {
-          removeAppToCart();
-        }}
-      >
-        Annuler
-      </Button>
     </div>
   );
 }

@@ -103,9 +103,6 @@ function PackPage() {
     if (!search) return true;
     return searchText.indexOf(search.toLowerCase()) > -1;
   };
-  const isUpperCase = (str) => {
-    return str === str.toUpperCase();
-  };
 
   const mapList = (func) => items.filter((pack) => filterPack(pack)).map(func);
 
@@ -229,7 +226,7 @@ function PackPage() {
               </Collapse>
             </Paper>
             <Collapse in={showModeList} collapsedsize={0}>
-              <PackList packs={packs} isUpperCase={isUpperCase} />
+              <PackList packs={packs} />
             </Collapse>
           </div>
         </div>
