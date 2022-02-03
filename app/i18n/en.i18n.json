@@ -25,6 +25,7 @@
       },
       "duplicateName": "A pack already have this name",
       "packAlreadyExist": "This pack already exists",
+      "nameAlreadyTaken": "This name is already taken",
       "unknownPack": "Unkown pack",
       "packNotFound": "Pack not found",
       "needToBeOwner": "You need to be owner of this pack",
@@ -35,7 +36,7 @@
       "removePack": {
         "notPermitted": "You don't have sufficient rights."
       },
-      "updateGroup": {
+      "updatePack": {
         "notPermitted": "You don't have sufficient rights."
       }
     },
