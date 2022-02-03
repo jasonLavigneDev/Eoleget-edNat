@@ -78,7 +78,14 @@ function AppList({ applications, cart }) {
     if (checkAppAllreadyAdded(app)) {
       msg.error(i18n.__('components.Card.addAppError'));
     } else {
-      cart[1]([...cart[0], app]);
+      const ver = JSON.parse(localStorage.getItem(`version_${app.identification}`)) || '';
+      const appFinal = {
+        nom: app.nom,
+        identification: app.identification,
+        description: app.description,
+        version: ver,
+      };
+      cart[1]([...cart[0], appFinal]);
       msg.success(i18n.__('components.Card.addAppSuccess'));
     }
   };
@@ -122,6 +129,11 @@ function AppList({ applications, cart }) {
     setPage(0);
   };
 
+  const getVersion = (app) => {
+    const ver = JSON.parse(localStorage.getItem(`version_${app.identification}`)) || 'latest';
+    return ver;
+  };
+
   return (
     <div style={{ height: 600 }}>
       <TableContainer component={Paper}>
@@ -154,7 +166,11 @@ function AppList({ applications, cart }) {
                     </TableCell>
                     <TableCell>{app.nom}</TableCell>
                     <TableCell>{app.description}</TableCell>
-                    <ListVersion versions={app.versions} />
+                    {isSelected(app) ? (
+                      <TableCell>{getVersion(app)}</TableCell>
+                    ) : (
+                      <ListVersion versions={app.versions} app={app} />
+                    )}
                     <TableCell>{app.url}</TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>

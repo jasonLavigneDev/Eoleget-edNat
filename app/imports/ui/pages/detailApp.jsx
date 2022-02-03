@@ -85,11 +85,23 @@ const detailApp = ({ app, ready }) => {
     return res;
   };
 
+  const getVersion = () => {
+    const ver = JSON.parse(localStorage.getItem(`version_${app.identification}`)) || 'latest';
+    return ver;
+  };
+
   const addAppToCart = () => {
     if (checkAppAllreadyAdded()) {
       msg.error(i18n.__('components.Card.addAppError'));
     } else {
-      cart[1]([...cart[0], app]);
+      const ver = JSON.parse(localStorage.getItem(`version_${app.identification}`)) || '';
+      const appFinal = {
+        nom: app.nom,
+        identification: app.identification,
+        description: app.description,
+        version: ver,
+      };
+      cart[1]([...cart[0], appFinal]);
       msg.success(i18n.__('components.Card.addAppSuccess'));
     }
   };
@@ -127,7 +139,7 @@ const detailApp = ({ app, ready }) => {
               <p>{i18n.__('pages.detailApp.winget')}</p>
               <div style={{ display: 'flex' }}>
                 <p style={{ paddingRight: 5 }}>Versions :</p>
-                <ListVersion versions={app.versions} />
+                {checkAppAllreadyAdded() ? <p>{getVersion()}</p> : <ListVersion versions={app.versions} app={app} />}
               </div>
               <span style={iconSpanStyle}>
                 <IconButton title={i18n.__('pages.detailApp.redirect')} onClick={handleUrlButton} disabled={!app.url}>

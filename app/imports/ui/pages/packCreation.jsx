@@ -56,6 +56,10 @@ function CreatePackPage() {
   const [description, setDescription] = useState('');
   let data = [];
 
+  const getVersion = (app) => {
+    return app.version || 'latest';
+  };
+
   let _id = 0;
   cart[0].map((app) => {
     _id += 1;
@@ -64,7 +68,7 @@ function CreatePackPage() {
       appName: app.nom,
       description: app.description,
       identification: app.identification,
-      version: app.versions[0],
+      version: getVersion(app),
     });
   });
 
@@ -80,7 +84,7 @@ function CreatePackPage() {
         appName: app.nom,
         description: app.description,
         identification: app.identification,
-        version: app.versions[0],
+        version: getVersion(app),
       });
     });
     setRows(data);
@@ -162,12 +166,8 @@ function CreatePackPage() {
     const color = JSON.parse(localStorage.getItem('color'));
     const apps = [];
     cart[0].map((app) => {
-      return apps.push({
-        nom: app.nom,
-        description: app.description,
-        identification: app.identification,
-        version: app.versions[0],
-      });
+      localStorage.removeItem(`version_${app.identification}`);
+      return apps.push(app);
     });
     Meteor.call(
       'packs.createPack',

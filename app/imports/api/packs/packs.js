@@ -41,6 +41,7 @@ Packs.schema = new SimpleSchema(
     'applications.$.version': {
       type: String,
       label: getLabel('api.applications.labels.version'),
+      defaultValue: '',
     },
     owner: {
       type: String,
@@ -55,7 +56,7 @@ Packs.schema = new SimpleSchema(
       label: getLabel('api.packs.labels.color'),
     },
   },
-  { tracker: Tracker },
+  { clean: { removeEmptyStrings: false }, tracker: Tracker },
 );
 
 Packs.publicField = {

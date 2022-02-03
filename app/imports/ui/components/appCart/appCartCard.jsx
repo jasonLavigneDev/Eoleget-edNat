@@ -22,10 +22,14 @@ function AppCardCart({ app, cart }) {
     cart[1](cart[0].filter((appli) => appli.identification !== app.identification));
   };
 
+  const getVersion = () => {
+    return app.version || 'latest';
+  };
+
   return (
     <Card>
       <CardContent sx={cardContentStyle}>
-        {app.nom}
+        {app.nom} ({getVersion()})
         <CardActions>
           <Tooltip title="delete">
             <IconButton onClick={RemoveAppFromCart}>
