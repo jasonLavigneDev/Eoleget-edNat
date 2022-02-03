@@ -183,13 +183,13 @@ function CreatePackPage() {
         if (err) msg.error(err.reason);
         else {
           msg.success(i18n.__('pages.packCreation.createPackSuccess'));
+          cart[0] = [];
+          localStorage.removeItem('cart');
+          history.push('/packs');
+          window.location.reload();
         }
       },
     );
-    cart[0] = [];
-    localStorage.removeItem('cart');
-    history.push('/packs');
-    window.location.reload();
   };
   const goBack = () => {
     history.push('/');

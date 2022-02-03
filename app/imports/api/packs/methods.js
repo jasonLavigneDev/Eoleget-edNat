@@ -59,6 +59,11 @@ export const createPack = new ValidatedMethod({
   }).validator({ clean: true }),
 
   run({ name, applications, creationDate, isValidated, description, color }) {
+    const packWithName = Packs.findOne({ name });
+    if (packWithName !== undefined) {
+      throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
+    }
+
     return _createPack({ name, applications, creationDate, isValidated, owner: this.userId, description, color });
   },
 });
@@ -109,6 +114,13 @@ export const updatePack = new ValidatedMethod({
     const pack = Packs.findOne(_id);
     if (pack === undefined) {
       throw new Meteor.Error('api.packs.unknownPack', i18n.__('api.packs.unknownPack'));
+    }
+
+    if (pack.name !== name) {
+      const packWithName = Packs.findOne({ name });
+      if (packWithName !== undefined) {
+        throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
+      }
     }
 
     const authorized = pack.owner === this.userId;
