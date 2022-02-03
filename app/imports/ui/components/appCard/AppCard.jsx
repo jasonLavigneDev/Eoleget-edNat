@@ -47,6 +47,8 @@ const typographieHeaderStyle = {
 };
 const typographieContentStyle = {
   overflow: 'scroll',
+  overflowY: 'auto',
+  overflowX: 'hidden',
   textOverflow: 'ellipsis',
 };
 const cardContentLinkStyle = {
