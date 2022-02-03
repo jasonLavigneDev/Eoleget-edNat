@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import { Link } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,8 +17,13 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import EnhancedTableHead from './tableHeadAppPack';
+import ListVersionEdit from '../version/listVersionEdit';
+import Applications from '../../../api/applications/applications';
+import Spinner from '../system/Spinner';
 
-function TableAppEditPack({ applications }) {
+function TableAppEditPack({ applications, ready }) {
+  if (!ready) return <Spinner full />;
+
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -68,6 +74,11 @@ function TableAppEditPack({ applications }) {
 
   const [rows, setRows] = useState(data);
 
+  const GetAllAppVersions = (app) => {
+    const { versions } = Applications.findOne({ identification: app.identification });
+    return versions;
+  };
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -116,7 +127,9 @@ function TableAppEditPack({ applications }) {
                   <TableRow hover tabIndex={-1} key={app.identification}>
                     <TableCell>{app.nom}</TableCell>
                     <TableCell>{app.description}</TableCell>
-                    <TableCell>{app.version}</TableCell>
+                    <TableCell>
+                      <ListVersionEdit versions={GetAllAppVersions(app)} app={app} actualVersion={app.version} />
+                    </TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
                         <Link to={`/detailapp/${app.identification}`}>
@@ -154,6 +167,13 @@ function TableAppEditPack({ applications }) {
 
 TableAppEditPack.propTypes = {
   applications: PropTypes.arrayOf(PropTypes.any).isRequired,
+  ready: PropTypes.bool.isRequired,
 };
 
-export default TableAppEditPack;
+export default withTracker(() => {
+  const subApps = Meteor.subscribe('applications.table.all');
+  const ready = subApps.ready();
+  return {
+    ready,
+  };
+})(TableAppEditPack);

@@ -91,11 +91,16 @@ const EditPackPage = ({ pack, ready }) => {
   const editPack = () => {
     const finalApps = [];
     apps.map((app) => {
+      let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
+      if (ver === 'latest') ver = '';
+
+      localStorage.removeItem(`version_edit_${app.identification}`);
+
       return finalApps.push({
         nom: app.nom,
         description: app.description,
         identification: app.identification,
-        version: app.version,
+        version: ver,
       });
     });
     const color = JSON.parse(localStorage.getItem('color'));
