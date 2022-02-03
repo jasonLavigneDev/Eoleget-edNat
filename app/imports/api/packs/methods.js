@@ -124,9 +124,11 @@ export const updatePack = new ValidatedMethod({
       throw new Meteor.Error('api.packs.unknownPack', i18n.__('api.packs.unknownPack'));
     }
 
-    const packWithName = Packs.findOne({ name });
-    if (packWithName !== undefined) {
-      throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
+    if (pack.name !== name) {
+      const packWithName = Packs.findOne({ name });
+      if (packWithName !== undefined) {
+        throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
+      }
     }
 
     const authorized = pack.owner === this.userId;
