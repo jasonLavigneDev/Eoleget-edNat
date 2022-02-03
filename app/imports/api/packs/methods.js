@@ -52,10 +52,6 @@ export const createPack = new ValidatedMethod({
       type: String,
       label: getLabel('api.applications.labels.description'),
     },
-    'applications.$.version': {
-      type: String,
-      label: getLabel('api.applications.labels.description'),
-    },
     creationDate: { type: Date, label: getLabel('api.packs.labels.creationDate') },
     isValidated: { type: Boolean, label: getLabel('api.packs.labels.isValidated') },
     description: { type: String, label: getLabel('api.packs.labels.description') },
@@ -102,10 +98,6 @@ export const updatePack = new ValidatedMethod({
       label: getLabel('api.applications.labels.name'),
     },
     'applications.$.description': {
-      type: String,
-      label: getLabel('api.applications.labels.description'),
-    },
-    'applications.$.version': {
       type: String,
       label: getLabel('api.applications.labels.description'),
     },

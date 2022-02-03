@@ -71,7 +71,13 @@ function AppCard({ app, cart }) {
     if (checkAppAllreadyAdded()) {
       msg.error(i18n.__('components.Card.addAppError'));
     } else {
-      cart[1]([...cart[0], app]);
+      const appFinal = {
+        nom: app.nom,
+        identification: app.identification,
+        description: app.description,
+        version: '',
+      };
+      cart[1]([...cart[0], appFinal]);
       msg.success(i18n.__('components.Card.addAppSuccess'));
     }
   };

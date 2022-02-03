@@ -239,7 +239,9 @@
       "description": "Description",
       "version": "Version",
       "url": "URL",
-      "detailTooltip": "Voir l'application"
+      "detailTooltip": "Voir l'application",
+      "AddToCart": "Ajouter au panier",
+      "Cancel": "Annuler"
     },
     "PackList": {
       "name": "Nom du pack",

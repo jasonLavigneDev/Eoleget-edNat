@@ -8,11 +8,12 @@ const formControlStyle = {
 };
 // End style //
 
-function ListVersion({ versions }) {
+function ListVersion({ versions, app }) {
   const [version, setVersion] = React.useState('');
 
   const handleChange = (event) => {
     setVersion(event.target.value);
+    localStorage.setItem(`version_${app.identification}`, JSON.stringify(event.target.value));
   };
   return (
     <FormControl sx={formControlStyle}>
@@ -31,6 +32,7 @@ function ListVersion({ versions }) {
 
 ListVersion.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
+  app: PropTypes.objectOf(PropTypes.any).isRequired,
   versions: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 

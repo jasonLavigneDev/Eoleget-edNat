@@ -244,7 +244,9 @@
       "description": "Description",
       "version": "Version",
       "url": "URL",
-      "detailTooltip": "Show app"
+      "detailTooltip": "Show app",
+      "AddToCart": "Add to cart",
+      "Cancel": "Cancel"
     },
     "PackList": {
       "name": "Pack name",

@@ -59,6 +59,10 @@ const EditPackPage = ({ pack, ready }) => {
 
   let data = [];
 
+  const getVersion = (app) => {
+    return app.version || 'latest';
+  };
+
   let _id = 0;
   apps.map((app) => {
     _id += 1;
@@ -67,7 +71,7 @@ const EditPackPage = ({ pack, ready }) => {
       appName: app.nom,
       description: app.description,
       identification: app.identification,
-      version: app.version,
+      version: getVersion(app),
     });
   });
 
@@ -87,7 +91,7 @@ const EditPackPage = ({ pack, ready }) => {
         appName: app.nom,
         description: app.description,
         identification: app.identification,
-        version: app.version,
+        version: getVersion(app),
       });
     });
     setRows(data);
