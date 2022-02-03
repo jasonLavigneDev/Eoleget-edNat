@@ -247,7 +247,8 @@
       "url": "URL",
       "detailTooltip": "Show app",
       "AddToCart": "Add to cart",
-      "Cancel": "Cancel"
+      "Cancel": "Cancel",
+      "removeTooltip": "Remove app"
     },
     "PackList": {
       "name": "Pack name",

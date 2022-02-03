@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import { Link } from 'react-router-dom';
@@ -13,10 +13,11 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-import EnhancedTableHead from '../packTable/tableHead';
+import EnhancedTableHead from './tableHeadAppPack';
 
-function PackList({ packs }) {
+function TableAppEditPack({ applications }) {
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -48,9 +49,24 @@ function PackList({ packs }) {
   }
 
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('name');
+  const [orderBy, setOrderBy] = React.useState('application');
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  let data = [];
+  let _id = 0;
+  applications.map((app) => {
+    _id += 1;
+    return data.push({
+      id: _id,
+      nom: app.nom,
+      description: app.description,
+      identification: app.identification,
+      version: app.version,
+    });
+  });
+
+  const [rows, setRows] = useState(data);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -67,31 +83,54 @@ function PackList({ packs }) {
     setPage(0);
   };
 
+  const handleDeleteButton = (event, app) => {
+    if (app.id > -1) {
+      applications.splice(app.id - 1, 1);
+    }
+
+    data = [];
+    _id = 0;
+    applications.map((appli) => {
+      _id += 1;
+      return data.push({
+        id: _id,
+        nom: appli.nom,
+        description: appli.description,
+        identification: appli.identification,
+        version: appli.version,
+      });
+    });
+    setRows(data);
+  };
+
   return (
-    <div style={{ height: 600 }}>
+    <div style={{ maxHeight: 200 }}>
       <TableContainer component={Paper}>
-        <Table size="small" aria-label="pack table">
-          <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} isEditPack />
           <TableBody>
-            {stableSort(packs, getComparator(order, orderBy))
+            {stableSort(rows, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((pack) => {
+              .map((app) => {
                 return (
-                  <TableRow hover tabIndex={-1} key={pack._id}>
-                    <TableCell>{pack.name}</TableCell>
+                  <TableRow hover tabIndex={-1} key={app.identification}>
+                    <TableCell>{app.nom}</TableCell>
+                    <TableCell>{app.description}</TableCell>
+                    <TableCell>{app.version}</TableCell>
                     <TableCell>
-                      <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 700, display: 'block' }}>
-                        {pack.description}
-                      </span>
-                    </TableCell>
-                    <TableCell>{pack.applications.length}</TableCell>
-                    <TableCell>
-                      <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
-                        <Link to={`/packs/detail/${pack._id}`}>
+                      <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
+                        <Link to={`/detailapp/${app.identification}`}>
                           <IconButton>
                             <OpenInNewIcon />
                           </IconButton>
                         </Link>
+                      </Tooltip>
+                    </TableCell>
+                    <TableCell>
+                      <Tooltip title={i18n.__('components.AppList.removeTooltip')}>
+                        <IconButton onClick={(e) => handleDeleteButton(e, app)}>
+                          <DeleteIcon />
+                        </IconButton>
                       </Tooltip>
                     </TableCell>
                   </TableRow>
@@ -101,9 +140,9 @@ function PackList({ packs }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[5]}
         component="div"
-        count={packs.length}
+        count={applications.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -113,8 +152,8 @@ function PackList({ packs }) {
   );
 }
 
-PackList.propTypes = {
-  packs: PropTypes.arrayOf(PropTypes.object).isRequired,
+TableAppEditPack.propTypes = {
+  applications: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default PackList;
+export default TableAppEditPack;

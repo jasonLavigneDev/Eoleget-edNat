@@ -13,10 +13,12 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-import EnhancedTableHead from '../packTable/tableHead';
+import ListVersion from '../version/listVersion';
+import EnhancedTableHead from './tableHeadAppPack';
 
-function PackList({ packs }) {
+function TableAppCreatePack({ cart }) {
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -48,14 +50,32 @@ function PackList({ packs }) {
   }
 
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('name');
+  const [orderBy, setOrderBy] = React.useState('application');
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
+  };
+
+  const checkAppAllreadyAdded = (id) => {
+    let res;
+    const tab = [];
+    cart[0].map((appli) => tab.push(appli.identification));
+    if (tab.includes(id)) res = true;
+    else res = false;
+    return res;
+  };
+
+  const removeAppToCart = (id) => {
+    if (checkAppAllreadyAdded(id)) {
+      cart[1](cart[0].filter((appli) => appli.identification !== id));
+      msg.success(i18n.__('components.Card.removeAppSuccess'));
+    } else {
+      msg.error(i18n.__('components.Card.removeAppError'));
+    }
   };
 
   const handleChangePage = (event, newPage) => {
@@ -70,28 +90,33 @@ function PackList({ packs }) {
   return (
     <div style={{ height: 600 }}>
       <TableContainer component={Paper}>
-        <Table size="small" aria-label="pack table">
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
           <TableBody>
-            {stableSort(packs, getComparator(order, orderBy))
+            {stableSort(cart[0], getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((pack) => {
+              .map((app) => {
                 return (
-                  <TableRow hover tabIndex={-1} key={pack._id}>
-                    <TableCell>{pack.name}</TableCell>
+                  <TableRow hover tabIndex={-1} key={app.identification}>
+                    <TableCell>{app.nom}</TableCell>
+                    <TableCell>{app.description}</TableCell>
                     <TableCell>
-                      <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 700, display: 'block' }}>
-                        {pack.description}
-                      </span>
+                      <ListVersion versions={app.versions} />
                     </TableCell>
-                    <TableCell>{pack.applications.length}</TableCell>
                     <TableCell>
-                      <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
-                        <Link to={`/packs/detail/${pack._id}`}>
+                      <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
+                        <Link to={`/detailapp/${app.identification}`}>
                           <IconButton>
                             <OpenInNewIcon />
                           </IconButton>
                         </Link>
+                      </Tooltip>
+                    </TableCell>
+                    <TableCell>
+                      <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
+                        <IconButton onClick={() => removeAppToCart(app.identification)}>
+                          <DeleteIcon />
+                        </IconButton>
                       </Tooltip>
                     </TableCell>
                   </TableRow>
@@ -101,9 +126,9 @@ function PackList({ packs }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[5]}
         component="div"
-        count={packs.length}
+        count={cart[0].length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -113,8 +138,8 @@ function PackList({ packs }) {
   );
 }
 
-PackList.propTypes = {
-  packs: PropTypes.arrayOf(PropTypes.object).isRequired,
+TableAppCreatePack.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default PackList;
+export default TableAppCreatePack;

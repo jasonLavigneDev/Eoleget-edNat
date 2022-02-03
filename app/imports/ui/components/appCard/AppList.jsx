@@ -16,7 +16,7 @@ import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 import ListVersion from '../version/listVersion';
-import EnhancedTableHead from '../packTable/tableHead';
+import EnhancedTableHead from '../appTable/tableHead';
 
 function AppList({ applications, cart }) {
   function descendingComparator(a, b, orderBy) {

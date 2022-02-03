@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 
 import {
   Button,
-  IconButton,
   Container,
   Fade,
   Paper,
@@ -17,11 +16,10 @@ import {
   Checkbox,
   Divider,
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { DataGrid } from '@mui/x-data-grid';
 import Spinner from '../components/system/Spinner';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import Packs from '../../api/packs/packs';
+import TableAppPack from '../components/appTable/tableAppEditPack';
 
 // Style CSS //
 const containerStyle = {
@@ -57,7 +55,7 @@ const EditPackPage = ({ pack, ready }) => {
   const [description, setDescription] = useState(pack.description);
   const apps = pack.applications;
 
-  let data = [];
+  const data = [];
 
   const getVersion = (app) => {
     return app.version || 'latest';
@@ -74,69 +72,6 @@ const EditPackPage = ({ pack, ready }) => {
       version: getVersion(app),
     });
   });
-
-  const [rows, setRows] = useState(data);
-
-  const deleteAppFromPack = (e) => {
-    if (e.row.id > -1) {
-      apps.splice(e.row.id - 1, 1);
-    }
-
-    data = [];
-    _id = 0;
-    apps.map((app) => {
-      _id += 1;
-      return data.push({
-        id: _id,
-        appName: app.nom,
-        description: app.description,
-        identification: app.identification,
-        version: getVersion(app),
-      });
-    });
-    setRows(data);
-  };
-
-  const columns = [
-    {
-      title: 'id',
-      field: 'id',
-      editable: 'never',
-      hide: true,
-    },
-    {
-      title: i18n.__('components.AppList.application'),
-      field: 'appName',
-      editable: 'never',
-      width: 250,
-    },
-    {
-      title: i18n.__('components.AppList.description'),
-      field: 'description',
-      width: 500,
-    },
-    {
-      title: i18n.__('components.AppList.version'),
-      field: 'version',
-      width: 100,
-    },
-    {
-      field: 'action',
-      headerName: 'Action',
-      sortable: false,
-      renderCell: (cellValues) => {
-        const onClick = (e) => {
-          e.stopPropagation(); // don't select this row after clicking
-          deleteAppFromPack(cellValues);
-        };
-        return (
-          <IconButton onClick={onClick}>
-            <DeleteIcon />
-          </IconButton>
-        );
-      },
-    },
-  ];
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
@@ -212,7 +147,7 @@ const EditPackPage = ({ pack, ready }) => {
             <ColorRadioButton pack={pack} />
             <Divider />
             <div style={divDatagridStyle}>
-              <DataGrid hideFooterPagination columns={columns} rows={rows} />
+              <TableAppPack applications={apps} />
             </div>
             <div style={divButtonStyle}>
               <Button variant="contained" onClick={editPack} disabled={isDisable}>

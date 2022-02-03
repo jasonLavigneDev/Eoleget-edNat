@@ -242,7 +242,8 @@
       "url": "URL",
       "detailTooltip": "Voir l'application",
       "AddToCart": "Ajouter au panier",
-      "Cancel": "Annuler"
+      "Cancel": "Annuler",
+      "removeTooltip": "Supprimer l'application"
     },
     "PackList": {
       "name": "Nom du pack",
