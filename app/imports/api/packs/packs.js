@@ -41,7 +41,6 @@ Packs.schema = new SimpleSchema(
     'applications.$.version': {
       type: String,
       label: getLabel('api.applications.labels.version'),
-      defaultValue: '',
     },
     owner: {
       type: String,

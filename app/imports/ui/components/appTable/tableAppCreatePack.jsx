@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import { Link } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,10 +16,14 @@ import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import ListVersion from '../version/listVersion';
 import EnhancedTableHead from './tableHeadAppPack';
+import Applications from '../../../api/applications/applications';
+import Spinner from '../system/Spinner';
+import ListVersionEdit from '../version/listVersionEdit';
 
-function TableAppCreatePack({ cart }) {
+function TableAppCreatePack({ cart, ready }) {
+  if (!ready) return <Spinner full />;
+
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -58,6 +63,11 @@ function TableAppCreatePack({ cart }) {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
+  };
+
+  const GetAllAppVersions = (app) => {
+    const { versions } = Applications.findOne({ identification: app.identification });
+    return versions;
   };
 
   const checkAppAllreadyAdded = (id) => {
@@ -101,7 +111,7 @@ function TableAppCreatePack({ cart }) {
                     <TableCell>{app.nom}</TableCell>
                     <TableCell>{app.description}</TableCell>
                     <TableCell>
-                      <ListVersion versions={app.versions} />
+                      <ListVersionEdit versions={GetAllAppVersions(app)} app={app} actualVersion={app.version} />
                     </TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
@@ -140,6 +150,13 @@ function TableAppCreatePack({ cart }) {
 
 TableAppCreatePack.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+  ready: PropTypes.bool.isRequired,
 };
 
-export default TableAppCreatePack;
+export default withTracker(() => {
+  const subApps = Meteor.subscribe('applications.table.all');
+  const ready = subApps.ready();
+  return {
+    ready,
+  };
+})(TableAppCreatePack);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
+
 import { useHistory } from 'react-router-dom';
 
 import {
@@ -90,7 +91,16 @@ function CreatePackPage() {
     const apps = [];
     cart[0].map((app) => {
       localStorage.removeItem(`version_${app.identification}`);
-      return apps.push(app);
+      let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
+      if (ver === 'latest') ver = '';
+
+      localStorage.removeItem(`version_edit_${app.identification}`);
+      return apps.push({
+        identification: app.identification,
+        nom: app.nom,
+        description: app.description,
+        version: ver,
+      });
     });
     Meteor.call(
       'packs.createPack',
@@ -109,11 +119,11 @@ function CreatePackPage() {
           cart[0] = [];
           localStorage.removeItem('cart');
           history.push('/packs');
-          window.location.reload();
         }
       },
     );
   };
+
   const goBack = () => {
     history.push('/');
     window.location.reload();

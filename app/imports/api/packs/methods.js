@@ -48,6 +48,11 @@ export const createPack = new ValidatedMethod({
       type: String,
       label: getLabel('api.applications.labels.name'),
     },
+    'applications.$.version': {
+      type: String,
+      defaultValue: '',
+      label: getLabel('api.applications.labels.version'),
+    },
     'applications.$.description': {
       type: String,
       label: getLabel('api.applications.labels.description'),
