@@ -9,7 +9,7 @@ function EnhancedTableHead(props) {
   const column = [
     {
       title: i18n.__('components.AppList.application'),
-      id: 'application',
+      id: 'nom',
       width: 250,
     },
     {

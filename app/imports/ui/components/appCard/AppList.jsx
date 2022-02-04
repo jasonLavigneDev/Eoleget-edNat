@@ -50,7 +50,7 @@ function AppList({ applications, cart }) {
   }
 
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('application');
+  const [orderBy, setOrderBy] = React.useState('nom');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
