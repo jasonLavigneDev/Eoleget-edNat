@@ -41,7 +41,6 @@ const PackDelete = ({ pack, open, onClose }) => {
     Meteor.call('packs.removePack', { packId: pack._id }, (err) => {
       if (err) msg.error(err.reason);
       else msg.success(i18n.__('components.packDelete.deleteSuccess'));
-      window.location.reload();
       onClose();
     });
   };

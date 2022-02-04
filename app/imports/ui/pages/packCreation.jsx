@@ -126,7 +126,6 @@ function CreatePackPage() {
 
   const goBack = () => {
     history.push('/');
-    window.location.reload();
   };
 
   return (

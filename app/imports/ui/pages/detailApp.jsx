@@ -59,7 +59,6 @@ const detailApp = ({ app, ready }) => {
   const history = useHistory();
   const goBack = () => {
     history.push('/');
-    window.location.reload();
   };
   const cart = useState(() => {
     // getting stored value
