@@ -116,6 +116,12 @@
       "searchText": "Which pack are you looking for ?",
       "searchPack": "Search Pack"
     },
+    "UserPacks": {
+      "userPacksTitle": "My Packs",
+      "packsSearchApp": "Search for a pack",
+      "searchText": "Which pack are you looking for ?",
+      "searchPack": "Search Pack"
+    },
     "ProfilePage": {
       "title": "My settings",
       "firstname": "First name",
