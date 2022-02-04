@@ -46,7 +46,6 @@ function DetailPack({ pack, ready }) {
   const history = useHistory();
   const goBack = () => {
     history.push('/packs');
-    window.location.reload();
   };
   if (!ready) return <Spinner full />;
 

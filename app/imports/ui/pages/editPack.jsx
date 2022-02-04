@@ -85,7 +85,6 @@ const EditPackPage = ({ pack, ready }) => {
 
   const goBack = () => {
     history.push('/packs');
-    window.location.reload();
   };
 
   const editPack = () => {
