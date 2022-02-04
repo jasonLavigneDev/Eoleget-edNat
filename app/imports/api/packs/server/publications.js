@@ -6,11 +6,6 @@ import { checkPaginationParams } from '../../utils';
 import logServer from '../../logging';
 import Packs from '../packs';
 
-// A supprimer quand le fichier utils.js sera commit
-function isActive() {
-  return false;
-}
-
 const queryAllPacks = ({ search }) => {
   const regex = new RegExp(search, 'i');
   return {
@@ -61,11 +56,51 @@ Meteor.methods({
   },
 });
 
-Meteor.publish('packs.user', function packOfUser() {
-  if (!isActive(this.userId)) {
+const queryAllPackOwned = ({ search, userId }) => {
+  const regex = new RegExp(search, 'i');
+  const fieldsToSearch = ['name', 'version', 'applications', 'description', 'color', 'isValidated', 'creationDate'];
+  const searchQuery = fieldsToSearch.map((field) => ({
+    [field]: { $regex: regex },
+    owner: userId,
+  }));
+  return {
+    $or: searchQuery,
+  };
+};
+
+Meteor.methods({
+  'get_packs.user_count': function getPackAllCount({ nodrafts, search, userId }) {
+    try {
+      const query = queryAllPackOwned({ nodrafts, search, userId: userId || this.userId });
+      return Packs.find(query).count();
+    } catch (error) {
+      return 0;
+    }
+  },
+});
+
+FindFromPublication.publish('packs.user', function packsOfUser({ page, search, userId, itemPerPage, ...rest }) {
+  try {
+    checkPaginationParams.validate({ page, itemPerPage, search });
+  } catch (err) {
+    logServer(`publish packs.user : ${err}`);
+    this.error(err);
+  }
+
+  try {
+    return Packs.find(
+      { owner: userId },
+      {
+        fields: Packs.publicFields,
+        skip: itemPerPage * (page - 1),
+        limit: itemPerPage,
+        sort: { name: 1 },
+        ...rest,
+      },
+    );
+  } catch (error) {
     return this.ready();
   }
-  return Packs.find({ owner: this.userId }, { fields: Packs.publicFields, sort: { name: 1 }, limit: 5000 });
 });
 
 publishComposite('packs.single', function packSingle({ _id }) {

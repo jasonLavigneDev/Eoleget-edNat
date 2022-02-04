@@ -16,6 +16,7 @@ const initialState = {
   authenticated: false,
   appPage: {},
   packPage: {},
+  userPackPage: {},
   appSelected: [],
 };
 

@@ -111,6 +111,12 @@
       "searchText": "Quel pack cherchez-vous ?",
       "searchPack": "Chercher un pack"
     },
+    "UserPacks": {
+      "userPacksTitle": "Mes packs",
+      "packsSearchApp": "Chercher un pack",
+      "searchText": "Quel pack cherchez-vous ?",
+      "searchPack": "Chercher un pack"
+    },
     "ProfilePage": {
       "title": "Mes préférences",
       "firstname": "Prénom",
