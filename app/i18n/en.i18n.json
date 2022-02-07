@@ -167,6 +167,9 @@
     }
   },
   "components": {
+    "SiteInMaintenance": {
+      "maintenanceInProgress": "Maintenance in progress"
+    },
     "packDelete": {
       "deleteSuccess": "Pack deleted",
       "title": "Pack deletion",

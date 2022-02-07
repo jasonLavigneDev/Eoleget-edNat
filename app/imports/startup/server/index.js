@@ -9,3 +9,4 @@ import './config/security';
 import './config/accounts';
 import './config/ValidationError';
 import './register-api';
+import './db-initialize/AppSettings';
