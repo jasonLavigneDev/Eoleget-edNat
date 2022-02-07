@@ -9,3 +9,7 @@ import '../../api/applications/server/publications';
 import '../../api/packs/packs';
 import '../../api/packs/server/publications';
 import '../../api/packs/methods';
+
+import '../../api/appsettings/appsettings';
+import '../../api/appsettings/server/publications';
+import '../../api/appsettings/methods';
