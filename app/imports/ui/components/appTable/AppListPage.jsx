@@ -24,7 +24,6 @@ const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   marginTop: '5%',
-  padding: '0 15%',
   marginBottom: '2%',
 };
 const divStoreTitleStyle = {

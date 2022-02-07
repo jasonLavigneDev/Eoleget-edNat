@@ -24,13 +24,11 @@ import { debounce } from '../../utils';
 // Styles CSS //
 const gridPaginationStyle = {
   display: 'flex',
-  justifyContent: 'flex-end',
 };
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   marginTop: '5%',
-  padding: '0 15%',
   marginBottom: '2%',
 };
 const divStoreTitleStyle = {
@@ -184,7 +182,7 @@ function AppCardPage() {
             <Paper>
               <div style={divCardContainerStyle}>
                 {total > ITEM_PER_PAGE && (
-                  <Grid item xs={12} sm={12} md={12} lg={12} sx={gridPaginationStyle}>
+                  <Grid sx={gridPaginationStyle}>
                     <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
                   </Grid>
                 )}
@@ -194,7 +192,7 @@ function AppCardPage() {
                   ))}
                 </span>
                 {total > ITEM_PER_PAGE && (
-                  <Grid item xs={12} sm={12} md={12} lg={12} sx={gridPaginationStyle}>
+                  <Grid sx={gridPaginationStyle}>
                     <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
                   </Grid>
                 )}
