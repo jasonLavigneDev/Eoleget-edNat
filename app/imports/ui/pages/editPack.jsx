@@ -155,7 +155,7 @@ const EditPackPage = ({ pack, ready }) => {
             <FormControlLabel
               control={<Checkbox />}
               label="isPublic"
-              value={isPublic}
+              checked={isPublic}
               onChange={handleOnChange}
               labelPlacement="start"
             />

@@ -9,6 +9,7 @@ import Packs from '../packs';
 const queryAllPacks = ({ search }) => {
   const regex = new RegExp(search, 'i');
   return {
+    isPublic: true,
     type: { $ne: 10 },
     $or: [
       {
@@ -58,7 +59,16 @@ Meteor.methods({
 
 const queryAllPackOwned = ({ search, userId }) => {
   const regex = new RegExp(search, 'i');
-  const fieldsToSearch = ['name', 'version', 'applications', 'description', 'color', 'isValidated', 'creationDate'];
+  const fieldsToSearch = [
+    'name',
+    'version',
+    'applications',
+    'description',
+    'color',
+    'isValidated',
+    'creationDate',
+    'isPublic',
+  ];
   const searchQuery = fieldsToSearch.map((field) => ({
     [field]: { $regex: regex },
     owner: userId,
