@@ -52,6 +52,7 @@ function CreatePackPage() {
   });
 
   const [name, setName] = useState('');
+  const [isPublic, setIsPublic] = useState(false);
   const [description, setDescription] = useState('');
   const data = [];
 
@@ -111,6 +112,7 @@ function CreatePackPage() {
         isValidated: true,
         description,
         color,
+        isPublic,
       },
       (err) => {
         if (err) msg.error(err.reason);
@@ -126,6 +128,10 @@ function CreatePackPage() {
 
   const goBack = () => {
     history.push('/');
+  };
+
+  const handleOnChange = () => {
+    setIsPublic(!isPublic);
   };
 
   return (
@@ -159,7 +165,13 @@ function CreatePackPage() {
               inputProps={{ maxLength: 512 }}
               onChange={onUpdateDescription}
             />
-            <FormControlLabel control={<Checkbox />} label="isPublic" labelPlacement="start" />
+            <FormControlLabel
+              control={<Checkbox />}
+              label={i18n.__('pages.packCreation.packPublic')}
+              checked={isPublic}
+              onChange={handleOnChange}
+              labelPlacement="start"
+            />
             <Divider />
             <Typography variant="h6" component="div">
               {i18n.__('pages.packCreation.color')}

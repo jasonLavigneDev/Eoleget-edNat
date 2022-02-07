@@ -21,7 +21,8 @@
         "applications": "Applications",
         "owner": "Owner ID",
         "description": "Pack description",
-        "color": "Pack color"
+        "color": "Pack color",
+        "isPublic": "Is Public"
       },
       "duplicateName": "A pack already have this name",
       "packAlreadyExist": "This pack already exists",
@@ -102,7 +103,8 @@
       "delete": "Cancel",
       "packName": "Pack name",
       "packDescription": "Pack description",
-      "createPackSuccess": "Pack created successfully."
+      "createPackSuccess": "Pack created successfully.",
+      "packPublic": "Public pack"
     },
     "Store": {
       "storeTitle": "Applications store",
@@ -160,7 +162,8 @@
       "color": "Pack color",
       "edit": "Edit",
       "back": "Back",
-      "updateSuccess": "Pack updated"
+      "updateSuccess": "Pack updated",
+      "packPublic": "public pack"
     }
   },
   "components": {

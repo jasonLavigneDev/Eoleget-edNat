@@ -75,7 +75,7 @@ function PackPage() {
 
   const packs = useTracker(() => {
     Meteor.subscribe('packs.table.all');
-    const data = Packs.find({}).fetch();
+    const data = Packs.find({ isPublic: true }).fetch();
     return data;
   });
 

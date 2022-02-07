@@ -21,7 +21,8 @@
         "applications": "Applications",
         "owner": "ID du propriétaire",
         "description": "Description du pack",
-        "color": "Couleur du pack"
+        "color": "Couleur du pack",
+        "isPublic": "Est public"
       },
       "duplicateName": "Un pack possède déjà ce nom.",
       "packAlreadyExist": "Ce pack existe déjà.",
@@ -97,7 +98,8 @@
       "delete": "Annuler",
       "packName": "Nom du pack",
       "packDescription": "Description du pack",
-      "createPackSuccess": "Pack créé avec succès."
+      "createPackSuccess": "Pack créé avec succès.",
+      "packPublic": "Pack public"
     },
     "Store": {
       "storeTitle": "Magasin d'applications",
@@ -155,7 +157,8 @@
       "color": "Couleur du pack",
       "edit": "Editer",
       "back": "Retour",
-      "updateSuccess": "Pack mis à jour"
+      "updateSuccess": "Pack mis à jour",
+      "packPublic": "Pack public"
     }
   },
   "components": {
