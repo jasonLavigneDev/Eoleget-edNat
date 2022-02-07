@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import i18n from 'meteor/universe:i18n';
 // import { Roles } from 'meteor/alanning:roles';
 
 import ListIcon from '@mui/icons-material/ViewList';
@@ -6,6 +7,8 @@ import CardIcon from '@mui/icons-material/Dashboard';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
+import { Typography } from '@mui/material';
+
 import AppListPage from '../components/appTable/AppListPage';
 import AppCardPage from '../components/appCard/AppCardPage';
 
@@ -18,12 +21,13 @@ const divMainStyle = {
   marginBottom: '2%',
 };
 const divStoreTitleStyle = {
-  minWidth: '100%',
+  display: 'flex',
+  flexDirection: 'row',
 };
 const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
-  width: '100%',
+  marginTop: -5,
 };
 // End styles //
 
@@ -48,6 +52,9 @@ function Index() {
     <Fade in>
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
+          <Typography variant="h4" component="div">
+            {i18n.__('pages.Store.storeTitle')}
+          </Typography>
           <span style={spanIconListStyle}>
             <Tooltip title="Mode liste">
               <IconButton
@@ -68,8 +75,8 @@ function Index() {
               </IconButton>
             </Tooltip>
           </span>
-          {!showModeList ? <AppCardPage /> : <AppListPage />}
         </div>
+        {!showModeList ? <AppCardPage /> : <AppListPage />}
       </div>
     </Fade>
   );

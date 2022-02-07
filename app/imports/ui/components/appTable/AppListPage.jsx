@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 
-import Typography from '@mui/material/Typography';
 import Collapse from '@mui/material/Collapse';
 import { useTracker } from 'meteor/react-meteor-data';
 import SearchIcon from '@mui/icons-material/Search';
@@ -148,9 +147,6 @@ function AppListPage() {
         <div style={divStoreTitleStyle}>
           <AppCart cart={cart} />
           <div style={divStoreTitleContentStyle}>
-            <Typography variant="h4" component="div">
-              {i18n.__('pages.Store.storeTitle')}
-            </Typography>
             <Tooltip title={i18n.__('pages.Store.searchApp')}>
               <IconButton onClick={toggleSearch}>
                 <SearchIcon fontSize="large" />
