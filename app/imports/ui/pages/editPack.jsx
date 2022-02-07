@@ -154,7 +154,7 @@ const EditPackPage = ({ pack, ready }) => {
             />
             <FormControlLabel
               control={<Checkbox />}
-              label="isPublic"
+              label={i18n.__('pages.packEditPage.packPublic')}
               checked={isPublic}
               onChange={handleOnChange}
               labelPlacement="start"

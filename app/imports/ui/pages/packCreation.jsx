@@ -167,7 +167,7 @@ function CreatePackPage() {
             />
             <FormControlLabel
               control={<Checkbox />}
-              label="isPublic"
+              label={i18n.__('pages.packCreation.packPublic')}
               checked={isPublic}
               onChange={handleOnChange}
               labelPlacement="start"
