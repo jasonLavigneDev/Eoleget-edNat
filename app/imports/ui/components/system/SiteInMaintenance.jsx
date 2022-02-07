@@ -7,18 +7,17 @@ import AppSettings from '../../../api/appsettings/appsettings';
 
 const title = {
   textAlign: 'center',
+  marginTop: 100,
 };
 const paragraph = {
   textAlign: 'center',
-  marginTop: 30,
 };
-
 const SiteInMaintenance = ({ appsettings, ready }) => {
   return (
     <>
       {ready ? (
         <>
-          <Typography sx={title} variant="h5" color="inherit">
+          <Typography variant="h6" style={title}>
             {i18n.__('components.SiteInMaintenance.maintenanceInProgress')}
           </Typography>
 

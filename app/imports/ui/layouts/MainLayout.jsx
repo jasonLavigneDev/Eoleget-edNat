@@ -34,6 +34,11 @@ const mainStyle = {
   flexGrow: 1,
   width: '100%',
 };
+const maintenanceStyle = {
+  marginTop: 40,
+  flexGrow: 1,
+  width: '100%',
+};
 // End styles //
 
 const MainLayout = ({ appsettings, ready }) => {
@@ -44,9 +49,9 @@ const MainLayout = ({ appsettings, ready }) => {
   return (
     <div style={rootDivStyle}>
       <TopBar />
-      <main id="main" style={mainStyle}>
-        <Suspense fallback={<Spinner />}>
-          {!appsettings.maintenance ? (
+      {!appsettings.maintenance ? (
+        <main id="main" style={mainStyle}>
+          <Suspense fallback={<Spinner />}>
             <Switch>
               {user ? (
                 loadingUser || !authenticated ? (
@@ -73,14 +78,18 @@ const MainLayout = ({ appsettings, ready }) => {
 
               <Redirect from="*" to="/" />
             </Switch>
-          ) : (
+          </Suspense>
+        </main>
+      ) : (
+        <main id="maintenance" style={maintenanceStyle}>
+          <Suspense fallback={<Spinner />}>
             <Switch>
               <Route exact path="/" component={SiteInMaintenance} />
               <Route component={SiteInMaintenance} />
             </Switch>
-          )}
-        </Suspense>
-      </main>
+          </Suspense>
+        </main>
+      )}
     </div>
   );
 };
