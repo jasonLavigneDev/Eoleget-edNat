@@ -91,7 +91,7 @@ def insertData(apps, otherFiles=False):
             collection.insert_one(app.__dict__)
     else:
         for app in apps:
-            if collection.find({"identification": app.identification}).count() <= 0:
+            if collection.count_documents({"identification": app.identification}) <= 0:
                 collection.insert_one(app.__dict__)
     print("Database updated")
 
