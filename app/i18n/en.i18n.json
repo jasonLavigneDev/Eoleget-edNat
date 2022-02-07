@@ -21,7 +21,8 @@
         "applications": "Applications",
         "owner": "Owner ID",
         "description": "Pack description",
-        "color": "Pack color"
+        "color": "Pack color",
+        "isPublic": "Is Public"
       },
       "duplicateName": "A pack already have this name",
       "packAlreadyExist": "This pack already exists",

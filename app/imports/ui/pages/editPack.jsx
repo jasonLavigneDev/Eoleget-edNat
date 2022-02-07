@@ -52,6 +52,7 @@ const EditPackPage = ({ pack, ready }) => {
 
   const history = useHistory();
   const [name, setName] = useState(pack.name);
+  const [isPublic, setIsPublic] = useState(pack.isPublic);
   const [description, setDescription] = useState(pack.description);
   const apps = pack.applications;
 
@@ -103,10 +104,18 @@ const EditPackPage = ({ pack, ready }) => {
       });
     });
     const color = JSON.parse(localStorage.getItem('color'));
-    Meteor.call('packs.updatePack', { _id: pack._id, name, applications: finalApps, description, color }, (err) => {
-      if (err) msg.error(err.reason);
-      else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
-    });
+    Meteor.call(
+      'packs.updatePack',
+      { _id: pack._id, name, applications: finalApps, description, color, isPublic },
+      (err) => {
+        if (err) msg.error(err.reason);
+        else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
+      },
+    );
+  };
+
+  const handleOnChange = () => {
+    setIsPublic(!isPublic);
   };
 
   return !ready ? (
@@ -143,7 +152,13 @@ const EditPackPage = ({ pack, ready }) => {
               inputProps={{ maxLength: 512 }}
               onChange={onUpdateDescription}
             />
-            <FormControlLabel control={<Checkbox />} label="isPublic" labelPlacement="start" />
+            <FormControlLabel
+              control={<Checkbox />}
+              label="isPublic"
+              value={isPublic}
+              onChange={handleOnChange}
+              labelPlacement="start"
+            />
             <Divider />
             <Typography variant="h6" component="div">
               {i18n.__('pages.packEditPage.color')}

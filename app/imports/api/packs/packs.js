@@ -54,6 +54,10 @@ Packs.schema = new SimpleSchema(
       type: String,
       label: getLabel('api.packs.labels.color'),
     },
+    isPublic: {
+      type: Boolean,
+      label: getLabel('api.packs.labels.isPublic'),
+    },
   },
   { clean: { removeEmptyStrings: false }, tracker: Tracker },
 );
@@ -66,6 +70,7 @@ Packs.publicField = {
   owner: 1,
   description: 1,
   color: 1,
+  isPublic: 1,
 };
 
 Packs.attachSchema(Packs.schema);
