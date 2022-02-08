@@ -9,8 +9,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 
+import PropTypes from 'prop-types';
 import { useAppContext } from '../../contexts/context';
-
 import AppList from './AppList';
 import Applications from '../../../api/applications/applications';
 import AppCart from '../appCart/appCart';
@@ -28,7 +28,7 @@ const divStoreTitleStyle = {
 };
 // End styles //
 
-function AppListPage() {
+function AppListPage({ modal }) {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -131,7 +131,7 @@ function AppListPage() {
     <Fade in>
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
-          <AppCart cart={cart} />
+          {!modal ? <AppCart cart={cart} /> : null}
           {searchField}
           <div>
             <AppList applications={applications} cart={cart} />
@@ -141,5 +141,13 @@ function AppListPage() {
     </Fade>
   );
 }
+
+AppListPage.propTypes = {
+  modal: PropTypes.bool,
+};
+
+AppListPage.defaultProps = {
+  modal: false,
+};
 
 export default AppListPage;

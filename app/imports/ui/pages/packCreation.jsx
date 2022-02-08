@@ -14,8 +14,10 @@ import {
   Checkbox,
   Divider,
 } from '@mui/material';
+import Modal from '@mui/material/Modal';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import TableAppCreatePack from '../components/appTable/tableAppCreatePack';
+import AppListPage from '../components/appTable/AppListPage';
 
 // Style CSS //
 const containerStyle = {
@@ -41,6 +43,15 @@ const paperStyle = {
   paddingRight: 5,
   paddingBottom: 2,
 };
+const modalStyle = {
+  overflow: 'auto',
+  position: 'absolute',
+  width: '90%',
+  maxHeight: '100%',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
 // End Style //
 
 function CreatePackPage() {
@@ -51,10 +62,11 @@ function CreatePackPage() {
     return initialValue;
   });
 
+  const [openModal, setOpenModal] = useState(false);
   const [name, setName] = useState('');
   const [isPublic, setIsPublic] = useState(false);
   const [description, setDescription] = useState('');
-  const data = [];
+  let data = [];
 
   const getVersion = (app) => {
     return app.version || 'latest';
@@ -134,6 +146,26 @@ function CreatePackPage() {
     setIsPublic(!isPublic);
   };
 
+  const onClose = () => {
+    setOpenModal(false);
+    data = [];
+    _id = 0;
+    cart[0].map((app) => {
+      _id += 1;
+      return data.push({
+        id: _id,
+        appName: app.nom,
+        description: app.description,
+        identification: app.identification,
+        version: getVersion(app),
+      });
+    });
+  };
+
+  const openList = () => {
+    setOpenModal(true);
+  };
+
   return (
     <Fade in>
       <Container sx={containerStyle}>
@@ -181,6 +213,9 @@ function CreatePackPage() {
             <div style={divDatagridStyle}>
               <TableAppCreatePack cart={cart} />
             </div>
+            <Button variant="contained" onClick={openList}>
+              +
+            </Button>
             <div style={divButtonStyle}>
               <Button variant="contained" onClick={createPack} disabled={isDisable}>
                 {i18n.__('pages.packCreation.add')}
@@ -191,6 +226,16 @@ function CreatePackPage() {
             </div>
           </form>
         </Paper>
+        {openModal ? (
+          <Modal open onClose={onClose}>
+            <Paper sx={modalStyle}>
+              <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
+                {i18n.__('pages.Store.storeTitle')}
+              </Typography>
+              <AppListPage modal />
+            </Paper>
+          </Modal>
+        ) : null}
       </Container>
     </Fade>
   );
