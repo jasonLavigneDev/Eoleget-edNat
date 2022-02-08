@@ -78,6 +78,10 @@ const queryAllPackOwned = ({ search, userId }) => {
   };
 };
 
+Meteor.publish('packs.table.all', function publishPacks() {
+  return Packs.find({});
+});
+
 Meteor.methods({
   'get_packs.user_count': function getPackAllCount({ nodrafts, search, userId }) {
     try {
