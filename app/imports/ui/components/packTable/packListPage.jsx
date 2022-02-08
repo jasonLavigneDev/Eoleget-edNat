@@ -20,9 +20,7 @@ import { debounce } from '../../utils';
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  minWidth: '100%',
   marginTop: '5%',
-  padding: '0 10%',
   marginBottom: '2%',
 };
 const divPackTitleContainerStyle = {

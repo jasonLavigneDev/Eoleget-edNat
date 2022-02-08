@@ -80,7 +80,7 @@ function PackList({ packs }) {
                   <TableRow hover tabIndex={-1} key={pack._id}>
                     <TableCell>{pack.name}</TableCell>
                     <TableCell>
-                      <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 700, display: 'block' }}>
+                      <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 630, display: 'block' }}>
                         {pack.description}
                       </span>
                     </TableCell>
