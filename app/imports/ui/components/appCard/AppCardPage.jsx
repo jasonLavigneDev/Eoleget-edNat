@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 
-import Collapse from '@mui/material/Collapse';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
@@ -34,15 +32,14 @@ const divMainStyle = {
 const divStoreTitleStyle = {
   minWidth: '100%',
 };
-const divStoreTitleContentStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-};
 const divCardContainerStyle = {
   display: 'flex',
   justifyContent: 'center',
   flexWrap: 'wrap',
+};
+const textfieldStyle = {
+  marginLeft: 15,
+  width: '98%',
 };
 // End styles //
 
@@ -112,7 +109,6 @@ function AppCardPage() {
     });
 
   const searchRef = useRef();
-  const toggleSearch = () => updateGlobalState('searchToggle', !searchToggle);
   const updateSearch = () => updateGlobalState('search', searchRef.current.value);
   const resetSearch = () => {
     updateGlobalState('search', '');
@@ -129,40 +125,37 @@ function AppCardPage() {
   };
 
   const searchField = (
-    <Grid item xs={12} sm={12} md={6}>
-      <Collapse in={searchToggle} collapsedSize={0}>
-        <TextField
-          margin="normal"
-          id="search"
-          label={i18n.__('pages.Store.searchText')}
-          name="search"
-          fullWidth
-          onChange={debouncedSearch}
-          onKeyDown={checkEscape}
-          type="text"
-          inputRef={searchRef}
-          variant="outlined"
-          inputProps={{
-            ref: inputRef,
-          }}
-          // eslint-disable-next-line react/jsx-no-duplicate-props
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-            endAdornment: search ? (
-              <InputAdornment position="end">
-                <IconButton onClick={resetSearch}>
-                  <ClearIcon />
-                </IconButton>
-              </InputAdornment>
-            ) : null,
-          }}
-        />
-      </Collapse>
-    </Grid>
+    <TextField
+      margin="normal"
+      id="search"
+      label={i18n.__('pages.Store.searchText')}
+      name="search"
+      fullWidth
+      onChange={debouncedSearch}
+      onKeyDown={checkEscape}
+      type="text"
+      inputRef={searchRef}
+      variant="outlined"
+      style={textfieldStyle}
+      inputProps={{
+        ref: inputRef,
+      }}
+      // eslint-disable-next-line react/jsx-no-duplicate-props
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+        endAdornment: search ? (
+          <InputAdornment position="end">
+            <IconButton onClick={resetSearch}>
+              <ClearIcon />
+            </IconButton>
+          </InputAdornment>
+        ) : null,
+      }}
+    />
   );
 
   return (
@@ -170,22 +163,10 @@ function AppCardPage() {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           <AppCart cart={cart} />
-          <div style={divStoreTitleContentStyle}>
-            <Tooltip title={i18n.__('pages.Store.searchApp')}>
-              <IconButton onClick={toggleSearch}>
-                <SearchIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-          </div>
-          {searchField}
           <div>
             <Paper>
+              {searchField}
               <div style={divCardContainerStyle}>
-                {total > ITEM_PER_PAGE && (
-                  <Grid sx={gridPaginationStyle}>
-                    <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                  </Grid>
-                )}
                 <span style={divCardContainerStyle}>
                   {mapList((app) => (
                     <AppCard key={app.identification} app={app} cart={cart} />
