@@ -9,6 +9,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Pagination from '@mui/material/Pagination';
+import Grid from '@mui/material/Grid';
 import PackCard from './packCard';
 
 import { useAppContext } from '../../contexts/context';
@@ -18,22 +19,19 @@ import Packs from '../../../api/packs/packs';
 import { debounce } from '../../utils';
 
 // Styles CSS //
+const gridPaginationStyle = {
+  display: 'flex',
+};
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  minWidth: '100%',
   marginTop: '5%',
-  padding: '0 10%',
   marginBottom: '2%',
-};
-const divPackTitleContainerStyle = {
-  minWidth: '100%',
 };
 const divCardContainerStyle = {
   display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
   justifyContent: 'center',
+  flexWrap: 'wrap',
 };
 const textfieldStyle = {
   marginLeft: 2,
@@ -43,7 +41,7 @@ const textfieldStyle = {
 
 const ITEM_PER_PAGE = 9;
 
-function packListPage() {
+function packCardPage() {
   const [{ packPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
 
@@ -145,24 +143,24 @@ function packListPage() {
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <div style={divPackTitleContainerStyle}>
-          <div>
-            <Paper>
-              {searchField}
-              <span style={divCardContainerStyle}>
-                {mapList((pack) => (
-                  <PackCard key={pack._id} pack={pack} />
-                ))}
-              </span>
-              {total > ITEM_PER_PAGE && (
+        <Paper>
+          {searchField}
+          <div style={divCardContainerStyle}>
+            <span style={divCardContainerStyle}>
+              {mapList((pack) => (
+                <PackCard key={pack._id} pack={pack} />
+              ))}
+            </span>
+            {total > ITEM_PER_PAGE && (
+              <Grid sx={gridPaginationStyle}>
                 <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-              )}
-            </Paper>
+              </Grid>
+            )}
           </div>
-        </div>
+        </Paper>
       </div>
     </Fade>
   );
 }
 
-export default packListPage;
+export default packCardPage;

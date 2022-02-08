@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 
 import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
 import Fade from '@mui/material/Fade';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -10,7 +9,6 @@ import { useTracker } from 'meteor/react-meteor-data';
 import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import Grid from '@mui/material/Grid';
 import PackList from '../packsCard/packList';
 
 import { useAppContext } from '../../contexts/context';
@@ -32,7 +30,7 @@ const divPackTitleContainerStyle = {
 };
 // End styles //
 
-function PackPage() {
+function packListPage() {
   const [{ packPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
 
@@ -120,4 +118,4 @@ function PackPage() {
   );
 }
 
-export default PackPage;
+export default packListPage;
