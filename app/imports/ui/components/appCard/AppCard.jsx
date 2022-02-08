@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
@@ -13,8 +13,6 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import AppBadge from './AppBadge';
-import AppAvatar from './AppAvatar';
 
 // Styles CSS //
 const cardStyle = {
@@ -54,6 +52,10 @@ const typographieContentStyle = {
 const cardContentLinkStyle = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
+};
+const appImage = {
+  height: 50,
+  width: 50,
 };
 // End styles //
 
@@ -96,6 +98,11 @@ function AppCard({ app, cart }) {
   };
 
   const des = isUpperCase(app.description) ? app.description.toLowerCase() : app.description;
+  const [avatar, setAvatar] = useState(`/images/appli/${app.identification}`);
+
+  const defaultImage = () => {
+    setAvatar('/images/appli/default.svg');
+  };
 
   return (
     <Card sx={cardStyle}>
@@ -110,11 +117,7 @@ function AppCard({ app, cart }) {
             {app.versions === undefined ? 'N/A' : app.versions[0]}
           </Typography>
         }
-        avatar={
-          <AppBadge>
-            <AppAvatar nameApp={app.identification} isDetailApp={false} />
-          </AppBadge>
-        }
+        avatar={<img src={avatar} alt="" style={appImage} onError={() => defaultImage()} />}
         action={
           !checkAppAllreadyAdded() ? (
             <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
