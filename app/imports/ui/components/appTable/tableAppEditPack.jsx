@@ -145,6 +145,15 @@ function TableAppEditPack({ applications, ready }) {
     return res;
   };
 
+  const CheckApplyNotInList = (app, list) => {
+    let res;
+    const tab = [];
+    list.map((appli) => tab.push(appli.identification));
+    if (tab.includes(app.identification)) res = false;
+    else res = true;
+    return res;
+  };
+
   const onClose = () => {
     setOpenModal(false);
     const appli = JSON.parse(localStorage.getItem('cart_edit'));
@@ -157,6 +166,14 @@ function TableAppEditPack({ applications, ready }) {
         version: app.version,
       });
     });
+    applications.map((app) => {
+      if (CheckApplyNotInList(app, appli)) {
+        const index = applications.indexOf(app);
+        applications.splice(index, 1);
+      }
+      return null;
+    });
+
     localStorage.setItem('cart_edit', JSON.stringify(applications));
     ReloadData();
   };

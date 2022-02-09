@@ -9,9 +9,7 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
-
 import { useAppContext } from '../../contexts/context';
-
 import AppList from './AppList';
 import Applications from '../../../api/applications/applications';
 import AppCart from '../appCart/appCart';
