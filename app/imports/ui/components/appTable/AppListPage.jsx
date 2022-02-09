@@ -60,14 +60,14 @@ function AppListPage() {
     }
   }, [searchToggle]);
 
-  //   const filterApp = (app) => {
-  //     let searchText = app.nom + app.description || '';
-  //     searchText = searchText.toLowerCase();
-  //     if (!search) return true;
-  //     return searchText.indexOf(search.toLowerCase()) > -1;
-  //   };
+  const filterApp = (app) => {
+    let searchText = app.nom + app.description || '';
+    searchText = searchText.toLowerCase();
+    if (!search) return true;
+    return searchText.indexOf(search.toLowerCase()) > -1;
+  };
 
-  //   const mapList = (func) => items.filter((app) => filterApp(app)).map(func);
+  const mapList = (func) => applications.filter((app) => filterApp(app)).map(func);
 
   const updateGlobalState = (key, value) =>
     dispatch({
@@ -134,7 +134,7 @@ function AppListPage() {
           <AppCart cart={cart} />
           {searchField}
           <div>
-            <AppList applications={applications} cart={cart} />
+            <AppList applications={mapList((app) => app)} cart={cart} />
           </div>
         </div>
       </div>
