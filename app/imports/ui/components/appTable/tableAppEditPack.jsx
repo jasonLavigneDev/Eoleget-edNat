@@ -38,6 +38,9 @@ const modalStyle = {
 function TableAppEditPack({ applications, ready }) {
   if (!ready) return <Spinner full />;
 
+  localStorage.setItem('cart_edit', JSON.stringify(applications));
+  localStorage.setItem('editApplications', JSON.stringify(applications));
+
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -122,6 +125,7 @@ function TableAppEditPack({ applications, ready }) {
         version: appli.version,
       });
     });
+    localStorage.setItem('editApplications', JSON.stringify(applications));
     setRows(data);
   };
 
@@ -132,8 +136,28 @@ function TableAppEditPack({ applications, ready }) {
     ReloadData();
   };
 
+  const checkAppAllreadyAdded = (app) => {
+    let res;
+    const tab = [];
+    applications.map((appli) => tab.push(appli.identification));
+    if (tab.includes(app.identification)) res = true;
+    else res = false;
+    return res;
+  };
+
   const onClose = () => {
     setOpenModal(false);
+    const appli = JSON.parse(localStorage.getItem('cart_edit'));
+    appli.map((app) => {
+      if (checkAppAllreadyAdded(app)) return null;
+      return applications.push({
+        nom: app.nom,
+        description: app.description,
+        identification: app.identification,
+        version: app.version,
+      });
+    });
+    localStorage.setItem('cart_edit', JSON.stringify(applications));
     ReloadData();
   };
 
