@@ -89,7 +89,8 @@
     "detailPack": {
       "details": "Détails du pack",
       "getPack": "Obtenir le pack",
-      "back": "Retour"
+      "back": "Retour",
+      "copyCommand": "Commande copiée avec succès"
     },
     "packCreation": {
       "title": "Création de pack",
@@ -148,7 +149,8 @@
       "Save": "Ajouter au pack",
       "Remove": "Retirer du pack",
       "addAppSuccess": "Application ajoutée au panier",
-      "back": "Retour"
+      "back": "Retour",
+      "copyCommand": "Commande copiée avec succès"
     },
     "packEditPage": {
       "title": "Edition de pack",

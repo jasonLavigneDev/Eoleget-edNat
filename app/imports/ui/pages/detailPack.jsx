@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import i18n from 'meteor/universe:i18n';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -40,6 +41,11 @@ const divButtonStyle = {
   alignItems: 'center',
   justifyContent: 'space-evenly',
 };
+const ButtonCommandStyle = {
+  textTransform: 'none',
+  width: 'fit-content',
+  marginBottom: 5,
+};
 // End styles //
 
 function DetailPack({ pack, ready }) {
@@ -52,6 +58,25 @@ function DetailPack({ pack, ready }) {
   const apps = pack.applications;
 
   const mapList = (func) => apps.map(func);
+
+  const generateCommand = () => {
+    let str = '';
+    apps.map((app) => {
+      let c = '';
+      if (app.version === '') c = `winget install --id=${app.identification} -e`;
+      else c = `winget install --id=${app.identification} -v "${app.version}" -e`;
+      if (str !== '') str += ` && ${c}`;
+      else str += c;
+      return str;
+    });
+    return str;
+  };
+
+  const command = generateCommand();
+
+  const copyCommand = () => {
+    navigator.clipboard.writeText(command).then(msg.success(i18n.__('pages.detailPack.copyCommand')));
+  };
 
   return !ready ? (
     <Spinner full />
@@ -69,6 +94,10 @@ function DetailPack({ pack, ready }) {
             <textarea readOnly rows="8" style={{ resize: 'none', border: 0 }}>
               {pack.description}
             </textarea>
+            <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
+              <ContentCopyIcon />
+              <Typography variant="paragraph">{command}</Typography>
+            </Button>
             {mapList((app) => (
               <AppPacksCard key={app.identification} app={app} />
             ))}

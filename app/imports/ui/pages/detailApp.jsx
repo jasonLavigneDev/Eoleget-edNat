@@ -13,8 +13,8 @@ import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import LanguageIcon from '@mui/icons-material/Language';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import GetAppIcon from '@mui/icons-material/GetApp';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import Spinner from '../components/system/Spinner';
 import Applications from '../../api/applications/applications';
@@ -23,6 +23,8 @@ import lightTheme from '../themes/light';
 import ListVersion from '../components/version/listVersion';
 
 const detailApp = ({ app, ready }) => {
+  if (!ready) return <Spinner full />;
+
   // Styles CSS //
   const containerStyle = {
     marginTop: lightTheme.spacing(10),
@@ -118,9 +120,21 @@ const detailApp = ({ app, ready }) => {
 
   const handleUrlButton = () => window.open(app.url, '_self');
 
-  return !ready ? (
-    <Spinner full />
-  ) : (
+  const generateCommand = (v) => {
+    console.log(app.identification);
+    let c = '';
+    if (v === 'latest') c = `winget install --id=${app.identification} -e`;
+    else c = `winget install --id=${app.identification} -v "${v}" -e`;
+    return c;
+  };
+
+  const [command, setCommand] = useState(generateCommand(getVersion()));
+
+  const copyCommand = () => {
+    navigator.clipboard.writeText(command).then(msg.success(i18n.__('pages.detailApp.copyCommand')));
+  };
+
+  return (
     <Fade in>
       <Container sx={containerStyle}>
         <Paper sx={paperStyle}>
@@ -138,7 +152,11 @@ const detailApp = ({ app, ready }) => {
               <p>{i18n.__('pages.detailApp.winget')}</p>
               <div style={{ display: 'flex' }}>
                 <p style={{ paddingRight: 5 }}>Versions :</p>
-                {checkAppAllreadyAdded() ? <p>{getVersion()}</p> : <ListVersion versions={app.versions} app={app} />}
+                {checkAppAllreadyAdded() ? (
+                  <p>{getVersion()}</p>
+                ) : (
+                  <ListVersion versions={app.versions} app={app} setCommand={setCommand} />
+                )}
               </div>
               <span style={iconSpanStyle}>
                 <IconButton title={i18n.__('pages.detailApp.redirect')} onClick={handleUrlButton} disabled={!app.url}>
@@ -147,10 +165,14 @@ const detailApp = ({ app, ready }) => {
                 <p>{i18n.__('pages.detailApp.redirectLabel')}</p>
               </span>
               <span style={iconSpanStyle}>
-                <IconButton title={i18n.__('pages.detailApp.download')}>
-                  <GetAppIcon />
-                </IconButton>
-                <p>{i18n.__('pages.detailApp.downloadLabel')}</p>
+                <Button
+                  title={i18n.__('pages.detailApp.download')}
+                  onClick={copyCommand}
+                  sx={{ textTransform: 'none' }}
+                >
+                  <ContentCopyIcon />
+                  <Typography variant="paragraph">{command}</Typography>
+                </Button>
               </span>
               <span style={iconSpanStyle}>
                 <IconButton disabled sx={iconStyle}>
