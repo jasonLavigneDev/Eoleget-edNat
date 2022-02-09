@@ -131,7 +131,7 @@ const detailApp = ({ app, ready }) => {
   const [command, setCommand] = useState(generateCommand(getVersion()));
 
   const copyCommand = () => {
-    navigator.clipboard.writeText(command).then(msg.success('yes'));
+    navigator.clipboard.writeText(command).then(msg.success(i18n.__('pages.detailApp.copyCommand')));
   };
 
   return (
@@ -165,9 +165,13 @@ const detailApp = ({ app, ready }) => {
                 <p>{i18n.__('pages.detailApp.redirectLabel')}</p>
               </span>
               <span style={iconSpanStyle}>
-                <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand}>
+                <Button
+                  title={i18n.__('pages.detailApp.download')}
+                  onClick={copyCommand}
+                  sx={{ textTransform: 'none' }}
+                >
                   <ContentCopyIcon />
-                  {command}
+                  <Typography variant="paragraph">{command}</Typography>
                 </Button>
               </span>
               <span style={iconSpanStyle}>

@@ -94,7 +94,8 @@
     "detailPack": {
       "details": "Pack details",
       "getPack": "Get this pack",
-      "back": "Back"
+      "back": "Back",
+      "copyCommand": "Command copied successfully"
     },
     "packCreation": {
       "title": "Pack creation",
@@ -153,7 +154,8 @@
       "Save": "Add to pack",
       "Remove": "Remove from cart",
       "addAppSuccess": "Application added to cart",
-      "back": "Back"
+      "back": "Back",
+      "copyCommand": "Command copied successfully"
     },
     "packEditPage": {
       "title": "Edit Pack",

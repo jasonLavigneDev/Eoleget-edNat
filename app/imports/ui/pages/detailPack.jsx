@@ -41,6 +41,11 @@ const divButtonStyle = {
   alignItems: 'center',
   justifyContent: 'space-evenly',
 };
+const ButtonCommandStyle = {
+  textTransform: 'none',
+  width: 'fit-content',
+  marginBottom: 5,
+};
 // End styles //
 
 function DetailPack({ pack, ready }) {
@@ -70,7 +75,7 @@ function DetailPack({ pack, ready }) {
   const command = generateCommand();
 
   const copyCommand = () => {
-    navigator.clipboard.writeText(command).then(msg.success('yes'));
+    navigator.clipboard.writeText(command).then(msg.success(i18n.__('pages.detailPack.copyCommand')));
   };
 
   return !ready ? (
@@ -89,9 +94,9 @@ function DetailPack({ pack, ready }) {
             <textarea readOnly rows="8" style={{ resize: 'none', border: 0 }}>
               {pack.description}
             </textarea>
-            <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand}>
+            <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
               <ContentCopyIcon />
-              {command}
+              <Typography variant="paragraph">{command}</Typography>
             </Button>
             {mapList((app) => (
               <AppPacksCard key={app.identification} app={app} />
