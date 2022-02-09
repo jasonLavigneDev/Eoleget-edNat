@@ -36,6 +36,12 @@ Applications.schema = new SimpleSchema({
     label: getLabel('api.applications.labels.version'),
   },
 
+  license: {
+    type: String,
+    optional: true,
+    label: getLabel('api.applications.labels.license'),
+  },
+
   url: {
     type: String,
     optional: true,
@@ -50,6 +56,7 @@ Applications.publicFields = {
   tags: 1,
   versions: 1,
   url: 1,
+  license: 1,
 };
 
 Applications.attachSchema(Applications.schema);
