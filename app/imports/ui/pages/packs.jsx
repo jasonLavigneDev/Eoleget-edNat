@@ -1,189 +1,61 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
+// import { Roles } from 'meteor/alanning:roles';
 
-import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import Fade from '@mui/material/Fade';
-import Paper from '@mui/material/Paper';
-import SearchIcon from '@mui/icons-material/Search';
 import ListIcon from '@mui/icons-material/ViewList';
 import CardIcon from '@mui/icons-material/Dashboard';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
+import { Typography } from '@mui/material';
 
-import { useTracker } from 'meteor/react-meteor-data';
-import ClearIcon from '@mui/icons-material/Clear';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import Grid from '@mui/material/Grid';
-import Pagination from '@mui/material/Pagination';
-import PackList from '../components/packsCard/packList';
-import PackCard from '../components/packsCard/packCard';
-
-import { useAppContext } from '../contexts/context';
-import { usePagination } from '../../api/utils/hooks';
-
-import Packs from '../../api/packs/packs';
-import { debounce } from '../utils';
+import PackListPage from '../components/packTable/packListPage';
+import PackCardPage from '../components/packsCard/packCardPage';
 
 // Styles CSS //
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  minWidth: '100%',
   marginTop: '5%',
-  padding: '0 10%',
+  padding: '0 15%',
   marginBottom: '2%',
-};
-const divPackTitleContainerStyle = {
   minWidth: '100%',
 };
-const divPackTitleContentStyle = {
+const divStoreTitleStyle = {
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center',
 };
 const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
-  width: '100%',
-};
-const divCardContainerStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  justifyContent: 'center',
+  marginTop: -5,
 };
 // End styles //
 
-const ITEM_PER_PAGE = 9;
-
-function PackPage() {
+function Packs() {
   const [showModeList, setModeList] = useState(false);
 
-  const [{ packPage }, dispatch] = useAppContext();
-  const { search = '', searchToggle = false } = packPage;
-
-  const { changePage, page, items, total } = usePagination(
-    'packs.all',
-    { search, sort: { name: 1 } },
-    Packs,
-    {},
-    { sort: { name: 1 } },
-    ITEM_PER_PAGE,
-  );
-
-  const packs = useTracker(() => {
-    Meteor.subscribe('packs.table.all');
-    const data = Packs.find({ isPublic: true }).fetch();
-    return data;
+  const cart = useState(() => {
+    const saved = localStorage.getItem('cart');
+    const initialValue = saved ? JSON.parse(saved) : [];
+    return initialValue;
   });
 
-  const handleChangePage = (event, value) => {
-    changePage(value);
-  };
-
-  const inputRef = useRef(null);
-  // focus on search input when it appears
-  useEffect(() => {
-    if (inputRef.current && searchToggle) {
-      inputRef.current.focus();
-    }
-  }, [searchToggle]);
+  const [loadingCart, setLoadingCart] = useState(true);
 
   useEffect(() => {
-    if (page !== 1) {
-      changePage(1);
-    }
-  }, [search]);
-
-  const filterPack = (pack) => {
-    let searchText = pack.name + pack.description || '';
-    searchText = searchText.toLowerCase();
-    if (!search) return true;
-    return searchText.indexOf(search.toLowerCase()) > -1;
-  };
-
-  const mapList = (func) => items.filter((pack) => filterPack(pack)).map(func);
-
-  const updateGlobalState = (key, value) =>
-    dispatch({
-      type: 'packPage',
-      data: {
-        ...packPage,
-        [key]: value,
-      },
-    });
-
-  const searchRef = useRef();
-  const toggleSearch = () => updateGlobalState('searchToggle', !searchToggle);
-  const updateSearch = () => updateGlobalState('search', searchRef.current.value);
-  const resetSearch = () => {
-    updateGlobalState('search', '');
-    searchRef.current.value = '';
-  };
-  const debouncedSearch = debounce(updateSearch, 300);
-  const checkEscape = (e) => {
-    if (e.keyCode === 27) {
-      // ESCAPE key
-      updateGlobalState('searchToggle', false);
-      updateGlobalState('search', '');
-      searchRef.current.value = '';
-    }
-  };
-
-  const searchField = (
-    <Grid item xs={12} sm={12} md={6}>
-      <Collapse in={searchToggle} collapsedSize={0}>
-        <TextField
-          margin="normal"
-          id="search"
-          label={i18n.__('pages.Packs.searchText')}
-          name="search"
-          fullWidth
-          onChange={debouncedSearch}
-          onKeyDown={checkEscape}
-          type="text"
-          variant="outlined"
-          inputRef={searchRef}
-          inputProps={{
-            ref: inputRef,
-          }}
-          // eslint-disable-next-line react/jsx-no-duplicate-props
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-            endAdornment: search ? (
-              <InputAdornment position="end">
-                <IconButton onClick={resetSearch}>
-                  <ClearIcon />
-                </IconButton>
-              </InputAdornment>
-            ) : null,
-          }}
-        />
-      </Collapse>
-    </Grid>
-  );
+    // update cart in localStorage when it's updated (except for initial load)
+    // eslint-disable-next-line no-unused-expressions
+    loadingCart ? setLoadingCart(false) : localStorage.setItem('cart', JSON.stringify(cart[0]));
+  }, [cart[0]]);
 
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <div style={divPackTitleContainerStyle}>
-          <div style={divPackTitleContentStyle}>
-            <Typography variant="h4" component="div">
-              {i18n.__('pages.Packs.packsStoreTitle')}
-            </Typography>
-            <Tooltip title={i18n.__('pages.Packs.searchPack')}>
-              <IconButton onClick={toggleSearch}>
-                <SearchIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-          </div>
-          {searchField}
+        <div style={divStoreTitleStyle}>
+          <Typography variant="h4" component="div">
+            {i18n.__('pages.Store.storeTitle')}
+          </Typography>
           <span style={spanIconListStyle}>
             <Tooltip title="Mode liste">
               <IconButton
@@ -204,34 +76,11 @@ function PackPage() {
               </IconButton>
             </Tooltip>
           </span>
-          <div>
-            <Paper>
-              <Collapse in={!showModeList} collapsedsize={0}>
-                {total > ITEM_PER_PAGE && (
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                  </Grid>
-                )}
-                <span style={divCardContainerStyle}>
-                  {mapList((pack) => (
-                    <PackCard key={pack._id} pack={pack} />
-                  ))}
-                </span>
-                {total > ITEM_PER_PAGE && (
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                  </Grid>
-                )}
-              </Collapse>
-            </Paper>
-            <Collapse in={showModeList} collapsedsize={0}>
-              <PackList packs={packs} />
-            </Collapse>
-          </div>
         </div>
+        {!showModeList ? <PackCardPage /> : <PackListPage />}
       </div>
     </Fade>
   );
 }
 
-export default PackPage;
+export default Packs;
