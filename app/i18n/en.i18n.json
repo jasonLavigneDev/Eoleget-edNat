@@ -10,7 +10,8 @@
         "description": "Description",
         "tags": "Tags",
         "version": "Version",
-        "url": "URL"
+        "url": "URL",
+        "license": "license"
       }
     },
     "packs": {
@@ -30,6 +31,7 @@
       "unknownPack": "Unkown pack",
       "packNotFound": "Pack not found",
       "needToBeOwner": "You need to be owner of this pack",
+      "emptyPack": "There is no applications in pack",
       "createPack": {
         "notLoggedIn": "You're not logged in",
         "mustBeLoggedIn": "You must be logged in."

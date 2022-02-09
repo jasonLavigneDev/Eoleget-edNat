@@ -66,41 +66,44 @@ function CreatePackPage() {
     const date = today.toUTCString();
     const color = JSON.parse(localStorage.getItem('color'));
     const cart = JSON.parse(localStorage.getItem('cart'));
-    const apps = [];
-    cart.map((app) => {
-      localStorage.removeItem(`version_${app.identification}`);
-      let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
-      if (ver === 'latest') ver = '';
+    if (!cart) msg.error(i18n.__('api.packs.emptyPack'));
+    else {
+      const apps = [];
+      cart.map((app) => {
+        localStorage.removeItem(`version_${app.identification}`);
+        let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
+        if (ver === 'latest') ver = '';
 
-      localStorage.removeItem(`version_edit_${app.identification}`);
-      return apps.push({
-        identification: app.identification,
-        nom: app.nom,
-        description: app.description,
-        version: ver,
+        localStorage.removeItem(`version_edit_${app.identification}`);
+        return apps.push({
+          identification: app.identification,
+          nom: app.nom,
+          description: app.description,
+          version: ver,
+        });
       });
-    });
-    Meteor.call(
-      'packs.createPack',
-      {
-        name,
-        applications: apps,
-        creationDate: date,
-        isValidated: true,
-        description,
-        color,
-        isPublic,
-      },
-      (err) => {
-        if (err) msg.error(err.reason);
-        else {
-          msg.success(i18n.__('pages.packCreation.createPackSuccess'));
-          cart[0] = [];
-          localStorage.removeItem('cart');
-          history.push('/packs');
-        }
-      },
-    );
+      Meteor.call(
+        'packs.createPack',
+        {
+          name,
+          applications: apps,
+          creationDate: date,
+          isValidated: true,
+          description,
+          color,
+          isPublic,
+        },
+        (err) => {
+          if (err) msg.error(err.reason);
+          else {
+            msg.success(i18n.__('pages.packCreation.createPackSuccess'));
+            cart[0] = [];
+            localStorage.removeItem('cart');
+            history.push('/packs');
+          }
+        },
+      );
+    }
   };
 
   const goBack = () => {
