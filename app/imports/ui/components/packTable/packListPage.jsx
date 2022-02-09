@@ -71,6 +71,15 @@ function packListPage() {
     }
   };
 
+  const filterPack = (pack) => {
+    let searchText = pack.name + pack.description || '';
+    searchText = searchText.toLowerCase();
+    if (!search) return true;
+    return searchText.indexOf(search.toLowerCase()) > -1;
+  };
+
+  const mapList = (func) => packs.filter((pack) => filterPack(pack)).map(func);
+
   const searchField = (
     <TextField
       margin="normal"
@@ -109,7 +118,7 @@ function packListPage() {
       <div style={divMainStyle}>
         <div style={divPackTitleContainerStyle}>
           {searchField}
-          <PackList packs={packs} />
+          <PackList packs={mapList((pack) => pack)} />
         </div>
       </div>
     </Fade>
