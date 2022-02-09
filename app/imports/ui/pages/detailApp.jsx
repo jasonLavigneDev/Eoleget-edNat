@@ -178,7 +178,9 @@ const detailApp = ({ app, ready }) => {
                 <IconButton disabled sx={iconStyle}>
                   <MonetizationOnIcon />
                 </IconButton>
-                <p>{i18n.__('pages.detailApp.Licence')}</p>
+                <p>
+                  {i18n.__('pages.detailApp.Licence')}: {app.license}
+                </p>
               </span>
               <span style={iconSpanStyle}>
                 <IconButton disabled sx={iconStyle}>

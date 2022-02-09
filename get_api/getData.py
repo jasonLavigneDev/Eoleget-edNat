@@ -7,13 +7,14 @@ import pyaml
 
 
 class Application:
-    def __init__(self, identification, nom, description, version):
+    def __init__(self, identification, nom, description, version, appLicense):
         self.identification = identification
         self.nom = nom
         self.description = description
         self.tags = []
         self.versions = [str(version)]
         self.url = ""
+        self.license = appLicense
 
     def append_version(self, version):
         self.versions.append(str(version))
@@ -42,6 +43,7 @@ def get_yaml_files(yamlFiles):
                     data["PackageName"],
                     data["ShortDescription"],
                     data["PackageVersion"],
+                    data["License"]
                 )
                 if "Tags" in data.keys():
                     appli.tags = data["Tags"]
