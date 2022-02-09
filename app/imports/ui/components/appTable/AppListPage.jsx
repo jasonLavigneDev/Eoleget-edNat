@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
 
 import { useTracker } from 'meteor/react-meteor-data';
 import SearchIcon from '@mui/icons-material/Search';
@@ -28,7 +29,7 @@ const divStoreTitleStyle = {
 };
 // End styles //
 
-function AppListPage() {
+function AppListPage({ modal, editModal }) {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -39,7 +40,12 @@ function AppListPage() {
   });
 
   const cart = useState(() => {
-    const saved = localStorage.getItem('cart');
+    let saved;
+    if (editModal) {
+      saved = localStorage.getItem('cart_edit');
+    } else {
+      saved = localStorage.getItem('cart');
+    }
     const initialValue = saved ? JSON.parse(saved) : [];
     return initialValue;
   });
@@ -49,7 +55,13 @@ function AppListPage() {
   useEffect(() => {
     // update cart in localStorage when it's updated (except for initial load)
     // eslint-disable-next-line no-unused-expressions
-    loadingCart ? setLoadingCart(false) : localStorage.setItem('cart', JSON.stringify(cart[0]));
+    editModal
+      ? loadingCart
+        ? setLoadingCart(false)
+        : localStorage.setItem('cart_edit', JSON.stringify(cart[0]))
+      : loadingCart
+      ? setLoadingCart(false)
+      : localStorage.setItem('cart', JSON.stringify(cart[0]));
   }, [cart[0]]);
 
   const inputRef = useRef(null);
@@ -131,7 +143,7 @@ function AppListPage() {
     <Fade in>
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
-          <AppCart cart={cart} />
+          {!modal ? <AppCart cart={cart} /> : null}
           {searchField}
           <div>
             <AppList applications={mapList((app) => app)} cart={cart} />
@@ -142,4 +154,13 @@ function AppListPage() {
   );
 }
 
+AppListPage.propTypes = {
+  modal: PropTypes.bool,
+  editModal: PropTypes.bool,
+};
+
+AppListPage.defaultProps = {
+  modal: false,
+  editModal: false,
+};
 export default AppListPage;
