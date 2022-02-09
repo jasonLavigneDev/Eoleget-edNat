@@ -71,34 +71,33 @@ const EditPackPage = ({ pack, ready }) => {
   };
 
   const editPack = () => {
-    const finalApps = [];
-    const editApps = JSON.parse(localStorage.getItem('editApplications'));
-    editApps.map((app) => {
-      let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
-      if (ver === 'latest') ver = '';
+    if (apps) {
+      const finalApps = [];
+      apps.map((app) => {
+        let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
+        if (ver === 'latest') ver = '';
 
-      localStorage.removeItem(`version_edit_${app.identification}`);
+        localStorage.removeItem(`version_edit_${app.identification}`);
 
-      return finalApps.push({
-        nom: app.nom,
-        description: app.description,
-        identification: app.identification,
-        version: ver,
+        return finalApps.push({
+          nom: app.nom,
+          description: app.description,
+          identification: app.identification,
+          version: ver,
+        });
       });
-    });
-    const color = JSON.parse(localStorage.getItem('color'));
-    Meteor.call(
-      'packs.updatePack',
-      { _id: pack._id, name, applications: finalApps, description, color, isPublic },
-      (err) => {
-        if (err) msg.error(err.reason);
-        else {
-          msg.success(i18n.__('pages.packEditPage.updateSuccess'));
-          localStorage.removeItem('cart_edit');
-          localStorage.removeItem('editApplications');
-        }
-      },
-    );
+      const color = JSON.parse(localStorage.getItem('color'));
+      Meteor.call(
+        'packs.updatePack',
+        { _id: pack._id, name, applications: finalApps, description, color, isPublic },
+        (err) => {
+          if (err) msg.error(err.reason);
+          else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
+        },
+      );
+    } else {
+      msg.error(i18n.__('api.packs.emptyPacks'));
+    }
   };
 
   const handleOnChange = () => {
