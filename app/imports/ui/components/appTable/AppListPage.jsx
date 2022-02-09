@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
 
 import { useTracker } from 'meteor/react-meteor-data';
 import SearchIcon from '@mui/icons-material/Search';
@@ -8,8 +9,6 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
-
-import PropTypes from 'prop-types';
 import { useAppContext } from '../../contexts/context';
 import AppList from './AppList';
 import Applications from '../../../api/applications/applications';
@@ -28,7 +27,7 @@ const divStoreTitleStyle = {
 };
 // End styles //
 
-function AppListPage({ modal }) {
+function AppListPage({ modal, editModal }) {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -39,7 +38,12 @@ function AppListPage({ modal }) {
   });
 
   const cart = useState(() => {
-    const saved = localStorage.getItem('cart');
+    let saved;
+    if (editModal) {
+      saved = localStorage.getItem('cart_edit');
+    } else {
+      saved = localStorage.getItem('cart');
+    }
     const initialValue = saved ? JSON.parse(saved) : [];
     return initialValue;
   });
@@ -49,7 +53,13 @@ function AppListPage({ modal }) {
   useEffect(() => {
     // update cart in localStorage when it's updated (except for initial load)
     // eslint-disable-next-line no-unused-expressions
-    loadingCart ? setLoadingCart(false) : localStorage.setItem('cart', JSON.stringify(cart[0]));
+    editModal
+      ? loadingCart
+        ? setLoadingCart(false)
+        : localStorage.setItem('cart_edit', JSON.stringify(cart[0]))
+      : loadingCart
+      ? setLoadingCart(false)
+      : localStorage.setItem('cart', JSON.stringify(cart[0]));
   }, [cart[0]]);
 
   const inputRef = useRef(null);
@@ -144,10 +154,11 @@ function AppListPage({ modal }) {
 
 AppListPage.propTypes = {
   modal: PropTypes.bool,
+  editModal: PropTypes.bool,
 };
 
 AppListPage.defaultProps = {
   modal: false,
+  editModal: false,
 };
-
 export default AppListPage;
