@@ -72,7 +72,8 @@ const EditPackPage = ({ pack, ready }) => {
 
   const editPack = () => {
     const finalApps = [];
-    apps.map((app) => {
+    const editApps = JSON.parse(localStorage.getItem('editApplications'));
+    editApps.map((app) => {
       let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
       if (ver === 'latest') ver = '';
 
@@ -91,7 +92,11 @@ const EditPackPage = ({ pack, ready }) => {
       { _id: pack._id, name, applications: finalApps, description, color, isPublic },
       (err) => {
         if (err) msg.error(err.reason);
-        else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
+        else {
+          msg.success(i18n.__('pages.packEditPage.updateSuccess'));
+          localStorage.removeItem('cart_edit');
+          localStorage.removeItem('editApplications');
+        }
       },
     );
   };

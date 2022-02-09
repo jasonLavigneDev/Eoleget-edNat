@@ -6,6 +6,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
+import { Button, Typography } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
@@ -16,13 +17,29 @@ import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import Modal from '@mui/material/Modal';
+import AppListPage from './AppListPage';
+
 import EnhancedTableHead from './tableHeadAppPack';
 import ListVersionEdit from '../version/listVersionEdit';
 import Applications from '../../../api/applications/applications';
 import Spinner from '../system/Spinner';
 
+const modalStyle = {
+  overflow: 'auto',
+  position: 'absolute',
+  width: '90%',
+  maxHeight: '100%',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+};
+
 function TableAppEditPack({ applications, ready }) {
   if (!ready) return <Spinner full />;
+
+  localStorage.setItem('cart_edit', JSON.stringify(applications));
+  localStorage.setItem('editApplications', JSON.stringify(applications));
 
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -58,6 +75,7 @@ function TableAppEditPack({ applications, ready }) {
   const [orderBy, setOrderBy] = React.useState('application');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [openModal, setOpenModal] = React.useState(false);
 
   let data = [];
   let _id = 0;
@@ -94,11 +112,7 @@ function TableAppEditPack({ applications, ready }) {
     setPage(0);
   };
 
-  const handleDeleteButton = (event, app) => {
-    if (app.id > -1) {
-      applications.splice(app.id - 1, 1);
-    }
-
+  const ReloadData = () => {
     data = [];
     _id = 0;
     applications.map((appli) => {
@@ -111,7 +125,61 @@ function TableAppEditPack({ applications, ready }) {
         version: appli.version,
       });
     });
+    localStorage.setItem('editApplications', JSON.stringify(applications));
     setRows(data);
+  };
+
+  const handleDeleteButton = (event, app) => {
+    if (app.id > -1) {
+      applications.splice(app.id - 1, 1);
+    }
+    ReloadData();
+  };
+
+  const checkAppAllreadyAdded = (app) => {
+    let res;
+    const tab = [];
+    applications.map((appli) => tab.push(appli.identification));
+    if (tab.includes(app.identification)) res = true;
+    else res = false;
+    return res;
+  };
+
+  const CheckApplyNotInList = (app, list) => {
+    let res;
+    const tab = [];
+    list.map((appli) => tab.push(appli.identification));
+    if (tab.includes(app.identification)) res = false;
+    else res = true;
+    return res;
+  };
+
+  const onClose = () => {
+    setOpenModal(false);
+    const appli = JSON.parse(localStorage.getItem('cart_edit'));
+    appli.map((app) => {
+      if (checkAppAllreadyAdded(app)) return null;
+      return applications.push({
+        nom: app.nom,
+        description: app.description,
+        identification: app.identification,
+        version: app.version,
+      });
+    });
+    applications.map((app) => {
+      if (CheckApplyNotInList(app, appli)) {
+        const index = applications.indexOf(app);
+        applications.splice(index, 1);
+      }
+      return null;
+    });
+
+    localStorage.setItem('cart_edit', JSON.stringify(applications));
+    ReloadData();
+  };
+
+  const openList = () => {
+    setOpenModal(true);
   };
 
   return (
@@ -161,6 +229,20 @@ function TableAppEditPack({ applications, ready }) {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+
+      <Button variant="contained" onClick={openList}>
+        +
+      </Button>
+      {openModal ? (
+        <Modal open onClose={onClose}>
+          <Paper sx={modalStyle}>
+            <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
+              {i18n.__('pages.Store.storeTitle')}
+            </Typography>
+            <AppListPage modal editModal />
+          </Paper>
+        </Modal>
+      ) : null}
     </div>
   );
 }
