@@ -14,10 +14,8 @@ import {
   Checkbox,
   Divider,
 } from '@mui/material';
-import Modal from '@mui/material/Modal';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import TableAppCreatePack from '../components/appTable/tableAppCreatePack';
-import AppListPage from '../components/appTable/AppListPage';
 
 // Style CSS //
 const containerStyle = {
@@ -43,46 +41,12 @@ const paperStyle = {
   paddingRight: 5,
   paddingBottom: 2,
 };
-const modalStyle = {
-  overflow: 'auto',
-  position: 'absolute',
-  width: '90%',
-  maxHeight: '100%',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-};
 // End Style //
 
 function CreatePackPage() {
-  const cart = useState(() => {
-    // getting stored value
-    const saved = localStorage.getItem('cart');
-    const initialValue = saved ? JSON.parse(saved) : [];
-    return initialValue;
-  });
-
-  const [openModal, setOpenModal] = useState(false);
   const [name, setName] = useState('');
   const [isPublic, setIsPublic] = useState(false);
   const [description, setDescription] = useState('');
-  let data = [];
-
-  const getVersion = (app) => {
-    return app.version || 'latest';
-  };
-
-  let _id = 0;
-  cart[0].map((app) => {
-    _id += 1;
-    return data.push({
-      id: _id,
-      appName: app.nom,
-      description: app.description,
-      identification: app.identification,
-      version: getVersion(app),
-    });
-  });
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
@@ -101,8 +65,9 @@ function CreatePackPage() {
     const today = new Date(timeElapsed);
     const date = today.toUTCString();
     const color = JSON.parse(localStorage.getItem('color'));
+    const cart = JSON.parse(localStorage.getItem('cart'));
     const apps = [];
-    cart[0].map((app) => {
+    cart.map((app) => {
       localStorage.removeItem(`version_${app.identification}`);
       let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
       if (ver === 'latest') ver = '';
@@ -144,26 +109,6 @@ function CreatePackPage() {
 
   const handleOnChange = () => {
     setIsPublic(!isPublic);
-  };
-
-  const onClose = () => {
-    setOpenModal(false);
-    data = [];
-    _id = 0;
-    cart[0].map((app) => {
-      _id += 1;
-      return data.push({
-        id: _id,
-        appName: app.nom,
-        description: app.description,
-        identification: app.identification,
-        version: getVersion(app),
-      });
-    });
-  };
-
-  const openList = () => {
-    setOpenModal(true);
   };
 
   return (
@@ -211,11 +156,8 @@ function CreatePackPage() {
             <ColorRadioButton />
             <Divider />
             <div style={divDatagridStyle}>
-              <TableAppCreatePack cart={cart} />
+              <TableAppCreatePack />
             </div>
-            <Button variant="contained" onClick={openList}>
-              +
-            </Button>
             <div style={divButtonStyle}>
               <Button variant="contained" onClick={createPack} disabled={isDisable}>
                 {i18n.__('pages.packCreation.add')}
@@ -226,16 +168,6 @@ function CreatePackPage() {
             </div>
           </form>
         </Paper>
-        {openModal ? (
-          <Modal open onClose={onClose}>
-            <Paper sx={modalStyle}>
-              <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
-                {i18n.__('pages.Store.storeTitle')}
-              </Typography>
-              <AppListPage modal />
-            </Paper>
-          </Modal>
-        ) : null}
       </Container>
     </Fade>
   );

@@ -86,6 +86,7 @@ function AppList({ applications, cart }) {
         version: ver,
       };
       cart[1]([...cart[0], appFinal]);
+      localStorage.setItem('cart', JSON.stringify(cart[0]));
       msg.success(i18n.__('components.Card.addAppSuccess'));
     }
   };
@@ -93,6 +94,7 @@ function AppList({ applications, cart }) {
   const removeAppToCart = (app) => {
     if (checkAppAllreadyAdded(app)) {
       cart[1](cart[0].filter((appli) => appli.identification !== app.identification));
+      localStorage.setItem('cart', JSON.stringify(cart[0]));
       msg.success(i18n.__('components.Card.removeAppSuccess'));
     } else {
       msg.error(i18n.__('components.Card.removeAppError'));

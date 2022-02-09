@@ -56,24 +56,6 @@ const EditPackPage = ({ pack, ready }) => {
   const [description, setDescription] = useState(pack.description);
   const apps = pack.applications;
 
-  const data = [];
-
-  const getVersion = (app) => {
-    return app.version || 'latest';
-  };
-
-  let _id = 0;
-  apps.map((app) => {
-    _id += 1;
-    return data.push({
-      id: _id,
-      appName: app.nom,
-      description: app.description,
-      identification: app.identification,
-      version: getVersion(app),
-    });
-  });
-
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
   const onUpdateName = (event) => {
