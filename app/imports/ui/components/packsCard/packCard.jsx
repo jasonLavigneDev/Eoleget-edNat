@@ -108,7 +108,7 @@ const PackCard = ({ pack }) => {
   const mapTotalList = (func) => appli.slice(2, appli.length).map(func);
 
   const openDetailPack = () => {
-    history.push(`packs/detail/${pack._id}`);
+    history.push(`/packs/detail/${pack._id}`);
   };
 
   const GetClassName = () => {
