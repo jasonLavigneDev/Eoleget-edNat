@@ -17,7 +17,7 @@ const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   marginTop: '5%',
-  padding: '0 15%',
+  padding: '0 10%',
   marginBottom: '2%',
   minWidth: '100%',
 };
@@ -54,7 +54,7 @@ function Packs() {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           <Typography variant="h4" component="div">
-            {i18n.__('pages.Store.storeTitle')}
+            {i18n.__('pages.Packs.packsStoreTitle')}
           </Typography>
           <span style={spanIconListStyle}>
             <Tooltip title="Mode liste">
