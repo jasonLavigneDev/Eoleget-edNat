@@ -167,7 +167,8 @@
       "edit": "Edit",
       "back": "Back",
       "updateSuccess": "Pack updated",
-      "packPublic": "public pack"
+      "packPublic": "public pack",
+      "addApp": "Add an other application"
     }
   },
   "components": {

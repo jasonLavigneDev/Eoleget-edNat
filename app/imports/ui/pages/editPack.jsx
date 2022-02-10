@@ -34,7 +34,7 @@ const divDatagridStyle = {
   marginTop: 10,
 };
 const divButtonStyle = {
-  marginTop: 10,
+  marginTop: 90,
   width: '100%',
   display: 'flex',
   alignItems: 'center',

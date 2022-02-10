@@ -220,6 +220,9 @@ function TableAppEditPack({ applications, ready }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <Button variant="outlined" onClick={openList} sx={{ width: '100%' }}>
+        {i18n.__('pages.packEditPage.addApp')}
+      </Button>
       <TablePagination
         rowsPerPageOptions={[5]}
         component="div"
@@ -230,9 +233,6 @@ function TableAppEditPack({ applications, ready }) {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
 
-      <Button variant="contained" onClick={openList}>
-        +
-      </Button>
       {openModal ? (
         <Modal open onClose={onClose}>
           <Paper sx={modalStyle}>

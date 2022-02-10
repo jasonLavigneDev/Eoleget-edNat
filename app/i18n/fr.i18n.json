@@ -162,7 +162,8 @@
       "edit": "Editer",
       "back": "Retour",
       "updateSuccess": "Pack mis à jour",
-      "packPublic": "Pack public"
+      "packPublic": "Pack public",
+      "addApp": "Ajouter une autre application"
     }
   },
   "components": {
