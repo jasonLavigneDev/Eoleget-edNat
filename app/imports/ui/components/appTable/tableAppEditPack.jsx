@@ -29,10 +29,17 @@ const modalStyle = {
   overflow: 'auto',
   position: 'absolute',
   width: '90%',
-  maxHeight: '100%',
+  maxHeight: '90%',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+};
+
+const buttonCloseStyle = {
+  display: 'block',
+  width: 400,
+  margin: 'auto',
+  bottom: 10,
 };
 
 function TableAppEditPack({ applications, ready }) {
@@ -235,12 +242,17 @@ function TableAppEditPack({ applications, ready }) {
 
       {openModal ? (
         <Modal open onClose={onClose}>
-          <Paper sx={modalStyle}>
-            <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
-              {i18n.__('pages.Store.storeTitle')}
-            </Typography>
-            <AppListPage modal editModal />
-          </Paper>
+          <div>
+            <Paper sx={modalStyle}>
+              <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
+                {i18n.__('pages.Store.storeTitle')}
+              </Typography>
+              <AppListPage modal editModal />
+              <Button variant="contained" onClick={onClose} sx={buttonCloseStyle} size="large">
+                {i18n.__('pages.packEditPage.validateModal')}
+              </Button>
+            </Paper>
+          </div>
         </Modal>
       ) : null}
     </div>

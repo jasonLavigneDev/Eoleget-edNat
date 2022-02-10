@@ -144,7 +144,7 @@ function AppListPage({ modal, editModal }) {
           {!modal ? <AppCart cart={cart} /> : null}
           {searchField}
           <div>
-            <AppList applications={mapList((app) => app)} cart={cart} />
+            <AppList applications={mapList((app) => app)} cart={cart} isModal={modal} />
           </div>
         </div>
       </div>
