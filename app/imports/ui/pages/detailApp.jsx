@@ -40,6 +40,11 @@ const detailApp = ({ app, ready }) => {
     alignItems: 'center',
     justifyItems: 'center',
   };
+  const iconSpanTagStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  };
   const iconSpanStyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -188,7 +193,7 @@ const detailApp = ({ app, ready }) => {
                 </IconButton>
                 <p>{i18n.__('pages.detailApp.Tags')}</p>
               </span>
-              <span style={iconSpanStyle}>
+              <span style={iconSpanTagStyle}>
                 {mapList((tag) => (
                   <Button key={tag} variant="outlined">
                     {tag}
