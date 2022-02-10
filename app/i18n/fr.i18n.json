@@ -163,7 +163,8 @@
       "back": "Retour",
       "updateSuccess": "Pack mis à jour",
       "packPublic": "Pack public",
-      "addApp": "Ajouter une autre application"
+      "addApp": "Ajouter une autre application",
+      "validateModal": "Valider"
     }
   },
   "components": {

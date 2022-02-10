@@ -34,6 +34,13 @@ const modalStyle = {
   transform: 'translate(-50%, -50%)',
 };
 
+const buttonCloseStyle = {
+  display: 'block',
+  width: 400,
+  margin: 'auto',
+  bottom: 10,
+};
+
 function TableAppCreatePack({ ready }) {
   if (!ready) return <Spinner full />;
 
@@ -214,6 +221,9 @@ function TableAppCreatePack({ ready }) {
               {i18n.__('pages.Store.storeTitle')}
             </Typography>
             <AppListPage modal />
+            <Button variant="contained" onClick={onClose} sx={buttonCloseStyle} size="large">
+              {i18n.__('pages.packEditPage.validateModal')}
+            </Button>
           </Paper>
         </Modal>
       ) : null}

@@ -168,7 +168,8 @@
       "back": "Back",
       "updateSuccess": "Pack updated",
       "packPublic": "public pack",
-      "addApp": "Add an other application"
+      "addApp": "Add an other application",
+      "validateModal": "Validate"
     }
   },
   "components": {

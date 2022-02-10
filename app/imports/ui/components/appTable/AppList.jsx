@@ -18,7 +18,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import ListVersion from '../version/listVersion';
 import EnhancedTableHead from './tableHead';
 
-function AppList({ applications, cart }) {
+function AppList({ applications, cart, isModal }) {
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -53,7 +53,7 @@ function AppList({ applications, cart }) {
   const [orderBy, setOrderBy] = React.useState('nom');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [rowsPerPage, setRowsPerPage] = isModal ? React.useState(10) : React.useState(25);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -188,7 +188,7 @@ function AppList({ applications, cart }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={isModal ? [5, 10] : [5, 10, 25]}
         component="div"
         count={applications.length}
         rowsPerPage={rowsPerPage}
@@ -200,9 +200,14 @@ function AppList({ applications, cart }) {
   );
 }
 
+AppList.defaultProps = {
+  isModal: false,
+};
+
 AppList.propTypes = {
   applications: PropTypes.arrayOf(PropTypes.object).isRequired,
   cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+  isModal: PropTypes.bool,
 };
 
 export default AppList;
