@@ -13,8 +13,7 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import AppBadge from './AppBadge';
-import AppAvatar from './AppAvatar';
+import AppImg from './AppImg';
 
 // Styles CSS //
 const cardStyle = {
@@ -110,11 +109,7 @@ function AppCard({ app, cart }) {
             {app.versions === undefined ? 'N/A' : app.versions[0]}
           </Typography>
         }
-        avatar={
-          <AppBadge>
-            <AppAvatar nameApp={app.identification} isDetailApp={false} />
-          </AppBadge>
-        }
+        avatar={<AppImg appIdent={app.identification} size={40} />}
         action={
           !checkAppAllreadyAdded() ? (
             <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>

@@ -18,9 +18,9 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import Spinner from '../components/system/Spinner';
 import Applications from '../../api/applications/applications';
-import AppAvatar from '../components/appCard/AppAvatar';
 import lightTheme from '../themes/light';
 import ListVersion from '../components/version/listVersion';
+import AppImg from '../components/appCard/AppImg';
 
 const detailApp = ({ app, ready }) => {
   if (!ready) return <Spinner full />;
@@ -200,7 +200,7 @@ const detailApp = ({ app, ready }) => {
                 ))}
               </span>
             </Grid>
-            <AppAvatar nameApp={app.identification} isDetailApp />
+            <AppImg appIdent={app.identification} size={250} />
           </Grid>
           <div style={divButtonStyle}>
             {checkAppAllreadyAdded() ? (

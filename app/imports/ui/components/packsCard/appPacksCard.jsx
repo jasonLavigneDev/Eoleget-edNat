@@ -12,7 +12,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import Tooltip from '@mui/material/Tooltip';
 
 import AppBadge from '../appCard/AppBadge';
-import AppAvatar from '../appCard/AppAvatar';
+import AppImg from '../appCard/AppImg';
 
 // Styles CSS //
 const cardStyle = {
@@ -32,7 +32,7 @@ function AppPacksCard({ app }) {
     <Card sx={cardStyle}>
       <CardContent sx={cardContentStyle}>
         <AppBadge invisible>
-          <AppAvatar nameApp={app.identification} isDetailApp={false} />
+          <AppImg appIdent={app.identification} size={50} />
         </AppBadge>
         <Typography variant="body1">{app.nom}</Typography>
         <CardActions>
