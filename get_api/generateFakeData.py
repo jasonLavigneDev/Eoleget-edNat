@@ -69,7 +69,7 @@ class User():
       self.username = username
       self.firstName = firstName
       self.lastName = lastName
-      self.services = { "password" : { "bcrypt" : "$2a$12$xmrualOaKT3YSpKmxb0qA.fp4vsZC6VXtfI2py8PrkY3XtJ5oBQSK" }}
+      self.services = { "password" : { "bcrypt" : "$2y$10$ffD3NTA0A7UoKHhFLvQWheCK3eHCTv06Etx5w5DwtVkfqdFeMj/1." }}
       self.emails = [{"address" : "{}.{}{}@ac-dijon.fr".format(firstName, lastName, r), "verified": False}]
       self.createdAt= datetime.datetime.utcnow()
       
@@ -88,7 +88,9 @@ class User():
         
         mongoUser = {"_id": self._id, "username": self.username, "firstName": self.firstName, "lastName": self.lastName, "services": self.services, 
                      "emails": self.emails, "createdAt": self.createdAt}
-        collection.insert_one(mongoUser)        
+        collection.insert_one(mongoUser)    
+        
+        print('Utilisateur {} ({}) créé'.format(self.username, self.emails))
 
 
 
@@ -158,9 +160,10 @@ def generate_packs(idPack):
     
 
 parser = argparse.ArgumentParser(description='Fake data generator.')
-parser.add_argument("-p", "--packs", help="Number of packs to create.", type=int, default=15)
+parser.add_argument("-p", "--packs", help="Number of packs to create.", type=int, default=50)
 args = parser.parse_args()
 
 for i in range (args.packs):
     r = random.randint(1, 100)
     generate_packs(r)
+print('{} packs générés.'.format(args.packs))
