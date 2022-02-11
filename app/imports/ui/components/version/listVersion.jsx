@@ -41,7 +41,7 @@ function ListVersion({ versions, app, setCommand }) {
 }
 
 ListVersion.defaultProps = {
-  setCommand: undefined,
+  setCommand: () => '',
 };
 
 ListVersion.propTypes = {
