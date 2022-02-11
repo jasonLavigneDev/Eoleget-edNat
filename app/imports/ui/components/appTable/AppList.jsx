@@ -174,7 +174,9 @@ function AppList({ applications, cart, isModal }) {
                     {isSelected(app) ? (
                       <TableCell>{getVersion(app)}</TableCell>
                     ) : (
-                      <ListVersion versions={app.versions} app={app} />
+                      <TableCell>
+                        <ListVersion versions={app.versions} app={app} />
+                      </TableCell>
                     )}
                     <TableCell>{app.url}</TableCell>
                     <TableCell>

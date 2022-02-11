@@ -31,7 +31,9 @@ function ListVersion({ versions, app, setCommand }) {
           .sort()
           .reverse()
           .map((vers) => (
-            <MenuItem value={vers}>{vers}</MenuItem>
+            <MenuItem key={vers} value={vers}>
+              {vers}
+            </MenuItem>
           ))}
       </Select>
     </FormControl>
@@ -39,7 +41,7 @@ function ListVersion({ versions, app, setCommand }) {
 }
 
 ListVersion.defaultProps = {
-  setCommand: undefined,
+  setCommand: () => '',
 };
 
 ListVersion.propTypes = {
