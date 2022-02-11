@@ -91,9 +91,7 @@ function DetailPack({ pack, ready }) {
             <Typography variant="h6" component="div">
               {pack.name}
             </Typography>
-            <textarea readOnly rows="8" style={{ resize: 'none', border: 0 }}>
-              {pack.description}
-            </textarea>
+            <textarea readOnly value={pack.description} rows="4" style={{ resize: 'none', border: 0 }} />
             <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
               <ContentCopyIcon />
               <Typography variant="paragraph">{command}</Typography>

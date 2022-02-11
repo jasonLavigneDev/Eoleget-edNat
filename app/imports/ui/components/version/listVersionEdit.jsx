@@ -24,7 +24,9 @@ function ListVersionEdit({ versions, actualVersion, app }) {
           .sort()
           .reverse()
           .map((vers) => (
-            <MenuItem value={vers}>{vers}</MenuItem>
+            <MenuItem key={vers} value={vers}>
+              {vers}
+            </MenuItem>
           ))}
       </Select>
     </FormControl>
