@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,10 +13,15 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import EditIcon from '@mui/icons-material/Edit';
+import ClearIcon from '@mui/icons-material/Clear';
 
 import EnhancedTableHead from '../packTable/tableHead';
+import PackDelete from './packDelete';
 
 function PackList({ packs }) {
+  const [openModal, setOpenModal] = useState(false);
+  const history = useHistory();
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -51,6 +56,7 @@ function PackList({ packs }) {
   const [orderBy, setOrderBy] = React.useState('name');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [currentPack, setCurrentPack] = React.useState({});
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -65,6 +71,15 @@ function PackList({ packs }) {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  const handleEditButton = (id) => {
+    history.push(`/packs/edit/${id}`);
+  };
+
+  const handleDeleteButton = (pack) => {
+    setOpenModal(true);
+    setCurrentPack(pack);
   };
 
   return (
@@ -93,6 +108,16 @@ function PackList({ packs }) {
                           </IconButton>
                         </Link>
                       </Tooltip>
+                      <Tooltip title={i18n.__('components.PacksCard.editPack')}>
+                        <IconButton onClick={() => handleEditButton(pack._id)}>
+                          <EditIcon />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title={i18n.__('components.PacksCard.deletePack')}>
+                        <IconButton onClick={() => handleDeleteButton(pack)}>
+                          <ClearIcon />
+                        </IconButton>
+                      </Tooltip>
                     </TableCell>
                   </TableRow>
                 );
@@ -109,12 +134,13 @@ function PackList({ packs }) {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+      {openModal ? <PackDelete pack={currentPack} open={openModal} onClose={() => setOpenModal(false)} /> : null}
     </div>
   );
 }
 
 PackList.propTypes = {
-  packs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  packs: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default PackList;
