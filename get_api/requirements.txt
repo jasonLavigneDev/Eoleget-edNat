@@ -1,1 +1,3 @@
 pyaml
+bs4
+pymongo
