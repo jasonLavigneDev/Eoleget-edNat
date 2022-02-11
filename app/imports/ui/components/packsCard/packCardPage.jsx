@@ -21,10 +21,12 @@ import { debounce } from '../../utils';
 // Styles CSS //
 const gridPaginationStyle = {
   display: 'flex',
+  justifyContent: 'center',
 };
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
+  minWidth: '100%',
   marginTop: '5%',
   marginBottom: '2%',
 };
@@ -151,12 +153,12 @@ function packCardPage() {
                 <PackCard key={pack._id} pack={pack} />
               ))}
             </span>
-            {total > ITEM_PER_PAGE && (
-              <Grid sx={gridPaginationStyle}>
-                <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-              </Grid>
-            )}
           </div>
+          {total > ITEM_PER_PAGE && (
+            <Grid sx={gridPaginationStyle}>
+              <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+            </Grid>
+          )}
         </Paper>
       </div>
     </Fade>
