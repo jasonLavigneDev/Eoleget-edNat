@@ -109,7 +109,7 @@ function AppCard({ app, cart }) {
             {app.versions === undefined ? 'N/A' : app.versions[0]}
           </Typography>
         }
-        avatar={<AppImg appIdent={app.identification} size={50} />}
+        avatar={<AppImg appIdent={app.identification} size={40} />}
         action={
           !checkAppAllreadyAdded() ? (
             <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
