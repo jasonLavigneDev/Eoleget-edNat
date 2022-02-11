@@ -136,7 +136,7 @@ def generate_packs(idPack):
     totalUser = users_collection.count_documents({})
     
     #Génération pack
-    r = random.randint(1, 10)
+    r = random.randint(2, 10)
     packAppli = []
     for i in range(0, r):
         r2 = random.randint(1, total)
