@@ -121,7 +121,6 @@ const detailApp = ({ app, ready }) => {
   const handleUrlButton = () => window.open(app.url, '_self');
 
   const generateCommand = (v) => {
-    console.log(app.identification);
     let c = '';
     if (v === 'latest') c = `winget install --id=${app.identification} -e`;
     else c = `winget install --id=${app.identification} -v "${v}" -e`;

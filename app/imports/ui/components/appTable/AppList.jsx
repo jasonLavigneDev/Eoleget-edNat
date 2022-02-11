@@ -104,8 +104,13 @@ function AppList({ applications, cart, isModal }) {
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      addAppToCart(app);
-      newSelected = newSelected.concat(selected, app.identification);
+      if (checkAppAllreadyAdded(app)) {
+        removeAppToCart(app);
+        newSelected = newSelected.concat(selected.slice(1));
+      } else {
+        addAppToCart(app);
+        newSelected = newSelected.concat(selected, app.identification);
+      }
     } else if (selectedIndex === 0) {
       removeAppToCart(app);
       newSelected = newSelected.concat(selected.slice(1));
