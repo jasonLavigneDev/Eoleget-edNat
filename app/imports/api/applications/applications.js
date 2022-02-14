@@ -1,5 +1,4 @@
 import { Mongo } from 'meteor/mongo';
-import { arrayOf } from 'prop-types';
 import SimpleSchema from 'simpl-schema';
 import { getLabel } from '../utils/functions';
 
@@ -25,14 +24,22 @@ Applications.schema = new SimpleSchema({
   },
 
   tags: {
-    type: arrayOf(String),
+    type: Array,
     optional: true,
+    label: getLabel('api.applications.labels.tags'),
+  },
+  'tags.$': {
+    type: String,
     label: getLabel('api.applications.labels.tags'),
   },
 
   versions: {
-    type: arrayOf(String),
+    type: Array,
     optional: true,
+    label: getLabel('api.applications.labels.version'),
+  },
+  'versions.$': {
+    type: String,
     label: getLabel('api.applications.labels.version'),
   },
 

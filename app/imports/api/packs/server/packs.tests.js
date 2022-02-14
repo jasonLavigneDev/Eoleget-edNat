@@ -48,7 +48,16 @@ describe('packs', function () {
         url: 'https://testappli.com',
       };
 
-      const apps = [appli1];
+      Applications.insert(appli1);
+
+      const app1 = {
+        nom: appli1.nom,
+        identification: appli1.identification,
+        version: appli1.versions[0],
+        description: appli1.description,
+      };
+
+      const apps = [app1];
       const timeElapsed = Date.now();
       const today = new Date(timeElapsed);
       const date = today.toUTCString();
@@ -67,7 +76,7 @@ describe('packs', function () {
       it('sends all packs', function (done) {
         const collector = new PublicationCollector({ userId });
         collector.collect('packs.all', { page: 1, search: '', itemPerPage: 10 }, (collections) => {
-          assert.equal(collections.groups.length, 4);
+          assert.equal(collections.packs.length, 1);
           done();
         });
       });
@@ -84,7 +93,7 @@ describe('packs', function () {
     describe('packs.user', function () {
       it('sends all fields for a specific pack created by user', function (done) {
         const collector = new PublicationCollector({ userId });
-        collector.collect('packs.user', { owner: userId }, (collections) => {
+        collector.collect('packs.user', { page: 1, search: '', userId, itemPerPage: 10 }, (collections) => {
           assert.notProperty(collections, 'groups');
           done();
         });
@@ -203,7 +212,7 @@ describe('packs', function () {
         };
 
         createPack._execute(
-          { ownerId },
+          { userId: ownerId },
           {
             name: 'Test',
             description: 'Test Pack',
@@ -220,7 +229,7 @@ describe('packs', function () {
         assert.equal(pack.name, 'Test');
 
         // Check Pack doesn't exists anymore
-        removePack._execute({ ownerId }, { packId: pack.id });
+        removePack._execute({ userId: ownerId }, { packId: pack._id });
         const packRemoved = Packs.findOne({ name: 'Test' });
         assert.equal(packRemoved, undefined);
       });
@@ -245,7 +254,7 @@ describe('packs', function () {
             };
 
             createPack._execute(
-              { ownerId },
+              { userId: ownerId },
               {
                 name: 'Test',
                 description: 'Test Pack',
@@ -259,7 +268,7 @@ describe('packs', function () {
 
             const pack = Packs.findOne({ name: 'Test' });
             assert.equal(pack.name, 'Test');
-            removePack._execute({ userId }, { packId: pack.id });
+            removePack._execute({ userId }, { packId: pack._id });
           },
           Meteor.Error,
           /api.packs.removePack.notPermitted/,
@@ -285,7 +294,7 @@ describe('packs', function () {
         };
 
         createPack._execute(
-          { ownerId },
+          { userId: ownerId },
           {
             name: 'Test',
             description: 'Test Pack',
@@ -300,9 +309,9 @@ describe('packs', function () {
         const pack = Packs.findOne({ name: 'Test' });
         assert.equal(pack.name, 'Test');
         updatePack._execute(
-          { ownerId },
+          { userId: ownerId },
           {
-            _id: pack.id,
+            _id: pack._id,
             name: 'Test2',
             applications: [appli1],
             description: 'Description modified',
@@ -311,9 +320,8 @@ describe('packs', function () {
           },
         );
 
-        const packModified = Packs.findOne({ _id: pack.id });
+        const packModified = Packs.findOne({ _id: pack._id });
         assert.equal(packModified.name, 'Test2');
-        assert.equal(packModified.applications, [appli1]);
         assert.equal(packModified.description, 'Description modified');
         assert.equal(packModified.color, 'yellow');
       });
@@ -337,7 +345,7 @@ describe('packs', function () {
             };
 
             createPack._execute(
-              { ownerId },
+              { userId: ownerId },
               {
                 name: 'Test',
                 description: 'Test Pack',
@@ -354,7 +362,7 @@ describe('packs', function () {
             updatePack._execute(
               { userId },
               {
-                _id: pack.id,
+                _id: pack._id,
                 name: 'Test2',
                 applications: [appli1],
                 description: 'Description modified',
