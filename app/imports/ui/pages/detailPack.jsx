@@ -48,7 +48,9 @@ const ButtonCommandStyle = {
 };
 // End styles //
 
-function DetailPack({ pack, ready }) {
+function DetailPack({ pack, user, ready }) {
+  if (!ready) return <Spinner full />;
+
   const history = useHistory();
   const goBack = () => {
     history.push('/packs');
@@ -78,9 +80,7 @@ function DetailPack({ pack, ready }) {
     navigator.clipboard.writeText(command).then(msg.success(i18n.__('pages.detailPack.copyCommand')));
   };
 
-  return !ready ? (
-    <Spinner full />
-  ) : (
+  return (
     <Fade in>
       <Container sx={containerStyle}>
         <Paper sx={paperStyle}>
@@ -90,6 +90,9 @@ function DetailPack({ pack, ready }) {
           <div style={divMainContentStyle}>
             <Typography variant="h6" component="div">
               {pack.name}
+            </Typography>
+            <Typography variant="body1" component="div">
+              {`${i18n.__('components.PackList.owner')} : ${user.username}`}
             </Typography>
             <textarea readOnly value={pack.description} rows="4" style={{ resize: 'none', border: 0 }} />
             <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
@@ -119,12 +122,19 @@ export default withTracker(
       params: { _id },
     },
   }) => {
+    let subUser;
+    let user;
     const subPack = Meteor.subscribe('packs.single', { _id });
     const pack = Packs.findOne(_id);
+    if (pack) {
+      subUser = Meteor.subscribe('users.single', { _id: pack.owner });
+      user = Meteor.users.findOne({ _id: pack.owner });
+    }
 
-    const ready = subPack.ready();
+    const ready = subPack.ready() && subUser.ready();
     return {
       pack,
+      user,
       ready,
     };
   },
@@ -132,9 +142,11 @@ export default withTracker(
 
 DetailPack.propTypes = {
   pack: PropTypes.objectOf(PropTypes.any),
+  user: PropTypes.objectOf(PropTypes.any),
   ready: PropTypes.bool.isRequired,
 };
 
 DetailPack.defaultProps = {
   pack: {},
+  user: {},
 };
