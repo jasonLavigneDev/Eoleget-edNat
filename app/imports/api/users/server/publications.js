@@ -57,7 +57,6 @@ publishComposite('users.single', function userSingle({ _id }) {
   return {
     find() {
       const data = Meteor.users.find({ _id });
-      console.log(data.fetch());
       return data;
     },
   };
