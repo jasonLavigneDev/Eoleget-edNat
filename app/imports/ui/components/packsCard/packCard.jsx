@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
 
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -21,6 +22,7 @@ import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
+import Spinner from '../system/Spinner';
 
 // Styles CSS //
 const divCardContainerStyle = {
@@ -72,11 +74,14 @@ const typographieHeaderStyle = {
 };
 // End Style //
 
-const PackCard = ({ pack }) => {
+const PackCard = ({ pack, ready }) => {
+  if (!ready) return <Spinner />;
   const [showMore, setShowMore] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [{ userId }] = useAppContext();
   const appli = pack.applications;
+
+  const user = Meteor.users.findOne({ _id: pack.owner });
 
   const history = useHistory();
   const ExpandMore = styled(
@@ -145,6 +150,7 @@ const PackCard = ({ pack }) => {
               {pack.name}
             </Typography>
           }
+          subheader={user.username}
           sx={GetClassName()}
           action={
             <>
@@ -217,4 +223,14 @@ PackCard.defaultProps = {
   expand: false,
 };
 
-export default PackCard;
+PackCard.propTypes = {
+  ready: PropTypes.bool.isRequired,
+};
+
+export default withTracker(({ pack }) => {
+  const subUser = Meteor.subscribe('users.single', { _id: pack.owner });
+  const ready = subUser.ready();
+  return {
+    ready,
+  };
+})(PackCard);

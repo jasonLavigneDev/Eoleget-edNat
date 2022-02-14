@@ -270,6 +270,7 @@
     },
     "PackList": {
       "name": "Pack name",
+      "ower": "Owner",
       "description": "Description",
       "number": "Pack applications number",
       "detailTooltip": "Show pack"
