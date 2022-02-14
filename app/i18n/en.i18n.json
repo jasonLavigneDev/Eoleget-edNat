@@ -97,7 +97,8 @@
       "details": "Pack details",
       "getPack": "Get this pack",
       "back": "Back",
-      "copyCommand": "Command copied successfully"
+      "copyCommand": "Command copied successfully",
+      "owner": "Owner : "
     },
     "packCreation": {
       "title": "Pack creation",

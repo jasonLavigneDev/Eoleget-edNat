@@ -91,7 +91,8 @@ function DetailPack({ pack, user, ready }) {
             <Typography variant="h6" component="div">
               {pack.name}
             </Typography>
-            <Typography variant="h7" component="div">
+            <Typography variant="body1" component="div">
+              {i18n.__('pages.detailPack.owner')}
               {user.username}
             </Typography>
             <textarea readOnly value={pack.description} rows="4" style={{ resize: 'none', border: 0 }} />
