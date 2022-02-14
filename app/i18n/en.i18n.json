@@ -65,11 +65,6 @@
         "language": "Preferred Language",
         "logoutType": "Logout Method",
         "lastLogin": "Last login date"
-      },
-      "logoutTypes": {
-        "ask": "Ask at logout",
-        "local": "Disconnect only this app",
-        "global": "Disconnect from all apps"
       }
     }
   },
@@ -97,8 +92,7 @@
       "details": "Pack details",
       "getPack": "Get this pack",
       "back": "Back",
-      "copyCommand": "Command copied successfully",
-      "owner": "Owner : "
+      "copyCommand": "Command copied successfully"
     },
     "packCreation": {
       "title": "Pack creation",
