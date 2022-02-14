@@ -92,7 +92,8 @@
       "details": "Détails du pack",
       "getPack": "Obtenir le pack",
       "back": "Retour",
-      "copyCommand": "Commande copiée avec succès"
+      "copyCommand": "Commande copiée avec succès",
+      "owner": "Propriétaire : "
     },
     "packCreation": {
       "title": "Création de pack",

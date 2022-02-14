@@ -150,7 +150,7 @@ const PackCard = ({ pack, ready }) => {
               {pack.name}
             </Typography>
           }
-          subheader={user.username}
+          subheader={<Typography variant="body1">{user.username}</Typography>}
           sx={GetClassName()}
           action={
             <>
