@@ -17,11 +17,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 
 import EnhancedTableHead from '../packTable/tableHead';
+import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 
 function PackList({ packs }) {
   const [openModal, setOpenModal] = useState(false);
   const history = useHistory();
+  const [{ userId }] = useAppContext();
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -101,23 +103,35 @@ function PackList({ packs }) {
                     </TableCell>
                     <TableCell>{pack.applications.length}</TableCell>
                     <TableCell>
-                      <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
-                        <Link to={`/packs/detail/${pack._id}`}>
-                          <IconButton>
-                            <OpenInNewIcon />
-                          </IconButton>
-                        </Link>
-                      </Tooltip>
-                      <Tooltip title={i18n.__('components.PacksCard.editPack')}>
-                        <IconButton onClick={() => handleEditButton(pack._id)}>
-                          <EditIcon />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title={i18n.__('components.PacksCard.deletePack')}>
-                        <IconButton onClick={() => handleDeleteButton(pack)}>
-                          <ClearIcon />
-                        </IconButton>
-                      </Tooltip>
+                      {pack.owner === userId ? (
+                        <div>
+                          <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
+                            <Link to={`/packs/detail/${pack._id}`}>
+                              <IconButton>
+                                <OpenInNewIcon />
+                              </IconButton>
+                            </Link>
+                          </Tooltip>
+                          <Tooltip title={i18n.__('components.PacksCard.editPack')}>
+                            <IconButton onClick={() => handleEditButton(pack._id)}>
+                              <EditIcon />
+                            </IconButton>
+                          </Tooltip>
+                          <Tooltip title={i18n.__('components.PacksCard.deletePack')}>
+                            <IconButton onClick={() => handleDeleteButton(pack)}>
+                              <ClearIcon />
+                            </IconButton>
+                          </Tooltip>
+                        </div>
+                      ) : (
+                        <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
+                          <Link to={`/packs/detail/${pack._id}`}>
+                            <IconButton>
+                              <OpenInNewIcon />
+                            </IconButton>
+                          </Link>
+                        </Tooltip>
+                      )}
                     </TableCell>
                   </TableRow>
                 );
