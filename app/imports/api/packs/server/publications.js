@@ -10,7 +10,6 @@ const queryAllPacks = ({ search }) => {
   const regex = new RegExp(search, 'i');
   return {
     isPublic: true,
-    type: { $ne: 10 },
     $or: [
       {
         name: { $regex: regex },

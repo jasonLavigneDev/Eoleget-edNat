@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
 
 import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
@@ -43,13 +44,12 @@ const textfieldStyle = {
 
 const ITEM_PER_PAGE = 9;
 
-function packCardPage() {
-  const [{ packPage }, dispatch] = useAppContext();
+function packCardPage({ isUserPack }) {
+  const [{ packPage, userId }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
-
   const { changePage, page, items, total } = usePagination(
-    'packs.all',
-    { search, sort: { name: 1 } },
+    isUserPack ? 'packs.user' : 'packs.all',
+    { search, userId, sort: { name: 1 } },
     Packs,
     {},
     { sort: { name: 1 } },
@@ -164,5 +164,13 @@ function packCardPage() {
     </Fade>
   );
 }
+
+packCardPage.defaultProps = {
+  isUserPack: false,
+};
+
+packCardPage.propTypes = {
+  isUserPack: PropTypes.bool,
+};
 
 export default packCardPage;
