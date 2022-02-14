@@ -94,7 +94,7 @@ describe('packs', function () {
       it('sends all fields for a specific pack created by user', function (done) {
         const collector = new PublicationCollector({ userId });
         collector.collect('packs.user', { page: 1, search: '', userId, itemPerPage: 10 }, (collections) => {
-          assert.notProperty(collections, 'groups');
+          assert.property(collections, 'packs');
           done();
         });
       });
