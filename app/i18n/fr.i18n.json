@@ -265,6 +265,7 @@
     },
     "PackList": {
       "name": "Nom du pack",
+      "owner": "Propriétaire",
       "description": "Description",
       "number": "Nombre d'applications",
       "detailTooltip": "Voir le pack"

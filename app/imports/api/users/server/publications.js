@@ -1,5 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { publishComposite } from 'meteor/reywood:publish-composite';
+import SimpleSchema from 'simpl-schema';
+import logServer from '../../utils/functions';
 
 // automatically publish additional fields for current user
 Meteor.publish('userData', function publishUserData() {
@@ -36,4 +39,35 @@ Meteor.publish('users.admin', function publishAdmins() {
     return this.ready();
   }
   return Meteor.users.find({}, { fields: Meteor.users.adminFields });
+});
+
+publishComposite('users.single', function userSingle({ _id }) {
+  try {
+    new SimpleSchema({
+      _id: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id,
+      },
+    }).validate({ _id });
+  } catch (err) {
+    logServer(`publish users.single : ${err}`);
+    this.error(err);
+  }
+
+  return {
+    find() {
+      const data = Meteor.users.find({ _id });
+      console.log(data.fetch());
+      return data;
+    },
+  };
+});
+
+publishComposite('users.all', function usersAll() {
+  return {
+    find() {
+      const data = Meteor.users.find({});
+      return data;
+    },
+  };
 });
