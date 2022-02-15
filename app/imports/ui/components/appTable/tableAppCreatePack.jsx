@@ -220,7 +220,7 @@ function TableAppCreatePack({ ready }) {
             <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
               {i18n.__('pages.Store.storeTitle')}
             </Typography>
-            <AppListPage modal />
+            <AppListPage modal cart={cart} />
             <Button variant="contained" onClick={onClose} sx={buttonCloseStyle} size="large">
               {i18n.__('pages.packEditPage.validateModal')}
             </Button>
