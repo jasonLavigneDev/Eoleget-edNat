@@ -190,6 +190,85 @@ describe('packs', function () {
         const pack = Packs.findOne({ name: 'Test' });
         assert.equal(pack.name, 'Test');
       });
+      it('user can not create an empty pack', function () {
+        assert.throw(
+          () => {
+            const timeElapsed = Date.now();
+            const today = new Date(timeElapsed);
+            const creationDate = today.toUTCString();
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test',
+                description: 'Test Pack',
+                applications: [],
+                creationDate,
+                isValidated: true,
+                color: 'purple',
+                isPublic: true,
+              },
+            );
+          },
+          Meteor.Error,
+          /api.packs.emptyPack/,
+        );
+      });
+      it('user can not create pack with name already taken', function () {
+        assert.throw(
+          () => {
+            const timeElapsed = Date.now();
+            const today = new Date(timeElapsed);
+            const creationDate = today.toUTCString();
+
+            const appli1 = {
+              nom: 'Test Appli',
+              identification: 'TestAppli',
+              version: '2.0.0',
+              description: 'Test Application',
+            };
+
+            const appli2 = {
+              nom: 'Test Appli 2',
+              identification: 'TestAppli2',
+              version: '1.0.0',
+              description: 'Test Application 2',
+            };
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test',
+                description: 'Test Pack',
+                applications: [appli1, appli2],
+                creationDate,
+                isValidated: true,
+                color: 'purple',
+                isPublic: true,
+              },
+            );
+
+            // Check Pack exists
+            const pack = Packs.findOne({ name: 'Test' });
+            assert.equal(pack.name, 'Test');
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test',
+                description: 'Test Pack 2',
+                applications: [appli1],
+                creationDate,
+                isValidated: true,
+                color: 'yellow',
+                isPublic: true,
+              },
+            );
+          },
+          Meteor.Error,
+          /api.packs.nameAlreadyTaken/,
+        );
+      });
     });
     describe('removePack', function () {
       it('user can remove owned pack', function () {
@@ -373,6 +452,127 @@ describe('packs', function () {
           },
           Meteor.Error,
           /api.packs.updatePack.notPermitted/,
+        );
+      });
+      it('user can not update pack with no applications', function () {
+        assert.throw(
+          () => {
+            const timeElapsed = Date.now();
+            const today = new Date(timeElapsed);
+            const creationDate = today.toUTCString();
+
+            const appli1 = {
+              nom: 'Test Appli',
+              identification: 'TestAppli',
+              version: '2.0.0',
+              description: 'Test Application',
+            };
+
+            const appli2 = {
+              nom: 'Test Appli 2',
+              identification: 'TestAppli2',
+              version: '1.0.0',
+              description: 'Test Application 2',
+            };
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test',
+                description: 'Test Pack',
+                applications: [appli1, appli2],
+                creationDate,
+                isValidated: true,
+                color: 'purple',
+                isPublic: true,
+              },
+            );
+
+            const pack = Packs.findOne({ name: 'Test' });
+            assert.equal(pack.name, 'Test');
+            updatePack._execute(
+              { userId },
+              {
+                _id: pack._id,
+                name: 'Test2',
+                applications: [],
+                description: 'Description modified',
+                color: 'yellow',
+                isPublic: true,
+              },
+            );
+          },
+          Meteor.Error,
+          /api.packs.emptyPack/,
+        );
+      });
+      it('user can not update pack with name already taken', function () {
+        assert.throw(
+          () => {
+            const timeElapsed = Date.now();
+            const today = new Date(timeElapsed);
+            const creationDate = today.toUTCString();
+
+            const appli1 = {
+              nom: 'Test Appli',
+              identification: 'TestAppli',
+              version: '2.0.0',
+              description: 'Test Application',
+            };
+
+            const appli2 = {
+              nom: 'Test Appli 2',
+              identification: 'TestAppli2',
+              version: '1.0.0',
+              description: 'Test Application 2',
+            };
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test',
+                description: 'Test Pack',
+                applications: [appli1, appli2],
+                creationDate,
+                isValidated: true,
+                color: 'purple',
+                isPublic: true,
+              },
+            );
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test2',
+                description: 'Test Pack 2',
+                applications: [appli1],
+                creationDate,
+                isValidated: true,
+                color: 'yellow',
+                isPublic: true,
+              },
+            );
+
+            // Check Pack exists
+            const pack = Packs.findOne({ name: 'Test' });
+            const pack2 = Packs.findOne({ name: 'Test2' });
+            assert.equal(pack.name, 'Test');
+            assert.equal(pack2.name, 'Test2');
+
+            updatePack._execute(
+              { userId },
+              {
+                _id: pack._id,
+                name: 'Test2',
+                applications: [appli1],
+                description: 'Description modified',
+                color: 'yellow',
+                isPublic: true,
+              },
+            );
+          },
+          Meteor.Error,
+          /api.packs.nameAlreadyTaken/,
         );
       });
     });
