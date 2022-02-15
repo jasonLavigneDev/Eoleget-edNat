@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
 
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -16,7 +17,6 @@ import { usePagination } from '../../../api/utils/hooks';
 
 import AppCard from './AppCard';
 import Applications from '../../../api/applications/applications';
-import AppCart from '../appCart/appCart';
 import { debounce } from '../../utils';
 
 // Styles CSS //
@@ -45,7 +45,7 @@ const textfieldStyle = {
 
 const ITEM_PER_PAGE = 16;
 
-function AppCardPage() {
+function AppCardPage({ cart }) {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -57,20 +57,6 @@ function AppCardPage() {
     { sort: { nom: 1 } },
     ITEM_PER_PAGE,
   );
-
-  const cart = useState(() => {
-    const saved = localStorage.getItem('cart');
-    const initialValue = saved ? JSON.parse(saved) : [];
-    return initialValue;
-  });
-
-  const [loadingCart, setLoadingCart] = useState(true);
-
-  useEffect(() => {
-    // update cart in localStorage when it's updated (except for initial load)
-    // eslint-disable-next-line no-unused-expressions
-    loadingCart ? setLoadingCart(false) : localStorage.setItem('cart', JSON.stringify(cart[0]));
-  }, [cart[0]]);
 
   const handleChangePage = (event, value) => {
     changePage(value);
@@ -162,7 +148,6 @@ function AppCardPage() {
     <Fade in>
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
-          <AppCart cart={cart} />
           <div>
             <Paper>
               {searchField}
@@ -185,5 +170,9 @@ function AppCardPage() {
     </Fade>
   );
 }
+
+AppCardPage.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
 
 export default AppCardPage;

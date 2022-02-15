@@ -4,10 +4,14 @@ import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
 
 // Style CSS //
+const divStyle = {
+  width: '100%',
+};
 const cardContentStyle = {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'space-between',
   paddingLeft: 2,
   paddingRight: 2,
   paddingTop: 0,
@@ -17,34 +21,32 @@ const cardContentStyle = {
   },
 };
 
-function AppCardCart({ app, cart }) {
-  const RemoveAppFromCart = () => {
-    cart[1](cart[0].filter((appli) => appli.identification !== app.identification));
-  };
-
+function AppCardCart({ app, handleClose }) {
   const getVersion = () => {
     return app.version || 'latest';
   };
 
   return (
-    <Card>
-      <CardContent sx={cardContentStyle}>
-        {app.nom} ({getVersion()})
-        <CardActions>
-          <Tooltip title="delete">
-            <IconButton onClick={RemoveAppFromCart}>
-              <CloseIcon />
-            </IconButton>
-          </Tooltip>
-        </CardActions>
-      </CardContent>
-    </Card>
+    <div style={divStyle}>
+      <Card>
+        <CardContent sx={cardContentStyle}>
+          {app.nom} ({getVersion()})
+          <CardActions>
+            <Tooltip title="delete">
+              <IconButton onClick={() => handleClose(app.identification)}>
+                <CloseIcon />
+              </IconButton>
+            </Tooltip>
+          </CardActions>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
 
 AppCardCart.propTypes = {
   app: PropTypes.objectOf(PropTypes.any).isRequired,
-  cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default AppCardCart;

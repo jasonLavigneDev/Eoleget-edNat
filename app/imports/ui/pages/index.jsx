@@ -11,6 +11,7 @@ import { Typography } from '@mui/material';
 
 import AppListPage from '../components/appTable/AppListPage';
 import AppCardPage from '../components/appCard/AppCardPage';
+import AppCart from '../components/appCart/appCart';
 
 // Styles CSS //
 const divMainStyle = {
@@ -27,7 +28,14 @@ const divStoreTitleStyle = {
 const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
+  justifyContent: 'start',
+  flexGrow: 3,
   marginTop: -5,
+};
+const spanCartStyle = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+  width: '100%',
 };
 // End styles //
 
@@ -55,28 +63,33 @@ function Index() {
           <Typography variant="h4" component="div">
             {i18n.__('pages.Store.storeTitle')}
           </Typography>
-          <span style={spanIconListStyle}>
-            <Tooltip title="Mode liste">
-              <IconButton
-                onClick={() => {
-                  setModeList(true);
-                }}
-              >
-                <ListIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Mode carte">
-              <IconButton
-                onClick={() => {
-                  setModeList(false);
-                }}
-              >
-                <CardIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-          </span>
+          <div style={spanIconListStyle}>
+            <span style={spanCartStyle}>
+              <AppCart cart={cart} />
+            </span>
+            <span style={spanIconListStyle}>
+              <Tooltip title="Mode liste">
+                <IconButton
+                  onClick={() => {
+                    setModeList(true);
+                  }}
+                >
+                  <ListIcon fontSize="large" />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Mode carte">
+                <IconButton
+                  onClick={() => {
+                    setModeList(false);
+                  }}
+                >
+                  <CardIcon fontSize="large" />
+                </IconButton>
+              </Tooltip>
+            </span>
+          </div>
         </div>
-        {!showModeList ? <AppCardPage /> : <AppListPage />}
+        {!showModeList ? <AppCardPage cart={cart} /> : <AppListPage cart={cart} />}
       </div>
     </Fade>
   );
