@@ -28,6 +28,8 @@
     "@types/react-transition-group": "^4.4.4",
     "babel-eslint": "^10.1.0",
     "bcrypt": "^5.0.1",
+    "chai": "^4.3.6",
+    "faker": "^4.1.0",
     "meteor-node-stubs": "^1.1.0",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
@@ -42,8 +44,7 @@
     "mainModule": {
       "client": "client/main.js",
       "server": "server/main.js"
-    },
-    "testModule": "tests/main.js"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
