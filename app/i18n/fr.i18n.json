@@ -284,7 +284,8 @@
       "subtitle": "depuis la galerie d'images"
     },
     "appCart": {
-      "createPack": "Créer le Pack"
+      "createPack": "Créer le Pack",
+      "deleteAll": "Supprimer toutes les applications"
     }
   },
   "layouts": {

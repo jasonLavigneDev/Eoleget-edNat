@@ -12,7 +12,6 @@ import Fade from '@mui/material/Fade';
 import { useAppContext } from '../../contexts/context';
 import AppList from './AppList';
 import Applications from '../../../api/applications/applications';
-import AppCart from '../appCart/appCart';
 import { debounce } from '../../utils';
 
 // Styles CSS //
@@ -27,7 +26,7 @@ const divStoreTitleStyle = {
 };
 // End styles //
 
-function AppListPage({ modal, editModal }) {
+function AppListPage({ modal, editModal, cart }) {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -37,16 +36,14 @@ function AppListPage({ modal, editModal }) {
     return data;
   });
 
-  const cart = useState(() => {
-    let saved;
-    if (editModal) {
-      saved = localStorage.getItem('cart_edit');
-    } else {
-      saved = localStorage.getItem('cart');
-    }
-    const initialValue = saved ? JSON.parse(saved) : [];
-    return initialValue;
-  });
+  if (editModal) {
+    // eslint-disable-next-line no-param-reassign
+    cart = useState(() => {
+      const saved = localStorage.getItem('cart_edit');
+      const initialValue = saved ? JSON.parse(saved) : [];
+      return initialValue;
+    });
+  }
 
   const [loadingCart, setLoadingCart] = useState(true);
 
@@ -141,7 +138,6 @@ function AppListPage({ modal, editModal }) {
     <Fade in>
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
-          {!modal ? <AppCart cart={cart} /> : null}
           {searchField}
           <div>
             <AppList applications={mapList((app) => app)} cart={cart} isModal={modal} />
@@ -155,10 +151,12 @@ function AppListPage({ modal, editModal }) {
 AppListPage.propTypes = {
   modal: PropTypes.bool,
   editModal: PropTypes.bool,
+  cart: PropTypes.arrayOf(PropTypes.any),
 };
 
 AppListPage.defaultProps = {
   modal: false,
   editModal: false,
+  cart: [],
 };
 export default AppListPage;

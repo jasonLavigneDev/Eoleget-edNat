@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { IconButton, Collapse, Paper, Box, Divider, Button } from '@mui/material';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import PropTypes from 'prop-types';
+import { IconButton, Paper, Box, Button, Popover, Badge, Tooltip } from '@mui/material';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
+import DeleteIcon from '@mui/icons-material/Delete';
 import AppCardCart from './appCartCard';
 
 const divStyle = {
-  display: 'flex',
-  flexDirection: 'row',
   position: 'fixed',
-  left: 10,
 };
 
 const iconButtonStyle = {
@@ -23,46 +21,90 @@ const paperStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  padding: 1,
+  overflow: 'auto',
+  maxHeight: 300,
 };
 
 function AppCart({ cart }) {
   const [showMore, setShowMore] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const history = useHistory();
   React.useEffect(() => {
     setShowMore(showMore);
   }, [showMore]);
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const mapList = (func) => cart[0].map(func);
 
-  const isDisable = cart[0].lenght > 0;
+  const open = Boolean(anchorEl);
+
+  const isDisable = cart[0].length === 0;
+
+  const RemoveAppFromCart = (appId) => {
+    cart[1](cart[0].filter((appli) => appli.identification !== appId));
+    if (cart[0].length) {
+      handleClose();
+    }
+  };
 
   const handleCreatePackButton = () => history.push('/packs/creation');
+  const handleDeleteAll = () => {
+    cart[0].splice(0, cart[0].length);
+    cart[1](cart[0].splice(0, cart[0].length));
+    handleClose();
+  };
 
   return (
     <div style={divStyle}>
-      <Box>
-        <IconButton
-          onClick={() => {
-            setShowMore(!showMore);
-          }}
-          color="secondary"
-          sx={iconButtonStyle}
-        >
-          <ShoppingBasketIcon fontSize="large" />
-        </IconButton>
-        <Collapse in={showMore} orientation="horizontal" unmountOnExit>
-          <Paper sx={paperStyle}>
-            {mapList((app) => (
-              <AppCardCart key={app.identification} app={app} cart={cart} />
-            ))}
-            <Divider />
+      <Paper>
+        <Box>
+          <Badge badgeContent={cart[0].length} color="secondary">
+            <IconButton
+              onClick={(event) => {
+                setAnchorEl(event.currentTarget);
+              }}
+              color="secondary"
+              sx={iconButtonStyle}
+              disabled={isDisable}
+            >
+              <ShoppingBasketIcon fontSize="large" />
+            </IconButton>
+          </Badge>
+        </Box>
+      </Paper>
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <Paper sx={paperStyle}>
+          {cart[0].length
+            ? mapList((app) => <AppCardCart key={app.identification} app={app} handleClose={RemoveAppFromCart} />)
+            : null}
+          <div>
             <Button sx={buttonCreateStyle} variant="contained" disabled={isDisable} onClick={handleCreatePackButton}>
-              {' '}
               {i18n.__('components.appCart.createPack')}
             </Button>
-          </Paper>
-        </Collapse>
-      </Box>
+            <Tooltip title={i18n.__('components.appCart.deleteAll')}>
+              <IconButton variant="contained" disabled={isDisable} onClick={handleDeleteAll} color="error">
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+        </Paper>
+      </Popover>
     </div>
   );
 }

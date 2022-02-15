@@ -284,7 +284,8 @@
       "subtitle": "from image gallery"
     },
     "appCart": {
-      "createPack": "Create Pack"
+      "createPack": "Create Pack",
+      "deleteAll": "Delete all applications"
     }
   },
   "layouts": {
