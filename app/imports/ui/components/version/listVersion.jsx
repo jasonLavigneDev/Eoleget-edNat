@@ -9,7 +9,8 @@ const formControlStyle = {
 // End style //
 
 function ListVersion({ versions, app, setCommand }) {
-  const [version, setVersion] = React.useState('');
+  const ver = JSON.parse(localStorage.getItem(`version_${app.identification}`)) || '';
+  const [version, setVersion] = React.useState(ver);
 
   const generateCommand = (v) => {
     let c = '';
