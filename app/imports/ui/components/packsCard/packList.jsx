@@ -98,7 +98,12 @@ function PackList({ packs, ready, isUserPack }) {
     <div style={{ height: 600 }}>
       <TableContainer component={Paper}>
         <Table size="small" aria-label="pack table">
-          <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} isUserPack />
+          <EnhancedTableHead
+            order={order}
+            orderBy={orderBy}
+            onRequestSort={handleRequestSort}
+            isUserPack={isUserPack}
+          />
           <TableBody>
             {stableSort(packs, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

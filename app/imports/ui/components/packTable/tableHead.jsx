@@ -29,6 +29,10 @@ function EnhancedTableHead(props) {
         id: 'name',
       },
       {
+        title: i18n.__('components.PackList.owner'),
+        id: 'user',
+      },
+      {
         title: i18n.__('components.PackList.description'),
         id: 'description',
       },

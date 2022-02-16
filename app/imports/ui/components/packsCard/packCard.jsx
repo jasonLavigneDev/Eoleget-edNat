@@ -141,6 +141,8 @@ const PackCard = ({ pack, ready, isUserPack }) => {
     return col;
   };
 
+  console.log(isUserPack);
+
   return (
     <div style={divCardContainerStyle}>
       <Card sx={cardStyle}>

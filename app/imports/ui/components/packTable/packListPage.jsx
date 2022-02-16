@@ -121,7 +121,7 @@ function packListPage({ isUserPack }) {
       <div style={divMainStyle}>
         <div style={divPackTitleContainerStyle}>
           {searchField}
-          <PackList packs={mapList((pack) => pack)} isUserPack />
+          <PackList packs={mapList((pack) => pack)} isUserPack={isUserPack} />
         </div>
       </div>
     </Fade>
