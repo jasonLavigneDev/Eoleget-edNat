@@ -118,6 +118,7 @@ function packCardPage({ isUserPack }) {
       onChange={debouncedSearch}
       onKeyDown={checkEscape}
       type="text"
+      defaultValue={packPage.search}
       variant="outlined"
       inputRef={searchRef}
       sx={textfieldStyle}

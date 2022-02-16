@@ -90,6 +90,7 @@ function packListPage() {
       onChange={debouncedSearch}
       onKeyDown={checkEscape}
       type="text"
+      defaultValue={packPage.search}
       variant="outlined"
       inputRef={searchRef}
       inputProps={{
