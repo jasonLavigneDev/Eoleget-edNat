@@ -114,6 +114,7 @@
       "packsStoreTitle": "Magasin des packs",
       "packsSearchApp": "Chercher un pack",
       "searchText": "Quel pack cherchez-vous ?",
+      "searchHelp": "Cherchez un pack par son nom ou utilisez @ pour rechercher par propriétaire",
       "searchPack": "Chercher un pack"
     },
     "UserPacks": {
