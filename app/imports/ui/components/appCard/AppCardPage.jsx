@@ -62,6 +62,12 @@ function AppCardPage({ cart }) {
     changePage(value);
   };
 
+  useEffect(() => {
+    if (page !== 1) {
+      changePage(1);
+    }
+  }, [search]);
+
   const inputRef = useRef(null);
   // focus on search input when it appears
   useEffect(() => {
@@ -69,12 +75,6 @@ function AppCardPage({ cart }) {
       inputRef.current.focus();
     }
   }, [searchToggle]);
-
-  useEffect(() => {
-    if (page !== 1) {
-      changePage(1);
-    }
-  }, [search]);
 
   const filterApp = (app) => {
     let searchText = app.nom + app.description || '';
@@ -120,6 +120,7 @@ function AppCardPage({ cart }) {
       onChange={debouncedSearch}
       onKeyDown={checkEscape}
       type="text"
+      defaultValue={appPage.search}
       inputRef={searchRef}
       variant="outlined"
       style={textfieldStyle}

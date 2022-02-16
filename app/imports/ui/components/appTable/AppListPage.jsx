@@ -45,6 +45,14 @@ function AppListPage({ modal, editModal, cart }) {
     });
   }
 
+  const inputRef = useRef(null);
+  // focus on search input when it appears
+  useEffect(() => {
+    if (inputRef.current && searchToggle) {
+      inputRef.current.focus();
+    }
+  }, [searchToggle]);
+
   const [loadingCart, setLoadingCart] = useState(true);
 
   useEffect(() => {
@@ -58,14 +66,6 @@ function AppListPage({ modal, editModal, cart }) {
       ? setLoadingCart(false)
       : localStorage.setItem('cart', JSON.stringify(cart[0]));
   }, [cart[0]]);
-
-  const inputRef = useRef(null);
-  // focus on search input when it appears
-  useEffect(() => {
-    if (inputRef.current && searchToggle) {
-      inputRef.current.focus();
-    }
-  }, [searchToggle]);
 
   const filterApp = (app) => {
     let searchText = app.nom + app.description || '';
@@ -95,6 +95,7 @@ function AppListPage({ modal, editModal, cart }) {
   const checkEscape = (e) => {
     if (e.keyCode === 27) {
       // ESCAPE key
+      console.log(appPage);
       updateGlobalState('searchToggle', false);
       updateGlobalState('search', '');
       searchRef.current.value = '';
@@ -111,6 +112,7 @@ function AppListPage({ modal, editModal, cart }) {
       onChange={debouncedSearch}
       onKeyDown={checkEscape}
       type="text"
+      defaultValue={appPage.search}
       inputRef={searchRef}
       variant="outlined"
       inputProps={{
