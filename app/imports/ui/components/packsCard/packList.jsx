@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import { Link, useHistory } from 'react-router-dom';
-import { withTracker } from 'meteor/react-meteor-data';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,14 +15,12 @@ import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
-import Spinner from '../system/Spinner';
 
 import EnhancedTableHead from '../packTable/tableHead';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 
-function PackList({ packs, ready }) {
-  if (!ready) return <Spinner />;
+function PackList({ packs }) {
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -37,11 +34,6 @@ function PackList({ packs, ready }) {
   const [openModal, setOpenModal] = useState(false);
   const history = useHistory();
   const [{ userId }] = useAppContext();
-
-  const findUser = (pack) => {
-    const user = Meteor.users.findOne({ _id: pack.owner });
-    return user.username;
-  };
 
   function getComparator(order, orderBy) {
     return order === 'desc'
@@ -105,7 +97,7 @@ function PackList({ packs, ready }) {
                 return (
                   <TableRow hover tabIndex={-1} key={pack._id}>
                     <TableCell>{pack.name}</TableCell>
-                    <TableCell>{findUser(pack)}</TableCell>
+                    <TableCell>{pack.ownerName}</TableCell>
                     <TableCell>
                       <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 630, display: 'block' }}>
                         {pack.description}
@@ -165,13 +157,6 @@ function PackList({ packs, ready }) {
 
 PackList.propTypes = {
   packs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  ready: PropTypes.bool.isRequired,
 };
 
-export default withTracker(() => {
-  const subUser = Meteor.subscribe('users.all');
-  const ready = subUser.ready();
-  return {
-    ready,
-  };
-})(PackList);
+export default PackList;
