@@ -4,26 +4,41 @@ import i18n from 'meteor/universe:i18n';
 import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
 
 function EnhancedTableHead(props) {
-  const column = [
-    {
-      title: i18n.__('components.PackList.name'),
-      id: 'name',
-    },
-    {
-      title: i18n.__('components.PackList.owner'),
-      id: 'user',
-    },
-    {
-      title: i18n.__('components.PackList.description'),
-      id: 'description',
-    },
-    {
-      title: i18n.__('components.PackList.number'),
-      id: 'number',
-    },
-  ];
+  const { order, orderBy, onRequestSort, isUserPack } = props;
+  let column = [];
 
-  const { order, orderBy, onRequestSort } = props;
+  if (isUserPack) {
+    column = [
+      {
+        title: i18n.__('components.PackList.name'),
+        id: 'name',
+      },
+      {
+        title: i18n.__('components.PackList.description'),
+        id: 'description',
+      },
+      {
+        title: i18n.__('components.PackList.number'),
+        id: 'number',
+      },
+    ];
+  } else {
+    column = [
+      {
+        title: i18n.__('components.PackList.name'),
+        id: 'name',
+      },
+      {
+        title: i18n.__('components.PackList.description'),
+        id: 'description',
+      },
+      {
+        title: i18n.__('components.PackList.number'),
+        id: 'number',
+      },
+    ];
+  }
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -49,8 +64,13 @@ function EnhancedTableHead(props) {
 
 export default EnhancedTableHead;
 
+EnhancedTableHead.defaultProps = {
+  isUserPack: false,
+};
+
 EnhancedTableHead.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
+  isUserPack: PropTypes.bool,
 };
