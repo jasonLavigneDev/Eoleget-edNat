@@ -64,7 +64,7 @@ function PackPage() {
             </Tooltip>
           </span>
         </div>
-        {!showModeList ? <PackCardPage isUserPack /> : <PackListPage />}
+        {!showModeList ? <PackCardPage isUserPack /> : <PackListPage isUserPack />}
       </div>
     </Fade>
   );

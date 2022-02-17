@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
 
 import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
@@ -28,7 +29,8 @@ const divPackTitleContainerStyle = {
 };
 // End styles //
 
-function packListPage() {
+// eslint-disable-next-line no-unused-vars
+function packListPage({ isUserPack }) {
   const [{ packPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
 
@@ -119,11 +121,19 @@ function packListPage() {
       <div style={divMainStyle}>
         <div style={divPackTitleContainerStyle}>
           {searchField}
-          <PackList packs={mapList((pack) => pack)} />
+          <PackList packs={mapList((pack) => pack)} isUserPack={isUserPack} />
         </div>
       </div>
     </Fade>
   );
 }
+
+packListPage.defaultProps = {
+  isUserPack: false,
+};
+
+packListPage.propTypes = {
+  isUserPack: PropTypes.bool,
+};
 
 export default packListPage;

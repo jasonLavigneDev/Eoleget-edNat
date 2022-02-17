@@ -22,7 +22,8 @@ import EnhancedTableHead from '../packTable/tableHead';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 
-function PackList({ packs, ready }) {
+// eslint-disable-next-line no-unused-vars
+function PackList({ packs, ready, isUserPack }) {
   if (!ready) return <Spinner />;
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -97,7 +98,12 @@ function PackList({ packs, ready }) {
     <div style={{ height: 600 }}>
       <TableContainer component={Paper}>
         <Table size="small" aria-label="pack table">
-          <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+          <EnhancedTableHead
+            order={order}
+            orderBy={orderBy}
+            onRequestSort={handleRequestSort}
+            isUserPack={isUserPack}
+          />
           <TableBody>
             {stableSort(packs, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -105,7 +111,7 @@ function PackList({ packs, ready }) {
                 return (
                   <TableRow hover tabIndex={-1} key={pack._id}>
                     <TableCell>{pack.name}</TableCell>
-                    <TableCell>{findUser(pack)}</TableCell>
+                    {!isUserPack ? <TableCell>{findUser(pack)}</TableCell> : null}
                     <TableCell>
                       <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 630, display: 'block' }}>
                         {pack.description}
@@ -163,9 +169,14 @@ function PackList({ packs, ready }) {
   );
 }
 
+PackList.defaultProps = {
+  isUserPack: false,
+};
+
 PackList.propTypes = {
   packs: PropTypes.arrayOf(PropTypes.object).isRequired,
   ready: PropTypes.bool.isRequired,
+  isUserPack: PropTypes.bool,
 };
 
 export default withTracker(() => {

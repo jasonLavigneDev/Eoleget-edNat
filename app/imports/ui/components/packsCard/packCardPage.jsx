@@ -151,7 +151,7 @@ function packCardPage({ isUserPack }) {
           <div style={divCardContainerStyle}>
             <span style={divCardContainerStyle}>
               {mapList((pack) => (
-                <PackCard key={pack._id} pack={pack} />
+                <PackCard key={pack._id} pack={pack} isUserPack={isUserPack} />
               ))}
             </span>
           </div>

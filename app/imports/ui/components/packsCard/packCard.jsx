@@ -74,7 +74,7 @@ const typographieHeaderStyle = {
 };
 // End Style //
 
-const PackCard = ({ pack, ready }) => {
+const PackCard = ({ pack, ready, isUserPack }) => {
   if (!ready) return <Spinner />;
   const [showMore, setShowMore] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -150,7 +150,7 @@ const PackCard = ({ pack, ready }) => {
               {pack.name}
             </Typography>
           }
-          subheader={<Typography variant="body1">{user.username}</Typography>}
+          subheader={!isUserPack ? <Typography variant="body1">{user.username}</Typography> : null}
           sx={GetClassName()}
           action={
             <>
@@ -213,18 +213,17 @@ const PackCard = ({ pack, ready }) => {
   );
 };
 
-PackCard.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  expand: PropTypes.bool,
-  pack: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
 PackCard.defaultProps = {
   expand: false,
+  isUserPack: false,
 };
 
 PackCard.propTypes = {
   ready: PropTypes.bool.isRequired,
+  isUserPack: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
+  expand: PropTypes.bool,
+  pack: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default withTracker(({ pack }) => {
