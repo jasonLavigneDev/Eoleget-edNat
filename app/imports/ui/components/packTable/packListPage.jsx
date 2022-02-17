@@ -33,7 +33,7 @@ const divPackTitleContainerStyle = {
 // eslint-disable-next-line no-unused-vars
 function packListPage({ ready, isUserPack }) {
   if (!ready) return <Spinner full />;
-  const [{ packPage }, dispatch] = useAppContext();
+  const [{ packPage, userId }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
 
   const findUser = (pack) => {
@@ -42,6 +42,11 @@ function packListPage({ ready, isUserPack }) {
   };
 
   const packs = useTracker(() => {
+    if (isUserPack) {
+      Meteor.subscribe('packs.table.user', { userId });
+      const data = Packs.find({ owner: userId }).fetch();
+      return data;
+    }
     Meteor.subscribe('packs.table.all');
     const data = Packs.find({ isPublic: true }).fetch();
     const finalData = [];
@@ -95,6 +100,13 @@ function packListPage({ ready, isUserPack }) {
   };
 
   const filterPack = (pack) => {
+    if (isUserPack) {
+      let searchText;
+      searchText = pack.name + pack.description || '';
+      searchText = searchText.toLowerCase();
+      if (!search) return true;
+      return searchText.indexOf(search.toLowerCase()) > -1;
+    }
     let searchText;
     if (search.startsWith('@')) searchText = pack.ownerName || '';
     else searchText = pack.name + pack.description || '';
@@ -117,7 +129,7 @@ function packListPage({ ready, isUserPack }) {
       label={i18n.__('pages.Packs.searchText')}
       name="search"
       fullWidth
-      placeholder={i18n.__('pages.Packs.searchHelp')}
+      placeholder={isUserPack ? null : i18n.__('pages.Packs.searchHelp')}
       onChange={debouncedSearch}
       onKeyDown={checkEscape}
       type="text"

@@ -115,10 +115,16 @@ function packCardPage({ isUserPack, ready }) {
   };
 
   const filterPack = (pack) => {
+    if (isUserPack) {
+      let searchText;
+      searchText = pack.name + pack.description || '';
+      searchText = searchText.toLowerCase();
+      if (!search) return true;
+      return searchText.indexOf(search.toLowerCase()) > -1;
+    }
     let searchText;
-    if (search.startsWith('@')) {
-      searchText = pack.ownerName || '';
-    } else searchText = pack.name + pack.description || '';
+    if (search.startsWith('@')) searchText = pack.ownerName || '';
+    else searchText = pack.name + pack.description || '';
     searchText = searchText.toLowerCase();
     if (!search) return true;
 
@@ -138,7 +144,7 @@ function packCardPage({ isUserPack, ready }) {
       label={i18n.__('pages.Packs.searchText')}
       name="search"
       fullWidth
-      placeholder={i18n.__('pages.Packs.searchHelp')}
+      placeholder={isUserPack ? null : i18n.__('pages.Packs.searchHelp')}
       onChange={debouncedSearch}
       onKeyDown={checkEscape}
       type="text"
