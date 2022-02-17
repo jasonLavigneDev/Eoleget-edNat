@@ -82,7 +82,10 @@ const queryAllPackOwned = ({ search, userId }) => {
 };
 
 Meteor.publish('packs.table.all', function publishPacks() {
-  return Packs.find({});
+  return Packs.find({ isPublic: true });
+});
+Meteor.publish('packs.table.user', function publishOwnedPacks({ userId }) {
+  return Packs.find({ owner: userId });
 });
 
 Meteor.methods({
