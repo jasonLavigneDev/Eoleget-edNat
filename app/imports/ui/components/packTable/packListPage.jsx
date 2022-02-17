@@ -47,6 +47,7 @@ function packListPage({ ready, isUserPack }) {
     const finalData = [];
     data.map((p) => {
       return finalData.push({
+        _id: p._id,
         name: p.name,
         description: p.description,
         version: p.version,
