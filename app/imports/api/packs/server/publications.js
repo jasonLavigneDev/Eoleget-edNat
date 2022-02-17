@@ -31,7 +31,11 @@ FindFromPublication.publish('packs.all', function packsAll({ page, search, itemP
   }
 
   try {
-    const query = queryAllPacks({ search });
+    let query;
+    if (search.startsWith('@')) {
+      const finalsearch = search.slice(1);
+      query = queryAllPacks({ finalsearch });
+    } else query = queryAllPacks({ search });
 
     return Packs.find(query, {
       fields: Packs.publicFields,

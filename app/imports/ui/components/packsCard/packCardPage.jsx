@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 
+import { withTracker } from 'meteor/react-meteor-data';
 import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
@@ -18,6 +19,7 @@ import { usePagination } from '../../../api/utils/hooks';
 
 import Packs from '../../../api/packs/packs';
 import { debounce } from '../../utils';
+import Spinner from '../system/Spinner';
 
 // Styles CSS //
 const gridPaginationStyle = {
@@ -44,7 +46,8 @@ const textfieldStyle = {
 
 const ITEM_PER_PAGE = 9;
 
-function packCardPage({ isUserPack }) {
+function packCardPage({ isUserPack, ready }) {
+  if (!ready) return <Spinner full />;
   const [{ packPage, userId }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
   const { changePage, page, items, total } = usePagination(
@@ -55,6 +58,18 @@ function packCardPage({ isUserPack }) {
     { sort: { name: 1 } },
     ITEM_PER_PAGE,
   );
+
+  const findUser = (pack) => {
+    const user = Meteor.users.findOne({ _id: pack.owner });
+    Object.defineProperty(pack, 'ownerName', {
+      value: user.username,
+      writable: false,
+    });
+  };
+
+  items.map((p) => {
+    return findUser(p);
+  });
 
   const handleChangePage = (event, value) => {
     changePage(value);
@@ -73,15 +88,6 @@ function packCardPage({ isUserPack }) {
       changePage(1);
     }
   }, [search]);
-
-  const filterPack = (pack) => {
-    let searchText = pack.name + pack.description || '';
-    searchText = searchText.toLowerCase();
-    if (!search) return true;
-    return searchText.indexOf(search.toLowerCase()) > -1;
-  };
-
-  const mapList = (func) => items.filter((pack) => filterPack(pack)).map(func);
 
   const updateGlobalState = (key, value) =>
     dispatch({
@@ -108,6 +114,23 @@ function packCardPage({ isUserPack }) {
     }
   };
 
+  const filterPack = (pack) => {
+    let searchText;
+    if (search.startsWith('@')) {
+      searchText = pack.ownerName || '';
+    } else searchText = pack.name + pack.description || '';
+    searchText = searchText.toLowerCase();
+    if (!search) return true;
+
+    if (search.startsWith('@')) {
+      const finalSearch = search.slice(1);
+      return searchText.indexOf(finalSearch.toLowerCase()) > -1;
+    }
+    return searchText.indexOf(search.toLowerCase()) > -1;
+  };
+
+  const mapList = (func) => items.filter((pack) => filterPack(pack)).map(func);
+
   const searchField = (
     <TextField
       margin="normal"
@@ -115,6 +138,7 @@ function packCardPage({ isUserPack }) {
       label={i18n.__('pages.Packs.searchText')}
       name="search"
       fullWidth
+      placeholder={i18n.__('pages.Packs.searchHelp')}
       onChange={debouncedSearch}
       onKeyDown={checkEscape}
       type="text"
@@ -172,6 +196,13 @@ packCardPage.defaultProps = {
 
 packCardPage.propTypes = {
   isUserPack: PropTypes.bool,
+  ready: PropTypes.bool.isRequired,
 };
 
-export default packCardPage;
+export default withTracker(() => {
+  const subUser = Meteor.subscribe('users.all');
+  const ready = subUser.ready();
+  return {
+    ready,
+  };
+})(packCardPage);

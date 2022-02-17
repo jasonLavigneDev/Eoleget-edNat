@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import i18n from 'meteor/universe:i18n';
 import { Link, useHistory } from 'react-router-dom';
-import { withTracker } from 'meteor/react-meteor-data';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,15 +15,13 @@ import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
-import Spinner from '../system/Spinner';
 
 import EnhancedTableHead from '../packTable/tableHead';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 
 // eslint-disable-next-line no-unused-vars
-function PackList({ packs, ready, isUserPack }) {
-  if (!ready) return <Spinner />;
+function PackList({ packs, isUserPack }) {
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -38,11 +35,6 @@ function PackList({ packs, ready, isUserPack }) {
   const [openModal, setOpenModal] = useState(false);
   const history = useHistory();
   const [{ userId }] = useAppContext();
-
-  const findUser = (pack) => {
-    const user = Meteor.users.findOne({ _id: pack.owner });
-    return user.username;
-  };
 
   function getComparator(order, orderBy) {
     return order === 'desc'
@@ -111,7 +103,7 @@ function PackList({ packs, ready, isUserPack }) {
                 return (
                   <TableRow hover tabIndex={-1} key={pack._id}>
                     <TableCell>{pack.name}</TableCell>
-                    {!isUserPack ? <TableCell>{findUser(pack)}</TableCell> : null}
+                    {!isUserPack ? <TableCell>{pack.ownerName}</TableCell> : null}
                     <TableCell>
                       <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 630, display: 'block' }}>
                         {pack.description}
@@ -175,14 +167,7 @@ PackList.defaultProps = {
 
 PackList.propTypes = {
   packs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  ready: PropTypes.bool.isRequired,
   isUserPack: PropTypes.bool,
 };
 
-export default withTracker(() => {
-  const subUser = Meteor.subscribe('users.all');
-  const ready = subUser.ready();
-  return {
-    ready,
-  };
-})(PackList);
+export default PackList;
