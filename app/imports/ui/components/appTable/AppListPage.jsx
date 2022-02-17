@@ -95,7 +95,6 @@ function AppListPage({ modal, editModal, cart }) {
   const checkEscape = (e) => {
     if (e.keyCode === 27) {
       // ESCAPE key
-      console.log(appPage);
       updateGlobalState('searchToggle', false);
       updateGlobalState('search', '');
       searchRef.current.value = '';
