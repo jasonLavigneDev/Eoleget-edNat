@@ -70,3 +70,25 @@ publishComposite('users.all', function usersAll() {
     },
   };
 });
+
+publishComposite('users.one', function userSingle({ search }) {
+  try {
+    new SimpleSchema({
+      search: {
+        type: String,
+      },
+    }).validate({ search });
+  } catch (err) {
+    logServer(`publish users.one : ${err}`);
+    this.error(err);
+  }
+
+  const regex = RegExp(search, 'i');
+
+  return {
+    find() {
+      const data = Meteor.users.find({ username: { $regex: regex } });
+      return data;
+    },
+  };
+});

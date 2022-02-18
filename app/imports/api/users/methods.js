@@ -5,6 +5,7 @@ import SimpleSchema from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
 import { getLabel, isVerified } from '../utils/functions';
+import Packs from '../packs/packs';
 
 const setLogoutType = new ValidatedMethod({
   name: 'users.setLogoutType',
@@ -58,6 +59,8 @@ export const setUsername = new ValidatedMethod({
     }
     // will throw error if username already taken
     Accounts.setUsername(this.userId, username);
+
+    Packs.rawCollection().updateMany({ owner: this.userId }, { $set: { ownerName: username } });
   },
 });
 

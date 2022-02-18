@@ -4,7 +4,17 @@ import i18n from 'meteor/universe:i18n';
 import { getLabel } from '../utils/functions';
 import Packs from './packs';
 
-function _createPack({ name, applications, creationDate, isValidated, owner, description, color, isPublic }) {
+function _createPack({
+  name,
+  applications,
+  creationDate,
+  isValidated,
+  owner,
+  ownerName,
+  description,
+  color,
+  isPublic,
+}) {
   try {
     Packs.insert({
       name,
@@ -12,6 +22,7 @@ function _createPack({ name, applications, creationDate, isValidated, owner, des
       isValidated,
       applications,
       owner,
+      ownerName,
       description,
       color,
       isPublic,
@@ -63,9 +74,10 @@ export const createPack = new ValidatedMethod({
     description: { type: String, label: getLabel('api.packs.labels.description') },
     color: { type: String, label: getLabel('api.packs.labels.color') },
     isPublic: { type: Boolean, label: getLabel('api.packs.labels.isPublic') },
+    ownerName: { type: String, label: getLabel('api.packs.labels.ownerName') },
   }).validator({ clean: true }),
 
-  run({ name, applications, creationDate, isValidated, description, color, isPublic }) {
+  run({ name, applications, creationDate, isValidated, ownerName, description, color, isPublic }) {
     const packWithName = Packs.findOne({ name });
     if (packWithName !== undefined) {
       throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
@@ -81,6 +93,7 @@ export const createPack = new ValidatedMethod({
       creationDate,
       isValidated,
       owner: this.userId,
+      ownerName,
       description,
       color,
       isPublic,
