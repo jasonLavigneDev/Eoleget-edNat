@@ -86,6 +86,7 @@ describe('packs', function () {
         isValidated: true,
         applications: apps,
         owner: userId,
+        ownerName: email,
         description: 'test application',
         color: 'purple',
         isPublic: true,
