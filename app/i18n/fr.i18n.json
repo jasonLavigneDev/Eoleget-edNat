@@ -269,7 +269,8 @@
       "owner": "Propriétaire",
       "description": "Description",
       "number": "Nombre d'applications",
-      "detailTooltip": "Voir le pack"
+      "detailTooltip": "Voir le pack",
+      "visibility": "Visibilité"
     },
     "AppPacksCard": {
       "infoTooltip": "Voir l'application"
@@ -278,7 +279,8 @@
       "packTooltip": "Voir le pack",
       "extendPack": "Etendre le pack",
       "editPack": "Editer le pack",
-      "deletePack": "Supprimer le pack"
+      "deletePack": "Supprimer le pack",
+      "privateIcon": "Pack privé"
     },
     "UserAvatarGallery": {
       "title": "Créer votre avatar",

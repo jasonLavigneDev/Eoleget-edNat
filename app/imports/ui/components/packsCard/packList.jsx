@@ -15,10 +15,19 @@ import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
+import { Typography } from '@mui/material';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import EnhancedTableHead from '../packTable/tableHead';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
+
+const typographieHeaderStyle = {
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  width: '18rem',
+  paddingLeft: 20,
+};
 
 // eslint-disable-next-line no-unused-vars
 function PackList({ packs, isUserPack }) {
@@ -102,14 +111,31 @@ function PackList({ packs, isUserPack }) {
               .map((pack) => {
                 return (
                   <TableRow hover tabIndex={-1} key={pack._id}>
-                    <TableCell>{pack.name}</TableCell>
-                    {!isUserPack ? <TableCell>{pack.ownerName}</TableCell> : null}
+                    <TableCell>
+                      <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 200, display: 'block' }}>
+                        <Typography variant="paragraph" style={typographieHeaderStyle}>
+                          {pack.name}
+                        </Typography>
+                      </span>
+                    </TableCell>
+                    {!isUserPack ? (
+                      <TableCell>{pack.ownerName}</TableCell>
+                    ) : pack.isPublic ? (
+                      <TableCell>{pack.isPublic}</TableCell>
+                    ) : (
+                      <TableCell align="justify">
+                        <Tooltip title={i18n.__('components.PacksCard.privateIcon')} placement="top-start">
+                          <VisibilityOffIcon fontSize="large" />
+                        </Tooltip>
+                      </TableCell>
+                    )}
+
                     <TableCell>
                       <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 630, display: 'block' }}>
                         {pack.description}
                       </span>
                     </TableCell>
-                    <TableCell>{pack.applications.length}</TableCell>
+                    <TableCell align="center">{pack.applications.length}</TableCell>
                     <TableCell>
                       {pack.owner === userId ? (
                         <div>

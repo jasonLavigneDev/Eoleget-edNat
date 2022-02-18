@@ -14,7 +14,8 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
-import { Typography } from '@mui/material';
+import { Typography, Badge } from '@mui/material';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
@@ -68,6 +69,7 @@ const typographieHeaderStyle = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   width: '18rem',
+  paddingLeft: 20,
 };
 // End Style //
 
@@ -140,11 +142,33 @@ const PackCard = ({ pack, isUserPack }) => {
       <Card sx={cardStyle}>
         <CardHeader
           title={
-            <Typography variant="h6" style={typographieHeaderStyle}>
-              {pack.name}
-            </Typography>
+            <Badge
+              badgeContent={
+                !pack.isPublic ? (
+                  <Tooltip title={i18n.__('components.PacksCard.privateIcon')} placement="top-start">
+                    <VisibilityOffIcon sx={{ backgroundColor: 'white', borderRadius: 25, color: 'black' }} />
+                  </Tooltip>
+                ) : (
+                  ''
+                )
+              }
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+            >
+              <Typography variant="h6" style={typographieHeaderStyle}>
+                {pack.name}
+              </Typography>
+            </Badge>
           }
-          subheader={!isUserPack ? <Typography variant="body1">{pack.ownerName}</Typography> : null}
+          subheader={
+            !isUserPack ? (
+              <Typography style={typographieHeaderStyle} variant="body1">
+                {pack.ownerName}
+              </Typography>
+            ) : null
+          }
           sx={GetClassName()}
           action={
             <>
