@@ -33,7 +33,7 @@ def generateID():
     
 class Pack():
     
-    def __init__(self, name, description, applications, owner):
+    def __init__(self, name, description, applications, owner, ownerName):
         self._id = generateID()
         self.name = name
         self.description = description
@@ -43,6 +43,7 @@ class Pack():
         self.isPublic = bool(random.getrandbits(1))
         self.creationDate = datetime.datetime.utcnow()
         self.owner = str(owner)
+        self.ownerName = str(ownerName)
         
     def createPack(self):
         mongoURL = "mongodb://127.0.0.1:3001/meteor"
@@ -57,7 +58,7 @@ class Pack():
         collection = db['packs']
         
         mongoPack = {"_id": self._id, "name": self.name, "description": self.description, "applications": self.applications, "isValidated": self.isValidated, 
-                     "color": self.color, "isPublic": self.isPublic, "creationDate": self.creationDate, "owner": self.owner}
+                     "color": self.color, "isPublic": self.isPublic, "creationDate": self.creationDate, "owner": self.owner, "ownerName": self.ownerName}
         collection.insert_one(mongoPack)
         
         
@@ -152,8 +153,9 @@ def generate_packs(idPack):
 
     rUser = random.randint(1, totalUser)
     packOwner = all_users[rUser-1]['_id']
+    packOwnerName = all_users[rUser-1]['username']
 
-    pack = Pack(packName, packDescription, packAppli, packOwner)
+    pack = Pack(packName, packDescription, packAppli, packOwner, packOwnerName)
     pack.createPack()
     
     

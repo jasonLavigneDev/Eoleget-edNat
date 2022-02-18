@@ -17,6 +17,9 @@ const queryAllPacks = ({ search }) => {
       {
         description: { $regex: regex },
       },
+      {
+        ownerName: { $regex: regex },
+      },
     ],
   };
 };
@@ -34,7 +37,7 @@ FindFromPublication.publish('packs.all', function packsAll({ page, search, itemP
     let query;
     if (search.startsWith('@')) {
       const finalsearch = search.slice(1);
-      query = queryAllPacks({ finalsearch });
+      query = queryAllPacks({ search: finalsearch });
     } else query = queryAllPacks({ search });
 
     return Packs.find(query, {
@@ -52,6 +55,11 @@ FindFromPublication.publish('packs.all', function packsAll({ page, search, itemP
 Meteor.methods({
   'get_packs.all_count': function getPackAllCount({ nodrafts, search, userId }) {
     try {
+      if (search.startsWith('@')) {
+        const finalSearch = search.slice(1);
+        const query = queryAllPacks({ nodrafts, search: finalSearch, userId: userId || this.userId });
+        return Packs.find(query).count();
+      }
       const query = queryAllPacks({ nodrafts, search, userId: userId || this.userId });
       return Packs.find(query).count();
     } catch (error) {
@@ -70,6 +78,8 @@ const queryAllPackOwned = ({ search, userId }) => {
     'color',
     'isValidated',
     'creationDate',
+    'owner',
+    'ownerName',
     'isPublic',
   ];
   const searchQuery = fieldsToSearch.map((field) => ({

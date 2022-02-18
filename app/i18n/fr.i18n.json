@@ -21,6 +21,7 @@
         "isValidated": "A été validé",
         "applications": "Applications",
         "owner": "ID du propriétaire",
+        "ownerName": "Pseudonyme du propriétaire",
         "description": "Description du pack",
         "color": "Couleur du pack",
         "isPublic": "Est public"

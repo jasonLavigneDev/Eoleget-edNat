@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import TableAppCreatePack from '../components/appTable/tableAppCreatePack';
+import { useAppContext } from '../contexts/context';
 
 // Style CSS //
 const containerStyle = {
@@ -46,6 +47,7 @@ const paperStyle = {
 function CreatePackPage() {
   const [name, setName] = useState('');
   const [isPublic, setIsPublic] = useState(false);
+  const [{ user }] = useAppContext();
   const [description, setDescription] = useState('');
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
@@ -92,6 +94,7 @@ function CreatePackPage() {
           description,
           color,
           isPublic,
+          ownerName: user.username,
         },
         (err) => {
           if (err) msg.error(err.reason);

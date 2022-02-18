@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import SearchIcon from '@mui/icons-material/Search';
 
-import { useTracker, withTracker } from 'meteor/react-meteor-data';
+import { useTracker } from 'meteor/react-meteor-data';
 import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -15,7 +15,6 @@ import PackList from '../packsCard/packList';
 import { useAppContext } from '../../contexts/context';
 
 import Packs from '../../../api/packs/packs';
-import Spinner from '../system/Spinner';
 import { debounce } from '../../utils';
 
 // Styles CSS //
@@ -31,15 +30,9 @@ const divPackTitleContainerStyle = {
 // End styles //
 
 // eslint-disable-next-line no-unused-vars
-function packListPage({ ready, isUserPack }) {
-  if (!ready) return <Spinner full />;
+function packListPage({ isUserPack }) {
   const [{ packPage, userId }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
-
-  const findUser = (pack) => {
-    const user = Meteor.users.findOne({ _id: pack.owner });
-    return user.username;
-  };
 
   const packs = useTracker(() => {
     if (isUserPack) {
@@ -49,19 +42,7 @@ function packListPage({ ready, isUserPack }) {
     }
     Meteor.subscribe('packs.table.all');
     const data = Packs.find({ isPublic: true }).fetch();
-    const finalData = [];
-    data.map((p) => {
-      return finalData.push({
-        _id: p._id,
-        name: p.name,
-        description: p.description,
-        version: p.version,
-        owner: p.owner,
-        applications: p.applications,
-        ownerName: findUser(p),
-      });
-    });
-    return finalData;
+    return data;
   });
 
   const inputRef = useRef(null);
@@ -174,14 +155,7 @@ packListPage.defaultProps = {
 };
 
 packListPage.propTypes = {
-  ready: PropTypes.bool.isRequired,
   isUserPack: PropTypes.bool,
 };
 
-export default withTracker(() => {
-  const subUser = Meteor.subscribe('users.all');
-  const ready = subUser.ready();
-  return {
-    ready,
-  };
-})(packListPage);
+export default packListPage;

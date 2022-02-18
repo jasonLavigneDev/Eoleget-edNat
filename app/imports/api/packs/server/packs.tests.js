@@ -67,6 +67,7 @@ describe('packs', function () {
         isValidated: true,
         applications: apps,
         owner: userId,
+        ownerName: email,
         description: 'test application',
         color: 'purple',
         isPublic: true,
@@ -102,6 +103,8 @@ describe('packs', function () {
   });
   describe('methods', function () {
     let userId;
+    let email;
+    let emailOwner;
     let ownerId;
     beforeEach(function () {
       // Clear
@@ -109,7 +112,7 @@ describe('packs', function () {
       Applications.remove({});
       Meteor.users.remove({});
       // Generate 'users'
-      const email = faker.internet.email();
+      email = faker.internet.email();
       userId = Accounts.createUser({
         email,
         username: email,
@@ -119,7 +122,7 @@ describe('packs', function () {
         groupCount: 0,
         groupQuota: 10,
       });
-      const emailOwner = faker.internet.email();
+      emailOwner = faker.internet.email();
       ownerId = Accounts.createUser({
         email: emailOwner,
         username: emailOwner,
@@ -179,6 +182,7 @@ describe('packs', function () {
             name: 'Test',
             description: 'Test Pack',
             applications: [appli1, appli2],
+            ownerName: email,
             creationDate,
             isValidated: true,
             color: 'purple',
@@ -203,6 +207,7 @@ describe('packs', function () {
                 name: 'Test',
                 description: 'Test Pack',
                 applications: [],
+                ownerName: email,
                 creationDate,
                 isValidated: true,
                 color: 'purple',
@@ -242,6 +247,7 @@ describe('packs', function () {
                 description: 'Test Pack',
                 applications: [appli1, appli2],
                 creationDate,
+                ownerName: email,
                 isValidated: true,
                 color: 'purple',
                 isPublic: true,
@@ -259,6 +265,7 @@ describe('packs', function () {
                 description: 'Test Pack 2',
                 applications: [appli1],
                 creationDate,
+                ownerName: email,
                 isValidated: true,
                 color: 'yellow',
                 isPublic: true,
@@ -297,6 +304,7 @@ describe('packs', function () {
             description: 'Test Pack',
             applications: [appli1, appli2],
             creationDate,
+            ownerName: emailOwner,
             isValidated: true,
             color: 'purple',
             isPublic: true,
@@ -339,6 +347,7 @@ describe('packs', function () {
                 description: 'Test Pack',
                 applications: [appli1, appli2],
                 creationDate,
+                ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
                 isPublic: true,
@@ -379,6 +388,7 @@ describe('packs', function () {
             description: 'Test Pack',
             applications: [appli1, appli2],
             creationDate,
+            ownerName: emailOwner,
             isValidated: true,
             color: 'purple',
             isPublic: true,
@@ -430,6 +440,7 @@ describe('packs', function () {
                 description: 'Test Pack',
                 applications: [appli1, appli2],
                 creationDate,
+                ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
                 isPublic: true,
@@ -482,6 +493,7 @@ describe('packs', function () {
                 description: 'Test Pack',
                 applications: [appli1, appli2],
                 creationDate,
+                ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
                 isPublic: true,
@@ -534,6 +546,7 @@ describe('packs', function () {
                 description: 'Test Pack',
                 applications: [appli1, appli2],
                 creationDate,
+                ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
                 isPublic: true,
@@ -547,6 +560,7 @@ describe('packs', function () {
                 description: 'Test Pack 2',
                 applications: [appli1],
                 creationDate,
+                ownerName: emailOwner,
                 isValidated: true,
                 color: 'yellow',
                 isPublic: true,
