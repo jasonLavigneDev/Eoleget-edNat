@@ -94,6 +94,9 @@ function DetailPack({ pack, ready }) {
             <Typography variant="body1" component="div">
               {`${i18n.__('components.PackList.owner')} : ${pack.ownerName}`}
             </Typography>
+            <Typography variant="body1" component="div">
+              {i18n.__('components.PackList.visibility')} :{pack.isPublic ? ' publique' : ' privé'}
+            </Typography>
             <textarea readOnly value={pack.description} rows="4" style={{ resize: 'none', border: 0 }} />
             <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
               <ContentCopyIcon />
