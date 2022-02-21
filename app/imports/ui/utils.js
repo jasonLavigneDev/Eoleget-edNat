@@ -27,3 +27,24 @@ const useQuery = () => {
 };
 
 export default useQuery;
+
+export function generateJSONFile(apps, fileName) {
+  const initialStr = `{"$schema":"https://aka.ms/winget-packages.schema.1.0.json",
+  "WinGetVersion":"0.3.11201",
+  "Sources":`;
+  let str = '';
+  let finalString = '';
+  apps.map((app) => {
+    let c = '';
+    if (app.version === '') c = `{"Id": ${app.identification}}`;
+    else c = `{"Id": ${app.identification},Version: ${app.version}}`;
+    if (str !== '') str += `,${c}`;
+    else str += `[${c}`;
+
+    str += ']';
+    return str;
+  });
+
+  finalString = initialStr + str;
+  return finalString;
+}

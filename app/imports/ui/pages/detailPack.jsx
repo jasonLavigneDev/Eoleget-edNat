@@ -1,5 +1,5 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -15,6 +15,7 @@ import Spinner from '../components/system/Spinner';
 import AppPacksCard from '../components/packsCard/appPacksCard';
 import Packs from '../../api/packs/packs';
 import theme from '../themes/light';
+import { generateJSONFile } from '../utils';
 
 // Styles CSS //
 const containerStyle = {
@@ -46,6 +47,20 @@ const ButtonCommandStyle = {
   width: 'fit-content',
   marginBottom: 5,
 };
+const ButtonGetCommandStyle = {
+  width: '20%',
+  marginTop: 2,
+  marginLeft: 10,
+  marginBottom: 5,
+};
+const divButtons = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+};
+const paperButtons = {
+  marginBottom: 5,
+};
 // End styles //
 
 function DetailPack({ pack, ready }) {
@@ -57,21 +72,46 @@ function DetailPack({ pack, ready }) {
   };
   if (!ready) return <Spinner full />;
 
+  const CMD_BATCH = 1;
+  const CMD_POWERSHELL = 2;
+  const CMD_JSON = 3;
+
   const apps = pack.applications;
+  const [displayCmd, setDisplayCmd] = useState(CMD_BATCH);
 
   const mapList = (func) => apps.map(func);
 
   const generateCommand = () => {
     let str = '';
-    apps.map((app) => {
-      let c = '';
-      if (app.version === '') c = `winget install --id=${app.identification} -e`;
-      else c = `winget install --id=${app.identification} -v "${app.version}" -e`;
-      if (str !== '') str += ` && ${c}`;
-      else str += c;
-      return str;
-    });
+    if (displayCmd === CMD_BATCH) {
+      apps.map((app) => {
+        let c = '';
+        if (app.version === '') c = `winget install --id=${app.identification} -e`;
+        else c = `winget install --id=${app.identification} -v "${app.version}" -e`;
+        if (str !== '') str += ` && ${c}`;
+        else str += c;
+        return str;
+      });
+    } else if (displayCmd === CMD_POWERSHELL) {
+      apps.map((app) => {
+        let c = '';
+        if (app.version === '') c = `winget install --id=${app.identification} -e`;
+        else c = `winget install --id=${app.identification} -v "${app.version}" -e`;
+        if (str !== '') str += ` ; ${c}`;
+        else str += c;
+        return str;
+      });
+    } else if (displayCmd === CMD_JSON) {
+      const id = Math.floor(Math.random() * 9999);
+      const fileName = `eoleget-winstall-${id}`;
+      generateJSONFile(apps, fileName);
+      str = `winget import --import-file "${fileName}`;
+    }
     return str;
+  };
+
+  const changeDisplay = (type) => {
+    setDisplayCmd(type);
   };
 
   const command = generateCommand();
@@ -98,10 +138,46 @@ function DetailPack({ pack, ready }) {
               {i18n.__('components.PackList.visibility')} :{pack.isPublic ? ' publique' : ' privé'}
             </Typography>
             <textarea readOnly value={pack.description} rows="4" style={{ resize: 'none', border: 0 }} />
-            <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
-              <ContentCopyIcon />
-              <Typography variant="paragraph">{command}</Typography>
-            </Button>
+
+            <div style={divButtons}>
+              <Button
+                title="batch"
+                variant="contained"
+                onClick={() => changeDisplay(CMD_BATCH)}
+                sx={ButtonGetCommandStyle}
+              >
+                Batch
+              </Button>
+              <Button
+                title="powershell"
+                variant="contained"
+                onClick={() => changeDisplay(CMD_POWERSHELL)}
+                sx={ButtonGetCommandStyle}
+              >
+                Powershell
+              </Button>
+              <Button
+                title="json"
+                variant="contained"
+                onClick={() => changeDisplay(CMD_JSON)}
+                sx={ButtonGetCommandStyle}
+              >
+                JSON
+              </Button>
+            </div>
+
+            <Paper sx={paperButtons}>
+              <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
+                <ContentCopyIcon />
+                <Typography variant="paragraph">{command}</Typography>
+              </Button>
+              {displayCmd === CMD_JSON ? (
+                <Link to="/download/dl.txt" target="_blank" download>
+                  Download
+                </Link>
+              ) : null}
+            </Paper>
+
             {mapList((app) => (
               <AppPacksCard key={app.identification} app={app} />
             ))}
