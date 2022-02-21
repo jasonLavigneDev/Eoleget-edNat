@@ -88,7 +88,6 @@ const PackCard = ({ pack, isUserPack }) => {
   };
 
   const GetClassName = () => {
-    console.log(pack.color);
     return {
       display: 'flex',
       backgroundColor: pack.color,

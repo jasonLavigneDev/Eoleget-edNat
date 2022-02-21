@@ -10,8 +10,9 @@ const divContainerStyle = {
 };
 // End Style //
 
-export default function ColorRadioButtons() {
-  const [selectedValue, setSelectedValue] = React.useState('#e91e63');
+function ColorRadioButtons(packColor) {
+  const currentColor = packColor;
+  const [selectedValue, setSelectedValue] = React.useState(currentColor.packColor ? currentColor.packColor : '#e91e63');
 
   const colors = [
     '#e91e63',
@@ -48,6 +49,7 @@ export default function ColorRadioButtons() {
           sx={{
             backgroundColor: color,
             '&:hover': { backgroundColor: color },
+            border: selectedValue === color ? '2px solid black' : 'none',
           }}
           onClick={() => handleClick(color)}
         />
@@ -55,3 +57,5 @@ export default function ColorRadioButtons() {
     </div>
   );
 }
+
+export default ColorRadioButtons;

@@ -159,7 +159,7 @@ function CreatePackPage() {
             <Typography variant="h6" component="div">
               {i18n.__('pages.packCreation.color')}
             </Typography>
-            <ColorRadioButton />
+            <ColorRadioButton packColor="" />
             <Divider />
             <div style={divDatagridStyle}>
               <TableAppCreatePack />
