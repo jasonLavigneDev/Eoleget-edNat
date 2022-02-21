@@ -126,8 +126,6 @@ function ProfilePage() {
     setUserData({ ...userData, [name]: value });
     if (value.trim() === '') {
       setErrors({ [name]: i18n.__('pages.ProfilePage.valueRequired') });
-    } else if (name === 'username') {
-      setSubmitOk(false);
     } else {
       setErrors({ [name]: '' });
     }
