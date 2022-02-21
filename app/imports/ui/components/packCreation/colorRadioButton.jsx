@@ -1,5 +1,5 @@
 import React from 'react';
-import Radio from '@mui/material/Radio';
+import { Button } from '@mui/material';
 
 // Style CSS //
 const divContainerStyle = {
@@ -11,83 +11,47 @@ const divContainerStyle = {
 // End Style //
 
 export default function ColorRadioButtons() {
-  const [selectedValue, setSelectedValue] = React.useState('');
+  const [selectedValue, setSelectedValue] = React.useState('#e91e63');
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-    localStorage.setItem('color', JSON.stringify(event.target.value));
+  const colors = [
+    '#e91e63',
+    '#9c27b0',
+    '#673ab7',
+    '#3f51b5',
+    '#2196f3',
+    '#03a9f4',
+    '#00bcd4',
+    '#009688',
+    '#4caf50',
+    '#8bc34a',
+    '#cddc39',
+    '#ffeb3b',
+    '#ffc107',
+    '#ff9800',
+    '#ff5722',
+    '#f44336',
+  ];
+
+  const handleClick = (color) => {
+    if (selectedValue !== '') document.getElementById(selectedValue).style.border = 'none';
+    setSelectedValue(color);
+    localStorage.setItem('color', JSON.stringify(color));
+    document.getElementById(color).style.border = '2px solid black';
   };
-
-  const controlProps = (item) => ({
-    checked: selectedValue === item,
-    onChange: handleChange,
-    value: item,
-    name: 'color-radio-button-demo',
-    inputProps: { 'aria-label': item },
-  });
 
   return (
     <div style={divContainerStyle}>
-      <Radio
-        {...controlProps('green')}
-        sx={{
-          backgroundImage: 'linear-gradient(0deg,#a8e063,#56ab2f)',
-          color: 'transparent',
-          width: 80,
-          '&.Mui-checked': {
-            color: 'transparent',
-            border: '3px solid black',
-          },
-        }}
-      />
-      <Radio
-        {...controlProps('yellow')}
-        sx={{
-          backgroundImage: 'linear-gradient(0deg,#F6FC14,#E6D107)',
-          color: 'transparent',
-          width: 80,
-          '&.Mui-checked': {
-            color: 'transparent',
-            border: '3px solid black',
-          },
-        }}
-      />
-      <Radio
-        {...controlProps('red')}
-        sx={{
-          backgroundImage: 'linear-gradient(0deg,#ff0844,#ebaf35)',
-          color: 'transparent',
-          width: 80,
-          '&.Mui-checked': {
-            color: 'transparent',
-            border: '3px solid black',
-          },
-        }}
-      />
-      <Radio
-        {...controlProps('blue')}
-        sx={{
-          backgroundImage: 'linear-gradient(0deg,#6a11cb,#2575fc)',
-          color: 'transparent',
-          width: 80,
-          '&.Mui-checked': {
-            color: 'transparent',
-            border: '3px solid black',
-          },
-        }}
-      />
-      <Radio
-        {...controlProps('purple')}
-        sx={{
-          backgroundImage: 'linear-gradient(0deg,#C41CDB,#5B13E8)',
-          color: 'transparent',
-          width: 80,
-          '&.Mui-checked': {
-            color: 'transparent',
-            border: '3px solid black',
-          },
-        }}
-      />
+      {colors.map((color) => (
+        <Button
+          key={color}
+          id={color}
+          sx={{
+            backgroundColor: color,
+            '&:hover': { backgroundColor: color },
+          }}
+          onClick={() => handleClick(color)}
+        />
+      ))}
     </div>
   );
 }
