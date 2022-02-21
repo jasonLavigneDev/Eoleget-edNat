@@ -270,7 +270,8 @@
       "ower": "Owner",
       "description": "Description",
       "number": "Pack applications number",
-      "detailTooltip": "Show pack"
+      "detailTooltip": "Show pack",
+      "visibility": "Visibility"
     },
     "AppPacksCard": {
       "infoTooltip": "Show application"
@@ -279,7 +280,8 @@
       "packTooltip": "Show pack",
       "extendPack": "Extend pack",
       "editPack": "Edit pack",
-      "deletePack": "Remove pack"
+      "deletePack": "Remove pack",
+      "privateIcon": "Private pack"
     },
     "UserAvatarGallery": {
       "title": "Create your avatar",

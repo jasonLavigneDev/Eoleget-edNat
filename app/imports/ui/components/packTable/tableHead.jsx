@@ -14,6 +14,10 @@ function EnhancedTableHead(props) {
         id: 'name',
       },
       {
+        title: i18n.__('components.PackList.visibility'),
+        id: 'isPublic',
+      },
+      {
         title: i18n.__('components.PackList.description'),
         id: 'description',
       },
