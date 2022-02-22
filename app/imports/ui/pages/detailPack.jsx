@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 import i18n from 'meteor/universe:i18n';
+import InfoIcon from '@mui/icons-material/Info';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Spinner from '../components/system/Spinner';
@@ -60,6 +61,13 @@ const divButtons = {
 };
 const paperButtons = {
   marginBottom: 5,
+  padding: 1,
+};
+const dlJsonButton = {
+  color: 'secondary',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
 };
 // End styles //
 
@@ -170,14 +178,18 @@ function DetailPack({ pack, ready }) {
             </div>
 
             <Paper sx={paperButtons}>
-              <Button title={i18n.__('pages.detailApp.download')} onClick={copyCommand} sx={ButtonCommandStyle}>
+              <Button title={i18n.__('pages.detailPack.copyToClipboard')} onClick={copyCommand} sx={ButtonCommandStyle}>
                 <ContentCopyIcon />
                 <Typography variant="paragraph">{command}</Typography>
               </Button>
               {displayCmd === CMD_JSON ? (
-                <Button title="Download" onClick={generateFile}>
-                  Download
-                </Button>
+                <div>
+                  <InfoIcon />
+                  <Typography variant="paragraph">{i18n.__('pages.detailPack.instructions')}</Typography>
+                  <Button title={i18n.__('pages.detailPack.copyToClipboard')} sx={dlJsonButton} onClick={generateFile}>
+                    {i18n.__('pages.detailPack.downloadJSON')}
+                  </Button>
+                </div>
               ) : null}
             </Paper>
 
