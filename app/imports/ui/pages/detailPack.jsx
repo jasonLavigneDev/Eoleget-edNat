@@ -64,10 +64,9 @@ const paperButtons = {
   padding: 1,
 };
 const dlJsonButton = {
-  color: 'secondary',
+  marginTop: 3,
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'center',
 };
 // End styles //
 
@@ -186,7 +185,13 @@ function DetailPack({ pack, ready }) {
                 <div>
                   <InfoIcon />
                   <Typography variant="paragraph">{i18n.__('pages.detailPack.instructions')}</Typography>
-                  <Button title={i18n.__('pages.detailPack.copyToClipboard')} sx={dlJsonButton} onClick={generateFile}>
+                  <Button
+                    variant="contained"
+                    title={i18n.__('pages.detailPack.copyToClipboard')}
+                    sx={dlJsonButton}
+                    onClick={generateFile}
+                    color="secondary"
+                  >
                     {i18n.__('pages.detailPack.downloadJSON')}
                   </Button>
                 </div>
