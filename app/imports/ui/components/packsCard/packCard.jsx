@@ -21,6 +21,7 @@ import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
+import { generateGradiant } from '../../utils';
 
 // Styles CSS //
 const divCardContainerStyle = {
@@ -90,7 +91,7 @@ const PackCard = ({ pack, isUserPack }) => {
   const GetClassName = () => {
     return {
       display: 'flex',
-      backgroundColor: pack.color,
+      background: `linear-gradient(${generateGradiant(pack.color)})`,
       color: 'white',
     };
   };
