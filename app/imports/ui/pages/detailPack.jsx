@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -78,6 +78,8 @@ function DetailPack({ pack, ready }) {
 
   const apps = pack.applications;
   const [displayCmd, setDisplayCmd] = useState(CMD_BATCH);
+  const id = Math.floor(Math.random() * 9999);
+  const fileName = `eoleget-winstall-${id}.json`;
 
   const mapList = (func) => apps.map(func);
 
@@ -102,10 +104,7 @@ function DetailPack({ pack, ready }) {
         return str;
       });
     } else if (displayCmd === CMD_JSON) {
-      const id = Math.floor(Math.random() * 9999);
-      const fileName = `eoleget-winstall-${id}`;
-      generateJSONFile(apps, fileName);
-      str = `winget import --import-file "${fileName}`;
+      str = `winget import --import-file "${fileName}"`;
     }
     return str;
   };
@@ -118,6 +117,10 @@ function DetailPack({ pack, ready }) {
 
   const copyCommand = () => {
     navigator.clipboard.writeText(command).then(msg.success(i18n.__('pages.detailPack.copyCommand')));
+  };
+
+  const generateFile = () => {
+    generateJSONFile(apps, fileName);
   };
 
   return (
@@ -172,9 +175,9 @@ function DetailPack({ pack, ready }) {
                 <Typography variant="paragraph">{command}</Typography>
               </Button>
               {displayCmd === CMD_JSON ? (
-                <Link to="/download/dl.txt" target="_blank" download>
+                <Button title="Download" onClick={generateFile}>
                   Download
-                </Link>
+                </Button>
               ) : null}
             </Paper>
 
