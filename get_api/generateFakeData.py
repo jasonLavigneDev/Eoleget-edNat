@@ -13,12 +13,24 @@ import os
 import random
 
 def getRandomColor():
-    r = random.randint(0, 4)
+    r = random.randint(0, 15)
     color = ''
-    if r==0: color = 'purple'
-    if r==1: color = 'red'
-    if r==2: color= 'green'
-    if r==3: color= 'yellow'
+    if r==0: color='#e91e63'
+    if r==1: color='#9c27b0'
+    if r==2: color='#673ab7'
+    if r==3: color='#3f51b5'
+    if r==4: color='#2196f3'
+    if r==5: color='#03a9f4'
+    if r==6: color='#00bcd4'
+    if r==7: color='#009688'
+    if r==8: color='#4caf50'
+    if r==9: color='#8bc34a'
+    if r==10: color='#cddc39'
+    if r==11: color='#ffeb3b'
+    if r==12: color='#ffc107'
+    if r==12: color='#ff9800'
+    if r==13: color='#ff5722'
+    if r==15: color='#f44336'
     
     return color
 
