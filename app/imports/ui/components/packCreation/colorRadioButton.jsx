@@ -49,7 +49,7 @@ function ColorRadioButtons(packColor) {
           sx={{
             backgroundColor: color,
             '&:hover': { backgroundColor: color },
-            border: selectedValue === color ? '2px solid black' : 'none',
+            border: selectedValue === color ? '3px solid black' : 'none',
           }}
           onClick={() => handleClick(color)}
         />

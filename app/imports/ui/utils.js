@@ -15,7 +15,6 @@ export function debounce(func, wait) {
 }
 
 export function generateGradiant(selectedColor) {
-  console.log(selectedColor);
   let gradiantColor = [];
   switch (selectedColor) {
     // Light purple
@@ -40,7 +39,7 @@ export function generateGradiant(selectedColor) {
       break;
     // Cyan
     case '#00bcd4':
-      gradiantColor = ['#00bcd4', '#42deb9'];
+      gradiantColor = ['#00bcd4', '#7feb9e'];
       break;
     // Dark green
     case '#009688':
@@ -60,7 +59,7 @@ export function generateGradiant(selectedColor) {
       break;
     // Yellow
     case '#ffeb3b':
-      gradiantColor = ['#ffeb3b', '#bdb17a'];
+      gradiantColor = ['#bdb17a', '#ffeb3b'];
       break;
     // Dark yellow
     case '#ffc107':
@@ -80,7 +79,7 @@ export function generateGradiant(selectedColor) {
       break;
     // Pink
     default:
-      gradiantColor = ['#e91e63', '#d14c1c'];
+      gradiantColor = ['#e91e63', '#e499a4'];
       break;
   }
   return gradiantColor;
