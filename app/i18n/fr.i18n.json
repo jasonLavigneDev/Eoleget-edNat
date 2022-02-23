@@ -93,7 +93,10 @@
       "details": "Détails du pack",
       "getPack": "Obtenir le pack",
       "back": "Retour",
-      "copyCommand": "Commande copiée avec succès"
+      "copyCommand": "Commande copiée avec succès",
+      "copyToClipboard": "Copier dans le presse-papier",
+      "downloadJSON": "Télécharger le .JSON",
+      "instructions": "Pour installer les applications, téléchargez le fichier JSON, puis utilisez la commande ci-dessus dans un terminal ouvert dans le dossier du fichier téléchargé."
     },
     "packCreation": {
       "title": "Création de pack",

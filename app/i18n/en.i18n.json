@@ -93,7 +93,10 @@
       "details": "Pack details",
       "getPack": "Get this pack",
       "back": "Back",
-      "copyCommand": "Command copied successfully"
+      "copyCommand": "Command copied successfully",
+      "copyToClipboard": "Copy to clipboard",
+      "downloadJSON": "Download .JSON",
+      "instructions": "To install apps, download .json file and use command into a terminal opened in the folder of downloaded file."
     },
     "packCreation": {
       "title": "Pack creation",
