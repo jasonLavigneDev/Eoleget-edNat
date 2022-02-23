@@ -21,6 +21,7 @@ import AppPacksCard from './appPacksCard';
 import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
+import { generateGradiant } from '../../utils';
 
 // Styles CSS //
 const divCardContainerStyle = {
@@ -38,31 +39,6 @@ const expendMoreStyle = {
   marginRight: '42%',
 };
 const iconButtonStyle = {
-  color: 'white',
-};
-const cardHeaderPurple = {
-  display: 'flex',
-  background: 'linear-gradient(#6e1bdc,#f138a7 100%)',
-  color: 'white',
-};
-const cardHeaderGreen = {
-  display: 'flex',
-  background: 'linear-gradient(0deg,#a8e063,#56ab2f)',
-  color: 'white',
-};
-const cardHeaderRed = {
-  display: 'flex',
-  background: 'linear-gradient(0deg,#ff0844,#ebaf35)',
-  color: 'white',
-};
-const cardHeaderYellow = {
-  display: 'flex',
-  background: 'linear-gradient(0deg,#F6FC14,#E6D107)',
-  color: 'white',
-};
-const cardHeaderBlue = {
-  display: 'flex',
-  background: 'linear-gradient(0deg,#6a11cb,#2575fc)',
   color: 'white',
 };
 const typographieHeaderStyle = {
@@ -113,28 +89,11 @@ const PackCard = ({ pack, isUserPack }) => {
   };
 
   const GetClassName = () => {
-    let col;
-    switch (pack.color) {
-      case 'green':
-        col = cardHeaderGreen;
-        break;
-      case 'yellow':
-        col = cardHeaderYellow;
-        break;
-      case 'red':
-        col = cardHeaderRed;
-        break;
-      case 'blue':
-        col = cardHeaderBlue;
-        break;
-      case 'purple':
-        col = cardHeaderPurple;
-        break;
-      default:
-        col = cardHeaderPurple;
-        break;
-    }
-    return col;
+    return {
+      display: 'flex',
+      background: `linear-gradient(${generateGradiant(pack.color)})`,
+      color: 'white',
+    };
   };
 
   return (

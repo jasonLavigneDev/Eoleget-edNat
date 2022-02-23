@@ -149,7 +149,7 @@ const EditPackPage = ({ pack, ready }) => {
             <Typography variant="h6" component="div">
               {i18n.__('pages.packEditPage.color')}
             </Typography>
-            <ColorRadioButton pack={pack} />
+            <ColorRadioButton packColor={pack.color} />
             <Divider />
             <div style={divDatagridStyle}>
               <TableAppPack applications={apps} />
