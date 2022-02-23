@@ -7,6 +7,7 @@ import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { IconButton } from '@mui/material';
 
 import i18n from 'meteor/universe:i18n';
 import InfoIcon from '@mui/icons-material/Info';
@@ -51,13 +52,12 @@ const ButtonCommandStyle = {
 const ButtonGetCommandStyle = {
   width: '20%',
   marginTop: 2,
-  marginLeft: 10,
   marginBottom: 5,
 };
 const divButtons = {
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
 };
 const paperButtons = {
   marginBottom: 5,
@@ -65,8 +65,13 @@ const paperButtons = {
 };
 const dlJsonButton = {
   marginTop: 3,
+  width: '20%',
+};
+const buttonJsonContainerStyle = {
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 // End styles //
 
@@ -149,48 +154,50 @@ function DetailPack({ pack, ready }) {
             </Typography>
             <textarea readOnly value={pack.description} rows="4" style={{ resize: 'none', border: 0 }} />
 
-            <div style={divButtons}>
-              <Button
-                title="batch"
-                variant="contained"
-                onClick={() => changeDisplay(CMD_BATCH)}
-                sx={ButtonGetCommandStyle}
-              >
-                Batch
-              </Button>
-              <Button
-                title="powershell"
-                variant="contained"
-                onClick={() => changeDisplay(CMD_POWERSHELL)}
-                sx={ButtonGetCommandStyle}
-              >
-                Powershell
-              </Button>
-              <Button
-                title="json"
-                variant="contained"
-                onClick={() => changeDisplay(CMD_JSON)}
-                sx={ButtonGetCommandStyle}
-              >
-                JSON
-              </Button>
-            </div>
-
             <Paper sx={paperButtons}>
+              <div style={divButtons}>
+                <Button
+                  title="batch"
+                  variant="outlined"
+                  onClick={() => changeDisplay(CMD_BATCH)}
+                  sx={ButtonGetCommandStyle}
+                >
+                  Batch
+                </Button>
+                <Button
+                  title="powershell"
+                  variant="outlined"
+                  onClick={() => changeDisplay(CMD_POWERSHELL)}
+                  sx={ButtonGetCommandStyle}
+                >
+                  Powershell
+                </Button>
+                <Button
+                  title="json"
+                  variant="outlined"
+                  onClick={() => changeDisplay(CMD_JSON)}
+                  sx={ButtonGetCommandStyle}
+                >
+                  JSON
+                </Button>
+              </div>
               <Button title={i18n.__('pages.detailPack.copyToClipboard')} onClick={copyCommand} sx={ButtonCommandStyle}>
                 <ContentCopyIcon />
                 <Typography variant="paragraph">{command}</Typography>
               </Button>
               {displayCmd === CMD_JSON ? (
-                <div>
-                  <InfoIcon />
-                  <Typography variant="paragraph">{i18n.__('pages.detailPack.instructions')}</Typography>
+                <div style={buttonJsonContainerStyle}>
+                  <Typography variant="paragraph" align="center">
+                    <IconButton disabled>
+                      <InfoIcon />
+                    </IconButton>
+                    {i18n.__('pages.detailPack.instructions')}
+                  </Typography>
                   <Button
                     variant="contained"
                     title={i18n.__('pages.detailPack.copyToClipboard')}
                     sx={dlJsonButton}
                     onClick={generateFile}
-                    color="secondary"
                   >
                     {i18n.__('pages.detailPack.downloadJSON')}
                   </Button>
