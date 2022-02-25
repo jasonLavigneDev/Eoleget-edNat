@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AppCardCart from './appCartCard';
 
 const divStyle = {
-  position: 'fixed',
+  position: 'static',
 };
 
 const iconButtonStyle = {
