@@ -25,16 +25,28 @@ const cardContentStyle = {
   justifyContent: 'space-between',
   alignItems: 'center',
 };
+const divNameStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+};
 // End styles //
 
 function AppPacksCard({ app }) {
+  const getVersion = () => {
+    return app.version ? `v${app.version}` : 'latest';
+  };
   return (
     <Card sx={cardStyle}>
       <CardContent sx={cardContentStyle}>
         <AppBadge invisible>
           <AppImg appIdent={app.identification} size={50} />
         </AppBadge>
-        <Typography variant="body1">{app.nom}</Typography>
+        <div style={divNameStyle}>
+          <Typography variant="body1">{app.nom}</Typography>
+          <Typography variant="body1" align="center" sx={{ opacity: 0.6 }}>
+            {getVersion()}
+          </Typography>
+        </div>
         <CardActions>
           <Tooltip title={i18n.__('components.AppPacksCard.infoTooltip')}>
             <IconButton>
