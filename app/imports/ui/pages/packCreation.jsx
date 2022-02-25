@@ -110,7 +110,7 @@ function CreatePackPage() {
   };
 
   const goBack = () => {
-    history.push('/');
+    history.goBack();
   };
 
   const handleOnChange = () => {
