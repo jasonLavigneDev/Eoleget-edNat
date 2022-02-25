@@ -80,7 +80,7 @@ function DetailPack({ pack, ready }) {
 
   const history = useHistory();
   const goBack = () => {
-    history.push('/packs');
+    history.goBack();
   };
   if (!ready) return <Spinner full />;
 

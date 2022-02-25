@@ -67,7 +67,7 @@ const EditPackPage = ({ pack, ready }) => {
   };
 
   const goBack = () => {
-    history.push('/packs');
+    history.goBack();
   };
 
   const editPack = () => {

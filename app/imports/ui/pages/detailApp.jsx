@@ -65,7 +65,7 @@ const detailApp = ({ app, ready }) => {
   // End styles //
   const history = useHistory();
   const goBack = () => {
-    history.push('/');
+    history.goBack();
   };
   const cart = useState(() => {
     // getting stored value
