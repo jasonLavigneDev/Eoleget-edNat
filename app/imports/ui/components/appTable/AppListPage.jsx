@@ -74,7 +74,7 @@ function AppListPage({ modal, editModal, cart }) {
     return searchText.indexOf(search.toLowerCase()) > -1;
   };
 
-  const mapList = (func) => applications.filter((app) => filterApp(app)).map(func);
+  const mapList = applications.filter(filterApp);
 
   const updateGlobalState = (key, value) =>
     dispatch({
@@ -141,7 +141,7 @@ function AppListPage({ modal, editModal, cart }) {
         <div style={divStoreTitleStyle}>
           {searchField}
           <div>
-            <AppList applications={mapList((app) => app)} cart={cart} isModal={modal} />
+            <AppList applications={mapList} cart={cart} isModal={modal} />
           </div>
         </div>
       </div>
