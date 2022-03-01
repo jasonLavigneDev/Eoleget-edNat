@@ -26,20 +26,19 @@ import Applications from '../../../api/applications/applications';
 import Spinner from '../system/Spinner';
 
 const modalStyle = {
-  overflow: 'auto',
+  overflow: 'scroll',
   position: 'absolute',
   width: '90%',
-  maxHeight: '90%',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
 };
 
 const buttonCloseStyle = {
-  display: 'block',
-  width: 400,
+  display: 'flex',
+  position: 'relative',
   margin: 'auto',
-  bottom: 10,
+  width: 400,
 };
 
 function TableAppEditPack({ applications, ready }) {

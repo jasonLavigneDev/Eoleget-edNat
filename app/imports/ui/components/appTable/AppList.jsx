@@ -53,7 +53,7 @@ function AppList({ applications, cart, isModal }) {
   const [orderBy, setOrderBy] = React.useState('nom');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = isModal ? React.useState(10) : React.useState(25);
+  const [rowsPerPage, setRowsPerPage] = isModal ? React.useState(5) : React.useState(25);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -140,7 +140,7 @@ function AppList({ applications, cart, isModal }) {
   };
 
   return (
-    <div style={{ height: 600 }}>
+    <div style={{ height: isModal ? 400 : 600 }}>
       <TableContainer component={Paper}>
         <Table size="small" aria-label="a dense table">
           <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
@@ -195,7 +195,7 @@ function AppList({ applications, cart, isModal }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={isModal ? [5, 10] : [25, 50, 100, 250]}
+        rowsPerPageOptions={isModal ? [5] : [25, 50, 100, 250]}
         component="div"
         count={applications.length}
         rowsPerPage={rowsPerPage}
