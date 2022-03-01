@@ -195,7 +195,7 @@ function AppList({ applications, cart, isModal }) {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={isModal ? [5, 10] : [5, 10, 25]}
+        rowsPerPageOptions={isModal ? [5, 10] : [25, 50, 100, 250]}
         component="div"
         count={applications.length}
         rowsPerPage={rowsPerPage}
