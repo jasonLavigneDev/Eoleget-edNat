@@ -18,15 +18,19 @@ import { debounce } from '../../utils';
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  marginTop: '5%',
+  minWidth: '100%',
+  marginTop: '1%',
   marginBottom: '2%',
 };
 const divStoreTitleStyle = {
   minWidth: '100%',
 };
+const spanHelperText = {
+  fontSize: 'large',
+};
 // End styles //
 
-function AppListPage({ modal, editModal, cart }) {
+function AppListPage({ modal, editModal, cart, setTotal }) {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -75,6 +79,7 @@ function AppListPage({ modal, editModal, cart }) {
   };
 
   const mapList = applications.filter(filterApp);
+  setTotal(mapList.length);
 
   const updateGlobalState = (key, value) =>
     dispatch({
@@ -114,6 +119,15 @@ function AppListPage({ modal, editModal, cart }) {
       defaultValue={appPage.search}
       inputRef={searchRef}
       variant="outlined"
+      helperText={
+        appPage.search ? (
+          <span style={spanHelperText}>
+            {i18n.__('components.Search.helperText')} &quot;{appPage.search}&quot;
+          </span>
+        ) : (
+          ''
+        )
+      }
       inputProps={{
         ref: inputRef,
       }}
@@ -140,9 +154,7 @@ function AppListPage({ modal, editModal, cart }) {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           {searchField}
-          <div>
-            <AppList applications={mapList} cart={cart} isModal={modal} />
-          </div>
+          <AppList applications={mapList} cart={cart} isModal={modal} />
         </div>
       </div>
     </Fade>
@@ -153,11 +165,13 @@ AppListPage.propTypes = {
   modal: PropTypes.bool,
   editModal: PropTypes.bool,
   cart: PropTypes.arrayOf(PropTypes.any),
+  setTotal: PropTypes.func,
 };
 
 AppListPage.defaultProps = {
   modal: false,
   editModal: false,
   cart: [],
+  setTotal: () => {},
 };
 export default AppListPage;

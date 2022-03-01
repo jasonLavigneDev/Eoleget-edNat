@@ -21,11 +21,14 @@ import { debounce } from '../../utils';
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  marginTop: '5%',
+  marginTop: '1%',
   marginBottom: '2%',
 };
 const divPackTitleContainerStyle = {
   minWidth: '100%',
+};
+const spanHelperText = {
+  fontSize: 'large',
 };
 // End styles //
 
@@ -117,6 +120,15 @@ function packListPage({ isUserPack }) {
       defaultValue={packPage.search}
       variant="outlined"
       inputRef={searchRef}
+      helperText={
+        packPage.search ? (
+          <span style={spanHelperText}>
+            {i18n.__('components.Search.helperText')} &quot;{packPage.search}&quot;
+          </span>
+        ) : (
+          ''
+        )
+      }
       inputProps={{
         ref: inputRef,
       }}

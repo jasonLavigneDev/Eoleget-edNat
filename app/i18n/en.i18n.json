@@ -256,7 +256,8 @@
     "Search": {
       "searchingApp": "Which app are you looking for ?",
       "searchingPack": "Which pack are you looking for ?",
-      "searchingError": "What are you searching for ?"
+      "searchingError": "What are you searching for ?",
+      "helperText": "Result for search"
     },
     "AppList": {
       "application": "Application",

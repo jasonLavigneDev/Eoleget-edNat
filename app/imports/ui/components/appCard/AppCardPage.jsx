@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
@@ -22,15 +23,14 @@ import { debounce } from '../../utils';
 // Styles CSS //
 const gridPaginationStyle = {
   display: 'flex',
+  justifyContent: 'center',
 };
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  marginTop: '5%',
-  marginBottom: '2%',
-};
-const divStoreTitleStyle = {
   minWidth: '100%',
+  marginTop: '1%',
+  marginBottom: '2%',
 };
 const divCardContainerStyle = {
   display: 'flex',
@@ -41,11 +41,14 @@ const textfieldStyle = {
   marginLeft: 15,
   width: '98%',
 };
+const spanHelperText = {
+  fontSize: 'large',
+};
 // End styles //
 
 const ITEM_PER_PAGE = 16;
 
-function AppCardPage({ cart }) {
+function AppCardPage({ cart, setTotal }) {
   const [{ appPage }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = appPage;
 
@@ -57,6 +60,8 @@ function AppCardPage({ cart }) {
     { sort: { nom: 1 } },
     ITEM_PER_PAGE,
   );
+
+  setTotal(total);
 
   const handleChangePage = (event, value) => {
     changePage(value);
@@ -100,7 +105,7 @@ function AppCardPage({ cart }) {
     updateGlobalState('search', '');
     searchRef.current.value = '';
   };
-  const debouncedSearch = debounce(updateSearch, 300);
+  const debouncedSearch = debounce(updateSearch, 800);
   const checkEscape = (e) => {
     if (e.keyCode === 27) {
       // ESCAPE key
@@ -124,6 +129,15 @@ function AppCardPage({ cart }) {
       inputRef={searchRef}
       variant="outlined"
       style={textfieldStyle}
+      helperText={
+        appPage.search ? (
+          <span style={spanHelperText}>
+            {i18n.__('components.Search.helperText')} &quot;{appPage.search}&quot;
+          </span>
+        ) : (
+          ''
+        )
+      }
       inputProps={{
         ref: inputRef,
       }}
@@ -148,32 +162,33 @@ function AppCardPage({ cart }) {
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <div style={divStoreTitleStyle}>
-          <div>
-            <Paper>
-              {searchField}
-              <div style={divCardContainerStyle}>
-                <span style={divCardContainerStyle}>
-                  {mapList((app) => (
-                    <AppCard key={app.identification} app={app} cart={cart} />
-                  ))}
-                </span>
-                {total > ITEM_PER_PAGE && (
-                  <Grid sx={gridPaginationStyle}>
-                    <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                  </Grid>
-                )}
-              </div>
-            </Paper>
+        <Paper>
+          {searchField}
+          <div style={divCardContainerStyle}>
+            <span style={divCardContainerStyle}>
+              {mapList((app) => (
+                <AppCard key={app.identification} app={app} cart={cart} />
+              ))}
+            </span>
           </div>
-        </div>
+          {total > ITEM_PER_PAGE && (
+            <Grid sx={gridPaginationStyle}>
+              <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+            </Grid>
+          )}
+        </Paper>
       </div>
     </Fade>
   );
 }
 
+AppCardPage.defaultProps = {
+  setTotal: () => {},
+};
+
 AppCardPage.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.any).isRequired,
+  setTotal: PropTypes.func,
 };
 
 export default AppCardPage;
