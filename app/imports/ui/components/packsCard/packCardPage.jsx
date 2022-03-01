@@ -102,29 +102,6 @@ function packCardPage({ isUserPack }) {
     }
   };
 
-  const filterPack = (pack) => {
-    if (isUserPack) {
-      let searchText;
-      searchText = pack.name + pack.description || '';
-      searchText = searchText.toLowerCase();
-      if (!search) return true;
-      return searchText.indexOf(search.toLowerCase()) > -1;
-    }
-    let searchText;
-    if (search.startsWith('@')) searchText = pack.ownerName || '';
-    else searchText = pack.name + pack.description || '';
-    searchText = searchText.toLowerCase();
-    if (!search) return true;
-
-    if (search.startsWith('@')) {
-      const finalSearch = search.slice(1);
-      return searchText.indexOf(finalSearch.toLowerCase()) > -1;
-    }
-    return searchText.indexOf(search.toLowerCase()) > -1;
-  };
-
-  const mapList = (func) => items.filter((pack) => filterPack(pack)).map(func);
-
   const searchField = (
     <TextField
       margin="normal"
@@ -177,7 +154,7 @@ function packCardPage({ isUserPack }) {
           {searchField}
           <div style={divCardContainerStyle}>
             <span style={divCardContainerStyle}>
-              {mapList((pack) => (
+              {items.map((pack) => (
                 <PackCard key={pack._id} pack={pack} isUserPack={isUserPack} />
               ))}
             </span>
