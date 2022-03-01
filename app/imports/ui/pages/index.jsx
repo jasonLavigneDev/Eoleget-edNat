@@ -17,7 +17,7 @@ import AppCart from '../components/appCart/appCart';
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  marginTop: '5%',
+  marginTop: '3%',
   padding: '0 15%',
   marginBottom: '2%',
   minWidth: '100%',

@@ -244,7 +244,7 @@ function TableAppEditPack({ applications, ready }) {
         <Modal open onClose={onClose}>
           <div>
             <Paper sx={modalStyle}>
-              <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
+              <Typography variant="h4" component="div" style={{ padding: 10 }}>
                 {i18n.__('pages.Store.storeTitle')}
               </Typography>
               <AppListPage modal editModal />

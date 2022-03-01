@@ -217,7 +217,7 @@ function TableAppCreatePack({ ready }) {
       {openModal ? (
         <Modal open onClose={onClose}>
           <Paper sx={modalStyle}>
-            <Typography variant="h4" component="div" style={{ padding: 10, marginBottom: -50 }}>
+            <Typography variant="h4" component="div" style={{ padding: 10 }}>
               {i18n.__('pages.Store.storeTitle')}
             </Typography>
             <AppListPage modal cart={cart} />

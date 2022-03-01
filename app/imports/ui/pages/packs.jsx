@@ -16,7 +16,7 @@ import PackCardPage from '../components/packsCard/packCardPage';
 const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
-  marginTop: '5%',
+  marginTop: '3%',
   padding: '0 10%',
   marginBottom: '2%',
   minWidth: '100%',

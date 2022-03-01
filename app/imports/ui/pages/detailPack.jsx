@@ -209,9 +209,6 @@ function DetailPack({ pack, ready }) {
               <AppPacksCard key={app.identification} app={app} />
             ))}
             <div style={divButtonStyle}>
-              <Button variant="contained" sx={ButtonGetPackStyle}>
-                {i18n.__('pages.detailPack.getPack')}
-              </Button>
               <Button variant="contained" sx={ButtonGetPackStyle} onClick={goBack}>
                 {i18n.__('pages.detailPack.back')}
               </Button>

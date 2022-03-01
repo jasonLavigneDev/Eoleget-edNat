@@ -20,7 +20,7 @@ import { useAppContext } from '../contexts/context';
 
 // Style CSS //
 const containerStyle = {
-  marginTop: '5%',
+  marginTop: '3%',
 };
 const divDatagridStyle = {
   height: 400,

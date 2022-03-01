@@ -16,7 +16,7 @@ const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   minWidth: '100%',
-  marginTop: '5%',
+  marginTop: '3%',
   padding: '0 10%',
   marginBottom: '2%',
 };
