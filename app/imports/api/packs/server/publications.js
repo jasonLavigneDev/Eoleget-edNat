@@ -17,6 +17,15 @@ const queryAllPacks = ({ search }) => {
       {
         description: { $regex: regex },
       },
+    ],
+  };
+};
+
+const queryAllPacksByOwner = ({ search }) => {
+  const regex = new RegExp(search, 'i');
+  return {
+    isPublic: true,
+    $or: [
       {
         ownerName: { $regex: regex },
       },
@@ -37,7 +46,7 @@ FindFromPublication.publish('packs.all', function packsAll({ page, search, itemP
     let query;
     if (search.startsWith('@')) {
       const finalsearch = search.slice(1);
-      query = queryAllPacks({ search: finalsearch });
+      query = queryAllPacksByOwner({ search: finalsearch });
     } else query = queryAllPacks({ search });
 
     return Packs.find(query, {
@@ -57,10 +66,10 @@ Meteor.methods({
     try {
       if (search.startsWith('@')) {
         const finalSearch = search.slice(1);
-        const query = queryAllPacks({ nodrafts, search: finalSearch, userId: userId || this.userId });
+        const query = queryAllPacksByOwner({ nodrafts, search: finalSearch, userId: userId || this.userId });
         return Packs.find(query).count();
       }
-      const query = queryAllPacks({ nodrafts, search, userId: userId || this.userId });
+      const query = queryAllPacks({ nodrafts, search, userId });
       return Packs.find(query).count();
     } catch (error) {
       return 0;
@@ -70,23 +79,12 @@ Meteor.methods({
 
 const queryAllPackOwned = ({ search, userId }) => {
   const regex = new RegExp(search, 'i');
-  const fieldsToSearch = [
-    'name',
-    'version',
-    'applications',
-    'description',
-    'color',
-    'isValidated',
-    'creationDate',
-    'owner',
-    'ownerName',
-    'isPublic',
-  ];
+  const fieldsToSearch = ['name', 'description'];
   const searchQuery = fieldsToSearch.map((field) => ({
     [field]: { $regex: regex },
-    owner: userId,
   }));
   return {
+    owner: userId,
     $or: searchQuery,
   };
 };
@@ -99,9 +97,9 @@ Meteor.publish('packs.table.user', function publishOwnedPacks({ userId }) {
 });
 
 Meteor.methods({
-  'get_packs.user_count': function getPackAllCount({ nodrafts, search, userId }) {
+  'get_packs.user_count': function getPackAllCountForOwner({ nodrafts, search, userId }) {
     try {
-      const query = queryAllPackOwned({ nodrafts, search, userId: userId || this.userId });
+      const query = queryAllPackOwned({ nodrafts, search, userId });
       return Packs.find(query).count();
     } catch (error) {
       return 0;
@@ -117,17 +115,15 @@ FindFromPublication.publish('packs.user', function packsOfUser({ page, search, u
     this.error(err);
   }
 
+  const query = queryAllPackOwned({ search, userId });
   try {
-    return Packs.find(
-      { owner: userId },
-      {
-        fields: Packs.publicFields,
-        skip: itemPerPage * (page - 1),
-        limit: itemPerPage,
-        sort: { name: 1 },
-        ...rest,
-      },
-    );
+    return Packs.find(query, {
+      fields: Packs.publicFields,
+      skip: itemPerPage * (page - 1),
+      limit: itemPerPage,
+      sort: { name: 1 },
+      ...rest,
+    });
   } catch (error) {
     return this.ready();
   }

@@ -52,14 +52,6 @@ function AppCardList() {
     }
   }, [search]);
 
-  const filterApp = (app) => {
-    let searchText = app.nom + app.description + app.identificationName || '';
-    searchText = searchText.toLowerCase();
-    if (!search) return true;
-    return searchText.indexOf(search.toLowerCase()) > -1;
-  };
-  const mapList = (func) => items.filter((app) => filterApp(app)).map(func);
-
   return (
     <span style={cardContainerStyle}>
       {total > ITEM_PER_PAGE && (
@@ -67,8 +59,8 @@ function AppCardList() {
           <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
         </Grid>
       )}
-      {mapList((app) => {
-        <AppCard key={app.identification} app={app} cart={cart} />;
+      {items.map((app) => {
+        return <AppCard key={app.identification} app={app} cart={cart} />;
       })}
       {total > ITEM_PER_PAGE && (
         <Grid item xs={12} sm={12} md={12} lg={12}>

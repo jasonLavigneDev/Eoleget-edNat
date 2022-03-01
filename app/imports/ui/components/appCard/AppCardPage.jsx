@@ -81,15 +81,6 @@ function AppCardPage({ cart, setTotal }) {
     }
   }, [searchToggle]);
 
-  const filterApp = (app) => {
-    let searchText = app.nom + app.description || '';
-    searchText = searchText.toLowerCase();
-    if (!search) return true;
-    return searchText.indexOf(search.toLowerCase()) > -1;
-  };
-
-  const mapList = (func) => items.filter((app) => filterApp(app)).map(func);
-
   const updateGlobalState = (key, value) =>
     dispatch({
       type: 'appPage',
@@ -162,21 +153,23 @@ function AppCardPage({ cart, setTotal }) {
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <Paper>
-          {searchField}
-          <div style={divCardContainerStyle}>
-            <span style={divCardContainerStyle}>
-              {mapList((app) => (
-                <AppCard key={app.identification} app={app} cart={cart} />
-              ))}
-            </span>
-          </div>
-          {total > ITEM_PER_PAGE && (
-            <Grid sx={gridPaginationStyle}>
-              <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-            </Grid>
-          )}
-        </Paper>
+        <div>
+          <Paper>
+            {searchField}
+            <div style={divCardContainerStyle}>
+              <span style={divCardContainerStyle}>
+                {items.map((app) => (
+                  <AppCard key={app.identification} app={app} cart={cart} />
+                ))}
+              </span>
+              {total > ITEM_PER_PAGE && (
+                <Grid sx={gridPaginationStyle}>
+                  <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+                </Grid>
+              )}
+            </div>
+          </Paper>
+        </div>
       </div>
     </Fade>
   );
