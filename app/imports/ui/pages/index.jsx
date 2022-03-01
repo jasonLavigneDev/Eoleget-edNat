@@ -20,6 +20,7 @@ const divMainStyle = {
   marginTop: '5%',
   padding: '0 15%',
   marginBottom: '2%',
+  minWidth: '100%',
 };
 const divStoreTitleStyle = {
   display: 'flex',
@@ -41,14 +42,14 @@ const spanCartStyle = {
 
 function Index() {
   const [showModeList, setModeList] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [loadingCart, setLoadingCart] = useState(true);
 
   const cart = useState(() => {
     const saved = localStorage.getItem('cart');
     const initialValue = saved ? JSON.parse(saved) : [];
     return initialValue;
   });
-
-  const [loadingCart, setLoadingCart] = useState(true);
 
   useEffect(() => {
     // update cart in localStorage when it's updated (except for initial load)
@@ -61,7 +62,7 @@ function Index() {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           <Typography variant="h4" component="div">
-            {i18n.__('pages.Store.storeTitle')}
+            {i18n.__('pages.Store.storeTitle')}({total})
           </Typography>
           <div style={spanIconListStyle}>
             <span style={spanCartStyle}>
@@ -89,7 +90,11 @@ function Index() {
             </span>
           </div>
         </div>
-        {!showModeList ? <AppCardPage cart={cart} /> : <AppListPage cart={cart} />}
+        {!showModeList ? (
+          <AppCardPage cart={cart} setTotal={setTotal} />
+        ) : (
+          <AppListPage cart={cart} setTotal={setTotal} />
+        )}
       </div>
     </Fade>
   );

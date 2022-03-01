@@ -28,7 +28,7 @@ const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   minWidth: '100%',
-  marginTop: '5%',
+  marginTop: '1%',
   marginBottom: '2%',
 };
 const divCardContainerStyle = {
@@ -39,6 +39,9 @@ const divCardContainerStyle = {
 const textfieldStyle = {
   marginLeft: 2,
   width: '97%',
+};
+const spanHelperText = {
+  fontSize: 'large',
 };
 // End styles //
 
@@ -137,6 +140,15 @@ function packCardPage({ isUserPack }) {
       variant="outlined"
       inputRef={searchRef}
       sx={textfieldStyle}
+      helperText={
+        packPage.search ? (
+          <span style={spanHelperText}>
+            {i18n.__('components.Search.helperText')} &quot;{packPage.search}&quot;
+          </span>
+        ) : (
+          ''
+        )
+      }
       inputProps={{
         ref: inputRef,
       }}

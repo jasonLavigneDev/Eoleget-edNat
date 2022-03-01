@@ -142,7 +142,7 @@ function AppList({ applications, cart, isModal }) {
   return (
     <div style={{ height: 600 }}>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <Table size="small" aria-label="a dense table">
           <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
           <TableBody>
             {stableSort(applications, getComparator(order, orderBy))
