@@ -23,7 +23,6 @@ import AppListPage from './AppListPage';
 import EnhancedTableHead from './tableHeadAppPack';
 import ListVersionEdit from '../version/listVersionEdit';
 import Applications from '../../../api/applications/applications';
-import Spinner from '../system/Spinner';
 
 const modalStyle = {
   overflow: 'scroll',
@@ -42,7 +41,7 @@ const buttonCloseStyle = {
 };
 
 function TableAppEditPack({ applications, ready }) {
-  if (!ready) return <Spinner full />;
+  if (!ready) return null;
 
   localStorage.setItem('cart_edit', JSON.stringify(applications));
   localStorage.setItem('editApplications', JSON.stringify(applications));
@@ -264,7 +263,7 @@ TableAppEditPack.propTypes = {
 };
 
 export default withTracker(() => {
-  const subApps = Meteor.subscribe('applications.table.all');
+  const subApps = Meteor.subscribe('applications.table.all', { search: '' });
   const ready = subApps.ready();
   return {
     ready,
