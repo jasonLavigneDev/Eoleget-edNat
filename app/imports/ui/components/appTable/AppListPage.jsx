@@ -37,7 +37,7 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
   const applications = useTracker(() => {
     Meteor.subscribe('applications.table.all');
     let data;
-    if (appPage.search.startsWith('#')) {
+    if (search.startsWith('#')) {
       const tags = appPage.search.slice(1).split(' ');
       data = Applications.find({ tags: { $all: tags } }).fetch();
     } else data = Applications.find({}).fetch();

@@ -39,21 +39,12 @@ function packListPage({ isUserPack }) {
 
   const packs = useTracker(() => {
     if (isUserPack) {
-      Meteor.subscribe('packs.table.user', { userId });
+      Meteor.subscribe('packs.table.user', { search, userId });
       const data = Packs.find({ owner: userId }).fetch();
       return data;
     }
-    Meteor.subscribe('packs.table.all');
-    const name = search.slice(1);
-    const regex = new RegExp(name, 'i');
-    const data = Packs.find({
-      isPublic: true,
-      $or: [
-        {
-          ownerName: { $regex: regex },
-        },
-      ],
-    }).fetch();
+    Meteor.subscribe('packs.table.all', { search });
+    const data = Packs.find({ isPublic: true }).fetch();
     return data;
   });
 
