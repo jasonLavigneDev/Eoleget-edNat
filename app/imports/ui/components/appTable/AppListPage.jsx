@@ -36,7 +36,11 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
 
   const applications = useTracker(() => {
     Meteor.subscribe('applications.table.all');
-    const data = Applications.find({}).fetch();
+    let data;
+    if (appPage.search.startsWith('#')) {
+      const tags = appPage.search.slice(1).split(' ');
+      data = Applications.find({ tags: { $all: tags } }).fetch();
+    } else data = Applications.find({}).fetch();
     return data;
   });
 
@@ -71,15 +75,7 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       : localStorage.setItem('cart', JSON.stringify(cart[0]));
   }, [cart[0]]);
 
-  const filterApp = (app) => {
-    let searchText = app.nom + app.description || '';
-    searchText = searchText.toLowerCase();
-    if (!search) return true;
-    return searchText.indexOf(search.toLowerCase()) > -1;
-  };
-
-  const mapList = applications.filter(filterApp);
-  setTotal(mapList.length);
+  setTotal(applications.length);
 
   const updateGlobalState = (key, value) =>
     dispatch({
@@ -111,6 +107,7 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       margin="normal"
       id="search"
       label={i18n.__('pages.Store.searchText')}
+      placeholder={i18n.__('pages.Store.searchHelp')}
       name="search"
       fullWidth
       onChange={debouncedSearch}
@@ -121,9 +118,15 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       variant="outlined"
       helperText={
         appPage.search ? (
-          <span style={spanHelperText}>
-            {i18n.__('components.Search.helperText')} &quot;{appPage.search}&quot;
-          </span>
+          appPage.search.startsWith('#') ? (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperTextByTags')} &quot;{appPage.search.slice(1)}&quot;
+            </span>
+          ) : (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperText')} &quot;{appPage.search}&quot;
+            </span>
+          )
         ) : (
           ''
         )
@@ -154,7 +157,7 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           {searchField}
-          <AppList applications={mapList} cart={cart} isModal={modal} />
+          <AppList applications={applications} cart={cart} isModal={modal} />
         </div>
       </div>
     </Fade>

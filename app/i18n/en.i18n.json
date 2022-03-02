@@ -112,7 +112,8 @@
       "storeTitle": "Applications store",
       "searchApp": "Search for an application",
       "noStore": "There are no applications to display",
-      "searchText": "Which application are you looking for?"
+      "searchText": "Which application are you looking for?",
+      "searchHelp": "Search app by name or use # for search by tags"
     },
     "Packs": {
       "packsStoreTitle": "Packs store",
@@ -257,7 +258,9 @@
       "searchingApp": "Which app are you looking for ?",
       "searchingPack": "Which pack are you looking for ?",
       "searchingError": "What are you searching for ?",
-      "helperText": "Result for search"
+      "helperText": "Result for search",
+      "helperTextByTags": "Résult for search by tags par tags",
+      "helperTextByOwner": "Result for search by owner"
     },
     "AppList": {
       "application": "Application",

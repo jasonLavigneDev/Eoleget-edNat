@@ -111,6 +111,7 @@ function AppCardPage({ cart, setTotal }) {
       margin="normal"
       id="search"
       label={i18n.__('pages.Store.searchText')}
+      placeholder={i18n.__('pages.Store.searchHelp')}
       name="search"
       fullWidth
       onChange={debouncedSearch}
@@ -122,9 +123,15 @@ function AppCardPage({ cart, setTotal }) {
       style={textfieldStyle}
       helperText={
         appPage.search ? (
-          <span style={spanHelperText}>
-            {i18n.__('components.Search.helperText')} &quot;{appPage.search}&quot;
-          </span>
+          appPage.search.startsWith('#') ? (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperTextByTags')} &quot;{appPage.search.slice(1)}&quot;
+            </span>
+          ) : (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperText')} &quot;{appPage.search}&quot;
+            </span>
+          )
         ) : (
           ''
         )
