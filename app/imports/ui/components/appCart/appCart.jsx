@@ -38,8 +38,6 @@ function AppCart({ cart }) {
     setAnchorEl(null);
   };
 
-  const mapList = (func) => cart[0].map(func);
-
   const open = Boolean(anchorEl);
 
   const isDisable = cart[0].length === 0;
@@ -91,7 +89,7 @@ function AppCart({ cart }) {
       >
         <Paper sx={paperStyle}>
           {cart[0].length
-            ? mapList((app) => <AppCardCart key={app.identification} app={app} handleClose={RemoveAppFromCart} />)
+            ? cart[0].map((app) => <AppCardCart key={app.identification} app={app} handleClose={RemoveAppFromCart} />)
             : null}
           <div>
             <Button sx={buttonCreateStyle} variant="contained" disabled={isDisable} onClick={handleCreatePackButton}>

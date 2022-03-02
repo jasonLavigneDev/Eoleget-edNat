@@ -80,9 +80,9 @@ const PackCard = ({ pack, isUserPack }) => {
     setOpenModal(true);
   };
 
-  const mapList = (func) => appli.slice(0, 2).map(func);
+  const mapList = appli.slice(0, 2);
 
-  const mapTotalList = (func) => appli.slice(2, appli.length).map(func);
+  const mapTotalList = appli.slice(2, appli.length);
 
   const openDetailPack = () => {
     history.push(`/packs/detail/${pack._id}`);
@@ -160,11 +160,11 @@ const PackCard = ({ pack, isUserPack }) => {
           }
         />
         <CardContent>
-          {mapList((app) => (
+          {mapList.map((app) => (
             <AppPacksCard key={app.identification} app={app} />
           ))}
           <Collapse in={showMore} unmountOnExit>
-            {mapTotalList((app) => (
+            {mapTotalList.map((app) => (
               <AppPacksCard key={app.identification} app={app} />
             ))}
           </Collapse>
