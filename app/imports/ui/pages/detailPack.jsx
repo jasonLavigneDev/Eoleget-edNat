@@ -10,6 +10,8 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { IconButton } from '@mui/material';
 
 import i18n from 'meteor/universe:i18n';
+import Tooltip from '@mui/material/Tooltip';
+import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -18,6 +20,7 @@ import AppPacksCard from '../components/packsCard/appPacksCard';
 import Packs from '../../api/packs/packs';
 import theme from '../themes/light';
 import { generateJSONFile } from '../utils';
+import { useAppContext } from '../contexts/context';
 
 // Styles CSS //
 const containerStyle = {
@@ -73,6 +76,11 @@ const buttonJsonContainerStyle = {
   justifyContent: 'center',
   alignItems: 'center',
 };
+const titleStyle = {
+  padding: 3,
+  display: 'flex',
+  flexDirection: 'row',
+};
 // End styles //
 
 function DetailPack({ pack, ready }) {
@@ -89,6 +97,7 @@ function DetailPack({ pack, ready }) {
   const CMD_JSON = 3;
 
   const apps = pack.applications;
+  const [{ userId }] = useAppContext();
   const [displayCmd, setDisplayCmd] = useState(CMD_BATCH);
   const id = Math.floor(Math.random() * 9999);
   const fileName = `eoleget-winstall-${id}.json`;
@@ -133,13 +142,26 @@ function DetailPack({ pack, ready }) {
     generateJSONFile(apps, fileName);
   };
 
+  const handleEditButton = () => {
+    history.push(`/packs/edit/${pack._id}`);
+  };
+
   return (
     <Fade in>
       <Container sx={containerStyle}>
         <Paper sx={paperStyle}>
-          <Typography variant="h4" component="div">
-            {i18n.__('pages.detailPack.details')}
-          </Typography>
+          <div style={titleStyle}>
+            <Typography variant="h4" component="div">
+              {i18n.__('pages.detailPack.details')}
+            </Typography>
+            {pack.owner === userId ? (
+              <Tooltip title={i18n.__('components.PacksCard.editPack')}>
+                <IconButton onClick={handleEditButton}>
+                  <EditIcon />
+                </IconButton>
+              </Tooltip>
+            ) : null}
+          </div>
           <div style={divMainContentStyle}>
             <Typography variant="h6" component="div">
               {pack.name}
