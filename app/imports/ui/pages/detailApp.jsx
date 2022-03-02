@@ -121,7 +121,7 @@ const detailApp = ({ app, ready }) => {
     }
   };
 
-  const handleUrlButton = () => window.open(app.url, '_self');
+  const handleUrlButton = () => window.open(app.url, '_blank');
 
   const generateCommand = (v) => {
     let c = '';
@@ -160,12 +160,16 @@ const detailApp = ({ app, ready }) => {
                   <ListVersion versions={app.versions} app={app} setCommand={setCommand} />
                 )}
               </div>
-              <span style={iconSpanStyle}>
-                <IconButton title={i18n.__('pages.detailApp.redirect')} onClick={handleUrlButton} disabled={!app.url}>
-                  <LanguageIcon />
-                </IconButton>
-                <p>{i18n.__('pages.detailApp.redirectLabel')}</p>
-              </span>
+              {app.url ? (
+                <span style={iconSpanStyle}>
+                  <IconButton title={i18n.__('pages.detailApp.redirect')} onClick={handleUrlButton} color="primary">
+                    <LanguageIcon />
+                    <Typography variant="body1" sx={{ textDecoration: 'underline' }}>
+                      {app.url}
+                    </Typography>
+                  </IconButton>
+                </span>
+              ) : null}
               <span style={iconSpanStyle}>
                 <Button
                   title={i18n.__('pages.detailApp.download')}
