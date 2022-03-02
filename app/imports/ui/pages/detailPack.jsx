@@ -93,8 +93,6 @@ function DetailPack({ pack, ready }) {
   const id = Math.floor(Math.random() * 9999);
   const fileName = `eoleget-winstall-${id}.json`;
 
-  const mapList = (func) => apps.map(func);
-
   const generateCommand = () => {
     let str = '';
     if (displayCmd === CMD_BATCH) {
@@ -205,7 +203,7 @@ function DetailPack({ pack, ready }) {
               ) : null}
             </Paper>
 
-            {mapList((app) => (
+            {apps.map((app) => (
               <AppPacksCard key={app.identification} app={app} />
             ))}
             <div style={divButtonStyle}>

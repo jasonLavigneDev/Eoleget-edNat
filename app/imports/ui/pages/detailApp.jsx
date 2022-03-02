@@ -121,8 +121,6 @@ const detailApp = ({ app, ready }) => {
     }
   };
 
-  const mapList = (func) => app.tags.map(func);
-
   const handleUrlButton = () => window.open(app.url, '_self');
 
   const generateCommand = (v) => {
@@ -193,7 +191,7 @@ const detailApp = ({ app, ready }) => {
                 <p>{i18n.__('pages.detailApp.Tags')}</p>
               </span>
               <span style={iconSpanTagStyle}>
-                {mapList((tag) => (
+                {app.tags.map((tag) => (
                   <Button key={tag} variant="outlined">
                     {tag}
                   </Button>
