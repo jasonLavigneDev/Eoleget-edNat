@@ -71,8 +71,13 @@ Meteor.methods({
   },
 });
 
-Meteor.publish('applications.table.all', function publishApps() {
-  return Applications.find({});
+Meteor.publish('applications.table.all', function publishApps({ search }) {
+  if (search.startsWith('#')) {
+    const tags = search.slice(1).split(' ');
+    return Applications.find({ tags: { $all: tags } });
+  }
+  const query = queryAllApplications({ search });
+  return Applications.find(query, {});
 });
 
 Meteor.publish('applications.pack', function publishPacksApps({ packAppli }) {

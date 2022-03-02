@@ -105,7 +105,8 @@ describe('packs', function () {
     describe('applications.table.all', function () {
       it('sends all public fields for all applications', function (done) {
         const collector = new PublicationCollector({ userId });
-        collector.collect('applications.table.all', {}, (collections) => {
+        const search = '';
+        collector.collect('applications.table.all', { search }, (collections) => {
           assert.equal(collections.applications.length, 2);
           done();
         });
