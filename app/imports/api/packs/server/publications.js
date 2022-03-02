@@ -89,11 +89,45 @@ const queryAllPackOwned = ({ search, userId }) => {
   };
 };
 
-Meteor.publish('packs.table.all', function publishPacks() {
-  return Packs.find({ isPublic: true });
+Meteor.publish('packs.table.all', function publishPacks({ search }) {
+  if (search.startsWith('@')) {
+    const name = search.slice(1);
+    const regex = new RegExp(name, 'i');
+    return Packs.find({
+      isPublic: true,
+      $or: [
+        {
+          ownerName: { $regex: regex },
+        },
+      ],
+    });
+  }
+  const regex = new RegExp(search, 'i');
+  return Packs.find({
+    isPublic: true,
+    $or: [
+      {
+        name: { $regex: regex },
+      },
+      {
+        description: { $regex: regex },
+      },
+    ],
+  });
 });
-Meteor.publish('packs.table.user', function publishOwnedPacks({ userId }) {
-  return Packs.find({ owner: userId });
+Meteor.publish('packs.table.user', function publishOwnedPacks({ search, userId }) {
+  const regex = new RegExp(search, 'i');
+  return Packs.find({
+    owner: userId,
+    $or: [
+      {
+        name: { $regex: regex },
+      },
+      {
+        description: { $regex: regex },
+      },
+    ],
+  });
 });
 
 Meteor.methods({

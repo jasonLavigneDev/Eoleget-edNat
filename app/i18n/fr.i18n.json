@@ -112,7 +112,8 @@
       "storeTitle": "Magasin d'applications",
       "searchApp": "Chercher une application",
       "noStore": "Il n'y a aucune application à afficher",
-      "searchText": "Quelle application cherchez-vous ?"
+      "searchText": "Quelle application cherchez-vous ?",
+      "searchHelp": "Cherchez une application par son nom ou utilisez # pour rechercher par tags"
     },
     "Packs": {
       "packsStoreTitle": "Magasin des packs",
@@ -257,7 +258,9 @@
       "searchingApp": "Quelle app cherchez vous ?",
       "searchingPack": "Quel pack cherchez vous ?",
       "searchingError": "Que cherchez vous ?",
-      "helperText": "Résultat pour la recherche"
+      "helperText": "Résultat pour la recherche",
+      "helperTextByTags": "Résultat pour la recherche par tags",
+      "helperTextByOwner": "Résultat pour la recherche par propriétaire"
     },
     "AppList": {
       "application": "Application",

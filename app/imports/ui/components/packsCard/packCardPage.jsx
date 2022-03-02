@@ -119,9 +119,15 @@ function packCardPage({ isUserPack }) {
       sx={textfieldStyle}
       helperText={
         packPage.search ? (
-          <span style={spanHelperText}>
-            {i18n.__('components.Search.helperText')} &quot;{packPage.search}&quot;
-          </span>
+          packPage.search.startsWith('@') ? (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperTextByOwner')} &quot;{packPage.search.slice(1)}&quot;
+            </span>
+          ) : (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperText')} &quot;{packPage.search}&quot;
+            </span>
+          )
         ) : (
           ''
         )

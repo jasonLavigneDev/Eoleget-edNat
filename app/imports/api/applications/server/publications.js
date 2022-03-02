@@ -9,7 +9,6 @@ import Applications from '../applications';
 const queryAllApplications = ({ search }) => {
   const regex = new RegExp(search, 'i');
   return {
-    type: { $ne: 10 },
     $or: [
       {
         nom: { $regex: regex },
@@ -18,6 +17,12 @@ const queryAllApplications = ({ search }) => {
         description: { $regex: regex },
       },
     ],
+  };
+};
+
+const queryAllApplicationsByTags = ({ tags }) => {
+  return {
+    tags: { $all: tags },
   };
 };
 
@@ -31,7 +36,12 @@ FindFromPublication.publish('applications.all', function applicationsAll({ page,
   }
 
   try {
-    const query = queryAllApplications({ search });
+    let query;
+    if (search.startsWith('#')) {
+      const finalSearch = search.slice(1);
+      const tags = finalSearch.split(' ');
+      query = queryAllApplicationsByTags({ tags });
+    } else query = queryAllApplications({ search });
 
     return Applications.find(query, {
       fields: Applications.publicFields,
@@ -46,9 +56,14 @@ FindFromPublication.publish('applications.all', function applicationsAll({ page,
 });
 
 Meteor.methods({
-  'get_applications.all_count': function getApplicationsAllCount({ nodrafts, search, userId }) {
+  'get_applications.all_count': function getApplicationsAllCount({ nodrafts, search }) {
     try {
-      const query = queryAllApplications({ nodrafts, search, userId: userId || this.userId });
+      let query;
+      if (search.startsWith('#')) {
+        const finalSearch = search.slice(1);
+        const tags = finalSearch.split(' ');
+        query = queryAllApplicationsByTags({ tags });
+      } else query = queryAllApplications({ nodrafts, search });
       return Applications.find(query).count();
     } catch (error) {
       return 0;

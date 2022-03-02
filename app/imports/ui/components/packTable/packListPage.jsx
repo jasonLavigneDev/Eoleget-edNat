@@ -39,11 +39,11 @@ function packListPage({ isUserPack }) {
 
   const packs = useTracker(() => {
     if (isUserPack) {
-      Meteor.subscribe('packs.table.user', { userId });
+      Meteor.subscribe('packs.table.user', { search, userId });
       const data = Packs.find({ owner: userId }).fetch();
       return data;
     }
-    Meteor.subscribe('packs.table.all');
+    Meteor.subscribe('packs.table.all', { search });
     const data = Packs.find({ isPublic: true }).fetch();
     return data;
   });
@@ -83,29 +83,6 @@ function packListPage({ isUserPack }) {
     }
   };
 
-  const filterPack = (pack) => {
-    if (isUserPack) {
-      let searchText;
-      searchText = pack.name + pack.description || '';
-      searchText = searchText.toLowerCase();
-      if (!search) return true;
-      return searchText.indexOf(search.toLowerCase()) > -1;
-    }
-    let searchText;
-    if (search.startsWith('@')) searchText = pack.ownerName || '';
-    else searchText = pack.name + pack.description || '';
-    searchText = searchText.toLowerCase();
-    if (!search) return true;
-
-    if (search.startsWith('@')) {
-      const finalSearch = search.slice(1);
-      return searchText.indexOf(finalSearch.toLowerCase()) > -1;
-    }
-    return searchText.indexOf(search.toLowerCase()) > -1;
-  };
-
-  const mapList = (func) => packs.filter((pack) => filterPack(pack)).map(func);
-
   const searchField = (
     <TextField
       margin="normal"
@@ -122,9 +99,15 @@ function packListPage({ isUserPack }) {
       inputRef={searchRef}
       helperText={
         packPage.search ? (
-          <span style={spanHelperText}>
-            {i18n.__('components.Search.helperText')} &quot;{packPage.search}&quot;
-          </span>
+          packPage.search.startsWith('@') ? (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperTextByOwner')} &quot;{packPage.search.slice(1)}&quot;
+            </span>
+          ) : (
+            <span style={spanHelperText}>
+              {i18n.__('components.Search.helperText')} &quot;{packPage.search}&quot;
+            </span>
+          )
         ) : (
           ''
         )
@@ -155,7 +138,7 @@ function packListPage({ isUserPack }) {
       <div style={divMainStyle}>
         <div style={divPackTitleContainerStyle}>
           {searchField}
-          <PackList packs={mapList((pack) => pack)} isUserPack={isUserPack} />
+          <PackList packs={packs.map((pack) => pack)} isUserPack={isUserPack} />
         </div>
       </div>
     </Fade>
