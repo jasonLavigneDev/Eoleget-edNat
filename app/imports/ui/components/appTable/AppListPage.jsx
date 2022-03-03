@@ -9,6 +9,8 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
+import { Typography, Paper } from '@mui/material';
+
 import { useAppContext } from '../../contexts/context';
 import AppList from './AppList';
 import Applications from '../../../api/applications/applications';
@@ -157,7 +159,15 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           {searchField}
-          <AppList applications={applications} cart={cart} isModal={modal} />
+          {applications.length !== 0 ? (
+            <AppList applications={applications} cart={cart} isModal={modal} />
+          ) : (
+            <Paper sx={{ padding: 6 }}>
+              <Typography variant="h5" align="center">
+                {i18n.__('pages.Store.noResult')}
+              </Typography>
+            </Paper>
+          )}
         </div>
       </div>
     </Fade>

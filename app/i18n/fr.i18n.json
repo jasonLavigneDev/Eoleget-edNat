@@ -113,14 +113,16 @@
       "searchApp": "Chercher une application",
       "noStore": "Il n'y a aucune application à afficher",
       "searchText": "Quelle application cherchez-vous ?",
-      "searchHelp": "Cherchez une application par son nom ou utilisez # pour rechercher par tags"
+      "searchHelp": "Cherchez une application par son nom ou utilisez # pour rechercher par tags",
+      "noResult": "Aucune application ne correspond à la recherche"
     },
     "Packs": {
       "packsStoreTitle": "Magasin des packs",
       "packsSearchApp": "Chercher un pack",
       "searchText": "Quel pack cherchez-vous ?",
       "searchHelp": "Cherchez un pack par son nom ou utilisez @ pour rechercher par propriétaire",
-      "searchPack": "Chercher un pack"
+      "searchPack": "Chercher un pack",
+      "noResult": "Aucun pack ne correspond à la recherche"
     },
     "UserPacks": {
       "userPacksTitle": "Mes packs",

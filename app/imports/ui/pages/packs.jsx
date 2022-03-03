@@ -34,6 +34,7 @@ const spanIconListStyle = {
 
 function Packs() {
   const [showModeList, setModeList] = useState(false);
+  const [total, setTotal] = useState(0);
 
   const cart = useState(() => {
     const saved = localStorage.getItem('cart');
@@ -54,7 +55,7 @@ function Packs() {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           <Typography variant="h4" component="div">
-            {i18n.__('pages.Packs.packsStoreTitle')}
+            {i18n.__('pages.Packs.packsStoreTitle')}({total})
           </Typography>
           <span style={spanIconListStyle}>
             <Tooltip title="Mode liste">
@@ -77,7 +78,7 @@ function Packs() {
             </Tooltip>
           </span>
         </div>
-        {!showModeList ? <PackCardPage /> : <PackListPage />}
+        {!showModeList ? <PackCardPage setTotal={setTotal} /> : <PackListPage setTotal={setTotal} />}
       </div>
     </Fade>
   );
