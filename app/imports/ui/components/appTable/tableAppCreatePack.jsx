@@ -21,7 +21,6 @@ import AppListPage from './AppListPage';
 
 import EnhancedTableHead from './tableHeadAppPack';
 import Applications from '../../../api/applications/applications';
-import Spinner from '../system/Spinner';
 import ListVersionEdit from '../version/listVersionEdit';
 
 const modalStyle = {
@@ -42,7 +41,7 @@ const buttonCloseStyle = {
 };
 
 function TableAppCreatePack({ ready }) {
-  if (!ready) return <Spinner full />;
+  if (!ready) return null;
 
   const cart = React.useState(() => {
     // getting stored value
@@ -236,7 +235,7 @@ TableAppCreatePack.propTypes = {
 };
 
 export default withTracker(() => {
-  const subApps = Meteor.subscribe('applications.table.all');
+  const subApps = Meteor.subscribe('applications.table.all', { search: '' });
   const ready = subApps.ready();
   return {
     ready,

@@ -48,8 +48,6 @@ const paperStyle = {
 // End Style //
 
 const EditPackPage = ({ pack, ready }) => {
-  if (!ready) return <Spinner full />;
-
   const history = useHistory();
   const [name, setName] = useState(pack.name);
   const [isPublic, setIsPublic] = useState(pack.isPublic);
