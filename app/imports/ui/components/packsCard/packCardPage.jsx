@@ -11,8 +11,9 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
-import PackCard from './packCard';
+import { Typography } from '@mui/material';
 
+import PackCard from './packCard';
 import { useAppContext } from '../../contexts/context';
 import { usePagination } from '../../../api/utils/hooks';
 
@@ -47,7 +48,7 @@ const spanHelperText = {
 
 const ITEM_PER_PAGE = 9;
 
-function packCardPage({ isUserPack }) {
+function packCardPage({ isUserPack, setTotal }) {
   const [{ packPage, userId }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
   const { changePage, page, items, total } = usePagination(
@@ -58,6 +59,7 @@ function packCardPage({ isUserPack }) {
     { sort: { name: 1 } },
     ITEM_PER_PAGE,
   );
+  setTotal(total);
 
   const handleChangePage = (event, value) => {
     changePage(value);
@@ -159,11 +161,17 @@ function packCardPage({ isUserPack }) {
         <Paper>
           {searchField}
           <div style={divCardContainerStyle}>
-            <span style={divCardContainerStyle}>
-              {items.map((pack) => (
-                <PackCard key={pack._id} pack={pack} isUserPack={isUserPack} />
-              ))}
-            </span>
+            {total !== 0 ? (
+              <span style={divCardContainerStyle}>
+                {items.map((pack) => (
+                  <PackCard key={pack._id} pack={pack} isUserPack={isUserPack} />
+                ))}
+              </span>
+            ) : (
+              <div style={{ padding: 50 }}>
+                <Typography variant="h5">{i18n.__('pages.Packs.noResult')}</Typography>
+              </div>
+            )}
           </div>
           {total > ITEM_PER_PAGE && (
             <Grid sx={gridPaginationStyle}>
@@ -178,10 +186,12 @@ function packCardPage({ isUserPack }) {
 
 packCardPage.defaultProps = {
   isUserPack: false,
+  setTotal: () => {},
 };
 
 packCardPage.propTypes = {
   isUserPack: PropTypes.bool,
+  setTotal: PropTypes.func,
 };
 
 export default packCardPage;

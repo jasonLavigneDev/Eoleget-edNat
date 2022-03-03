@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
+import { Typography } from '@mui/material';
 
 import { useAppContext } from '../../contexts/context';
 import { usePagination } from '../../../api/utils/hooks';
@@ -160,23 +161,27 @@ function AppCardPage({ cart, setTotal }) {
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <div>
-          <Paper>
-            {searchField}
-            <div style={divCardContainerStyle}>
+        <Paper>
+          {searchField}
+          <div style={divCardContainerStyle}>
+            {total !== 0 ? (
               <span style={divCardContainerStyle}>
                 {items.map((app) => (
                   <AppCard key={app.identification} app={app} cart={cart} />
                 ))}
               </span>
-              {total > ITEM_PER_PAGE && (
-                <Grid sx={gridPaginationStyle}>
-                  <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
-                </Grid>
-              )}
-            </div>
-          </Paper>
-        </div>
+            ) : (
+              <div style={{ padding: 50 }}>
+                <Typography variant="h5">{i18n.__('pages.Store.noResult')}</Typography>
+              </div>
+            )}
+          </div>
+          {total > ITEM_PER_PAGE && (
+            <Grid sx={gridPaginationStyle}>
+              <Pagination count={Math.ceil(total / ITEM_PER_PAGE)} page={page} onChange={handleChangePage} />
+            </Grid>
+          )}
+        </Paper>
       </div>
     </Fade>
   );

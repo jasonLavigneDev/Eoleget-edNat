@@ -34,13 +34,15 @@ const spanIconListStyle = {
 function PackPage() {
   const [showModeList, setModeList] = useState(false);
 
+  const [total, setTotal] = useState(0);
+
   return (
     <Fade in>
       <div style={divMainStyle}>
         <div style={divPackTitleContainerStyle}>
           <div style={divPackTitleContainerStyle}>
             <Typography variant="h4" component="div">
-              {i18n.__('pages.UserPacks.userPacksTitle')}
+              {i18n.__('pages.UserPacks.userPacksTitle')}({total})
             </Typography>
           </div>
           <span style={spanIconListStyle}>
@@ -64,7 +66,11 @@ function PackPage() {
             </Tooltip>
           </span>
         </div>
-        {!showModeList ? <PackCardPage isUserPack /> : <PackListPage isUserPack />}
+        {!showModeList ? (
+          <PackCardPage isUserPack setTotal={setTotal} />
+        ) : (
+          <PackListPage isUserPack setTotal={setTotal} />
+        )}
       </div>
     </Fade>
   );

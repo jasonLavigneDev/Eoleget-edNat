@@ -10,8 +10,9 @@ import { useTracker } from 'meteor/react-meteor-data';
 import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import PackList from '../packsCard/packList';
+import { Typography, Paper } from '@mui/material';
 
+import PackList from '../packsCard/packList';
 import { useAppContext } from '../../contexts/context';
 
 import Packs from '../../../api/packs/packs';
@@ -33,7 +34,7 @@ const spanHelperText = {
 // End styles //
 
 // eslint-disable-next-line no-unused-vars
-function packListPage({ isUserPack }) {
+function packListPage({ isUserPack, setTotal }) {
   const [{ packPage, userId }, dispatch] = useAppContext();
   const { search = '', searchToggle = false } = packPage;
 
@@ -138,7 +139,15 @@ function packListPage({ isUserPack }) {
       <div style={divMainStyle}>
         <div style={divPackTitleContainerStyle}>
           {searchField}
-          <PackList packs={packs} isUserPack={isUserPack} />
+          {packs.length !== 0 ? (
+            <PackList packs={packs} isUserPack={isUserPack} />
+          ) : (
+            <Paper sx={{ padding: 6 }}>
+              <Typography variant="h5" align="center">
+                {i18n.__('pages.Packs.noResult')}
+              </Typography>
+            </Paper>
+          )}
         </div>
       </div>
     </Fade>
@@ -147,10 +156,12 @@ function packListPage({ isUserPack }) {
 
 packListPage.defaultProps = {
   isUserPack: false,
+  setTotal: () => {},
 };
 
 packListPage.propTypes = {
   isUserPack: PropTypes.bool,
+  setTotal: PropTypes.func,
 };
 
 export default packListPage;

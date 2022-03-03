@@ -113,14 +113,16 @@
       "searchApp": "Search for an application",
       "noStore": "There are no applications to display",
       "searchText": "Which application are you looking for?",
-      "searchHelp": "Search app by name or use # for search by tags"
+      "searchHelp": "Search app by name or use # for search by tags",
+      "noResult": "No applications match your search"
     },
     "Packs": {
       "packsStoreTitle": "Packs store",
       "packsSearchApp": "Search for a pack",
       "searchText": "Which pack are you looking for ?",
       "searchHelp": "Search pack by name or use @ for search by owner",
-      "searchPack": "Search Pack"
+      "searchPack": "Search Pack",
+      "noResult": "No packs match the search"
     },
     "UserPacks": {
       "userPacksTitle": "My Packs",
