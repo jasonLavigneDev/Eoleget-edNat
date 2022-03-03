@@ -166,7 +166,7 @@
       "packName": "Nom du pack",
       "packDescription": "Description du pack",
       "color": "Couleur du pack",
-      "edit": "Editer",
+      "edit": "Enregistrer",
       "back": "Retour",
       "updateSuccess": "Pack mis à jour",
       "packPublic": "Pack public",
