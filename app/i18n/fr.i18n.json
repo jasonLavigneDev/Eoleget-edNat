@@ -29,6 +29,7 @@
       "duplicateName": "Un pack possède déjà ce nom.",
       "packAlreadyExist": "Ce pack existe déjà.",
       "nameAlreadyTaken": "Ce nom est déjà pris",
+      "notEnoughPack": "Un pack nécessite au moins deux applications.",
       "unknownPack": "Pack inconnu",
       "packNotFound": "Pack introuvable",
       "needToBeOwner": "Vous devez être propriétaire de ce pack.",

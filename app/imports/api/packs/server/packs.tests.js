@@ -47,8 +47,18 @@ describe('packs', function () {
         license: 'MIT',
         url: 'https://testappli.com',
       };
+      const appli2 = {
+        nom: 'Test Appli 2',
+        identification: 'TestAppli2',
+        versions: ['1.0.0', '2.0.0'],
+        description: 'Test Application 2',
+        tags: ['Tag1', 'Tag2'],
+        license: 'MIT',
+        url: 'https://testappli2.com',
+      };
 
       Applications.insert(appli1);
+      Applications.insert(appli2);
 
       const app1 = {
         nom: appli1.nom,
@@ -56,8 +66,14 @@ describe('packs', function () {
         version: appli1.versions[0],
         description: appli1.description,
       };
+      const app2 = {
+        nom: appli2.nom,
+        identification: appli2.identification,
+        version: appli2.versions[0],
+        description: appli2.description,
+      };
 
-      const apps = [app1];
+      const apps = [app1, app2];
       const timeElapsed = Date.now();
       const today = new Date(timeElapsed);
       const date = today.toUTCString();
@@ -217,6 +233,38 @@ describe('packs', function () {
           },
           Meteor.Error,
           /api.packs.emptyPack/,
+        );
+      });
+      it('user can not create a pack with only one app', function () {
+        assert.throw(
+          () => {
+            const timeElapsed = Date.now();
+            const today = new Date(timeElapsed);
+            const creationDate = today.toUTCString();
+
+            const appli1 = {
+              nom: 'Test Appli',
+              identification: 'TestAppli',
+              version: '2.0.0',
+              description: 'Test Application',
+            };
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test',
+                description: 'Test Pack',
+                applications: [appli1],
+                ownerName: email,
+                creationDate,
+                isValidated: true,
+                color: 'purple',
+                isPublic: true,
+              },
+            );
+          },
+          Meteor.Error,
+          /api.packs.notEnoughApp/,
         );
       });
       it('user can not create pack with name already taken', function () {
@@ -402,7 +450,7 @@ describe('packs', function () {
           {
             _id: pack._id,
             name: 'Test2',
-            applications: [appli1],
+            applications: [appli1, appli2],
             description: 'Description modified',
             color: 'yellow',
             isPublic: true,
@@ -454,10 +502,10 @@ describe('packs', function () {
               {
                 _id: pack._id,
                 name: 'Test2',
-                applications: [appli1],
+                applications: [appli1, appli2],
                 description: 'Description modified',
                 color: 'yellow',
-                isPublic: true,
+                isPublic: false,
               },
             );
           },
@@ -518,6 +566,52 @@ describe('packs', function () {
           /api.packs.emptyPack/,
         );
       });
+      it('user can not update pack with only one app', function () {
+        assert.throw(
+          () => {
+            const timeElapsed = Date.now();
+            const today = new Date(timeElapsed);
+            const creationDate = today.toUTCString();
+
+            const appli1 = {
+              nom: 'Test Appli',
+              identification: 'TestAppli',
+              version: '2.0.0',
+              description: 'Test Application',
+            };
+
+            createPack._execute(
+              { userId },
+              {
+                name: 'Test',
+                description: 'Test Pack',
+                applications: [appli1],
+                creationDate,
+                ownerName: emailOwner,
+                isValidated: true,
+                color: 'purple',
+                isPublic: true,
+              },
+            );
+
+            const pack = Packs.findOne({ name: 'Test' });
+            assert.equal(pack.name, 'Test');
+            updatePack._execute(
+              { userId },
+              {
+                _id: pack._id,
+                name: 'Test2',
+                applications: [],
+                description: 'Description modified',
+                color: 'yellow',
+                isPublic: true,
+              },
+            );
+          },
+          Meteor.Error,
+          /api.packs.notEnoughApp/,
+        );
+      });
       it('user can not update pack with name already taken', function () {
         assert.throw(
           () => {
@@ -558,7 +652,7 @@ describe('packs', function () {
               {
                 name: 'Test2',
                 description: 'Test Pack 2',
-                applications: [appli1],
+                applications: [appli1, appli2],
                 creationDate,
                 ownerName: emailOwner,
                 isValidated: true,
