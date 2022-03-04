@@ -27,6 +27,7 @@
         "isPublic": "Is Public"
       },
       "duplicateName": "A pack already have this name",
+      "notEnoughPack": "Pack needs at least two applications",
       "packAlreadyExist": "This pack already exists",
       "nameAlreadyTaken": "This name is already taken",
       "unknownPack": "Unkown pack",
