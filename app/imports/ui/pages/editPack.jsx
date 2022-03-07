@@ -20,6 +20,7 @@ import Spinner from '../components/system/Spinner';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import Packs from '../../api/packs/packs';
 import TableAppPack from '../components/appTable/tableAppEditPack';
+import PackIconPicker from '../components/packs/PackIconPicker';
 
 // Style CSS //
 const containerStyle = {
@@ -48,11 +49,13 @@ const paperStyle = {
 // End Style //
 
 const EditPackPage = ({ pack, ready }) => {
+  const [values, setValues] = React.useState(pack.description ? pack.description.length : 0);
   const history = useHistory();
   const [name, setName] = useState(pack.name);
   const [isPublic, setIsPublic] = useState(pack.isPublic);
   const [description, setDescription] = useState(pack.description);
   const apps = pack.applications;
+  const [icon, setIcon] = useState(pack.icon || '/images/packs/packs-000.png');
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
@@ -62,6 +65,7 @@ const EditPackPage = ({ pack, ready }) => {
 
   const onUpdateDescription = (event) => {
     setDescription(event.target.value);
+    setValues(event.target.value.length);
   };
 
   const goBack = () => {
@@ -87,7 +91,7 @@ const EditPackPage = ({ pack, ready }) => {
       const color = JSON.parse(localStorage.getItem('color'));
       Meteor.call(
         'packs.updatePack',
-        { _id: pack._id, name, applications: finalApps, description, color, isPublic },
+        { _id: pack._id, name, applications: finalApps, description, color, icon, isPublic },
         (err) => {
           if (err) msg.error(err.reason);
           else msg.success(i18n.__('pages.packEditPage.updateSuccess'));
@@ -112,30 +116,36 @@ const EditPackPage = ({ pack, ready }) => {
         </Typography>
         <Paper sx={paperStyle}>
           <form noValidate autoComplete="off">
-            <TextField
-              fullWidth
-              margin="normal"
-              id="packName"
-              label={i18n.__('pages.packEditPage.packName')}
-              name="packName"
-              type="text"
-              variant="outlined"
-              value={name}
-              onChange={onUpdateName}
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              id="packDescription"
-              label={i18n.__('pages.packEditPage.packDescription')}
-              name="packDescription"
-              type="text"
-              variant="outlined"
-              multiline
-              value={description}
-              inputProps={{ maxLength: 512 }}
-              onChange={onUpdateDescription}
-            />
+            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 20 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', width: '100%', margin: 'auto', marginRight: 40 }}>
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  id="packName"
+                  label={i18n.__('pages.packEditPage.packName')}
+                  name="packName"
+                  type="text"
+                  variant="outlined"
+                  value={name}
+                  onChange={onUpdateName}
+                />
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  id="packDescription"
+                  label={i18n.__('pages.packEditPage.packDescription')}
+                  name="packDescription"
+                  type="text"
+                  variant="outlined"
+                  multiline
+                  value={description}
+                  inputProps={{ maxLength: 512 }}
+                  helperText={`${values}/512`}
+                  onChange={onUpdateDescription}
+                />
+              </div>
+              <PackIconPicker packIcon={icon} onAssignIcon={setIcon} />
+            </div>
             <FormControlLabel
               control={<Checkbox />}
               label={i18n.__('pages.packEditPage.packPublic')}

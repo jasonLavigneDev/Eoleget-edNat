@@ -13,6 +13,7 @@ function _createPack({
   ownerName,
   description,
   color,
+  icon,
   isPublic,
 }) {
   try {
@@ -25,6 +26,7 @@ function _createPack({
       ownerName,
       description,
       color,
+      icon,
       isPublic,
     });
   } catch (error) {
@@ -36,9 +38,9 @@ function _createPack({
   }
 }
 
-function _updatePack(_id, name, applications, description, color, isPublic) {
+function _updatePack(_id, name, applications, description, color, icon, isPublic) {
   try {
-    Packs.update(_id, { $set: { name, applications, description, color, isPublic } });
+    Packs.update(_id, { $set: { name, applications, description, color, icon, isPublic } });
     return null;
   } catch (error) {
     if (error.code === 11000) {
@@ -73,11 +75,12 @@ export const createPack = new ValidatedMethod({
     isValidated: { type: Boolean, label: getLabel('api.packs.labels.isValidated') },
     description: { type: String, label: getLabel('api.packs.labels.description') },
     color: { type: String, label: getLabel('api.packs.labels.color') },
+    icon: { type: String, label: getLabel('api.packs.labels.icon') },
     isPublic: { type: Boolean, label: getLabel('api.packs.labels.isPublic') },
     ownerName: { type: String, label: getLabel('api.packs.labels.ownerName') },
   }).validator({ clean: true }),
 
-  run({ name, applications, creationDate, isValidated, ownerName, description, color, isPublic }) {
+  run({ name, applications, creationDate, isValidated, ownerName, description, color, icon, isPublic }) {
     const packWithName = Packs.findOne({ name });
     if (packWithName !== undefined) {
       throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
@@ -100,6 +103,7 @@ export const createPack = new ValidatedMethod({
       ownerName,
       description,
       color,
+      icon,
       isPublic,
     });
   },
@@ -150,10 +154,11 @@ export const updatePack = new ValidatedMethod({
     },
     description: { type: String, label: getLabel('api.packs.labels.description') },
     color: { type: String, label: getLabel('api.packs.labels.color') },
+    icon: { type: String, label: getLabel('api.packs.labels.icon') },
     isPublic: { type: Boolean, label: getLabel('api.packs.labels.isPublic') },
   }).validator({ clean: true }),
 
-  run({ _id, name, applications, description, color, isPublic }) {
+  run({ _id, name, applications, description, color, icon, isPublic }) {
     const pack = Packs.findOne(_id);
     if (pack === undefined) {
       throw new Meteor.Error('api.packs.unknownPack', i18n.__('api.packs.unknownPack'));
@@ -179,7 +184,7 @@ export const updatePack = new ValidatedMethod({
       throw new Meteor.Error('api.packs.updatePack.notPermitted', i18n.__('api.packs.needToBeOwner'));
     }
 
-    _updatePack(_id, name, applications, description, color, isPublic);
+    _updatePack(_id, name, applications, description, color, icon, isPublic);
     return null;
   },
 });

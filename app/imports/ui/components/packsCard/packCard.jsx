@@ -22,6 +22,7 @@ import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 import { generateGradiant } from '../../utils';
+import PackIcon from '../packs/PackIcon';
 
 // Styles CSS //
 const divCardContainerStyle = {
@@ -40,12 +41,20 @@ const expendMoreStyle = {
 };
 const iconButtonStyle = {
   color: 'white',
+  marginLeft: -1,
 };
 const typographieHeaderStyle = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
+  margin: 'auto',
+  paddingLeft: 10,
   width: '18rem',
-  paddingLeft: 20,
+};
+const typographieSubheaderStyle = {
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  width: '18rem',
+  marginLeft: 50,
 };
 // End Style //
 
@@ -116,6 +125,7 @@ const PackCard = ({ pack, isUserPack }) => {
                 horizontal: 'left',
               }}
             >
+              <PackIcon icon={pack.icon} />
               <Typography variant="h6" style={typographieHeaderStyle}>
                 {pack.name}
               </Typography>
@@ -123,7 +133,7 @@ const PackCard = ({ pack, isUserPack }) => {
           }
           subheader={
             !isUserPack ? (
-              <Typography style={typographieHeaderStyle} variant="body1">
+              <Typography style={typographieSubheaderStyle} variant="body1">
                 {pack.ownerName}
               </Typography>
             ) : null

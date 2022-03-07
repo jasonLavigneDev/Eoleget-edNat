@@ -52,6 +52,7 @@ class Pack():
         self.applications = applications
         self.isValidated = True
         self.color = getRandomColor()
+        self.icon = ""
         self.isPublic = bool(random.getrandbits(1))
         self.creationDate = datetime.datetime.utcnow()
         self.owner = str(owner)
@@ -70,7 +71,7 @@ class Pack():
         collection = db['packs']
         
         mongoPack = {"_id": self._id, "name": self.name, "description": self.description, "applications": self.applications, "isValidated": self.isValidated, 
-                     "color": self.color, "isPublic": self.isPublic, "creationDate": self.creationDate, "owner": self.owner, "ownerName": self.ownerName}
+                     "color": self.color,"icon": self.icon, "isPublic": self.isPublic, "creationDate": self.creationDate, "owner": self.owner, "ownerName": self.ownerName}
         collection.insert_one(mongoPack)
         
         

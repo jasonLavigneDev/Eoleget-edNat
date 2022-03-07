@@ -84,6 +84,10 @@ function packListPage({ isUserPack, setTotal }) {
     }
   };
 
+  useEffect(() => {
+    setTotal(packs.length);
+  }, [packs.length]);
+
   const searchField = (
     <TextField
       margin="normal"

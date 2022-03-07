@@ -62,7 +62,9 @@ function AppCardPage({ cart, setTotal }) {
     ITEM_PER_PAGE,
   );
 
-  setTotal(total);
+  useEffect(() => {
+    setTotal(total);
+  }, [total]);
 
   const handleChangePage = (event, value) => {
     changePage(value);

@@ -86,6 +86,7 @@ describe('packs', function () {
         ownerName: email,
         description: 'test application',
         color: 'purple',
+        icon: 'image/icon.jpg',
         isPublic: true,
       });
     });
@@ -202,6 +203,7 @@ describe('packs', function () {
             creationDate,
             isValidated: true,
             color: 'purple',
+            icon: 'image/icon.jpg',
             isPublic: true,
           },
         );
@@ -227,6 +229,7 @@ describe('packs', function () {
                 creationDate,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -259,6 +262,7 @@ describe('packs', function () {
                 creationDate,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -298,6 +302,7 @@ describe('packs', function () {
                 ownerName: email,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -316,6 +321,7 @@ describe('packs', function () {
                 ownerName: email,
                 isValidated: true,
                 color: 'yellow',
+                icon: 'image.jpg',
                 isPublic: true,
               },
             );
@@ -355,6 +361,7 @@ describe('packs', function () {
             ownerName: emailOwner,
             isValidated: true,
             color: 'purple',
+            icon: 'image/icon.jpg',
             isPublic: true,
           },
         );
@@ -398,6 +405,7 @@ describe('packs', function () {
                 ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -439,6 +447,7 @@ describe('packs', function () {
             ownerName: emailOwner,
             isValidated: true,
             color: 'purple',
+            icon: 'image/icon.jpg',
             isPublic: true,
           },
         );
@@ -453,6 +462,7 @@ describe('packs', function () {
             applications: [appli1, appli2],
             description: 'Description modified',
             color: 'yellow',
+            icon: 'image.jpg',
             isPublic: true,
           },
         );
@@ -461,6 +471,7 @@ describe('packs', function () {
         assert.equal(packModified.name, 'Test2');
         assert.equal(packModified.description, 'Description modified');
         assert.equal(packModified.color, 'yellow');
+        assert.equal(packModified.icon, 'image.jpg');
       });
       it('user can not update not owned pack', function () {
         assert.throws(
@@ -491,6 +502,7 @@ describe('packs', function () {
                 ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -505,6 +517,7 @@ describe('packs', function () {
                 applications: [appli1, appli2],
                 description: 'Description modified',
                 color: 'yellow',
+                icon: 'image.jpg',
                 isPublic: false,
               },
             );
@@ -544,6 +557,7 @@ describe('packs', function () {
                 ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -558,6 +572,7 @@ describe('packs', function () {
                 applications: [],
                 description: 'Description modified',
                 color: 'yellow',
+                icon: 'image.jpg',
                 isPublic: true,
               },
             );
@@ -590,6 +605,7 @@ describe('packs', function () {
                 ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -604,6 +620,7 @@ describe('packs', function () {
                 applications: [],
                 description: 'Description modified',
                 color: 'yellow',
+                icon: 'image.jpg',
                 isPublic: true,
               },
             );
@@ -643,6 +660,7 @@ describe('packs', function () {
                 ownerName: emailOwner,
                 isValidated: true,
                 color: 'purple',
+                icon: 'image/icon.jpg',
                 isPublic: true,
               },
             );
@@ -657,6 +675,7 @@ describe('packs', function () {
                 ownerName: emailOwner,
                 isValidated: true,
                 color: 'yellow',
+                icon: 'image.jpg',
                 isPublic: true,
               },
             );
@@ -675,6 +694,7 @@ describe('packs', function () {
                 applications: [appli1],
                 description: 'Description modified',
                 color: 'yellow',
+                icon: 'image.jpg',
                 isPublic: true,
               },
             );

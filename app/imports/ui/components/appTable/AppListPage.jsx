@@ -77,7 +77,9 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       : localStorage.setItem('cart', JSON.stringify(cart[0]));
   }, [cart[0]]);
 
-  setTotal(applications.length);
+  useEffect(() => {
+    setTotal(applications.length);
+  }, [applications.length]);
 
   const updateGlobalState = (key, value) =>
     dispatch({
