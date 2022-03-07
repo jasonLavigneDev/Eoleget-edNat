@@ -49,6 +49,7 @@ const paperStyle = {
 // End Style //
 
 const EditPackPage = ({ pack, ready }) => {
+  if (!ready) return <Spinner full />;
   const [values, setValues] = React.useState(pack.description ? pack.description.length : 0);
   const history = useHistory();
   const [name, setName] = useState(pack.name);
@@ -106,9 +107,7 @@ const EditPackPage = ({ pack, ready }) => {
     setIsPublic(!isPublic);
   };
 
-  return !ready ? (
-    <Spinner full />
-  ) : (
+  return (
     <Fade in>
       <Container sx={containerStyle}>
         <Typography variant="h3" component="div">
