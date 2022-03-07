@@ -92,7 +92,6 @@ function DetailPack({ pack, ready }) {
   const goBack = () => {
     history.goBack();
   };
-  if (!ready) return <Spinner full />;
 
   const CMD_BATCH = 1;
   const CMD_POWERSHELL = 2;
