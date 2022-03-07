@@ -35,7 +35,7 @@ const UserAvatarGallery = ({ open, onClose, onSendImage }) => {
   const avImages = () => {
     const images = [];
     for (let i = 1; i < 257; i += 1) {
-      images.push(`/images/avatars/avatar-${i.toString().padStart(3, '0')}.svg`);
+      images.push(`/images/avatar/avatar-${i.toString().padStart(3, '0')}.svg`);
     }
     return images;
   };

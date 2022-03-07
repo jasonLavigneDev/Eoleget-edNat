@@ -59,7 +59,10 @@ function packCardPage({ isUserPack, setTotal }) {
     { sort: { name: 1 } },
     ITEM_PER_PAGE,
   );
-  setTotal(total);
+
+  useEffect(() => {
+    setTotal(total);
+  }, [total]);
 
   const handleChangePage = (event, value) => {
     changePage(value);

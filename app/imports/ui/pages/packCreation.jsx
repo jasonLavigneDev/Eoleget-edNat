@@ -17,6 +17,7 @@ import {
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import TableAppCreatePack from '../components/appTable/tableAppCreatePack';
 import { useAppContext } from '../contexts/context';
+import PackIconPicker from '../components/packs/PackIconPicker';
 
 // Style CSS //
 const containerStyle = {
@@ -49,6 +50,8 @@ function CreatePackPage() {
   const [isPublic, setIsPublic] = useState(false);
   const [{ user }] = useAppContext();
   const [description, setDescription] = useState('');
+  const [icon, setIcon] = useState('/images/packs/packs-000.png');
+  const [values, setValues] = React.useState(0);
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
@@ -58,6 +61,7 @@ function CreatePackPage() {
 
   const onUpdateDescription = (event) => {
     setDescription(event.target.value);
+    setValues(event.target.value.length);
   };
 
   const history = useHistory();
@@ -93,6 +97,7 @@ function CreatePackPage() {
           isValidated: true,
           description,
           color,
+          icon,
           isPublic,
           ownerName: user.username,
         },
@@ -125,29 +130,35 @@ function CreatePackPage() {
         </Typography>
         <Paper sx={paperStyle}>
           <form noValidate autoComplete="off">
-            <TextField
-              fullWidth
-              margin="normal"
-              id="packName"
-              label={i18n.__('pages.packCreation.packName')}
-              name="packName"
-              type="text"
-              variant="outlined"
-              onChange={onUpdateName}
-              inputProps={{ maxLength: 32 }}
-            />
-            <TextField
-              fullWidth
-              margin="normal"
-              id="packDescription"
-              label={i18n.__('pages.packCreation.packDescription')}
-              name="packDescription"
-              type="text"
-              variant="outlined"
-              multiline
-              inputProps={{ maxLength: 512 }}
-              onChange={onUpdateDescription}
-            />
+            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 20 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', width: '100%', margin: 'auto', marginRight: 40 }}>
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  id="packName"
+                  label={i18n.__('pages.packCreation.packName')}
+                  name="packName"
+                  type="text"
+                  variant="outlined"
+                  onChange={onUpdateName}
+                  inputProps={{ maxLength: 32 }}
+                />
+                <TextField
+                  fullWidth
+                  margin="normal"
+                  id="packDescription"
+                  label={i18n.__('pages.packCreation.packDescription')}
+                  name="packDescription"
+                  type="text"
+                  variant="outlined"
+                  helperText={`${values}/512`}
+                  multiline
+                  inputProps={{ maxLength: 512 }}
+                  onChange={onUpdateDescription}
+                />
+              </div>
+              <PackIconPicker packIcon={icon} onAssignIcon={setIcon} />
+            </div>
             <FormControlLabel
               control={<Checkbox />}
               label={i18n.__('pages.packCreation.packPublic')}

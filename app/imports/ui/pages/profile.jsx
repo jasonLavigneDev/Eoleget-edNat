@@ -295,6 +295,7 @@ function ProfilePage() {
                     userAvatar={userData.avatar || ''}
                     userFirstName={userData.firstName || ''}
                     onAssignAvatar={onAssignAvatar}
+                    url="avatar"
                   />
                 </Grid>
               </Grid>
