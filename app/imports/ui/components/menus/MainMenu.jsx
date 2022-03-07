@@ -7,12 +7,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Typography } from '@mui/material';
 
 import PropTypes from 'prop-types';
 import AppVersion from '../system/AppVersion';
 import LogoutDialog from '../system/LogoutDialog';
 import UserAvatar from '../users/UserAvatar';
-import { Typography } from '@mui/material';
 
 export const userMenu = [
   {
