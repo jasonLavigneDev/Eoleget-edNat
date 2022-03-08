@@ -132,14 +132,18 @@ const EditPackPage = ({ pack, ready }) => {
                   fullWidth
                   margin="normal"
                   id="packDescription"
-                  label={i18n.__('pages.packEditPage.packDescription')}
+                  label={
+                    <div>
+                      {i18n.__('pages.packEditPage.packDescription')}&nbsp;
+                      {values !== 0 ? `${values}/512` : null}
+                    </div>
+                  }
                   name="packDescription"
                   type="text"
                   variant="outlined"
                   multiline
                   value={description}
                   inputProps={{ maxLength: 512 }}
-                  helperText={`${values}/512`}
                   onChange={onUpdateDescription}
                 />
               </div>
