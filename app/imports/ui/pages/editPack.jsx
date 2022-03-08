@@ -19,7 +19,7 @@ import {
 import Spinner from '../components/system/Spinner';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import Packs from '../../api/packs/packs';
-import TableAppPack from '../components/appTable/tableAppEditPack';
+import TableAppEditPack from '../components/appTable/tableAppEditPack';
 import PackIconPicker from '../components/packs/PackIconPicker';
 
 // Style CSS //
@@ -56,7 +56,6 @@ const EditPackPage = ({ pack, ready }) => {
   const [name, setName] = useState(pack.name);
   const [isPublic, setIsPublic] = useState(pack.isPublic);
   const [description, setDescription] = useState(pack.description);
-  const apps = pack.applications;
   const [icon, setIcon] = useState(pack.icon || '/images/packs/packs-000.png');
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
@@ -71,14 +70,31 @@ const EditPackPage = ({ pack, ready }) => {
     setValues(event.target.value.length);
   };
 
+  const data = [];
+  let _id = -1;
+  pack.applications.map((app) => {
+    localStorage.setItem(`version_edit_${app.identification}`, JSON.stringify(app.version));
+    _id += 1;
+    return data.push({
+      id: _id,
+      nom: app.nom,
+      description: app.description,
+      identification: app.identification,
+      version: app.version,
+    });
+  });
+
+  localStorage.setItem('cart_edit', JSON.stringify(data));
+
   const goBack = () => {
     history.goBack();
   };
 
   const editPack = () => {
-    if (apps) {
+    const finalCart = JSON.parse(localStorage.getItem('cart_edit'));
+    if (finalCart) {
       const finalApps = [];
-      apps.map((app) => {
+      finalCart.map((app) => {
         let ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
         if (ver === 'latest') ver = '';
 
@@ -170,7 +186,7 @@ const EditPackPage = ({ pack, ready }) => {
             <ColorRadioButton packColor={pack.color} />
             <Divider />
             <div style={divDatagridStyle}>
-              <TableAppPack applications={apps} />
+              <TableAppEditPack />
             </div>
             <div style={divButtonStyle}>
               <Button variant="contained" onClick={editPack} disabled={isDisable}>

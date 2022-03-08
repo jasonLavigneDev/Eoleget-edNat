@@ -17,8 +17,9 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 import ListVersion from '../version/listVersion';
 import EnhancedTableHead from './tableHead';
+import ListVersionEdit from '../version/listVersionEdit';
 
-function AppList({ applications, cart, isModal }) {
+function AppList({ applications, cart, isModal, editPack }) {
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -51,7 +52,6 @@ function AppList({ applications, cart, isModal }) {
 
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('nom');
-  const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = isModal ? React.useState(5) : React.useState(25);
 
@@ -100,29 +100,11 @@ function AppList({ applications, cart, isModal }) {
   };
 
   const handleClick = (event, app) => {
-    const selectedIndex = selected.indexOf(app.identification);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
+    if (checkAppAllreadyAdded(app)) {
+      removeAppToCart(app);
+    } else {
       addAppToCart(app);
-      newSelected = newSelected.concat(selected, app.identification);
-    } else if (selectedIndex === 0) {
-      if (checkAppAllreadyAdded(app)) {
-        removeAppToCart(app);
-        newSelected = newSelected.concat(selected.slice(1));
-      } else {
-        addAppToCart(app);
-        newSelected = newSelected.concat(selected, app.identification);
-      }
-    } else if (selectedIndex === selected.length - 1) {
-      removeAppToCart(app);
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      removeAppToCart(app);
-      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
     }
-
-    setSelected(newSelected);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -135,6 +117,11 @@ function AppList({ applications, cart, isModal }) {
   };
 
   const getVersion = (app) => {
+    if (editPack) {
+      const ver = JSON.parse(localStorage.getItem(`version_edit_${app.identification}`)) || app.version;
+      const finalver = ver || 'latest';
+      return finalver;
+    }
     const ver = JSON.parse(localStorage.getItem(`version_${app.identification}`)) || 'latest';
     return ver;
   };
@@ -175,7 +162,11 @@ function AppList({ applications, cart, isModal }) {
                       <TableCell>{getVersion(app)}</TableCell>
                     ) : (
                       <TableCell>
-                        <ListVersion versions={app.versions} app={app} />
+                        {editPack ? (
+                          <ListVersionEdit versions={app.versions} actualVersion={app.version} app={app} />
+                        ) : (
+                          <ListVersion versions={app.versions} app={app} />
+                        )}
                       </TableCell>
                     )}
                     <TableCell>{app.url}</TableCell>
@@ -209,12 +200,14 @@ function AppList({ applications, cart, isModal }) {
 
 AppList.defaultProps = {
   isModal: false,
+  editPack: false,
 };
 
 AppList.propTypes = {
   applications: PropTypes.arrayOf(PropTypes.object).isRequired,
   cart: PropTypes.arrayOf(PropTypes.any).isRequired,
   isModal: PropTypes.bool,
+  editPack: PropTypes.bool,
 };
 
 export default AppList;

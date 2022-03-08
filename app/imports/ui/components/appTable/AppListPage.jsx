@@ -42,18 +42,12 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
     if (search.startsWith('#')) {
       const tags = appPage.search.slice(1).split(' ');
       data = Applications.find({ tags: { $all: tags } }).fetch();
-    } else data = Applications.find({}).fetch();
+    } else {
+      data = Applications.find({}).fetch();
+    }
+
     return data;
   });
-
-  if (editModal) {
-    // eslint-disable-next-line no-param-reassign
-    cart = useState(() => {
-      const saved = localStorage.getItem('cart_edit');
-      const initialValue = saved ? JSON.parse(saved) : [];
-      return initialValue;
-    });
-  }
 
   const inputRef = useRef(null);
   // focus on search input when it appears
@@ -162,7 +156,7 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
         <div style={divStoreTitleStyle}>
           {searchField}
           {applications.length !== 0 ? (
-            <AppList applications={applications} cart={cart} isModal={modal} />
+            <AppList applications={applications} cart={cart} isModal={modal} editPack={editModal} />
           ) : (
             <Paper sx={{ padding: 6 }}>
               <Typography variant="h5" align="center">
