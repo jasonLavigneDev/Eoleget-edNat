@@ -7,6 +7,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Typography } from '@mui/material';
 
 import PropTypes from 'prop-types';
 import AppVersion from '../system/AppVersion';
@@ -77,7 +78,9 @@ const MainMenu = ({ user = {} }) => {
         style={{ textTransform: 'none' }}
         endIcon={<ExpandMoreIcon />}
       >
-        {user.firstName || ''}
+        <Typography variant="body1" align="left" sx={{ marginRight: 1 }}>
+          {user.firstName || ''}
+        </Typography>
         <UserAvatar />
       </Button>
       <Menu
