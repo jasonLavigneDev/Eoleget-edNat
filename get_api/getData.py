@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Get applications from the Windows Package Manager Community Repository
+
+Creates a local git repository with all applications and puts all related informations in eoleget's mongo database.
+"""
+
 import glob
 import os
 import yaml
@@ -43,7 +51,7 @@ def get_yaml_files(yamlFiles):
                     data["PackageName"],
                     data["ShortDescription"],
                     data["PackageVersion"],
-                    data["License"]
+                    data["License"],
                 )
                 if "Tags" in data.keys():
                     appli.tags = data["Tags"]

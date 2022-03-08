@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Get images from url of eoleget's applications
+"""
+
 import os
 from pymongo import MongoClient
 import requests
