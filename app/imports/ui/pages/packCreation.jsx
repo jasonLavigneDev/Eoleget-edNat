@@ -52,11 +52,13 @@ function CreatePackPage() {
   const [description, setDescription] = useState('');
   const [icon, setIcon] = useState('/images/packs/packs-000.png');
   const [values, setValues] = React.useState(0);
+  const [valuesName, setValuesName] = React.useState(0);
 
   const isDisable = !!(name === undefined || name === '' || description === undefined || description === '');
 
   const onUpdateName = (event) => {
     setName(event.target.value);
+    setValuesName(event.target.value.length);
   };
 
   const onUpdateDescription = (event) => {
@@ -136,7 +138,12 @@ function CreatePackPage() {
                   fullWidth
                   margin="normal"
                   id="packName"
-                  label={i18n.__('pages.packCreation.packName')}
+                  label={
+                    <div>
+                      {i18n.__('pages.packCreation.packName')}&nbsp;
+                      {valuesName !== 0 ? `${valuesName}/32` : null}
+                    </div>
+                  }
                   name="packName"
                   type="text"
                   variant="outlined"
