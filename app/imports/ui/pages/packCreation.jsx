@@ -147,11 +147,14 @@ function CreatePackPage() {
                   fullWidth
                   margin="normal"
                   id="packDescription"
-                  label={i18n.__('pages.packCreation.packDescription')}
+                  label={
+                    <div>
+                      {i18n.__('pages.packCreation.packDescription')}&nbsp; {values !== 0 ? `${values}/512` : null}
+                    </div>
+                  }
                   name="packDescription"
                   type="text"
                   variant="outlined"
-                  helperText={`${values}/512`}
                   multiline
                   inputProps={{ maxLength: 512 }}
                   onChange={onUpdateDescription}
