@@ -37,7 +37,11 @@ ListVersionEdit.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   app: PropTypes.objectOf(PropTypes.any).isRequired,
   versions: PropTypes.arrayOf(PropTypes.any).isRequired,
-  actualVersion: PropTypes.string.isRequired,
+  actualVersion: PropTypes.string,
+};
+
+ListVersionEdit.defaultProps = {
+  actualVersion: '',
 };
 
 export default ListVersionEdit;

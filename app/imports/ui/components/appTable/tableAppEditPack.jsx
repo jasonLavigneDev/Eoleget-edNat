@@ -40,11 +40,14 @@ const buttonCloseStyle = {
   width: 400,
 };
 
-function TableAppEditPack({ applications, ready }) {
+function TableAppEditPack({ ready }) {
   if (!ready) return null;
 
-  localStorage.setItem('cart_edit', JSON.stringify(applications));
-  localStorage.setItem('editApplications', JSON.stringify(applications));
+  const cart = useState(() => {
+    const saved = localStorage.getItem('cart_edit');
+    const initialValue = JSON.parse(saved);
+    return initialValue || [];
+  });
 
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -83,8 +86,8 @@ function TableAppEditPack({ applications, ready }) {
   const [openModal, setOpenModal] = React.useState(false);
 
   let data = [];
-  let _id = 0;
-  applications.map((app) => {
+  let _id = -1;
+  cart[0].map((app) => {
     _id += 1;
     return data.push({
       id: _id,
@@ -117,73 +120,49 @@ function TableAppEditPack({ applications, ready }) {
     setPage(0);
   };
 
+  const getVersion = (appli) => {
+    const ver = JSON.parse(localStorage.getItem(`version_edit_${appli.identification}`));
+    return ver;
+  };
+
   const ReloadData = () => {
     data = [];
-    _id = 0;
-    applications.map((appli) => {
+    _id = -1;
+    cart[0] = JSON.parse(localStorage.getItem('cart_edit'));
+    cart[0].map((appli) => {
       _id += 1;
       return data.push({
         id: _id,
         nom: appli.nom,
         description: appli.description,
         identification: appli.identification,
-        version: appli.version,
+        version: getVersion(appli),
       });
     });
-    localStorage.setItem('editApplications', JSON.stringify(applications));
     setRows(data);
   };
 
   const handleDeleteButton = (event, app) => {
     if (app.id > -1) {
-      applications.splice(app.id - 1, 1);
+      cart[0] = JSON.parse(localStorage.getItem('cart_edit'));
+      cart[0].splice(app.id, 1);
+      cart[1](cart[0]);
+      setRows(data);
+      localStorage.setItem('cart_edit', JSON.stringify(cart[0]));
+      ReloadData();
+      msg.success(i18n.__('components.Card.removeAppSuccess'));
+    } else {
+      msg.error(i18n.__('components.Card.removeAppError'));
     }
-    ReloadData();
-  };
-
-  const checkAppAllreadyAdded = (app) => {
-    let res;
-    const tab = [];
-    applications.map((appli) => tab.push(appli.identification));
-    if (tab.includes(app.identification)) res = true;
-    else res = false;
-    return res;
-  };
-
-  const CheckApplyNotInList = (app, list) => {
-    let res;
-    const tab = [];
-    list.map((appli) => tab.push(appli.identification));
-    if (tab.includes(app.identification)) res = false;
-    else res = true;
-    return res;
   };
 
   const onClose = () => {
     setOpenModal(false);
-    const appli = JSON.parse(localStorage.getItem('cart_edit'));
-    appli.map((app) => {
-      if (checkAppAllreadyAdded(app)) return null;
-      return applications.push({
-        nom: app.nom,
-        description: app.description,
-        identification: app.identification,
-        version: app.version,
-      });
-    });
-    applications.map((app) => {
-      if (CheckApplyNotInList(app, appli)) {
-        const index = applications.indexOf(app);
-        applications.splice(index, 1);
-      }
-      return null;
-    });
-
-    localStorage.setItem('cart_edit', JSON.stringify(applications));
     ReloadData();
   };
 
   const openList = () => {
+    ReloadData();
     setOpenModal(true);
   };
 
@@ -231,7 +210,7 @@ function TableAppEditPack({ applications, ready }) {
       <TablePagination
         rowsPerPageOptions={[5]}
         component="div"
-        count={applications.length}
+        count={rows.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -245,7 +224,7 @@ function TableAppEditPack({ applications, ready }) {
               <Typography variant="h4" component="div" style={{ padding: 10 }}>
                 {i18n.__('pages.Store.storeTitle')}
               </Typography>
-              <AppListPage modal editModal />
+              <AppListPage modal cart={cart} editModal />
               <Button variant="contained" onClick={onClose} sx={buttonCloseStyle} size="large">
                 {i18n.__('pages.packEditPage.validateModal')}
               </Button>
@@ -258,7 +237,6 @@ function TableAppEditPack({ applications, ready }) {
 }
 
 TableAppEditPack.propTypes = {
-  applications: PropTypes.arrayOf(PropTypes.any).isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
