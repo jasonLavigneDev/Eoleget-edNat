@@ -51,6 +51,7 @@ const paperStyle = {
 const EditPackPage = ({ pack, ready }) => {
   if (!ready) return <Spinner full />;
   const [values, setValues] = React.useState(pack.description ? pack.description.length : 0);
+  const [valuesName, setValuesName] = React.useState(pack.name ? pack.name.length : 0);
   const history = useHistory();
   const [name, setName] = useState(pack.name);
   const [isPublic, setIsPublic] = useState(pack.isPublic);
@@ -62,6 +63,7 @@ const EditPackPage = ({ pack, ready }) => {
 
   const onUpdateName = (event) => {
     setName(event.target.value);
+    setValuesName(event.target.value.length);
   };
 
   const onUpdateDescription = (event) => {
@@ -121,7 +123,12 @@ const EditPackPage = ({ pack, ready }) => {
                   fullWidth
                   margin="normal"
                   id="packName"
-                  label={i18n.__('pages.packEditPage.packName')}
+                  label={
+                    <div>
+                      {i18n.__('pages.packEditPage.packName')}&nbsp;
+                      {valuesName !== 0 ? `${valuesName}/32` : null}
+                    </div>
+                  }
                   name="packName"
                   type="text"
                   variant="outlined"
