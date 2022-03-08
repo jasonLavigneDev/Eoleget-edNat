@@ -26,8 +26,8 @@ import theme from '../themes/light';
 
 // Styles CSS //
 const containerStyle = {
-  marginTop: theme.spacing(20),
-  marginLeft: theme.spacing(40),
+  marginTop: theme.spacing(10),
+  marginLeft: theme.spacing(45),
 };
 const paperStyle = {
   padding: theme.spacing(5),
