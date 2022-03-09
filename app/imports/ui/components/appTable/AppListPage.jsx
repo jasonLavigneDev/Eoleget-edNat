@@ -43,7 +43,17 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       const tags = appPage.search.slice(1).split(' ');
       data = Applications.find({ tags: { $all: tags } }).fetch();
     } else {
-      data = Applications.find({}).fetch();
+      const regex = new RegExp(search, 'i');
+      data = Applications.find({
+        $or: [
+          {
+            nom: { $regex: regex },
+          },
+          {
+            description: { $regex: regex },
+          },
+        ],
+      }).fetch();
     }
 
     return data;
