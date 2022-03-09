@@ -44,7 +44,7 @@ function AppCart({ cart }) {
 
   const RemoveAppFromCart = (appId) => {
     cart[1](cart[0].filter((appli) => appli.identification !== appId));
-    if (cart[0].length) {
+    if (cart[0].length === 0) {
       handleClose();
     }
   };
