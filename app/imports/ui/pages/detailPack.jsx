@@ -100,8 +100,7 @@ function DetailPack({ pack, ready }) {
   const apps = pack.applications;
   const [{ userId }] = useAppContext();
   const [displayCmd, setDisplayCmd] = useState(CMD_BATCH);
-  const id = Math.floor(Math.random() * 9999);
-  const fileName = `eoleget-winstall-${id}.json`;
+  const fileName = `eoleget-${pack.name}.json`;
 
   const generateCommand = () => {
     let str = '';
