@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
 
 import Fade from '@mui/material/Fade';
@@ -49,6 +50,17 @@ const labelLanguageStyle = {
   marginTop: 20,
   marginBottom: 20,
 };
+const keycloakMessage = {
+  padding: theme.spacing(1),
+};
+const keycloakLink = {
+  textDecoration: 'underline',
+  '&:hover, &:focus': {
+    color: theme.palette.secondary.main,
+    outline: 'none',
+  },
+};
+
 // End styles //
 
 const defaultState = {
@@ -65,6 +77,8 @@ function ProfilePage() {
   const [submitted, setSubmitted] = useState(false);
   const [{ user, loadingUser }] = useAppContext();
   const [errors, setErrors] = useObjectState(defaultState);
+  const { enableKeycloak } = Meteor.settings.public;
+  const accountURL = `${Meteor.settings.public.keycloakUrl}/realms/${Meteor.settings.public.keycloakRealm}/account`;
 
   const usernameLabel = React.useRef(null);
   const [labelUsernameWidth, setLabelUsernameWidth] = React.useState(0);
@@ -211,7 +225,19 @@ function ProfilePage() {
             <Grid container sx={gridFormStyle} spacing={2}>
               <Grid container spacing={2} style={{ alignItems: 'center' }}>
                 <Grid item xs={8} style={{ paddingLeft: '18px' }}>
+                  {enableKeycloak ? (
+                    <Paper style={keycloakMessage}>
+                      <Typography>{i18n.__('pages.ProfilePage.keycloakProcedure')}</Typography>
+                      <br />
+                      <Typography>
+                        <a href={accountURL} style={keycloakLink}>
+                          {i18n.__('pages.ProfilePage.keycloakProcedureLink')}
+                        </a>
+                      </Typography>
+                    </Paper>
+                  ) : null}
                   <TextField
+                    disabled={enableKeycloak}
                     margin="normal"
                     autoComplete="fname"
                     id="firstName"
@@ -226,6 +252,7 @@ function ProfilePage() {
                     variant="outlined"
                   />
                   <TextField
+                    disabled={enableKeycloak}
                     margin="normal"
                     autoComplete="lname"
                     id="lastName"
@@ -240,6 +267,7 @@ function ProfilePage() {
                     variant="outlined"
                   />
                   <TextField
+                    disabled={enableKeycloak}
                     margin="normal"
                     autoComplete="email"
                     id="email"
@@ -255,6 +283,7 @@ function ProfilePage() {
                   />
                   <FormControl variant="outlined" fullWidth margin="normal">
                     <InputLabel
+                      disabled={enableKeycloak}
                       error={errors.username !== ''}
                       htmlFor="username"
                       id="username-label"
@@ -265,6 +294,7 @@ function ProfilePage() {
                     <OutlinedInput
                       id="username"
                       name="username"
+                      disabled={enableKeycloak}
                       value={userData.username}
                       error={errors.username !== ''}
                       onChange={onUpdateField}
@@ -277,7 +307,7 @@ function ProfilePage() {
                             aria-label={i18n.__('pages.ProfilePage.useEmail')}
                           >
                             <span>
-                              <IconButton onClick={useEmail}>
+                              <IconButton onClick={useEmail} disabled={enableKeycloak}>
                                 <MailIcon />
                               </IconButton>
                             </span>

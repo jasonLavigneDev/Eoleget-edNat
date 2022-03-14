@@ -145,7 +145,9 @@
       "updateSuccess": "Profil mis à jour avec succès",
       "noModifications": "Aucun changement à appliquer",
       "logoutType": "Portée de la déconnexion",
-      "uploadSuccess": "Chargement des données réussi"
+      "uploadSuccess": "Chargement des données réussi",
+      "keycloakProcedure": "Les données grisées ci-dessous doivent être modifiées sur le serveur d'authentification. Vous devrez ensuite vous déconnecter/reconnecter pour les mettre à jour.",
+      "keycloakProcedureLink": "Vous pouvez accéder à votre profil en cliquant ici"
     },
     "detailApp": {
       "title": "Détail de l'application",
