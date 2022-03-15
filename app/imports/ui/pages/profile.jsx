@@ -87,11 +87,12 @@ function ProfilePage() {
   }, []);
 
   const setData = (data, reset = false) => {
+    const dataEmail = data.emails ? data.emails[0].address : '';
     setUserData({
       username: errors.username === '' || reset ? data.username : userData.username,
       firstName: errors.firstName === '' || reset ? data.firstName || '' : userData.firstName,
       lastName: errors.lastName === '' || reset ? data.lastName || '' : userData.lastName,
-      email: errors.email === '' || reset ? data.emails[0].address : userData.email,
+      email: errors.email === '' || reset ? dataEmail : userData.email,
       avatar: userData.avatar === '' || reset ? data.avatar : userData.avatar,
     });
     if (reset === true) {
@@ -106,8 +107,9 @@ function ProfilePage() {
       userData.username === user.username &&
       userData.firstName === user.firstName &&
       userData.lastName === user.lastName &&
-      userData.email === user.emails[0].address &&
-      userData.avatar === user.avatar
+      userData.email === user.emails
+        ? user.emails[0].address
+        : '' && userData.avatar === user.avatar
     ) {
       msg.success(i18n.__('pages.ProfilePage.updateSuccess'));
       setSubmitted(false);
