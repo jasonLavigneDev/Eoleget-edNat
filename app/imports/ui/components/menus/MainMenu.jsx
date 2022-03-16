@@ -47,7 +47,7 @@ const MainMenu = ({ user = {} }) => {
   const keycloakLogout = () => {
     const { keycloakUrl, keycloakRealm } = Meteor.settings.public;
     const keycloakLogoutUrl = `${keycloakUrl}/realms/${keycloakRealm}/protocol/openid-connect/logout`;
-    const redirectUri = `${Meteor.absoluteUrl()}/logout`;
+    const redirectUri = new URL('/?dologout', Meteor.absoluteUrl()).href;
     window.location = `${keycloakLogoutUrl}?post_logout_redirect_uri=${redirectUri}`;
   };
 
