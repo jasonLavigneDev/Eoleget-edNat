@@ -5,7 +5,6 @@ import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
-import FaceIcon from '@mui/icons-material/Face';
 import { useAppContext } from '../../contexts/context';
 import UserAvatarGallery from './UserAvatarGallery';
 import UserAvatar from './UserAvatar';
@@ -25,16 +24,13 @@ const AvatarPicker = ({ userAvatar, userFirstName, onAssignAvatar }) => {
     <div>
       <Grid container>
         <Grid item xs={12} sx={buttonWrapperStyle}>
-          {isMobile ? (
-            <UserAvatar userAvatar={userAvatar || ''} userFirstName={userFirstName || ''} />
-          ) : (
-            <UserAvatar big userAvatar={userAvatar || ''} userFirstName={userFirstName || ''} />
-          )}
-        </Grid>
-        <Grid item xs={12} sx={buttonWrapperStyle}>
           <Tooltip title={i18n.__('pages.ProfilePage.useGallery')} aria-label={i18n.__('pages.ProfilePage.useGallery')}>
             <IconButton onClick={() => setOpenAvatarGallery(true)}>
-              <FaceIcon />
+              {isMobile ? (
+                <UserAvatar userAvatar={userAvatar || ''} userFirstName={userFirstName || ''} />
+              ) : (
+                <UserAvatar big userAvatar={userAvatar || ''} userFirstName={userFirstName || ''} />
+              )}
             </IconButton>
           </Tooltip>
         </Grid>

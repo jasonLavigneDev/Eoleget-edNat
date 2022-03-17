@@ -50,7 +50,7 @@ const PacksIconGallery = ({ open, onClose, onSendImage }) => {
       <div className={paperStyle}>
         <Card sx={cardStyle}>
           <CardHeader
-            title={i18n.__('components.UserAvatarGallery.title')}
+            title={i18n.__('components.PackAvatarGallery.title')}
             subheader={i18n.__('components.UserAvatarGallery.subtitle')}
             action={
               <IconButton onClick={onClose}>

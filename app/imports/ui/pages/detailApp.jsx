@@ -151,7 +151,6 @@ const detailApp = ({ app, ready }) => {
               <Typography variant="body1" component="div" wrap="nowrap">
                 {app.description}
               </Typography>
-              <p>{i18n.__('pages.detailApp.winget')}</p>
               <div style={{ display: 'flex' }}>
                 <p style={{ paddingRight: 5 }}>Versions :</p>
                 {checkAppAllreadyAdded() ? (
