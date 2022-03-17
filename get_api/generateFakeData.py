@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Generate fake data for eoleget
+Generate fake data for eoleGet
 
 Creates fake users and fake packs.
 Be sure to have all applications by launching getDatas.py first.
 And grab the applications images with getImages.py.
 We recommand to create your own user before the fake datas generation.
 """
-
-from pymongo import MongoClient
 import argparse
 import datetime
-import os
 from random import randint, choice, choices, sample
 from faker import Faker  # https://github.com/joke2k/faker
+from utils import get_mongodb
 
 
 def getRandomColor():
@@ -118,19 +116,6 @@ def createUser():
     print(f"Utilisateur {username} créé")
 
 
-def get_db():
-    mongoURL = "mongodb://127.0.0.1:3001/meteor"
-    if "MONGO_URL" in os.environ:
-        mongoURL = os.environ["MONGO_URL"]
-    try:
-        conn = MongoClient(mongoURL)
-    except:
-        print("Could not connect to MongoDB")
-
-    db = conn.meteor
-    return db
-
-
 #####################################
 
 if __name__ == "__main__":
@@ -141,7 +126,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    db = get_db()
+    db = get_mongodb()
     f = Faker("fr_FR")  # localisation fr du faker
 
     # Génération users
