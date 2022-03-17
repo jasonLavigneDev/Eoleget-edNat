@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Get images from url of eoleget's applications
+Get images from url of eoleGet's applications
 """
-
-import os
-from pymongo import MongoClient
 import requests
 import urlimage
+from base64 import b64decode
+from pathlib import Path
+from utils import get_mongodb
 
 
 def get_image_appli(name, url):
     """Get image from an application from its url and download it localy"""
 
-    image_filename = os.path.join(imagePath, name)
-    if os.path.exists(image_filename):
+    image_filename = imagePath / name
+    if image_filename.exists():
         # print("=> File already exists")
         return
 
@@ -24,45 +24,33 @@ def get_image_appli(name, url):
         if not icon:
             print("=> No Favicon found")
             return
-        print(icon)
-        response = requests.get(icon, stream=True)
-        with open(image_filename, "wb") as image:
-            for chunk in response.iter_content(1024):
-                image.write(chunk)
+
+        if "data:image/" in icon:
+            # base64 string
+            png_recovered = b64decode(icon.split(",")[1])
+            with open(image_filename, "wb") as image:
+                image.write(png_recovered)
+        else:
+            # normal url image
+            response = requests.get(icon, stream=True)
+            with open(image_filename, "wb") as image:
+                for chunk in response.iter_content(1024):
+                    image.write(chunk)
     except Exception as e:
         print("=> Error : ", e)
         return
-
-
-def get_collection():
-    mongoURL = "mongodb://127.0.0.1:3001/meteor"
-    if "MONGO_URL" in os.environ:
-        mongoURL = os.environ["MONGO_URL"]
-    try:
-        conn = MongoClient(mongoURL)
-        print("Connected successfully to MongoDB")
-    except:
-        print("Could not connect to MongoDB")
-
-    db = conn.meteor
-    return db.applications
 
 
 #####################################
 
 if __name__ == "__main__":
 
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    eoleGetPath = os.path.abspath(os.path.join(dir_path, os.pardir))
-    imagePath = os.path.abspath(
-        os.path.join(eoleGetPath, "app", "public", "images", "appli")
-    )
-    try:
-        os.makedirs(imagePath)
-    except FileExistsError:
-        pass
+    eoleGetPath = Path(__file__).resolve().parents[1]
+    imagePath = eoleGetPath / "app" / "public" / "images" / "appli"
+    imagePath.mkdir(parents=True, exist_ok=True)
 
-    collection = get_collection()
+    db = get_mongodb()
+    collection = db.applications
     all_apps = collection.find({"url": {"$ne": ""}}).sort("identification")
     total = collection.count_documents({"url": {"$ne": ""}})
     for cpt, app in enumerate(all_apps):
