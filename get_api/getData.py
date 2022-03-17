@@ -9,7 +9,7 @@ import argparse
 import yaml
 import subprocess
 from pathlib import Path
-from utils import get_mongodb
+from utils import get_mongodb, setSiteInMaintenance
 
 
 class Application:
@@ -187,11 +187,12 @@ def get_app_from_repo():
     print(f"Scan found {sum(s[1] for s in scan.values())} yaml :")
     for key, value in scan.items():
         print(f"\t{key} => {value[1]}")
-
+    
 
 #####################################
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(
         description="Get applications from the Windows Package Manager Community Repository."
     )
@@ -199,12 +200,14 @@ if __name__ == "__main__":
         "-f", "--force", action="store_true", help="Force applications update"
     )
     args = parser.parse_args()
+    
+    db = get_mongodb()
+    setSiteInMaintenance(True, db)
 
     eoleGetPath = Path(__file__).resolve().parents[1]
     winget_pkgs = eoleGetPath / "winget-pkgs"
     manifest_dir = winget_pkgs / "manifests"
 
-    db = get_mongodb()
     collection = db.applications
     needs_update = clone_winget_repo()
 
@@ -218,3 +221,4 @@ if __name__ == "__main__":
         insertData(apps)
 
     print(f"{collection.count_documents({})} applications in database.")
+    setSiteInMaintenance(False, db)
