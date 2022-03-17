@@ -187,7 +187,7 @@ def get_app_from_repo():
     print(f"Scan found {sum(s[1] for s in scan.values())} yaml :")
     for key, value in scan.items():
         print(f"\t{key} => {value[1]}")
-    
+
 
 #####################################
 
@@ -200,9 +200,8 @@ if __name__ == "__main__":
         "-f", "--force", action="store_true", help="Force applications update"
     )
     args = parser.parse_args()
-    
+
     db = get_mongodb()
-    setSiteInMaintenance(True, db)
 
     eoleGetPath = Path(__file__).resolve().parents[1]
     winget_pkgs = eoleGetPath / "winget-pkgs"
@@ -217,8 +216,9 @@ if __name__ == "__main__":
         # Dict with PackageIdentifier as key and related Application object as value
         apps = {}
         get_app_from_repo()
+        setSiteInMaintenance(True, db)
         removeData()
         insertData(apps)
+        setSiteInMaintenance(False, db)
 
     print(f"{collection.count_documents({})} applications in database.")
-    setSiteInMaintenance(False, db)
