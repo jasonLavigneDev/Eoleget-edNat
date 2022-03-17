@@ -172,7 +172,11 @@ function packCardPage({ isUserPack, setTotal }) {
               </span>
             ) : (
               <div style={{ padding: 50 }}>
-                <Typography variant="h5">{i18n.__('pages.Packs.noResult')}</Typography>
+                {search !== '' ? (
+                  <Typography variant="h5">{i18n.__('pages.Packs.noResult')}</Typography>
+                ) : (
+                  <Typography variant="h5">{i18n.__('pages.Packs.noPacks')}</Typography>
+                )}
               </div>
             )}
           </div>

@@ -16,8 +16,9 @@ const appBarStyle = {
   minHeight: 48,
 };
 const imgLogoStyle = {
-  maxHeight: '30px',
-  height: 30,
+  maxHeight: '40px',
+  paddingTop: '5px',
+  height: 40,
   outline: 'none',
 };
 const divRightContainerStyle = {

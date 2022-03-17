@@ -85,6 +85,9 @@
   },
   "pages": {
     "NotFound": { "backButtonLabel": "Back", "message": "Page not found !" },
+    "NotLoggedIn": {
+      "welcome": "Welcome to EoleGet"
+    },
     "VerifyEmail": {
       "error": "Email could not be verified",
       "success": "Email verified",
@@ -123,7 +126,8 @@
       "searchText": "Which pack are you looking for ?",
       "searchHelp": "Search pack by name or use @ for search by owner",
       "searchPack": "Search Pack",
-      "noResult": "No packs match the search"
+      "noResult": "No packs match the search",
+      "noPacks": "There are no packs available"
     },
     "UserPacks": {
       "userPacksTitle": "My Packs",
@@ -297,6 +301,9 @@
     "UserAvatarGallery": {
       "title": "Create your avatar",
       "subtitle": "from image gallery"
+    },
+    "PackAvatarGallery": {
+      "title": "Choose a picture for this pack"
     },
     "appCart": {
       "createPack": "Create Pack",

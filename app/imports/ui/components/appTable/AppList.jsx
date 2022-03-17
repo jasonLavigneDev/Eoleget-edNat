@@ -14,12 +14,15 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Button from '@mui/material/Button';
 
 import ListVersion from '../version/listVersion';
 import EnhancedTableHead from './tableHead';
 import ListVersionEdit from '../version/listVersionEdit';
 
 function AppList({ applications, cart, isModal, editPack }) {
+  const handleUrlButton = (app) => window.open(app.url, '_blank');
+
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -169,7 +172,11 @@ function AppList({ applications, cart, isModal, editPack }) {
                         )}
                       </TableCell>
                     )}
-                    <TableCell>{app.url}</TableCell>
+                    <TableCell>
+                      <Button onClick={() => handleUrlButton(app)} sx={{ textTransform: 'unset' }}>
+                        {app.url}
+                      </Button>
+                    </TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
                         <Link to={`/detailapp/${app.identification}`}>

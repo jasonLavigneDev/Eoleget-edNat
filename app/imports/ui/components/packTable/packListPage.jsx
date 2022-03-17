@@ -147,9 +147,15 @@ function packListPage({ isUserPack, setTotal }) {
             <PackList packs={packs} isUserPack={isUserPack} />
           ) : (
             <Paper sx={{ padding: 6 }}>
-              <Typography variant="h5" align="center">
-                {i18n.__('pages.Packs.noResult')}
-              </Typography>
+              {search !== '' ? (
+                <Typography align="center" variant="h5">
+                  {i18n.__('pages.Packs.noResult')}
+                </Typography>
+              ) : (
+                <Typography align="center" variant="h5">
+                  {i18n.__('pages.Packs.noPacks')}
+                </Typography>
+              )}
             </Paper>
           )}
         </div>
