@@ -106,7 +106,11 @@ def get_app_from_yaml(yamlFile):
                 data.get("License", ""),
             )
             appli.tags = data.get("Tags", [])
-            appli.url = data.get("PublisherUrl", "")
+            # Priority to PublisherUrl, either watch PackageUrl
+            if "PublisherUrl" in data.keys():
+                appli.url = data.get("PublisherUrl", "")
+            else:
+                appli.url = data.get("PackageUrl", "")
 
             apps[data["PackageIdentifier"]] = appli
             if "PackageName" not in data.keys():
@@ -140,6 +144,9 @@ def get_app_from_yaml(yamlFile):
             ):
                 # print(f"PublisherUrl => {yamlFile}")
                 apps[data["PackageIdentifier"]].url = data.get("PublisherUrl", "")
+            else:
+                apps[data["PackageIdentifier"]].url = data.get("PackageUrl", "")
+
     except yaml.YAMLError as exc:
         print(f"Scanner error for {yamlFile}")
         if hasattr(exc, "problem_mark"):
