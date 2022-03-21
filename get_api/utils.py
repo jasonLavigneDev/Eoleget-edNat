@@ -16,20 +16,23 @@ def get_mongodb():
     mongoURL = "mongodb://127.0.0.1:3001/meteor"
     if "MONGO_URL" in environ:
         mongoURL = environ["MONGO_URL"]
-    try:
-        conn = MongoClient(mongoURL)
-    except:
-        print("Could not connect to MongoDB. Is eoleGet running ?")
 
-    return conn.get_default_database()
+    print("Connecting to MongoDB...", end="\r")
+    conn = MongoClient(mongoURL)
+    db = conn.get_default_database()
+    lc = list(db.list_collections())
+    assert "applications" in [k["name"] for k in lc]
+
+    print("Connecting to MongoDB...\tOK")
+    return db
 
 
 def setSiteInMaintenance(status, db):
     """Activate or deactivate maintenance mode for the site"""
-        
+
     appsettings = db["appsettings"]
-    
-    myquery = { "_id": "settings" }
-    newvalues = { "$set": { "maintenance": status } }
-    
+
+    myquery = {"_id": "settings"}
+    newvalues = {"$set": {"maintenance": status}}
+
     appsettings.update_one(myquery, newvalues)

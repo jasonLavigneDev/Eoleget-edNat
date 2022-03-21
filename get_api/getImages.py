@@ -5,6 +5,7 @@ Get images from url of eoleGet's applications
 """
 import requests
 import urlimage
+from sys import exit
 from base64 import b64decode
 from pathlib import Path
 from utils import get_mongodb
@@ -49,7 +50,11 @@ if __name__ == "__main__":
     imagePath = eoleGetPath / "app" / "public" / "images" / "appli"
     imagePath.mkdir(parents=True, exist_ok=True)
 
-    db = get_mongodb()
+    try:
+        db = get_mongodb()
+    except:
+        exit("\nCould not connect to MongoDB. Is eoleGet running ?")
+
     collection = db.applications
     all_apps = collection.find({"url": {"$ne": ""}}).sort("identification")
     total = collection.count_documents({"url": {"$ne": ""}})
