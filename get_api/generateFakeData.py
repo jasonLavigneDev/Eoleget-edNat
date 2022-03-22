@@ -10,6 +10,7 @@ We recommand to create your own user before the fake datas generation.
 """
 import argparse
 import datetime
+from sys import exit
 from random import randint, choice, choices, sample
 from faker import Faker  # https://github.com/joke2k/faker
 from utils import get_mongodb
@@ -126,7 +127,11 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    db = get_mongodb()
+    try:
+        db = get_mongodb()
+    except:
+        exit("\nCould not connect to MongoDB. Is eoleGet running ?")
+
     f = Faker("fr_FR")  # localisation fr du faker
 
     # Génération users

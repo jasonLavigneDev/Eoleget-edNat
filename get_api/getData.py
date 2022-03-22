@@ -8,6 +8,7 @@ Creates a local git repository with all applications and puts all related inform
 import argparse
 import yaml
 import subprocess
+from sys import exit
 from pathlib import Path
 from utils import get_mongodb, setSiteInMaintenance
 
@@ -85,7 +86,7 @@ def clone_winget_repo():
 def get_app_from_yaml(yamlFile):
     """Get application information from a yaml file
 
-       Append new application found in apps dict or update them with new versions
+       Append new application found in apps dict or update them with new versions or missing informations
 
     Args:
         yamlFile (filename): yaml file to scan
@@ -98,6 +99,7 @@ def get_app_from_yaml(yamlFile):
             data = yaml.load(stream, Loader=yaml.SafeLoader)
 
         if data["PackageIdentifier"] not in apps:
+            # Newly scanned app : create new Application object and put it in apps dict
             appli = Application(
                 data["PackageIdentifier"],
                 data.get("PackageName", ""),
@@ -208,24 +210,30 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    db = get_mongodb()
-
     eoleGetPath = Path(__file__).resolve().parents[1]
     winget_pkgs = eoleGetPath / "winget-pkgs"
     manifest_dir = winget_pkgs / "manifests"
 
-    collection = db.applications
     needs_update = clone_winget_repo()
 
     if needs_update or args.force:
-        print("Updating applications from winget-pkgs repository")
+
+        try:
+            db = get_mongodb()
+        except:
+            exit("\nCould not connect to MongoDB. Is eoleGet running ?")
+
+        collection = db.applications
 
         # Dict with PackageIdentifier as key and related Application object as value
         apps = {}
+        print("Updating applications from winget-pkgs repository")
         get_app_from_repo()
         setSiteInMaintenance(True, db)
         removeData()
         insertData(apps)
         setSiteInMaintenance(False, db)
 
-    print(f"{collection.count_documents({})} applications in database.")
+        print(f"{collection.count_documents({})} applications in database.")
+    else:
+        print("Already up to date")
