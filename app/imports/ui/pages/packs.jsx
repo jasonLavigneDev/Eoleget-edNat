@@ -4,10 +4,11 @@ import i18n from 'meteor/universe:i18n';
 
 import ListIcon from '@mui/icons-material/ViewList';
 import CardIcon from '@mui/icons-material/Dashboard';
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import { Typography } from '@mui/material';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
 
 import PackListPage from '../components/packTable/packListPage';
 import PackCardPage from '../components/packsCard/packCardPage';
@@ -29,11 +30,12 @@ const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
   marginTop: -5,
+  marginLeft: 5,
 };
 // End styles //
 
 function Packs() {
-  const [showModeList, setModeList] = useState(false);
+  const [viewMode, setViewMode] = useState('card');
   const [total, setTotal] = useState(0);
 
   const cart = useState(() => {
@@ -58,27 +60,31 @@ function Packs() {
             {i18n.__('pages.Packs.packsStoreTitle')}({total})
           </Typography>
           <span style={spanIconListStyle}>
-            <Tooltip title="Mode liste">
-              <IconButton
+            <ToggleButtonGroup value={viewMode} exclusive>
+              <ToggleButton
+                value="card"
                 onClick={() => {
-                  setModeList(true);
+                  setViewMode('card');
                 }}
               >
-                <ListIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Mode carte">
-              <IconButton
+                <Tooltip title="Mode carte">
+                  <CardIcon fontSize="large" />
+                </Tooltip>
+              </ToggleButton>
+              <ToggleButton
+                value="list"
                 onClick={() => {
-                  setModeList(false);
+                  setViewMode('list');
                 }}
               >
-                <CardIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
+                <Tooltip title="Mode liste">
+                  <ListIcon fontSize="large" />
+                </Tooltip>
+              </ToggleButton>
+            </ToggleButtonGroup>
           </span>
         </div>
-        {!showModeList ? <PackCardPage setTotal={setTotal} /> : <PackListPage setTotal={setTotal} />}
+        {viewMode === 'card' ? <PackCardPage setTotal={setTotal} /> : <PackListPage setTotal={setTotal} />}
       </div>
     </Fade>
   );
