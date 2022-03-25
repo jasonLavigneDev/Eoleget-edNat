@@ -277,7 +277,8 @@
       "detailTooltip": "Voir l'application",
       "AddToCart": "Ajouter au panier",
       "Cancel": "Annuler",
-      "removeTooltip": "Supprimer l'application"
+      "removeTooltip": "Supprimer l'application",
+      "ariaAppList": "Liste d'application"
     },
     "PackList": {
       "name": "Nom du pack",
