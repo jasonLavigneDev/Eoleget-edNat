@@ -21,7 +21,6 @@ include:
 variables:
   # `ci-tools` default branch is `stable`
   STABLE_BRANCH: master
-  IMAGE_NAME: eoleget
 
 stages:
   - initial-checks
@@ -49,6 +48,10 @@ stages:
   variables:
     METEOR_ALLOW_SUPERUSER: "true"
 
+.docker-matrix:
+  parallel:
+    matrix:
+      - IMAGE_NAME: [eoleget, eoleget-cron]
 
 ###############################################################################
 # `initial-checks` stage: `commitlint`
@@ -103,7 +106,9 @@ meteor-tests:
 # 4. we exclude `semantic-release` commits like when merging `release` on `dev`
 # 5. run on every branches
 build-docker:
-  extends: .build-docker-image
+  extends:
+    - .build-docker-image
+    - .docker-matrix
   rules:
     - !reference [.rules-map, not-on-schedule]
     - !reference [.rules-map, not-on-draft]
@@ -137,6 +142,7 @@ merge-to-dev:
 tag contrib branch:
   extends:
     - .tag-docker-image
+    - .docker-matrix
     - .on-branches
   variables:
     # `feature/foo-bar_quux` → `feature-foo-bar-quux`
@@ -146,6 +152,7 @@ tag contrib branch:
 tag dev:
   extends:
     - .tag-docker-image
+    - .docker-matrix
     - .on-dev
   variables:
     IMAGE_TAG: dev
@@ -154,16 +161,21 @@ tag dev:
 tag testing:
   extends:
     - .tag-docker-image
+    - .docker-matrix
     - .on-testing
   variables:
     IMAGE_TAG: testing
 
 ## stable images
 tag release:
-  extends: .tag-docker-image
+  extends:
+    - .tag-docker-image
+    - .docker-matrix
 
 tag major:
-  extends: .tag-docker-image
+  extends:
+    - .tag-docker-image
+    - .docker-matrix
   before_script:
     - export RELEASE_PREFIX=${RELEASE_PREFIX:-release/}
     - export RELEASE=${CI_COMMIT_TAG#${RELEASE_PREFIX}}
@@ -172,17 +184,22 @@ tag major:
 tag minor:
   extends:
     - .tag-docker-image
+    - .docker-matrix
   before_script:
     - export RELEASE_PREFIX=${RELEASE_PREFIX:-release/}
     - export RELEASE=${CI_COMMIT_TAG#${RELEASE_PREFIX}}
     - export IMAGE_TAG=${RELEASE%.${RELEASE##*.}}
 
 tag stable:
-  extends: .tag-docker-image
+  extends:
+    - .tag-docker-image
+    - .docker-matrix
   variables:
     IMAGE_TAG: stable
 
 tag latest:
-  extends: .tag-docker-image
+  extends:
+    - .tag-docker-image
+    - .docker-matrix
   variables:
     IMAGE_TAG: latest
