@@ -4,6 +4,7 @@ import i18n from 'meteor/universe:i18n';
 import { Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 
+import { styled } from '@mui/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import { Button, Typography } from '@mui/material';
@@ -166,6 +167,12 @@ function TableAppEditPack({ ready }) {
     setOpenModal(true);
   };
 
+  const StyledTableRow = styled(TableRow)(() => ({
+    fontSize: 13,
+    maxHeight: '5px',
+    textOverflow: 'ellipsis',
+  }));
+
   return (
     <div style={{ maxHeight: 200 }}>
       <TableContainer component={Paper}>
@@ -178,7 +185,7 @@ function TableAppEditPack({ ready }) {
                 return (
                   <TableRow hover tabIndex={-1} key={app.identification}>
                     <TableCell>{app.nom}</TableCell>
-                    <TableCell>{app.description}</TableCell>
+                    <StyledTableRow>{app.description}</StyledTableRow>
                     <TableCell>
                       <ListVersionEdit versions={GetAllAppVersions(app)} app={app} actualVersion={app.version} />
                     </TableCell>

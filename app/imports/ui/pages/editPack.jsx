@@ -24,18 +24,19 @@ import PackIconPicker from '../components/packs/PackIconPicker';
 
 // Style CSS //
 const containerStyle = {
-  marginTop: '3%',
+  marginTop: '1%',
 };
 const divDatagridStyle = {
-  height: 400,
+  maxHeight: 400,
   width: '90%',
   display: 'block',
   marginLeft: 'auto',
   marginRight: 'auto',
   marginTop: 10,
+  marginBottom: 50,
 };
 const divButtonStyle = {
-  marginTop: 90,
+  marginTop: 250,
   width: '100%',
   display: 'flex',
   alignItems: 'center',
@@ -134,7 +135,7 @@ const EditPackPage = ({ pack, ready }) => {
         <Paper sx={paperStyle}>
           <form noValidate autoComplete="off">
             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 20 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', width: '100%', margin: 'auto', marginRight: 40 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', width: '100%', marginRight: 40 }}>
                 <TextField
                   fullWidth
                   margin="normal"
@@ -174,10 +175,11 @@ const EditPackPage = ({ pack, ready }) => {
             </div>
             <FormControlLabel
               control={<Checkbox />}
-              label={i18n.__('pages.packEditPage.packPublic')}
+              label={i18n.__('pages.packCreation.packPublic')}
               checked={isPublic}
               onChange={handleOnChange}
               labelPlacement="start"
+              sx={{ marginTop: -6 }}
             />
             <Divider />
             <Typography variant="h6" component="div">
@@ -189,11 +191,11 @@ const EditPackPage = ({ pack, ready }) => {
               <TableAppEditPack />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained" onClick={editPack} disabled={isDisable}>
-                {i18n.__('pages.packEditPage.edit')}
-              </Button>
               <Button variant="contained" onClick={goBack}>
                 {i18n.__('pages.packEditPage.back')}
+              </Button>
+              <Button variant="contained" onClick={editPack} disabled={isDisable}>
+                {i18n.__('pages.packEditPage.edit')}
               </Button>
             </div>
           </form>
