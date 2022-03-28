@@ -21,7 +21,7 @@ def get_mongodb():
     conn = MongoClient(mongoURL)
     db = conn.get_default_database()
     lc = list(db.list_collections())
-    assert "applications" in [k["name"] for k in lc]
+    assert "appsettings" in [k["name"] for k in lc]
 
     print("Connecting to MongoDB...\tOK")
     return db
