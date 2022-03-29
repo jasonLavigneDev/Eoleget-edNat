@@ -81,11 +81,6 @@ export const createPack = new ValidatedMethod({
   }).validator({ clean: true }),
 
   run({ name, applications, creationDate, isValidated, ownerName, description, color, icon, isPublic }) {
-    const packWithName = Packs.findOne({ name });
-    if (packWithName !== undefined) {
-      throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
-    }
-
     if (applications === undefined || applications.length === 0) {
       throw new Meteor.Error('api.packs.emptyPack', i18n.__('api.packs.emptyPack'));
     }
@@ -162,13 +157,6 @@ export const updatePack = new ValidatedMethod({
     const pack = Packs.findOne(_id);
     if (pack === undefined) {
       throw new Meteor.Error('api.packs.unknownPack', i18n.__('api.packs.unknownPack'));
-    }
-
-    if (pack.name !== name) {
-      const packWithName = Packs.findOne({ name });
-      if (packWithName !== undefined) {
-        throw new Meteor.Error('api.packs.nameAlreadyTaken', i18n.__('api.packs.nameAlreadyTaken'));
-      }
     }
 
     if (applications === undefined || applications.length === 0) {
