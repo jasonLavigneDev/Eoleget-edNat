@@ -1,0 +1,24 @@
+FROM python:3-alpine
+
+ENV EOLEGET_FOLDER /eoleget
+ENV MONGO_URL=${MONGO_URL}
+
+RUN apk --no-cache add py3-pip git
+
+# Copy app scripts
+COPY ./get_api/requirements.txt $EOLEGET_FOLDER/
+COPY ./get_api/getData.py  $EOLEGET_FOLDER/
+COPY ./get_api/utils.py  $EOLEGET_FOLDER/
+
+RUN pip3 install -r $EOLEGET_FOLDER/requirements.txt
+
+# Copy cron scripts in the daily cron folder and update permissions
+COPY ./cron.sh /etc/periodic/daily/cron.sh
+RUN chmod 755 /etc/periodic/daily/cron.sh
+
+# Copy cron_entry scripts in root folder and update permissions
+COPY ./cron_entry.sh /cron_entry.sh
+RUN chmod 755 /cron_entry.sh
+
+# run crond as main process of container
+CMD ["/cron_entry.sh"]
