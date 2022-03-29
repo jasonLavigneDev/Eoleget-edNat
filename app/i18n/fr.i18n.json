@@ -110,7 +110,7 @@
       "packName": "Nom du pack",
       "packDescription": "Description du pack",
       "createPackSuccess": "Pack créé avec succès.",
-      "packPublic": "Pack public"
+      "packPublic": "Rendre le pack public"
     },
     "Store": {
       "storeTitle": "Magasin d'applications",
@@ -176,7 +176,6 @@
       "edit": "Enregistrer",
       "back": "Retour",
       "updateSuccess": "Pack mis à jour",
-      "packPublic": "Pack public",
       "addApp": "Ajouter une autre application",
       "validateModal": "Valider"
     }

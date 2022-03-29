@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 const divContainerStyle = {
   display: 'flex',
   justifyContent: 'space-evenly',
-  height: 80,
+  height: 40,
   margin: 5,
 };
 // End Style //
@@ -48,6 +48,7 @@ function ColorRadioButtons(packColor) {
           id={color}
           sx={{
             backgroundColor: color,
+            borderRadius: '20px',
             '&:hover': { backgroundColor: color },
             border: selectedValue === color ? '3px solid black' : 'none',
           }}

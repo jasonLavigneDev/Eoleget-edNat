@@ -110,7 +110,7 @@
       "packName": "Pack name",
       "packDescription": "Pack description",
       "createPackSuccess": "Pack created successfully.",
-      "packPublic": "Public pack"
+      "packPublic": "Make the pack public"
     },
     "Store": {
       "storeTitle": "Applications store",
@@ -176,7 +176,6 @@
       "edit": "Save",
       "back": "Back",
       "updateSuccess": "Pack updated",
-      "packPublic": "public pack",
       "addApp": "Add an other application",
       "validateModal": "Validate"
     }

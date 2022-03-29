@@ -21,18 +21,19 @@ import PackIconPicker from '../components/packs/PackIconPicker';
 
 // Style CSS //
 const containerStyle = {
-  marginTop: '3%',
+  marginTop: '1%',
 };
 const divDatagridStyle = {
-  height: 400,
+  maxHeight: 400,
   width: '90%',
   display: 'block',
   marginLeft: 'auto',
   marginRight: 'auto',
   marginTop: 10,
+  marginBottom: 50,
 };
 const divButtonStyle = {
-  marginTop: 90,
+  marginTop: 40,
   width: '100%',
   display: 'flex',
   alignItems: 'center',
@@ -133,7 +134,7 @@ function CreatePackPage() {
         <Paper sx={paperStyle}>
           <form noValidate autoComplete="off">
             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 20 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', width: '100%', margin: 'auto', marginRight: 40 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', width: '100%', marginRight: 40 }}>
                 <TextField
                   fullWidth
                   margin="normal"
@@ -175,6 +176,7 @@ function CreatePackPage() {
               checked={isPublic}
               onChange={handleOnChange}
               labelPlacement="start"
+              sx={{ marginTop: -8 }}
             />
             <Divider />
             <Typography variant="h6" component="div">
@@ -186,11 +188,11 @@ function CreatePackPage() {
               <TableAppCreatePack />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained" onClick={createPack} disabled={isDisable}>
-                {i18n.__('pages.packCreation.add')}
-              </Button>
               <Button variant="contained" onClick={goBack}>
                 {i18n.__('pages.packCreation.delete')}
+              </Button>
+              <Button variant="contained" onClick={createPack} disabled={isDisable}>
+                {i18n.__('pages.packCreation.add')}
               </Button>
             </div>
           </form>
