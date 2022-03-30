@@ -22,6 +22,7 @@ const ProfilePage = lazy(() => import('../pages/profile'));
 const CreationPackPage = lazy(() => import('../pages/packCreation'));
 const UserPack = lazy(() => import('../pages/userPack'));
 const EditPack = lazy(() => import('../pages/editPack'));
+const NotFound = lazy(() => import('../pages/notFound'));
 
 // Styles CSS //
 const rootDivStyle = {
@@ -68,6 +69,8 @@ const MainLayout = ({ appsettings, ready }) => {
                     <Route exact path="/packs/edit/:_id" component={EditPack} />
 
                     <Route exact path="/profil" component={ProfilePage} />
+
+                    <Route exact component={NotFound} />
                   </Switch>
                 ) : (
                   <Route path="/" component={VerifyNeeded} />
