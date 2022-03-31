@@ -3,10 +3,11 @@ import i18n from 'meteor/universe:i18n';
 
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import ListIcon from '@mui/icons-material/ViewList';
 import CardIcon from '@mui/icons-material/Dashboard';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
 
 import PackListPage from '../components/packTable/packListPage';
 import PackCardPage from '../components/packsCard/packCardPage';
@@ -28,11 +29,12 @@ const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
   marginTop: -10,
+  marginLeft: 5,
 };
 // End styles //
 
 function PackPage() {
-  const [showModeList, setModeList] = useState(false);
+  const [viewMode, setViewMode] = useState('card');
 
   const [total, setTotal] = useState(0);
 
@@ -46,27 +48,31 @@ function PackPage() {
             </Typography>
           </div>
           <span style={spanIconListStyle}>
-            <Tooltip title="Mode liste">
-              <IconButton
+            <ToggleButtonGroup value={viewMode} exclusive>
+              <ToggleButton
+                value="card"
                 onClick={() => {
-                  setModeList(true);
+                  setViewMode('card');
                 }}
               >
-                <ListIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Mode carte">
-              <IconButton
+                <Tooltip title="Mode carte">
+                  <CardIcon fontSize="large" />
+                </Tooltip>
+              </ToggleButton>
+              <ToggleButton
+                value="list"
                 onClick={() => {
-                  setModeList(false);
+                  setViewMode('list');
                 }}
               >
-                <CardIcon fontSize="large" />
-              </IconButton>
-            </Tooltip>
+                <Tooltip title="Mode liste">
+                  <ListIcon fontSize="large" />
+                </Tooltip>
+              </ToggleButton>
+            </ToggleButtonGroup>
           </span>
         </div>
-        {!showModeList ? (
+        {viewMode === 'card' ? (
           <PackCardPage isUserPack setTotal={setTotal} />
         ) : (
           <PackListPage isUserPack setTotal={setTotal} />

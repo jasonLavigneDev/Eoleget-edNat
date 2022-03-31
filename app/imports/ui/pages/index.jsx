@@ -4,10 +4,12 @@ import i18n from 'meteor/universe:i18n';
 
 import ListIcon from '@mui/icons-material/ViewList';
 import CardIcon from '@mui/icons-material/Dashboard';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import { Typography } from '@mui/material';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
 
 import AppListPage from '../components/appTable/AppListPage';
 import AppCardPage from '../components/appCard/AppCardPage';
@@ -32,6 +34,7 @@ const spanIconListStyle = {
   justifyContent: 'start',
   flexGrow: 3,
   marginTop: -5,
+  marginLeft: 5,
 };
 const spanCartStyle = {
   display: 'flex',
@@ -41,7 +44,7 @@ const spanCartStyle = {
 // End styles //
 
 function Index() {
-  const [showModeList, setModeList] = useState(false);
+  const [viewMode, setViewMode] = useState('card');
   const [total, setTotal] = useState(0);
   const [loadingCart, setLoadingCart] = useState(true);
 
@@ -69,28 +72,32 @@ function Index() {
               <AppCart cart={cart} />
             </span>
             <span style={spanIconListStyle}>
-              <Tooltip title="Mode liste">
-                <IconButton
+              <ToggleButtonGroup value={viewMode} exclusive>
+                <ToggleButton
+                  value="card"
                   onClick={() => {
-                    setModeList(true);
+                    setViewMode('card');
                   }}
                 >
-                  <ListIcon fontSize="large" />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Mode carte">
-                <IconButton
+                  <Tooltip title="Mode carte">
+                    <CardIcon fontSize="large" />
+                  </Tooltip>
+                </ToggleButton>
+                <ToggleButton
+                  value="list"
                   onClick={() => {
-                    setModeList(false);
+                    setViewMode('list');
                   }}
                 >
-                  <CardIcon fontSize="large" />
-                </IconButton>
-              </Tooltip>
+                  <Tooltip title="Mode liste">
+                    <ListIcon fontSize="large" />
+                  </Tooltip>
+                </ToggleButton>
+              </ToggleButtonGroup>
             </span>
           </div>
         </div>
-        {!showModeList ? (
+        {viewMode === 'card' ? (
           <AppCardPage cart={cart} setTotal={setTotal} />
         ) : (
           <AppListPage cart={cart} setTotal={setTotal} />
