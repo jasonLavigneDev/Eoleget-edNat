@@ -277,7 +277,8 @@
       "detailTooltip": "Show app",
       "AddToCart": "Add to cart",
       "Cancel": "Cancel",
-      "removeTooltip": "Remove app"
+      "removeTooltip": "Remove app",
+      "ariaAppList": "Application list"
     },
     "PackList": {
       "name": "Pack name",

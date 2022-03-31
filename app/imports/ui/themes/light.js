@@ -1,6 +1,18 @@
 import { createTheme } from '@mui/material/styles';
 
 const lightTheme = createTheme({
+  /**
+   * Syntax to use breakpoints : https://mui.com/customization/breakpoints/#default-breakpoints
+   */
+  breakpoints: {
+    values: {
+      xs: 600, // down for mobile version / up for tablets
+      sm: 768, // up for landscape tablet/tablet
+      md: 1000, // up for small laptops/desktops
+      lg: 1200, // up for laptops and desktops
+      xl: 1600, // up for extra large desktops
+    },
+  },
   shape: {
     borderRadius: 8,
   },
