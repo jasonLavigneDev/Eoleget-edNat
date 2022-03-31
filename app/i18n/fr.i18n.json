@@ -84,7 +84,11 @@
     "logout": "Déconnexion en cours"
   },
   "pages": {
-    "NotFound": { "backButtonLabel": "Retour", "message": "Page non trouvée !" },
+    "NotFound": {
+      "backButtonLabel": "Retour",
+      "homeButtonLabel": "Accueil",
+      "message": "Page non trouvée !"
+    },
     "NotLoggedIn": {
       "welcome": "Bienvenue dans EoleGet"
     },

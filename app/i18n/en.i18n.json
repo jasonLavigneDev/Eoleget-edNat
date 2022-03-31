@@ -84,7 +84,11 @@
     "logout": "Logging out"
   },
   "pages": {
-    "NotFound": { "backButtonLabel": "Back", "message": "Page not found !" },
+    "NotFound": {
+      "backButtonLabel": "Back",
+      "homeButtonLabel": "Home",
+      "message": "Page not found !"
+    },
     "NotLoggedIn": {
       "welcome": "Welcome to EoleGet"
     },
