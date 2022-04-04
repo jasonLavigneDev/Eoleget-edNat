@@ -167,7 +167,7 @@ function TableAppEditPack({ ready }) {
     setOpenModal(true);
   };
 
-  const StyledTableRow = styled(TableRow)(() => ({
+  const StyledTableCell = styled(TableCell)(() => ({
     fontSize: 13,
     maxHeight: '5px',
     textOverflow: 'ellipsis',
@@ -185,7 +185,7 @@ function TableAppEditPack({ ready }) {
                 return (
                   <TableRow hover tabIndex={-1} key={app.identification}>
                     <TableCell>{app.nom}</TableCell>
-                    <StyledTableRow>{app.description}</StyledTableRow>
+                    <StyledTableCell>{app.description}</StyledTableCell>
                     <TableCell>
                       <ListVersionEdit versions={GetAllAppVersions(app)} app={app} actualVersion={app.version} />
                     </TableCell>
