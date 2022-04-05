@@ -51,8 +51,7 @@ const typographieContentStyle = {
   textOverflow: 'ellipsis',
 };
 const cardContentLinkStyle = {
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  textDecoration: 'underline',
 };
 // End styles //
 
@@ -100,9 +99,19 @@ function AppCard({ app, cart }) {
     <Card sx={cardStyle}>
       <CardHeader
         title={
-          <Typography variant="body1" style={typographieHeaderStyle}>
-            {app.nom}
-          </Typography>
+          app.url !== '' ? (
+            <Tooltip title={app.url}>
+              <a style={cardContentLinkStyle} href={app.url} rel="external noreferrer" target="_blank">
+                <Typography variant="body1" style={typographieHeaderStyle}>
+                  {app.nom}
+                </Typography>
+              </a>
+            </Tooltip>
+          ) : (
+            <Typography variant="body1" style={typographieHeaderStyle}>
+              {app.nom}
+            </Typography>
+          )
         }
         subheader={
           <Typography variant="body2" component="div">
@@ -141,11 +150,6 @@ function AppCard({ app, cart }) {
         <Typography sx={typographieContentStyle} variant="body1" component="div">
           {des}
         </Typography>
-        {app.url !== undefined ? (
-          <a style={cardContentLinkStyle} href={app.url}>
-            {app.url}
-          </a>
-        ) : null}
       </CardContent>
       <CardActions sx={cardActionsStyle}>
         <Link to={`/detailapp/${app.identification}`}>
