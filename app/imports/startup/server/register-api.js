@@ -13,3 +13,5 @@ import '../../api/packs/methods';
 import '../../api/appsettings/appsettings';
 import '../../api/appsettings/server/publications';
 import '../../api/appsettings/methods';
+
+import '../../api/images/images';
