@@ -4,16 +4,8 @@ import requests
 from requests.exceptions import RequestException
 from bs4 import BeautifulSoup
 import functools
-
-try:
-    from urlparse import urlparse  # Python2
-except ImportError:
-    from urllib.parse import urlparse
-
-try:
-    from urlparse import urljoin  # Python2
-except ImportError:
-    from urllib.parse import urljoin
+from urllib.parse import urlparse
+from urllib.parse import urljoin
 
 ICON = "icon"
 FAV_ICON = "fav_icon"
@@ -46,6 +38,10 @@ class URLNotFound(Exception):
     pass
 
 
+class URLNotText(Exception):
+    pass
+
+
 def _absolute_url(base_url, icon_url):
     parsed_url = urlparse(icon_url)
     if not parsed_url.netloc or not parsed_url.scheme:
@@ -59,6 +55,9 @@ def _get_soup_from_url(url, timeout=None, headers=None, parser="html.parser"):
 
     if res.status_code == 404:
         raise URLNotFound("The web page does not exist.")
+
+    if "text" not in res.headers["Content-Type"]:
+        raise URLNotText("The web page is not text.")
 
     content = res.text
 
