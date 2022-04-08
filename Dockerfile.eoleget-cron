@@ -9,6 +9,8 @@ RUN apk --no-cache add py3-pip git
 COPY ./get_api/requirements.txt $EOLEGET_FOLDER/
 COPY ./get_api/getData.py  $EOLEGET_FOLDER/
 COPY ./get_api/utils.py  $EOLEGET_FOLDER/
+COPY ./get_api/getImages.py  $EOLEGET_FOLDER/
+COPY ./get_api/urlimage.py  $EOLEGET_FOLDER/
 
 RUN pip3 install -r $EOLEGET_FOLDER/requirements.txt
 
