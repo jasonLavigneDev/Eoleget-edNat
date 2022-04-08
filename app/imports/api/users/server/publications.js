@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { publishComposite } from 'meteor/reywood:publish-composite';
 import SimpleSchema from 'simpl-schema';
 import logServer from '../../utils/functions';
 
@@ -41,7 +40,7 @@ Meteor.publish('users.admin', function publishAdmins() {
   return Meteor.users.find({}, { fields: Meteor.users.adminFields });
 });
 
-publishComposite('users.single', function userSingle({ _id }) {
+Meteor.publish('users.single', function userSingle({ _id }) {
   try {
     new SimpleSchema({
       _id: {
@@ -54,24 +53,14 @@ publishComposite('users.single', function userSingle({ _id }) {
     this.error(err);
   }
 
-  return {
-    find() {
-      const data = Meteor.users.find({ _id });
-      return data;
-    },
-  };
+  return Meteor.users.find({ _id });
 });
 
-publishComposite('users.all', function usersAll() {
-  return {
-    find() {
-      const data = Meteor.users.find({});
-      return data;
-    },
-  };
+Meteor.publish('users.all', function usersAll() {
+  return Meteor.users.find({});
 });
 
-publishComposite('users.one', function userSingle({ search }) {
+Meteor.publish('users.one', function userSingle({ search }) {
   try {
     new SimpleSchema({
       search: {
@@ -85,10 +74,5 @@ publishComposite('users.one', function userSingle({ search }) {
 
   const regex = RegExp(search, 'i');
 
-  return {
-    find() {
-      const data = Meteor.users.find({ username: { $regex: regex } });
-      return data;
-    },
-  };
+  return Meteor.users.find({ username: { $regex: regex } });
 });

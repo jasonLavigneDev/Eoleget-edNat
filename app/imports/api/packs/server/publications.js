@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { FindFromPublication } from 'meteor/percolate:find-from-publication';
-import { publishComposite } from 'meteor/reywood:publish-composite';
 import SimpleSchema from 'simpl-schema';
 import { checkPaginationParams } from '../../utils';
 import logServer from '../../logging';
@@ -163,7 +162,7 @@ FindFromPublication.publish('packs.user', function packsOfUser({ page, search, u
   }
 });
 
-publishComposite('packs.single', function packSingle({ _id }) {
+Meteor.publish('packs.single', function packSingle({ _id }) {
   try {
     new SimpleSchema({
       _id: {
@@ -176,9 +175,5 @@ publishComposite('packs.single', function packSingle({ _id }) {
     this.error(err);
   }
 
-  return {
-    find() {
-      return Packs.find({ _id }, { fields: Packs.publicFields, limit: 1, sort: { name: -1 } });
-    },
-  };
+  return Packs.find({ _id }, { fields: Packs.publicFields, limit: 1, sort: { name: -1 } });
 });

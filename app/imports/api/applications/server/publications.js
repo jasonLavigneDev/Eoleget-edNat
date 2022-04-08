@@ -1,5 +1,4 @@
 import { FindFromPublication } from 'meteor/percolate:find-from-publication';
-import { publishComposite } from 'meteor/reywood:publish-composite';
 import SimpleSchema from 'simpl-schema';
 import { checkPaginationParams, getLabel } from '../../utils';
 import logServer from '../../logging';
@@ -84,7 +83,7 @@ Meteor.publish('applications.pack', function publishPacksApps({ packAppli }) {
   return Applications.find({ identification: { $in: packAppli } });
 });
 
-publishComposite('applications.single', function publishOneApp({ identification }) {
+Meteor.publish('applications.single', function publishOneApp({ identification }) {
   try {
     new SimpleSchema({
       identification: {
@@ -96,9 +95,5 @@ publishComposite('applications.single', function publishOneApp({ identification 
     logServer(`publish applications.single : ${err}`);
     this.error(err);
   }
-  return {
-    find() {
-      return Applications.find({ identification }, { fields: Applications.publicFields, limit: 1, sort: { name: -1 } });
-    },
-  };
+  return Applications.find({ identification }, { fields: Applications.publicFields, limit: 1, sort: { name: -1 } });
 });
