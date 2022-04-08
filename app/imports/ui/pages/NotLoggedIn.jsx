@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
@@ -27,13 +28,19 @@ const divWrapperStyle = {
 const NotLoggedIn = () => {
   const [{ loggingIn }] = useAppContext();
   const { enableKeycloak } = Meteor.settings.public;
+  const history = useHistory();
+
+  const handleLogging = () => {
+    history.push('/');
+    Meteor.loginWithKeycloak();
+  };
 
   return (
     <Paper sx={paperStyle}>
       <Typography variant="h3">{i18n.__('pages.NotLoggedIn.welcome')}</Typography>
       <div style={divWrapperStyle}>
         {enableKeycloak ? (
-          <Button variant="contained" color="primary" onClick={Meteor.loginWithKeycloak}>
+          <Button variant="contained" color="primary" onClick={handleLogging}>
             {i18n.__(loggingIn ? 'system.loading' : 'system.login')}
           </Button>
         ) : (

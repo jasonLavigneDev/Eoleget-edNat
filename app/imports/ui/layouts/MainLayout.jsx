@@ -69,8 +69,7 @@ const MainLayout = ({ appsettings, ready }) => {
                     <Route exact path="/packs/edit/:_id" component={EditPack} />
 
                     <Route exact path="/profil" component={ProfilePage} />
-
-                    <Route exact component={NotFound} />
+                    <Route component={NotFound} />
                   </Switch>
                 ) : (
                   <Route path="/" component={VerifyNeeded} />
