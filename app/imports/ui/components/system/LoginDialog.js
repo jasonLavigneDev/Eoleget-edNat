@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 import i18n from 'meteor/universe:i18n';
 import Button from '@mui/material/Button';
@@ -52,6 +53,8 @@ const LoginDialog = () => {
   const [email, setEmail] = useState('');
   const [isValid, setIsValid] = useState(false);
 
+  const history = useHistory();
+
   useEffect(() => {
     if (mode === 'signup') {
       setIsValid(!!username && !!password && !!firstName && !!lastName && !!email && password === verify);
@@ -66,7 +69,10 @@ const LoginDialog = () => {
     Meteor.loginWithPassword(username, password, (err) => {
       if (err) {
         msg.error(i18n.__('components.LoginDialog.signinError'));
-      } else setOpen(false);
+      } else {
+        setOpen(false);
+        history.push('/');
+      }
     });
   };
 
@@ -77,6 +83,7 @@ const LoginDialog = () => {
       } else {
         msg.success(i18n.__('components.LoginDialog.signupSuccess'));
         setOpen(false);
+        history.push('/');
       }
     });
   };
