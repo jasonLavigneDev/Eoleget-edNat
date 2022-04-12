@@ -11,7 +11,6 @@ services:
       ROOT_URL: ${APP_ROOT_URL:-http://localhost}
       MONGO_URL: mongodb://mongo:27017/meteor
       PORT: 3000
-      EOLEGET_IMAGES_FOLDER: "/opt/bundle/bundle/programs/web.browser/app/images/appli/"
       METEOR_SETTINGS: ${METEOR_SETTINGS}
   cron:
     build:

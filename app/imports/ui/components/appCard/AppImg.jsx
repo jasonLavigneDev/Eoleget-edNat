@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function AppImg({ appIdent, size }) {
-  const [avatar, setAvatar] = useState(`/images/appli/${appIdent}`);
+  const [img, setImg] = useState(`/appimage/${appIdent}`);
   let ssize = 50;
   if (typeof size === 'number') {
     ssize = size;
   }
 
   const defaultImage = () => {
-    setAvatar('/images/appli/default.svg');
+    setImg('/images/default.svg');
   };
-  return <img src={avatar} alt="" style={{ height: ssize, width: ssize }} onError={() => defaultImage()} />;
+  return <img src={img} alt="" style={{ height: ssize, width: ssize }} onError={() => defaultImage()} />;
 }
 
 AppImg.propTypes = {

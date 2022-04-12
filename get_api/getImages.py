@@ -1,44 +1,56 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Get images from url of eoleGet's applications
+Get images from url of eoleGet's applications and store it in mongo db
 """
+import argparse
 import requests
+import re
 import urlimage
 from sys import exit
-from base64 import b64decode
-from pathlib import Path
+from base64 import b64encode
+from mimetypes import guess_type
 from utils import get_mongodb
 
 
 def get_image_appli(name, url):
-    """Get image from an application from its url and download it localy"""
+    """Get image from an application from its url and store it in mongo db"""
 
-    image_filename = imagePath / name
-    if image_filename.exists():
-        # print("=> File already exists")
-        return
+    global new_images
 
-    print(name, url)
+    # print(name, url)
     try:
         icon = urlimage.get_image_for_url(url)
         if not icon:
-            print("=> No Favicon found")
+            if args.verbose:
+                print("=> No Favicon found")
             return
 
         if "data:image/" in icon:
             # base64 string
-            png_recovered = b64decode(icon.split(",")[1])
-            with open(image_filename, "wb") as image:
-                image.write(png_recovered)
+            mtype = re.search("data:(image/[^,;]*)", icon).group(1) or "image/png"
+            b64 = icon.split(",")[1]
         else:
             # normal url image
-            response = requests.get(icon, stream=True)
-            with open(image_filename, "wb") as image:
-                for chunk in response.iter_content(1024):
-                    image.write(chunk)
+            mtype = guess_type(icon)[0]
+            if mtype and not "image" in mtype:
+                raise Exception("Not an image")
+            if not mtype:
+                mtype = "image/png"
+            b64 = b64encode(requests.get(icon).content).decode("utf-8")
+
+        images.replace_one(
+            {"identification": name},
+            {"identification": name, "datas": b64, "mtype": mtype},
+            True,
+        )
+
+        if args.verbose:
+            print("=> Found new image !")
+        new_images += 1
     except Exception as e:
-        print("=> Error : ", e)
+        if args.verbose:
+            print("=> Error : ", e)
         return
 
 
@@ -46,9 +58,22 @@ def get_image_appli(name, url):
 
 if __name__ == "__main__":
 
-    eoleGetPath = Path(__file__).resolve().parents[1]
-    imagePath = eoleGetPath / "app" / "public" / "images" / "appli"
-    imagePath.mkdir(parents=True, exist_ok=True)
+    parser = argparse.ArgumentParser(
+        description="Get images from url of eoleGet's applications."
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Print more information during image scan",
+    )
+    parser.add_argument(
+        "-f",
+        "--force",
+        action="store_true",
+        help="Force an update of all images",
+    )
+    args = parser.parse_args()
 
     try:
         db = get_mongodb()
@@ -56,8 +81,15 @@ if __name__ == "__main__":
         exit("\nCould not connect to MongoDB. Is eoleGet running ?")
 
     collection = db.applications
+    images = db.images
     all_apps = collection.find({"url": {"$ne": ""}}).sort("identification")
     total = collection.count_documents({"url": {"$ne": ""}})
+    new_images = 0
+    print(f"Scanning {total} application's url...")
     for cpt, app in enumerate(all_apps):
-        print(f"{cpt+1}/{total} => {app['identification']}")
-        get_image_appli(app["identification"], app["url"])
+        if args.verbose:
+            print(f"{cpt+1}/{total} => {app['identification']}")
+        if not images.find_one({"identification": app["identification"]}) or args.force:
+            get_image_appli(app["identification"], app["url"])
+
+    print(f"Found {new_images} new images")
