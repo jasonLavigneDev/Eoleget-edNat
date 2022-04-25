@@ -11,14 +11,13 @@ const appBarStyle = {
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  paddingLeft: 16,
-  paddingRight: 16,
+  paddingLeft: 5,
+  paddingRight: 5,
   minHeight: 48,
 };
 const imgLogoStyle = {
   maxHeight: '40px',
   paddingTop: '5px',
-  height: 40,
   outline: 'none',
 };
 const divRightContainerStyle = {
@@ -29,8 +28,8 @@ const divRightContainerStyle = {
 };
 // End styles //
 
-const SMALL_LOGO = 'puceEOLE.png';
-const LONG_LOGO = 'logoEole.png';
+const SMALL_LOGO = 'puce_eole.png';
+const LONG_LOGO = 'Logo-09.png';
 
 function TopBar() {
   const [{ isMobile, user }] = useAppContext();
