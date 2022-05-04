@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 import PropTypes from 'prop-types';
 import AppVersion from '../system/AppVersion';
@@ -70,7 +71,7 @@ const MainMenu = ({ user = {} }) => {
   };
 
   return (
-    <>
+    <div style={{ borderBottom: '5px solid orange', paddingTop: '4%' }}>
       <Button
         aria-controls="main-menu"
         aria-haspopup="true"
@@ -78,7 +79,7 @@ const MainMenu = ({ user = {} }) => {
         style={{ textTransform: 'none' }}
         endIcon={<ExpandMoreIcon />}
       >
-        <Typography variant="body1" align="left" sx={{ marginRight: 1 }}>
+        <Typography variant="body1" align="left" sx={{ marginRight: 1, marginTop: '10%' }}>
           {user.firstName || ''}
         </Typography>
         <UserAvatar />
@@ -122,7 +123,7 @@ const MainMenu = ({ user = {} }) => {
         </MenuItem>
       </Menu>
       <LogoutDialog open={openLogout} onClose={closeLogoutDialog} onAccept={keycloakLogout} />
-    </>
+    </div>
   );
 };
 

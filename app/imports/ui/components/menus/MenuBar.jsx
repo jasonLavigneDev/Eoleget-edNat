@@ -19,23 +19,31 @@ export const links = [
 const MenuBar = ({ mobile }) => {
   // Styles CSS //
   const tabsStyle = {
-    color: 'text.primary',
+    borderRadius: '10px',
+    color: 'primary.light',
+    '& .Mui-selected': {
+      backgroundColor: 'primary.main',
+      color: 'primary.light',
+    },
+    '.MuiTabs-indicator': {
+      backgroundColor: 'secondary.main',
+    },
   };
   const tabsMobileStyle = {
     textTransform: 'none',
   };
   const flexContainerStyle = {
     display: 'flex',
-    alignItems: 'center',
   };
   const indicatorStyle = {
     top: mobile ? 0 : null,
-    height: 3,
+    height: 5,
     borderTopLeftRadius: mobile ? 0 : 8,
     borderTopRightRadius: mobile ? 0 : 8,
     borderBottomLeftRadius: !mobile ? 0 : 8,
     borderBottomRightRadius: !mobile ? 0 : 8,
   };
+  const secondaryMain = 'secondary.main';
   // End styles //
 
   const { pathname } = useLocation();
@@ -63,11 +71,13 @@ const MenuBar = ({ mobile }) => {
         indicator: indicatorStyle,
       }}
       value={currentLink ? currentLink.path : false}
-      indicatorColor="secondary"
-      textColor="primary"
       aria-label="menu links"
       variant="scrollable"
       scrollButtons
+      centered
+      TabIndicatorProps={{
+        style: { height: 5 },
+      }}
     >
       {links.map((link, index) => (
         <Tab
@@ -77,7 +87,18 @@ const MenuBar = ({ mobile }) => {
           title={link.tooltip ? i18n.__(`components.MenuBar.${link.tooltip}`) : ''}
           disableFocusRipple={mobile}
           disableRipple={mobile}
-          sx={mobile ? tabsMobileStyle : null}
+          sx={
+            mobile
+              ? tabsMobileStyle
+              : {
+                  color: 'primary.main',
+                  borderBottom: '5px solid',
+                  borderColor: 'secondary.main',
+                  height: '70px',
+                  paddingLeft: 5,
+                  paddingRight: 5,
+                }
+          }
           icon={mobile ? link.icon : undefined}
           label={<T>{link.contentMobile || link.content}</T>}
           onClick={() => history.push(link.path)}
