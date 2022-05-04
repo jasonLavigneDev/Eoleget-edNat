@@ -23,8 +23,10 @@ import TableAppEditPack from '../components/appTable/tableAppEditPack';
 import PackIconPicker from '../components/packs/PackIconPicker';
 
 // Style CSS //
+const mainBlue = 'primary.main';
+const mainOrange = 'secondary.main';
 const containerStyle = {
-  marginTop: '1%',
+  marginTop: '3%',
 };
 const divDatagridStyle = {
   maxHeight: 400,
@@ -33,10 +35,10 @@ const divDatagridStyle = {
   marginLeft: 'auto',
   marginRight: 'auto',
   marginTop: 10,
-  marginBottom: 50,
+  marginBottom: 10,
 };
 const divButtonStyle = {
-  marginTop: 250,
+  marginTop: 200,
   width: '100%',
   display: 'flex',
   alignItems: 'center',
@@ -46,6 +48,8 @@ const paperStyle = {
   paddingLeft: 5,
   paddingRight: 5,
   paddingBottom: 2,
+  border: '2px solid black',
+  borderColor: mainOrange,
 };
 // End Style //
 
@@ -129,7 +133,7 @@ const EditPackPage = ({ pack, ready }) => {
   return (
     <Fade in>
       <Container sx={containerStyle}>
-        <Typography variant="h3" component="div">
+        <Typography variant="h3" component="div" sx={{ color: mainBlue }}>
           {i18n.__('pages.packEditPage.title')}
         </Typography>
         <Paper sx={paperStyle}>
@@ -179,22 +183,25 @@ const EditPackPage = ({ pack, ready }) => {
               checked={isPublic}
               onChange={handleOnChange}
               labelPlacement="start"
-              sx={{ marginTop: -6 }}
+              sx={{ marginTop: -1 }}
             />
-            <Divider />
             <Typography variant="h6" component="div">
               {i18n.__('pages.packEditPage.color')}
             </Typography>
             <ColorRadioButton packColor={pack.color} />
-            <Divider />
             <div style={divDatagridStyle}>
               <TableAppEditPack />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained" onClick={goBack}>
+              <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
                 {i18n.__('pages.packEditPage.back')}
               </Button>
-              <Button variant="contained" onClick={editPack} disabled={isDisable}>
+              <Button
+                variant="contained"
+                onClick={editPack}
+                disabled={isDisable}
+                sx={{ backgroundColor: 'primary.purple' }}
+              >
                 {i18n.__('pages.packEditPage.edit')}
               </Button>
             </div>

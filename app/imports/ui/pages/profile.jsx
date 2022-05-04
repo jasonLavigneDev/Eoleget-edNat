@@ -26,17 +26,22 @@ import Spinner from '../components/system/Spinner';
 import theme from '../themes/light';
 
 // Styles CSS //
+const primaryMain = 'primary.main';
+const secondaryMain = 'secondary.main';
 const containerStyle = {
   marginTop: theme.spacing(10),
   marginLeft: theme.spacing(45),
 };
 const paperStyle = {
   padding: theme.spacing(5),
+  border: '2px solid black',
+  borderColor: secondaryMain,
 };
 const gridFormStyle = {
   marginTop: theme.spacing(2),
   display: 'flex',
   flexDirection: 'column',
+  marginLeft: 3,
 };
 const buttonGroupStyle = {
   display: 'flex',
@@ -51,7 +56,12 @@ const labelLanguageStyle = {
   marginBottom: 20,
 };
 const keycloakMessage = {
-  padding: theme.spacing(1),
+  padding: theme.spacing(2),
+  border: '2px solid black',
+  borderColor: primaryMain,
+  marginTop: -10,
+  marginBottom: 2,
+  color: 'primary.main',
 };
 const keycloakLink = {
   textDecoration: 'underline',
@@ -59,6 +69,9 @@ const keycloakLink = {
     color: theme.palette.secondary.main,
     outline: 'none',
   },
+};
+const textfieldStyle = {
+  width: '80%',
 };
 
 // End styles //
@@ -221,14 +234,16 @@ function ProfilePage() {
   return (
     <Fade in>
       <Container sx={containerStyle}>
+        <Typography variant="h4" sx={{ marginBottom: 5, color: primaryMain }}>
+          {i18n.__('pages.ProfilePage.title')}
+        </Typography>
         <Paper sx={paperStyle}>
-          <Typography variant="h4">{i18n.__('pages.ProfilePage.title')}</Typography>
           <form noValidate autoComplete="off">
             <Grid container sx={gridFormStyle} spacing={2}>
               <Grid container spacing={2} style={{ alignItems: 'center' }}>
                 <Grid item xs={8} style={{ paddingLeft: '18px' }}>
                   {enableKeycloak ? (
-                    <Paper style={keycloakMessage}>
+                    <Paper sx={keycloakMessage}>
                       <Typography>{i18n.__('pages.ProfilePage.keycloakProcedure')}</Typography>
                       <br />
                       <Typography>
@@ -252,6 +267,7 @@ function ProfilePage() {
                     type="text"
                     value={userData.firstName || ''}
                     variant="outlined"
+                    sx={textfieldStyle}
                   />
                   <TextField
                     disabled={enableKeycloak}
@@ -267,6 +283,7 @@ function ProfilePage() {
                     type="text"
                     value={userData.lastName || ''}
                     variant="outlined"
+                    sx={textfieldStyle}
                   />
                   <TextField
                     disabled={enableKeycloak}
@@ -282,6 +299,7 @@ function ProfilePage() {
                     type="text"
                     value={userData.email || ''}
                     variant="outlined"
+                    sx={textfieldStyle}
                   />
                   <FormControl variant="outlined" fullWidth margin="normal">
                     <InputLabel
@@ -290,6 +308,7 @@ function ProfilePage() {
                       htmlFor="username"
                       id="username-label"
                       ref={usernameLabel}
+                      sx={textfieldStyle}
                     >
                       {i18n.__('api.users.labels.username')}
                     </InputLabel>
@@ -302,6 +321,7 @@ function ProfilePage() {
                       onChange={onUpdateField}
                       labelwidth={labelUsernameWidth}
                       label={i18n.__('api.users.labels.username')}
+                      sx={textfieldStyle}
                       endAdornment={
                         <InputAdornment position="end">
                           <Tooltip
@@ -322,7 +342,7 @@ function ProfilePage() {
                     </FormHelperText>
                   </FormControl>
                 </Grid>
-                <Grid item xs={4} sx={{ height: 1 / 1 }}>
+                <Grid item xs={4} sx={{ height: 1 / 1, marginTop: 10, marginLeft: -5 }}>
                   <AvatarPicker
                     userAvatar={userData.avatar || ''}
                     userFirstName={userData.firstName || ''}
@@ -333,16 +353,21 @@ function ProfilePage() {
               </Grid>
             </Grid>
             <Grid item>
-              <Grid container spacing={2} style={{ alignItems: 'center' }}>
+              <Grid container spacing={2} style={{ alignItems: 'center', marginLeft: 20 }}>
                 <p style={labelLanguageStyle}>{i18n.__('pages.ProfilePage.languageLabel')}</p>
                 <LanguageSwitcher relative />
               </Grid>
             </Grid>
             <div style={buttonGroupStyle}>
-              <Button variant="contained" onClick={resetForm}>
+              <Button variant="contained" onClick={resetForm} sx={{ backgroundColor: 'primary.purple' }}>
                 {i18n.__('pages.ProfilePage.reset')}
               </Button>
-              <Button variant="contained" disabled={!submitOk} color="primary" onClick={submitUpdateUser}>
+              <Button
+                variant="contained"
+                disabled={!submitOk}
+                onClick={submitUpdateUser}
+                sx={{ backgroundColor: 'primary.purple' }}
+              >
                 {i18n.__('pages.ProfilePage.update')}
               </Button>
             </div>

@@ -25,6 +25,11 @@ const divPackTitleContainerStyle = {
   display: 'flex',
   flexDirection: 'row',
 };
+const divPackContainerStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  marginTop: '3%',
+};
 const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
@@ -41,9 +46,9 @@ function PackPage() {
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <div style={divPackTitleContainerStyle}>
+        <div style={divPackContainerStyle}>
           <div style={divPackTitleContainerStyle}>
-            <Typography variant="h4" component="div">
+            <Typography variant="h4" component="div" sx={{ color: 'primary.purple' }}>
               {i18n.__('pages.UserPacks.userPacksTitle')}({total})
             </Typography>
           </div>

@@ -7,11 +7,13 @@ import { Button, Paper, Typography } from '@mui/material';
 // Styles CSS //
 const mainDivStyle = {
   margin: 'auto',
-  marginTop: '5%',
+  marginTop: '10%',
   textAlign: 'center',
 };
 const paperStyle = {
   padding: 15,
+  border: '2px solid',
+  borderColor: 'secondary.main',
 };
 const spanButtonStyle = {
   marginTop: '10%',
@@ -33,12 +35,14 @@ const NotFound = () => {
   return (
     <div style={mainDivStyle}>
       <Paper sx={paperStyle}>
-        <Typography variant="h2">{i18n.__('pages.NotFound.message')}</Typography>
+        <Typography variant="h2" sx={{ color: 'primary.purple' }}>
+          {i18n.__('pages.NotFound.message')}
+        </Typography>
         <span style={spanButtonStyle}>
-          <Button variant="contained" onClick={goBack}>
+          <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
             {i18n.__('pages.NotFound.backButtonLabel')}
           </Button>
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant="contained" onClick={handleClick} sx={{ backgroundColor: 'primary.purple' }}>
             {i18n.__('pages.NotFound.homeButtonLabel')}
           </Button>
         </span>

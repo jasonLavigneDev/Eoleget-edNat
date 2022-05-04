@@ -32,13 +32,23 @@ const detailApp = ({ app, ready }) => {
     minWidth: '550px',
   };
   const paperStyle = {
-    padding: lightTheme.spacing(1),
+    border: '2px solid',
+    borderColor: 'secondary.main',
+    padding: 10,
   };
   const gridContainerStyle = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyItems: 'center',
+  };
+  const gridDetailAppStyle = {
+    border: '2px solid',
+    borderColor: 'primary.main',
+    borderRadius: '15px',
+    backgroundColor: 'white',
+    marginTop: -13,
+    padding: 2,
   };
   const iconSpanTagStyle = {
     display: 'flex',
@@ -55,8 +65,8 @@ const detailApp = ({ app, ready }) => {
     },
   };
   const divButtonStyle = {
-    marginTop: 20,
-    marginBottom: 5,
+    marginTop: 50,
+    marginBottom: -50,
     width: '100%',
     display: 'flex',
     alignItems: 'center',
@@ -140,19 +150,19 @@ const detailApp = ({ app, ready }) => {
     <Fade in>
       <Container sx={containerStyle}>
         <Paper sx={paperStyle}>
-          <Typography variant="h4" component="div">
-            {i18n.__('pages.detailApp.title')}
-          </Typography>
           <Grid container sx={gridContainerStyle}>
-            <Grid item xs={8} style={{ paddingLeft: '18px' }}>
+            <Grid item xs={8} style={{ paddingLeft: '18px' }} sx={gridDetailAppStyle}>
+              <Typography variant="h4" component="div">
+                {i18n.__('pages.detailApp.title')}
+              </Typography>
               <Typography variant="h6" component="div">
                 {app.nom}
               </Typography>
               <Typography variant="body1" component="div" wrap="nowrap">
                 {app.description}
               </Typography>
-              <div style={{ display: 'flex' }}>
-                <p style={{ paddingRight: 5 }}>Versions :</p>
+              <div style={{ display: 'flex', marginTop: 10 }}>
+                <Typography style={{ paddingRight: 5, paddingTop: 5, paddingBottom: 10 }}>Versions :</Typography>
                 {checkAppAllreadyAdded() ? (
                   <p>{getVersion()}</p>
                 ) : (
@@ -201,7 +211,9 @@ const detailApp = ({ app, ready }) => {
                 ))}
               </span>
             </Grid>
-            <AppImg appIdent={app.identification} size={250} />
+            <div style={{ marginLeft: 30, marginTop: -10 }}>
+              <AppImg appIdent={app.identification} size={250} />
+            </div>
           </Grid>
           <div style={divButtonStyle}>
             {checkAppAllreadyAdded() ? (
@@ -209,11 +221,11 @@ const detailApp = ({ app, ready }) => {
                 {i18n.__('pages.detailApp.Remove')}
               </Button>
             ) : (
-              <Button variant="contained" onClick={addAppToCart}>
+              <Button variant="contained" onClick={addAppToCart} sx={{ backgroundColor: 'primary.purple' }}>
                 {i18n.__('pages.detailApp.Save')}
               </Button>
             )}
-            <Button variant="contained" onClick={goBack}>
+            <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
               {i18n.__('pages.detailApp.back')}
             </Button>
           </div>
