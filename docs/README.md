@@ -33,3 +33,10 @@ Il est possible de vérifier le fonctionnement d'eoleget en tapant la ligne suiv
 ```
 http://localhost:3000
 ```
+
+## Changer le theme de l'application
+
+```
+Il y a le choix entre le theme eole ou le theme normal. Pour le modifier, cf l'option theme dans le fichier settings.development.json
+
+```

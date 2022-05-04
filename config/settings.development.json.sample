@@ -3,7 +3,8 @@
     "enableKeycloak": false,
     "keycloakUrl": "",
     "keycloakRealm": "",
-    "emailValidation": true
+    "emailValidation": true,
+    "theme" : "eole"
   },
   "keycloak": {
     "pubkey": "",
