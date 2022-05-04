@@ -30,7 +30,7 @@ const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   minWidth: '100%',
-  marginTop: '1%',
+  marginTop: '4%',
   marginBottom: '2%',
 };
 const divCardContainerStyle = {
@@ -39,8 +39,10 @@ const divCardContainerStyle = {
   flexWrap: 'wrap',
 };
 const textfieldStyle = {
-  marginLeft: 15,
-  width: '98%',
+  marginLeft: 50,
+  width: '70%',
+  marginTop: -20,
+  backgroundColor: 'white', // can't use theme color
 };
 const spanHelperText = {
   fontSize: 'large',
@@ -163,7 +165,7 @@ function AppCardPage({ cart, setTotal }) {
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <Paper>
+        <Paper sx={{ border: '2px solid', borderColor: 'secondary.main' }}>
           {searchField}
           <div style={divCardContainerStyle}>
             {total !== 0 ? (
@@ -173,7 +175,7 @@ function AppCardPage({ cart, setTotal }) {
                 ))}
               </span>
             ) : (
-              <div style={{ padding: 50 }}>
+              <div style={{ padding: 30 }}>
                 <Typography variant="h5">{i18n.__('pages.Store.noResult')}</Typography>
               </div>
             )}
