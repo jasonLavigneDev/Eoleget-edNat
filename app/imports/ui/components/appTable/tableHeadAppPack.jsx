@@ -36,6 +36,21 @@ function EnhancedTableHead(props) {
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
+              sx={{
+                color: 'primary.light',
+                '&.MuiTableSortLabel-root': {
+                  color: 'primary.light',
+                },
+                '&.MuiTableSortLabel-root:hover': {
+                  color: 'primary.light',
+                },
+                '&.Mui-active': {
+                  color: 'primary.light',
+                },
+                '& .MuiTableSortLabel-icon': {
+                  color: 'white !important', // can't use theme color
+                },
+              }}
             >
               {headCell.title}
             </TableSortLabel>
