@@ -5,7 +5,14 @@ import PropTypes from 'prop-types';
 
 const PackIcon = ({ icon, big }) => {
   const defaultImage = '/images/packs/packs-000.png';
-  return <Avatar src={icon || defaultImage} sx={big ? { width: 200, height: 200 } : { width: 40, height: 40 }} />;
+  return (
+    <Avatar
+      src={icon || defaultImage}
+      sx={
+        big ? { width: 200, height: 200 } : { width: 40, height: 40, backgroundColor: 'primary.light', padding: '3px' }
+      }
+    />
+  );
 };
 
 PackIcon.defaultProps = {
