@@ -14,8 +14,12 @@ import IconButton from '@mui/material/IconButton';
 
 import ClearIcon from '@mui/icons-material/Clear';
 
+const primaryMain = 'primary.main';
 const root = {
   width: '100%',
+  border: '2px solid',
+  borderColor: primaryMain,
+  borderRadius: '10px',
 };
 const actions = {
   display: 'flex',
@@ -24,7 +28,7 @@ const actions = {
 const paper = {
   overflow: 'auto',
   position: 'absolute',
-  width: '50%',
+  width: '35%',
   maxHeight: '100%',
   top: '50%',
   left: '50%',
@@ -62,10 +66,10 @@ const PackDelete = ({ pack, open, onClose }) => {
           </CardContent>
           <CardActions sx={actions}>
             <div style={buttonDelete}>
-              <Button style={{ marginRight: 10 }} onClick={onClose}>
+              <Button sx={{ marginRight: 10, backgroundColor: 'primary.purple' }} onClick={onClose} variant="contained">
                 {i18n.__('components.packDelete.cancel')}
               </Button>
-              <Button onClick={deletePack} variant="contained" color="primary">
+              <Button sx={{ backgroundColor: 'primary.purple' }} onClick={deletePack} variant="contained">
                 {i18n.__('components.packDelete.validateForm')}
               </Button>
             </div>
