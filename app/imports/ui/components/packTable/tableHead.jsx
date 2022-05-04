@@ -53,13 +53,32 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
+      <TableRow sx={{ border: '1px solid white' }}>
         {column.map((headCell) => (
-          <TableCell key={headCell.id} sortDirection={orderBy === headCell.id ? order : false}>
+          <TableCell
+            key={headCell.id}
+            sortDirection={orderBy === headCell.id ? order : false}
+            sx={{ backgroundColor: 'primary.purple', color: 'primary.light', textAlign: 'center' }}
+          >
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
+              sx={{
+                color: 'primary.light',
+                '&.MuiTableSortLabel-root': {
+                  color: 'primary.light',
+                },
+                '&.MuiTableSortLabel-root:hover': {
+                  color: 'primary.light',
+                },
+                '&.Mui-active': {
+                  color: 'primary.light',
+                },
+                '& .MuiTableSortLabel-icon': {
+                  color: 'white !important',
+                },
+              }}
             >
               {headCell.title}
             </TableSortLabel>
