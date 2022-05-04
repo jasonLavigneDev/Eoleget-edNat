@@ -18,7 +18,20 @@ function ListVersionEdit({ versions, actualVersion, app }) {
   };
   return (
     <FormControl sx={formControlStyle}>
-      <Select value={version} inputProps={{ 'aria-label': 'Versions' }} displayEmpty onChange={handleChange}>
+      <Select
+        value={version}
+        inputProps={{ 'aria-label': 'Versions' }}
+        displayEmpty
+        onChange={handleChange}
+        sx={{
+          height: 30,
+          backgroundColor: 'primary.purple',
+          color: 'primary.light',
+          '& .MuiSvgIcon-root': {
+            color: 'primary.light',
+          },
+        }}
+      >
         <MenuItem value="latest">latest</MenuItem>
         {versions
           .sort()
