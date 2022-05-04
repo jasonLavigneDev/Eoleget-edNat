@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { IconButton } from '@mui/material';
 
 // Style CSS //
 const divContainerStyle = {
   display: 'flex',
-  justifyContent: 'space-evenly',
-  height: 40,
+  height: 50,
   margin: 5,
+  justifyContent: 'space-evenly',
 };
 // End Style //
 
@@ -43,14 +43,16 @@ function ColorRadioButtons(packColor) {
   return (
     <div style={divContainerStyle}>
       {colors.map((color) => (
-        <Button
+        <IconButton
           key={color}
           id={color}
           sx={{
             backgroundColor: color,
-            borderRadius: '20px',
+            width: 40,
+            height: 40,
             '&:hover': { backgroundColor: color },
             border: selectedValue === color ? '3px solid black' : 'none',
+            margin: '3px',
           }}
           onClick={() => handleClick(color)}
         />
