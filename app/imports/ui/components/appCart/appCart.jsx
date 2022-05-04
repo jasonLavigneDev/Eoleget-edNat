@@ -11,11 +11,9 @@ const divStyle = {
   position: 'static',
 };
 
-const iconButtonStyle = {
-  color: 'blue',
-};
 const buttonCreateStyle = {
   margin: 1,
+  backgroundColor: 'primary.purple',
 };
 const paperStyle = {
   display: 'flex',
@@ -67,10 +65,9 @@ function AppCart({ cart }) {
                 setAnchorEl(event.currentTarget);
               }}
               color="secondary"
-              sx={iconButtonStyle}
               disabled={isDisable}
             >
-              <ShoppingBasketIcon fontSize="large" />
+              <ShoppingBasketIcon fontSize="large" sx={{ color: 'primary.main' }} />
             </IconButton>
           </Badge>
         </Box>
@@ -97,8 +94,8 @@ function AppCart({ cart }) {
               {i18n.__('components.appCart.createPack')}
             </Button>
             <Tooltip title={i18n.__('components.appCart.deleteAll')}>
-              <IconButton variant="contained" disabled={isDisable} onClick={handleDeleteAll} color="error">
-                <DeleteIcon />
+              <IconButton variant="contained" disabled={isDisable} onClick={handleDeleteAll}>
+                <DeleteIcon sx={{ color: 'secondary.main' }} />
               </IconButton>
             </Tooltip>
           </div>
