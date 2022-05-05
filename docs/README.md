@@ -38,5 +38,6 @@ http://localhost:3000
 
 ```
 Il y a le choix entre le theme eole ou le theme normal. Pour le modifier, cf l'option theme dans le fichier settings.development.json
+ /!\ Seule le theme eole est disponible pour le moment /!\
 
 ```
