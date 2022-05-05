@@ -23,10 +23,13 @@ const MenuBar = ({ mobile }) => {
     color: 'primary.light',
     '& .Mui-selected': {
       backgroundColor: 'primary.main',
-      color: 'primary.light',
+      color: 'white !important',
     },
     '.MuiTabs-indicator': {
       backgroundColor: 'secondary.main',
+    },
+    '.MuiTabs-flexContainer': {
+      justifyContent: 'center',
     },
   };
   const tabsMobileStyle = {
@@ -74,7 +77,6 @@ const MenuBar = ({ mobile }) => {
       aria-label="menu links"
       variant="scrollable"
       scrollButtons
-      centered
       TabIndicatorProps={{
         style: { height: 5 },
       }}
