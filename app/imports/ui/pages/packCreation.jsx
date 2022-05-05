@@ -3,17 +3,7 @@ import i18n from 'meteor/universe:i18n';
 
 import { useHistory } from 'react-router-dom';
 
-import {
-  Button,
-  Container,
-  Fade,
-  Paper,
-  Typography,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Divider,
-} from '@mui/material';
+import { Button, Container, Fade, Paper, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import TableAppCreatePack from '../components/appTable/tableAppCreatePack';
 import { useAppContext } from '../contexts/context';

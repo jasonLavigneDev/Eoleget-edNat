@@ -46,7 +46,6 @@ const MenuBar = ({ mobile }) => {
     borderBottomLeftRadius: !mobile ? 0 : 8,
     borderBottomRightRadius: !mobile ? 0 : 8,
   };
-  const secondaryMain = 'secondary.main';
   // End styles //
 
   const { pathname } = useLocation();

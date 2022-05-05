@@ -8,7 +8,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
 
 import PropTypes from 'prop-types';
 import AppVersion from '../system/AppVersion';
