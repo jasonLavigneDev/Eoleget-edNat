@@ -188,7 +188,11 @@ function TableAppCreatePack({ ready }) {
     <div style={{ height: 600, textAlign: 'center' }}>
       <TableContainer component={Paper}>
         <Table
-          sx={{ minWidth: 650, backgroundColor: 'primary.purple', overflow: 'hidden' }}
+          sx={{
+            minWidth: 650,
+            backgroundColor: 'primary.purple',
+            overflow: 'hidden',
+          }}
           size="small"
           aria-label="App table"
         >

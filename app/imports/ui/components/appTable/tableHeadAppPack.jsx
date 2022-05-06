@@ -29,7 +29,7 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
+      <TableRow sx={{ borderBottom: '1px solid white' }}>
         {column.map((headCell) => (
           <TableCell key={headCell.id} sortDirection={orderBy === headCell.id ? order : false}>
             <TableSortLabel
