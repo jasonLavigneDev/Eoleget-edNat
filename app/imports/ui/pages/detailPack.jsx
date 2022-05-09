@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { IconButton } from '@mui/material';
+import { Divider } from '@mui/material';
 
 import i18n from 'meteor/universe:i18n';
 import Tooltip from '@mui/material/Tooltip';
@@ -57,6 +58,7 @@ const ButtonCommandStyle = {
   textTransform: 'none',
   width: 'fit-content',
   marginBottom: 5,
+  marginLeft: 2,
 };
 const ButtonGetCommandStyle = {
   width: '20%',
@@ -68,10 +70,7 @@ const divButtons = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
-};
-const paperButtons = {
-  marginBottom: 5,
-  padding: 1,
+  marginTop: 30,
 };
 const dlJsonButton = {
   marginTop: 3,
@@ -201,56 +200,53 @@ function DetailPack({ pack, ready }) {
               </div>
             </div>
           </div>
-          <Paper sx={paperButtons}>
-            <div style={divButtons}>
+          <div style={divButtons}>
+            <Button
+              title="batch"
+              variant="contained"
+              onClick={() => changeDisplay(CMD_BATCH)}
+              sx={ButtonGetCommandStyle}
+            >
+              Batch
+            </Button>
+            <Button
+              title="powershell"
+              variant="contained"
+              onClick={() => changeDisplay(CMD_POWERSHELL)}
+              sx={ButtonGetCommandStyle}
+            >
+              Powershell
+            </Button>
+            <Button title="json" variant="contained" onClick={() => changeDisplay(CMD_JSON)} sx={ButtonGetCommandStyle}>
+              JSON
+            </Button>
+          </div>
+          <Button title={i18n.__('pages.detailPack.copyToClipboard')} onClick={copyCommand} sx={ButtonCommandStyle}>
+            <ContentCopyIcon />
+            <Typography variant="paragraph">{command}</Typography>
+          </Button>
+          <Divider
+            variant="middle"
+            sx={{ backgroundColor: 'secondary.main', marginBottom: 5, marginLeft: 10, marginRight: 10 }}
+          />
+          {displayCmd === CMD_JSON ? (
+            <div style={buttonJsonContainerStyle}>
+              <Typography variant="paragraph" align="center">
+                <IconButton disabled>
+                  <InfoIcon />
+                </IconButton>
+                {i18n.__('pages.detailPack.instructions')}
+              </Typography>
               <Button
-                title="batch"
                 variant="contained"
-                onClick={() => changeDisplay(CMD_BATCH)}
-                sx={ButtonGetCommandStyle}
+                title={i18n.__('pages.detailPack.copyToClipboard')}
+                sx={dlJsonButton}
+                onClick={generateFile}
               >
-                Batch
-              </Button>
-              <Button
-                title="powershell"
-                variant="contained"
-                onClick={() => changeDisplay(CMD_POWERSHELL)}
-                sx={ButtonGetCommandStyle}
-              >
-                Powershell
-              </Button>
-              <Button
-                title="json"
-                variant="contained"
-                onClick={() => changeDisplay(CMD_JSON)}
-                sx={ButtonGetCommandStyle}
-              >
-                JSON
+                {i18n.__('pages.detailPack.downloadJSON')}
               </Button>
             </div>
-            <Button title={i18n.__('pages.detailPack.copyToClipboard')} onClick={copyCommand} sx={ButtonCommandStyle}>
-              <ContentCopyIcon />
-              <Typography variant="paragraph">{command}</Typography>
-            </Button>
-            {displayCmd === CMD_JSON ? (
-              <div style={buttonJsonContainerStyle}>
-                <Typography variant="paragraph" align="center">
-                  <IconButton disabled>
-                    <InfoIcon />
-                  </IconButton>
-                  {i18n.__('pages.detailPack.instructions')}
-                </Typography>
-                <Button
-                  variant="contained"
-                  title={i18n.__('pages.detailPack.copyToClipboard')}
-                  sx={dlJsonButton}
-                  onClick={generateFile}
-                >
-                  {i18n.__('pages.detailPack.downloadJSON')}
-                </Button>
-              </div>
-            ) : null}
-          </Paper>
+          ) : null}
 
           {apps.map((app) => (
             <AppPacksCard key={app.identification} app={app} />
