@@ -25,7 +25,7 @@ import PackIcon from '../components/packs/PackIcon';
 
 // Styles CSS //
 const orangeBorder = 'secondary.main';
-const blueBorder = 'primary.main';
+const primaryMain = 'primary.main';
 const containerStyle = {
   marginTop: theme.spacing(10),
   maxWidth: '1000px',
@@ -169,11 +169,11 @@ function DetailPack({ pack, ready }) {
         </div>
         <Paper sx={paperStyle}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div
-              style={{
+            <Paper
+              sx={{
                 border: '1px solid',
-                borderColor: blueBorder,
-                borderRadius: 10,
+                borderColor: primaryMain,
+                borderRadius: 1,
                 width: '60%',
                 marginTop: '-30px',
                 backgroundColor: 'white',
@@ -182,7 +182,7 @@ function DetailPack({ pack, ready }) {
             >
               <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <div style={divMainContentStyle}>
-                  <Typography variant="h6" component="div">
+                  <Typography variant="h6" component="div" color="primary.purple">
                     {pack.name}
                   </Typography>
                   <Typography variant="body1" component="div">
@@ -194,7 +194,7 @@ function DetailPack({ pack, ready }) {
                   <textarea readOnly value={pack.description} rows="5" style={{ resize: 'none', border: 0 }} />
                 </div>
               </div>
-            </div>
+            </Paper>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ marginLeft: '50%' }}>
                 <PackIcon big icon={pack.icon} />
