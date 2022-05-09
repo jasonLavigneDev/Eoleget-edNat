@@ -43,7 +43,7 @@ const detailApp = ({ app, ready }) => {
     justifyItems: 'center',
   };
   const gridDetailAppStyle = {
-    border: '2px solid',
+    border: '1px solid',
     borderColor: 'primary.main',
     borderRadius: '15px',
     backgroundColor: 'white',
