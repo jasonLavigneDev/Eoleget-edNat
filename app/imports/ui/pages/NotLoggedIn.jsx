@@ -12,9 +12,11 @@ import LoginDialog from '../components/system/LoginDialog';
 // Styles CSS //
 const paperStyle = {
   display: 'flex',
-  margin: '5% auto',
-  padding: '10%',
+  margin: '10% auto',
+  padding: '5%',
   flexDirection: 'column',
+  border: '2px solid',
+  borderColor: 'secondary.main',
 };
 const divWrapperStyle = {
   display: 'flex',
@@ -40,7 +42,7 @@ const NotLoggedIn = () => {
       <Typography variant="h3">{i18n.__('pages.NotLoggedIn.welcome')}</Typography>
       <div style={divWrapperStyle}>
         {enableKeycloak ? (
-          <Button variant="contained" color="primary" onClick={handleLogging}>
+          <Button variant="contained" onClick={handleLogging} sx={{ backgroundColor: 'primary.purple' }}>
             {i18n.__(loggingIn ? 'system.loading' : 'system.login')}
           </Button>
         ) : (

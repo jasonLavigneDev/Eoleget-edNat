@@ -6,6 +6,9 @@ import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 function EnhancedTableHead(props) {
+  // Styles CSS //
+  const primaryLight = 'primary.light';
+  // End styles //
   const column = [
     {
       title: i18n.__('components.AppList.application'),
@@ -36,16 +39,32 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox">
-          <ShoppingBasketIcon />
+      <TableRow sx={{ border: '1px solid white' }}>
+        <TableCell>
+          <ShoppingBasketIcon sx={{ color: 'primary.light' }} />
         </TableCell>
         {column.map((headCell) => (
-          <TableCell key={headCell.id} sortDirection={orderBy === headCell.id ? order : false}>
+          <TableCell key={headCell.id} sortDirection={orderBy === headCell.id ? order : false} align="center">
             <TableSortLabel
               active={orderBy === headCell.id}
+              selected={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
+              sx={{
+                color: 'primary.light',
+                '&.MuiTableSortLabel-root': {
+                  color: primaryLight,
+                },
+                '&.MuiTableSortLabel-root:hover': {
+                  color: primaryLight,
+                },
+                '&.Mui-active': {
+                  color: primaryLight,
+                },
+                '& .MuiTableSortLabel-icon': {
+                  color: 'white !important', // can't use theme color
+                },
+              }}
             >
               {headCell.title}
             </TableSortLabel>

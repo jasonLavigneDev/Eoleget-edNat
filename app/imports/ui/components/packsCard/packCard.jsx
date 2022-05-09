@@ -18,7 +18,6 @@ import { Typography, Badge } from '@mui/material';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import AppPacksCard from './appPacksCard';
-import lightTheme from '../../themes/light';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 import { generateGradiant } from '../../utils';
@@ -28,37 +27,42 @@ import PackIcon from '../packs/PackIcon';
 const divCardContainerStyle = {
   margin: '1%',
 };
-const cardStyle = {
-  position: 'relative',
-  width: '28em',
-  height: 'auto',
-  margin: '1%',
-  backgroundColor: lightTheme.palette.primary.light,
-  boxShadow: 4,
-};
 const expendMoreStyle = {
   marginRight: '42%',
+  backgroundColor: 'rgba(255,255,255,0.6)',
+  '&:hover': {
+    transition: 'all 1s ease-out',
+    backgroundColor: 'rgba(255,255,255)',
+  },
 };
 const iconButtonStyle = {
-  color: 'white',
+  color: 'primary.light',
   marginLeft: -1,
 };
 const typographieHeaderStyle = {
-  overflow: 'hidden',
+  overflow: 'ellipsis',
   textOverflow: 'ellipsis',
   margin: 'auto',
   paddingLeft: 10,
   width: '18rem',
+  height: '4rem',
 };
 const typographieSubheaderStyle = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   width: '18rem',
-  marginLeft: 50,
 };
 // End Style //
 
 const PackCard = ({ pack, isUserPack }) => {
+  const cardStyle = {
+    position: 'relative',
+    width: '28em',
+    height: 'auto',
+    margin: '1%',
+    background: `linear-gradient(${generateGradiant(pack.color)})`,
+    boxShadow: 4,
+  };
   const [showMore, setShowMore] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [{ userId }] = useAppContext();
@@ -100,8 +104,7 @@ const PackCard = ({ pack, isUserPack }) => {
   const GetClassName = () => {
     return {
       display: 'flex',
-      background: `linear-gradient(${generateGradiant(pack.color)})`,
-      color: 'white',
+      color: 'primary.light',
     };
   };
 
@@ -114,7 +117,7 @@ const PackCard = ({ pack, isUserPack }) => {
               badgeContent={
                 !pack.isPublic ? (
                   <Tooltip title={i18n.__('components.PacksCard.privateIcon')} placement="top-start">
-                    <VisibilityOffIcon sx={{ backgroundColor: 'white', borderRadius: 25, color: 'black' }} />
+                    <VisibilityOffIcon sx={{ backgroundColor: 'primary.light', borderRadius: 25, color: 'black' }} />
                   </Tooltip>
                 ) : (
                   ''
@@ -128,15 +131,13 @@ const PackCard = ({ pack, isUserPack }) => {
               <PackIcon icon={pack.icon} />
               <Typography variant="h6" style={typographieHeaderStyle}>
                 {pack.name}
+                {!isUserPack ? (
+                  <Typography style={typographieSubheaderStyle} variant="body1">
+                    {pack.ownerName}
+                  </Typography>
+                ) : null}
               </Typography>
             </Badge>
-          }
-          subheader={
-            !isUserPack ? (
-              <Typography style={typographieSubheaderStyle} variant="body1">
-                {pack.ownerName}
-              </Typography>
-            ) : null
           }
           sx={GetClassName()}
           action={
@@ -180,19 +181,31 @@ const PackCard = ({ pack, isUserPack }) => {
           </Collapse>
         </CardContent>
         <CardActions>
-          <Tooltip title={i18n.__('components.PacksCard.extendPack')}>
-            <ExpandMore
-              expand={showMore}
-              onClick={() => {
-                setShowMore(!showMore);
-              }}
-              aria-expanded={showMore}
-              aria-label="show more"
-              sx={expendMoreStyle}
-            >
-              <ExpandMoreIcon fontSize="large" />
-            </ExpandMore>
-          </Tooltip>
+          {appli.length !== 2 ? (
+            <Tooltip title={i18n.__('components.PacksCard.extendPack')}>
+              <ExpandMore
+                expand={showMore}
+                onClick={() => {
+                  setShowMore(!showMore);
+                }}
+                aria-expanded={showMore}
+                aria-label="show more"
+                sx={expendMoreStyle}
+              >
+                <ExpandMoreIcon
+                  fontSize="large"
+                  sx={{
+                    color: 'primary.main',
+                    '&:hover': {
+                      color: 'secondary.main',
+                    },
+                  }}
+                />
+              </ExpandMore>
+            </Tooltip>
+          ) : (
+            <div style={{ height: 50 }} />
+          )}
         </CardActions>
       </Card>
       {openModal ? <PackDelete pack={pack} open={openModal} onClose={() => setOpenModal(false)} /> : null}

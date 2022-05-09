@@ -18,6 +18,7 @@ import AppImg from '../appCard/AppImg';
 const cardStyle = {
   height: '6em',
   marginBottom: '1%',
+  backgroundColor: 'rgba(255,255,255,0.6)',
 };
 const cardContentStyle = {
   display: 'flex',
@@ -51,7 +52,7 @@ function AppPacksCard({ app }) {
           <Tooltip title={i18n.__('components.AppPacksCard.infoTooltip')}>
             <IconButton>
               <Link to={`/detailapp/${app.identification}`}>
-                <InfoIcon />
+                <InfoIcon sx={{ color: 'primary.main' }} />
               </Link>
             </IconButton>
           </Tooltip>

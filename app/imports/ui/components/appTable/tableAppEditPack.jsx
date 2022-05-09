@@ -25,21 +25,36 @@ import EnhancedTableHead from './tableHeadAppPack';
 import ListVersionEdit from '../version/listVersionEdit';
 import Applications from '../../../api/applications/applications';
 
+// Styles CSS //
+const mainWhite = 'primary.light';
 const modalStyle = {
-  overflow: 'scroll',
+  overflow: 'auto',
   position: 'absolute',
-  width: '90%',
+  width: '80%',
+  maxHeight: '100%',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  paddingLeft: 5,
+  paddingRight: 5,
 };
-
 const buttonCloseStyle = {
-  display: 'flex',
-  position: 'relative',
-  margin: 'auto',
+  display: 'block',
   width: 400,
+  margin: 'auto',
+  bottom: 20,
+  color: 'primary.light',
+  backgroundColor: 'primary.purple',
+  border: '2px solid',
+  borderColor: 'secondary.main',
+  '&:hover': {
+    backgroundColor: 'primary.main',
+  },
 };
+const tableCellStyle = {
+  color: mainWhite,
+};
+// End styles //
 
 function TableAppEditPack({ ready }) {
   if (!ready) return null;
@@ -169,23 +184,31 @@ function TableAppEditPack({ ready }) {
 
   const StyledTableCell = styled(TableCell)(() => ({
     fontSize: 13,
-    maxHeight: '5px',
     textOverflow: 'ellipsis',
   }));
 
   return (
-    <div style={{ maxHeight: 200 }}>
+    <div style={{ maxHeight: 200, textAlign: 'center' }}>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <Table
+          sx={{ minWidth: 650, backgroundColor: 'primary.purple', overflow: 'hidden' }}
+          size="small"
+          aria-label="a dense table"
+        >
           <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} isEditPack />
           <TableBody>
             {stableSort(rows, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((app) => {
                 return (
-                  <TableRow hover tabIndex={-1} key={app.identification}>
-                    <TableCell>{app.nom}</TableCell>
-                    <StyledTableCell>{app.description}</StyledTableCell>
+                  <TableRow
+                    hover
+                    tabIndex={-1}
+                    key={app.identification}
+                    sx={{ backgroundColor: 'primary.lightPurple' }}
+                  >
+                    <TableCell sx={tableCellStyle}>{app.nom}</TableCell>
+                    <StyledTableCell sx={tableCellStyle}>{app.description}</StyledTableCell>
                     <TableCell>
                       <ListVersionEdit versions={GetAllAppVersions(app)} app={app} actualVersion={app.version} />
                     </TableCell>
@@ -193,7 +216,7 @@ function TableAppEditPack({ ready }) {
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
                         <Link to={`/detailapp/${app.identification}`}>
                           <IconButton>
-                            <OpenInNewIcon />
+                            <OpenInNewIcon sx={tableCellStyle} />
                           </IconButton>
                         </Link>
                       </Tooltip>
@@ -201,7 +224,7 @@ function TableAppEditPack({ ready }) {
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.removeTooltip')}>
                         <IconButton onClick={(e) => handleDeleteButton(e, app)}>
-                          <DeleteIcon />
+                          <DeleteIcon sx={tableCellStyle} />
                         </IconButton>
                       </Tooltip>
                     </TableCell>
@@ -211,7 +234,18 @@ function TableAppEditPack({ ready }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="outlined" onClick={openList} sx={{ width: '100%' }}>
+      <Button
+        variant="outlined"
+        onClick={openList}
+        sx={{
+          width: '90%',
+          backgroundColor: 'primary.purple',
+          padding: 1,
+          marginTop: 1,
+          color: mainWhite,
+          '&:hover': { backgroundColor: 'primary.main' },
+        }}
+      >
         {i18n.__('pages.packEditPage.addApp')}
       </Button>
       <TablePagination
@@ -228,7 +262,7 @@ function TableAppEditPack({ ready }) {
         <Modal open onClose={onClose}>
           <div>
             <Paper sx={modalStyle}>
-              <Typography variant="h4" component="div" style={{ padding: 10 }}>
+              <Typography variant="h4" component="div" sx={{ padding: 2, color: 'primary.purple' }}>
                 {i18n.__('pages.Store.storeTitle')}
               </Typography>
               <AppListPage modal cart={cart} editModal />

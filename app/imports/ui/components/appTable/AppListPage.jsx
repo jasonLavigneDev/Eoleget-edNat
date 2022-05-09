@@ -21,7 +21,6 @@ const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   minWidth: '100%',
-  marginTop: '1%',
   marginBottom: '2%',
 };
 const divStoreTitleStyle = {
@@ -29,6 +28,13 @@ const divStoreTitleStyle = {
 };
 const spanHelperText = {
   fontSize: 'large',
+};
+const textfieldStyle = {
+  marginLeft: 50,
+  width: '70%',
+  marginTop: -35,
+  paddingBottom: 20,
+  backgroundColor: 'white', // can't use theme color
 };
 // End styles //
 
@@ -124,6 +130,7 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       defaultValue={appPage.search}
       inputRef={searchRef}
       variant="outlined"
+      style={textfieldStyle}
       helperText={
         appPage.search ? (
           appPage.search.startsWith('#') ? (
@@ -162,20 +169,22 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
 
   return (
     <Fade in>
-      <div style={divMainStyle}>
-        <div style={divStoreTitleStyle}>
-          {searchField}
-          {applications.length !== 0 ? (
-            <AppList applications={applications} cart={cart} isModal={modal} editPack={editModal} />
-          ) : (
-            <Paper sx={{ padding: 6 }}>
-              <Typography variant="h5" align="center">
-                {i18n.__('pages.Store.noResult')}
-              </Typography>
-            </Paper>
-          )}
+      <Paper sx={{ border: '2px solid', borderColor: 'secondary.main', padding: 2, marginTop: 5 }}>
+        <div style={divMainStyle}>
+          <div style={divStoreTitleStyle}>
+            {searchField}
+            {applications.length !== 0 ? (
+              <AppList applications={applications} cart={cart} isModal={modal} editPack={editModal} />
+            ) : (
+              <div sx={{ padding: 6 }}>
+                <Typography variant="h5" align="center">
+                  {i18n.__('pages.Store.noResult')}
+                </Typography>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </Paper>
     </Fade>
   );
 }

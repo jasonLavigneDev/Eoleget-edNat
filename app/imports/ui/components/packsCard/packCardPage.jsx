@@ -29,7 +29,7 @@ const divMainStyle = {
   display: 'flex',
   flexDirection: 'column',
   minWidth: '100%',
-  marginTop: '1%',
+  marginTop: '3%',
   marginBottom: '2%',
 };
 const divCardContainerStyle = {
@@ -38,8 +38,10 @@ const divCardContainerStyle = {
   flexWrap: 'wrap',
 };
 const textfieldStyle = {
-  marginLeft: 2,
-  width: '97%',
+  marginLeft: 50,
+  marginTop: '-20px',
+  width: '70%',
+  backgroundColor: 'white',
 };
 const spanHelperText = {
   fontSize: 'large',
@@ -121,7 +123,7 @@ function packCardPage({ isUserPack, setTotal }) {
       defaultValue={packPage.search}
       variant="outlined"
       inputRef={searchRef}
-      sx={textfieldStyle}
+      style={textfieldStyle}
       helperText={
         packPage.search ? (
           packPage.search.startsWith('@') ? (
@@ -161,7 +163,7 @@ function packCardPage({ isUserPack, setTotal }) {
   return (
     <Fade in>
       <div style={divMainStyle}>
-        <Paper>
+        <Paper sx={{ border: '2px solid', borderColor: 'secondary.main' }}>
           {searchField}
           <div style={divCardContainerStyle}>
             {total !== 0 ? (

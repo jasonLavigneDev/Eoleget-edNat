@@ -22,22 +22,29 @@ const cardStyle = {
   height: '300px',
   margin: '1%',
   boxShadow: 3,
+  backgroundColor: 'primary.lightPurple',
+  borderRadius: '20px',
 };
 const cardContentStyle = {
   display: 'flex',
   flexDirection: 'column',
   overflow: 'auto',
   maxHeight: 180,
+  backgroundColor: 'primary.lightPurple',
 };
 const cardHeaderStyle = {
-  background: 'linear-gradient(#5aa1d8,#555BE6 100%)',
-  color: 'white',
+  backgroundColor: 'primary.purple',
+  color: 'tertiary.main',
+  borderBottom: '2px solid',
+  borderColor: 'secondary.main',
   maxHeight: 80,
 };
 const cardActionsStyle = {
   position: 'absolute',
-  bottom: '-1%',
-  right: '30%',
+  bottom: '2%',
+  backgroundColor: 'primary.lightPurple',
+  width: '300px',
+  left: '12%',
 };
 const typographieHeaderStyle = {
   overflow: 'hidden',
@@ -49,9 +56,11 @@ const typographieContentStyle = {
   overflowY: 'auto',
   overflowX: 'hidden',
   textOverflow: 'ellipsis',
+  color: 'primary.light',
 };
 const cardContentLinkStyle = {
   textDecoration: 'underline',
+  textDecorationColor: 'secondary.main',
 };
 // End styles //
 
@@ -128,7 +137,7 @@ function AppCard({ app, cart }) {
                   addAppToCart();
                 }}
               >
-                <AddIcon fontSize="large" />
+                <AddIcon fontSize="large" sx={{ color: 'secondary.main' }} />
               </IconButton>
             </Tooltip>
           ) : (
@@ -139,7 +148,7 @@ function AppCard({ app, cart }) {
                   removeAppToCart();
                 }}
               >
-                <RemoveIcon fontSize="large" />
+                <RemoveIcon fontSize="large" sx={{ color: 'secondary.main' }} />
               </IconButton>
             </Tooltip>
           )
@@ -153,7 +162,9 @@ function AppCard({ app, cart }) {
       </CardContent>
       <CardActions sx={cardActionsStyle}>
         <Link to={`/detailapp/${app.identification}`}>
-          <Button variant="contained">{i18n.__('components.Card.showMore')}</Button>
+          <Button variant="contained" sx={{ backgroundColor: 'primary.purple', width: '200%' }}>
+            {i18n.__('components.Card.showMore')}
+          </Button>
         </Link>
       </CardActions>
     </Card>

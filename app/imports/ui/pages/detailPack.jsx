@@ -24,6 +24,8 @@ import { useAppContext } from '../contexts/context';
 import PackIcon from '../components/packs/PackIcon';
 
 // Styles CSS //
+const orangeBorder = 'secondary.main';
+const blueBorder = 'primary.main';
 const containerStyle = {
   marginTop: theme.spacing(10),
   maxWidth: '1000px',
@@ -31,6 +33,8 @@ const containerStyle = {
 };
 const paperStyle = {
   padding: theme.spacing(1),
+  border: '2px solid black',
+  borderColor: orangeBorder,
 };
 const divMainContentStyle = {
   display: 'flex',
@@ -58,11 +62,12 @@ const ButtonGetCommandStyle = {
   width: '20%',
   marginTop: 2,
   marginBottom: 5,
+  marginRight: 5,
 };
 const divButtons = {
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
 };
 const paperButtons = {
   marginBottom: 5,
@@ -82,6 +87,7 @@ const titleStyle = {
   padding: 3,
   display: 'flex',
   flexDirection: 'row',
+  marginBottom: 25,
 };
 // End styles //
 
@@ -149,41 +155,57 @@ function DetailPack({ pack, ready }) {
   return (
     <Fade in>
       <Container sx={containerStyle}>
+        <div style={titleStyle}>
+          <Typography variant="h4" component="div" sx={{ color: 'primary.main' }}>
+            {i18n.__('pages.detailPack.details')}
+          </Typography>
+          {pack.owner === userId ? (
+            <Tooltip title={i18n.__('components.PacksCard.editPack')}>
+              <IconButton onClick={handleEditButton}>
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+          ) : null}
+        </div>
         <Paper sx={paperStyle}>
-          <div style={titleStyle}>
-            <Typography variant="h4" component="div">
-              {i18n.__('pages.detailPack.details')}
-            </Typography>
-            {pack.owner === userId ? (
-              <Tooltip title={i18n.__('components.PacksCard.editPack')}>
-                <IconButton onClick={handleEditButton}>
-                  <EditIcon />
-                </IconButton>
-              </Tooltip>
-            ) : null}
-          </div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={divMainContentStyle}>
-              <Typography variant="h6" component="div">
-                {pack.name}
-              </Typography>
-              <Typography variant="body1" component="div">
-                {`${i18n.__('components.PackList.owner')} : ${pack.ownerName}`}
-              </Typography>
-              <Typography variant="body1" component="div">
-                {i18n.__('components.PackList.visibility')} :{pack.isPublic ? ' publique' : ' privé'}
-              </Typography>
-              <textarea readOnly value={pack.description} rows="5" style={{ resize: 'none', border: 0 }} />
+            <div
+              style={{
+                border: '1px solid',
+                borderColor: blueBorder,
+                borderRadius: 10,
+                width: '60%',
+                marginTop: '-30px',
+                backgroundColor: 'white',
+                marginLeft: '3%',
+              }}
+            >
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div style={divMainContentStyle}>
+                  <Typography variant="h6" component="div">
+                    {pack.name}
+                  </Typography>
+                  <Typography variant="body1" component="div">
+                    {`${i18n.__('components.PackList.owner')} : ${pack.ownerName}`}
+                  </Typography>
+                  <Typography variant="body1" component="div">
+                    {i18n.__('components.PackList.visibility')} :{pack.isPublic ? ' publique' : ' privé'}
+                  </Typography>
+                  <textarea readOnly value={pack.description} rows="5" style={{ resize: 'none', border: 0 }} />
+                </div>
+              </div>
             </div>
-            <div style={{ marginRight: 50 }}>
-              <PackIcon big icon={pack.icon} />
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div style={{ marginLeft: '50%' }}>
+                <PackIcon big icon={pack.icon} />
+              </div>
             </div>
           </div>
           <Paper sx={paperButtons}>
             <div style={divButtons}>
               <Button
                 title="batch"
-                variant="outlined"
+                variant="contained"
                 onClick={() => changeDisplay(CMD_BATCH)}
                 sx={ButtonGetCommandStyle}
               >
@@ -191,7 +213,7 @@ function DetailPack({ pack, ready }) {
               </Button>
               <Button
                 title="powershell"
-                variant="outlined"
+                variant="contained"
                 onClick={() => changeDisplay(CMD_POWERSHELL)}
                 sx={ButtonGetCommandStyle}
               >
@@ -199,7 +221,7 @@ function DetailPack({ pack, ready }) {
               </Button>
               <Button
                 title="json"
-                variant="outlined"
+                variant="contained"
                 onClick={() => changeDisplay(CMD_JSON)}
                 sx={ButtonGetCommandStyle}
               >

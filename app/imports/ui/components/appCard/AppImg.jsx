@@ -11,7 +11,14 @@ function AppImg({ appIdent, size }) {
   const defaultImage = () => {
     setImg('/images/default.svg');
   };
-  return <img src={img} alt="" style={{ height: ssize, width: ssize }} onError={() => defaultImage()} />;
+  return (
+    <img
+      src={img}
+      alt=""
+      style={{ height: ssize, width: ssize, borderRadius: '15px' }}
+      onError={() => defaultImage()}
+    />
+  );
 }
 
 AppImg.propTypes = {

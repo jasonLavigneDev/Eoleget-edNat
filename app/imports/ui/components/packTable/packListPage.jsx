@@ -31,6 +31,13 @@ const divPackTitleContainerStyle = {
 const spanHelperText = {
   fontSize: 'large',
 };
+const textfieldStyle = {
+  marginLeft: 50,
+  width: '70%',
+  marginTop: -50,
+  paddingBottom: 20,
+  backgroundColor: 'white',
+};
 // End styles //
 
 // eslint-disable-next-line no-unused-vars
@@ -102,6 +109,7 @@ function packListPage({ isUserPack, setTotal }) {
       defaultValue={packPage.search}
       variant="outlined"
       inputRef={searchRef}
+      style={textfieldStyle}
       helperText={
         packPage.search ? (
           packPage.search.startsWith('@') ? (
@@ -140,26 +148,28 @@ function packListPage({ isUserPack, setTotal }) {
 
   return (
     <Fade in>
-      <div style={divMainStyle}>
-        <div style={divPackTitleContainerStyle}>
-          {searchField}
-          {packs.length !== 0 ? (
-            <PackList packs={packs} isUserPack={isUserPack} />
-          ) : (
-            <Paper sx={{ padding: 6 }}>
-              {search !== '' ? (
-                <Typography align="center" variant="h5">
-                  {i18n.__('pages.Packs.noResult')}
-                </Typography>
-              ) : (
-                <Typography align="center" variant="h5">
-                  {i18n.__('pages.Packs.noPacks')}
-                </Typography>
-              )}
-            </Paper>
-          )}
+      <Paper sx={{ border: '2px solid', borderColor: 'secondary.main', padding: 2, marginTop: 5 }}>
+        <div style={divMainStyle}>
+          <div style={divPackTitleContainerStyle}>
+            {searchField}
+            {packs.length !== 0 ? (
+              <PackList packs={packs} isUserPack={isUserPack} />
+            ) : (
+              <Paper sx={{ padding: 6 }}>
+                {search !== '' ? (
+                  <Typography align="center" variant="h5">
+                    {i18n.__('pages.Packs.noResult')}
+                  </Typography>
+                ) : (
+                  <Typography align="center" variant="h5">
+                    {i18n.__('pages.Packs.noPacks')}
+                  </Typography>
+                )}
+              </Paper>
+            )}
+          </div>
         </div>
-      </div>
+      </Paper>
     </Fade>
   );
 }

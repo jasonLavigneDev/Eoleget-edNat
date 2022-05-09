@@ -23,10 +23,16 @@ import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 
 const typographieHeaderStyle = {
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
   width: '18rem',
-  paddingLeft: 20,
+  color: 'primary.light',
+  textAlign: 'center',
+};
+const tableCellStyle = {
+  color: 'primary.light',
+  textAlign: 'center',
+};
+const iconStyle = {
+  color: 'primary.light',
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -98,7 +104,7 @@ function PackList({ packs, isUserPack }) {
   return (
     <div style={{ height: 600 }}>
       <TableContainer component={Paper}>
-        <Table size="small" aria-label="pack table">
+        <Table size="small" aria-label="pack table" sx={{ backgroundColor: 'primary.purple' }}>
           <EnhancedTableHead
             order={order}
             orderBy={orderBy}
@@ -110,50 +116,58 @@ function PackList({ packs, isUserPack }) {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((pack) => {
                 return (
-                  <TableRow hover tabIndex={-1} key={pack._id}>
+                  <TableRow hover tabIndex={-1} key={pack._id} sx={{ backgroundColor: 'primary.lightPurple' }}>
                     <TableCell>
-                      <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 200, display: 'block' }}>
-                        <Typography variant="paragraph" style={typographieHeaderStyle}>
+                      <span
+                        style={{
+                          textOverflow: 'ellipsis',
+                          overflow: 'hidden',
+                          width: 200,
+                          display: 'block',
+                          textAlign: 'center',
+                        }}
+                      >
+                        <Typography variant="paragraph" sx={typographieHeaderStyle}>
                           {pack.name}
                         </Typography>
                       </span>
                     </TableCell>
                     {!isUserPack ? (
-                      <TableCell>{pack.ownerName}</TableCell>
+                      <TableCell sx={tableCellStyle}>{pack.ownerName}</TableCell>
                     ) : pack.isPublic ? (
-                      <TableCell>{pack.isPublic}</TableCell>
+                      <TableCell sx={tableCellStyle}>{pack.isPublic}</TableCell>
                     ) : (
-                      <TableCell align="justify">
+                      <TableCell sx={tableCellStyle}>
                         <Tooltip title={i18n.__('components.PacksCard.privateIcon')} placement="top-start">
-                          <VisibilityOffIcon fontSize="large" />
+                          <VisibilityOffIcon fontSize="large" sx={iconStyle} />
                         </Tooltip>
                       </TableCell>
                     )}
 
-                    <TableCell>
+                    <TableCell sx={tableCellStyle}>
                       <span style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: 630, display: 'block' }}>
                         {pack.description}
                       </span>
                     </TableCell>
-                    <TableCell align="center">{pack.applications.length}</TableCell>
+                    <TableCell sx={tableCellStyle}>{pack.applications.length}</TableCell>
                     <TableCell>
                       {pack.owner === userId ? (
                         <div>
                           <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
                             <Link to={`/packs/detail/${pack._id}`}>
                               <IconButton>
-                                <OpenInNewIcon />
+                                <OpenInNewIcon sx={iconStyle} />
                               </IconButton>
                             </Link>
                           </Tooltip>
                           <Tooltip title={i18n.__('components.PacksCard.editPack')}>
                             <IconButton onClick={() => handleEditButton(pack._id)}>
-                              <EditIcon />
+                              <EditIcon sx={iconStyle} />
                             </IconButton>
                           </Tooltip>
                           <Tooltip title={i18n.__('components.PacksCard.deletePack')}>
                             <IconButton onClick={() => handleDeleteButton(pack)}>
-                              <ClearIcon />
+                              <ClearIcon sx={iconStyle} />
                             </IconButton>
                           </Tooltip>
                         </div>
@@ -161,7 +175,7 @@ function PackList({ packs, isUserPack }) {
                         <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
                           <Link to={`/packs/detail/${pack._id}`}>
                             <IconButton>
-                              <OpenInNewIcon />
+                              <OpenInNewIcon sx={iconStyle} />
                             </IconButton>
                           </Link>
                         </Tooltip>

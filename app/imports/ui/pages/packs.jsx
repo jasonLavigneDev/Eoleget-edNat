@@ -25,6 +25,7 @@ const divMainStyle = {
 const divStoreTitleStyle = {
   display: 'flex',
   flexDirection: 'row',
+  marginTop: '4%',
 };
 const spanIconListStyle = {
   display: 'flex',
@@ -56,7 +57,7 @@ function Packs() {
     <Fade in>
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
-          <Typography variant="h4" component="div">
+          <Typography variant="h4" component="div" color="primary">
             {i18n.__('pages.Packs.packsStoreTitle')}({total})
           </Typography>
           <span style={spanIconListStyle}>

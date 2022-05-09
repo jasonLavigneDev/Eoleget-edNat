@@ -3,25 +3,17 @@ import i18n from 'meteor/universe:i18n';
 
 import { useHistory } from 'react-router-dom';
 
-import {
-  Button,
-  Container,
-  Fade,
-  Paper,
-  Typography,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Divider,
-} from '@mui/material';
+import { Button, Container, Fade, Paper, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import TableAppCreatePack from '../components/appTable/tableAppCreatePack';
 import { useAppContext } from '../contexts/context';
 import PackIconPicker from '../components/packs/PackIconPicker';
 
 // Style CSS //
+const mainBlue = 'primary.main';
+const mainOrange = 'secondary.main';
 const containerStyle = {
-  marginTop: '1%',
+  marginTop: '3%',
 };
 const divDatagridStyle = {
   maxHeight: 400,
@@ -30,10 +22,9 @@ const divDatagridStyle = {
   marginLeft: 'auto',
   marginRight: 'auto',
   marginTop: 10,
-  marginBottom: 50,
+  marginBottom: 10,
 };
 const divButtonStyle = {
-  marginTop: 40,
   width: '100%',
   display: 'flex',
   alignItems: 'center',
@@ -43,6 +34,8 @@ const paperStyle = {
   paddingLeft: 5,
   paddingRight: 5,
   paddingBottom: 2,
+  border: '2px solid black',
+  borderColor: mainOrange,
 };
 // End Style //
 
@@ -128,7 +121,7 @@ function CreatePackPage() {
   return (
     <Fade in>
       <Container sx={containerStyle}>
-        <Typography variant="h3" component="div">
+        <Typography variant="h3" component="div" sx={{ color: mainBlue }}>
           {i18n.__('pages.packCreation.title')}
         </Typography>
         <Paper sx={paperStyle}>
@@ -176,22 +169,25 @@ function CreatePackPage() {
               checked={isPublic}
               onChange={handleOnChange}
               labelPlacement="start"
-              sx={{ marginTop: -8 }}
+              sx={{ marginTop: -1 }}
             />
-            <Divider />
             <Typography variant="h6" component="div">
               {i18n.__('pages.packCreation.color')}
             </Typography>
             <ColorRadioButton packColor="" />
-            <Divider />
             <div style={divDatagridStyle}>
               <TableAppCreatePack />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained" onClick={goBack}>
+              <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
                 {i18n.__('pages.packCreation.delete')}
               </Button>
-              <Button variant="contained" onClick={createPack} disabled={isDisable}>
+              <Button
+                variant="contained"
+                onClick={createPack}
+                disabled={isDisable}
+                sx={{ backgroundColor: 'primary.purple' }}
+              >
                 {i18n.__('pages.packCreation.add')}
               </Button>
             </div>

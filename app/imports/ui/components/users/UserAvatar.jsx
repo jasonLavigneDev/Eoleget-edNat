@@ -15,7 +15,7 @@ const UserAvatar = ({ userAvatar, big }) => {
     <Avatar
       alt={firstName}
       src={localAvatar || firstName}
-      sx={big ? { width: 250, height: 250 } : { width: 40, height: 40 }}
+      sx={big ? { width: 250, height: 250 } : { width: 40, height: 40, backgroundColor: 'primary.light' }}
     />
   );
 };

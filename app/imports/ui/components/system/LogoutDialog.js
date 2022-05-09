@@ -38,9 +38,11 @@ function LogoutDialog({ open, onAccept, onClose }) {
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle id="alert-dialog-slide-title">{i18n.__('components.LogoutDialog.dialogTitle')}</DialogTitle>
+      <DialogTitle id="alert-dialog-slide-title" sx={{ color: 'primary.purple' }}>
+        {i18n.__('components.LogoutDialog.dialogTitle')}
+      </DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
+        <DialogContentText id="alert-dialog-slide-description" sx={{ color: 'black' }}>
           {i18n.__('components.LogoutDialog.dialogContent')}
         </DialogContentText>
         <FormGroup>
@@ -53,10 +55,10 @@ function LogoutDialog({ open, onAccept, onClose }) {
         </FormGroup>
       </DialogContent>
       <DialogActions>
-        <Button onClick={keycloakLogout} color="primary">
+        <Button onClick={keycloakLogout} variant="contained" sx={{ backgroundColor: 'primary.purple' }}>
           {i18n.__('components.LogoutDialog.buttonYes')}
         </Button>
-        <Button onClick={simpleLogout} color="primary">
+        <Button onClick={simpleLogout} variant="contained" sx={{ backgroundColor: 'primary.purple' }}>
           {i18n.__('components.LogoutDialog.buttonNo')}
         </Button>
       </DialogActions>

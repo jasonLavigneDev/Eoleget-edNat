@@ -20,6 +20,13 @@ import ListVersion from '../version/listVersion';
 import EnhancedTableHead from './tableHead';
 import ListVersionEdit from '../version/listVersionEdit';
 
+// Styles CSS //
+const tableCellStyle = {
+  color: 'primary.light',
+  textAlign: 'center',
+};
+// End styles //
+
 function AppList({ applications, cart, isModal, editPack }) {
   const handleUrlButton = (app) => window.open(app.url, '_blank');
 
@@ -132,7 +139,11 @@ function AppList({ applications, cart, isModal, editPack }) {
   return (
     <div style={{ height: isModal ? 400 : 600 }}>
       <TableContainer component={Paper}>
-        <Table size="small" aria-label={i18n.__('components.AppList.ariaAppList')}>
+        <Table
+          size="small"
+          aria-label={i18n.__('components.AppList.ariaAppList')}
+          sx={{ backgroundColor: 'primary.purple', color: 'primary.light', overflow: 'hidden' }}
+        >
           <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
           <TableBody>
             {stableSort(applications, getComparator(order, orderBy))
@@ -148,21 +159,27 @@ function AppList({ applications, cart, isModal, editPack }) {
                     tabIndex={-1}
                     key={app.identification}
                     selected={isItemSelected}
+                    sx={!isSelected(app) ? { backgroundColor: 'primary.lightPurple' } : null}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
-                        color="primary"
                         checked={isItemSelected}
                         onClick={(event) => handleClick(event, app)}
                         inputProps={{
                           'aria-labelledby': labelId,
                         }}
+                        sx={{
+                          color: 'primary.light',
+                          '&.Mui-checked': {
+                            color: 'primary.light',
+                          },
+                        }}
                       />
                     </TableCell>
-                    <TableCell>{app.nom}</TableCell>
-                    <TableCell>{app.description}</TableCell>
+                    <TableCell sx={tableCellStyle}>{app.nom}</TableCell>
+                    <TableCell sx={tableCellStyle}>{app.description}</TableCell>
                     {isSelected(app) ? (
-                      <TableCell>{getVersion(app)}</TableCell>
+                      <TableCell sx={{ color: 'primary.light' }}>{getVersion(app)}</TableCell>
                     ) : (
                       <TableCell>
                         {editPack ? (
@@ -172,15 +189,22 @@ function AppList({ applications, cart, isModal, editPack }) {
                         )}
                       </TableCell>
                     )}
-                    <TableCell>
-                      <Button onClick={() => handleUrlButton(app)} sx={{ textTransform: 'unset' }}>
+                    <TableCell style={{ textAlign: 'center' }}>
+                      <Button
+                        onClick={() => handleUrlButton(app)}
+                        sx={{ textTransform: 'unset', color: 'primary.light' }}
+                      >
                         {app.url}
                       </Button>
                     </TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
                         <Link to={`/detailapp/${app.identification}`}>
-                          <IconButton>
+                          <IconButton
+                            sx={{
+                              color: 'primary.light',
+                            }}
+                          >
                             <OpenInNewIcon />
                           </IconButton>
                         </Link>

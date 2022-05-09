@@ -70,7 +70,7 @@ const MainMenu = ({ user = {} }) => {
   };
 
   return (
-    <>
+    <div style={{ borderBottom: '5px solid orange', paddingTop: '4%' }}>
       <Button
         aria-controls="main-menu"
         aria-haspopup="true"
@@ -78,7 +78,7 @@ const MainMenu = ({ user = {} }) => {
         style={{ textTransform: 'none' }}
         endIcon={<ExpandMoreIcon />}
       >
-        <Typography variant="body1" align="left" sx={{ marginRight: 1 }}>
+        <Typography variant="body1" align="left" sx={{ marginRight: 1, marginTop: '10%' }}>
           {user.firstName || ''}
         </Typography>
         <UserAvatar />
@@ -122,7 +122,7 @@ const MainMenu = ({ user = {} }) => {
         </MenuItem>
       </Menu>
       <LogoutDialog open={openLogout} onClose={closeLogoutDialog} onAccept={keycloakLogout} />
-    </>
+    </div>
   );
 };
 

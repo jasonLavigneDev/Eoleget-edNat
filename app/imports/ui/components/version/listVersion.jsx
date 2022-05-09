@@ -5,6 +5,7 @@ import { Select, FormControl, MenuItem } from '@mui/material';
 // Styles CSS //
 const formControlStyle = {
   width: 150,
+  borderRadius: 25,
 };
 // End style //
 
@@ -26,7 +27,22 @@ function ListVersion({ versions, app, setCommand }) {
   };
   return (
     <FormControl sx={formControlStyle}>
-      <Select value={version} inputProps={{ 'aria-label': 'Versions' }} displayEmpty onChange={handleChange}>
+      <Select
+        value={version}
+        inputProps={{
+          'aria-label': 'Versions',
+        }}
+        displayEmpty
+        onChange={handleChange}
+        sx={{
+          height: 30,
+          backgroundColor: 'primary.purple',
+          color: 'primary.light',
+          '& .MuiSvgIcon-root': {
+            color: 'primary.light',
+          },
+        }}
+      >
         <MenuItem value="">latest</MenuItem>
         {versions
           .sort()

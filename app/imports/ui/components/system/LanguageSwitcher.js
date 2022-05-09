@@ -27,7 +27,9 @@ const LanguageSwitcher = ({ topbar, relative }) => {
     marginTop: topbar || relative ? null : 60,
   };
   const flagStyle = {
-    height: 15,
+    height: 20,
+    border: '1px solid white',
+    borderRadius: '15px',
   };
   // End Styles //
 
@@ -50,6 +52,7 @@ const LanguageSwitcher = ({ topbar, relative }) => {
           variant="contained"
           aria-controls="simple-menu"
           aria-haspopup="true"
+          sx={{ backgroundColor: 'primary.purple' }}
           onClick={handleClick}
         >
           <T>{language}</T>
