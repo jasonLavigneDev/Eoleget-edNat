@@ -29,7 +29,7 @@ const NotFound = () => {
     history.goBack();
   };
   const handleClick = () => {
-    history.push('/');
+    history.push('/app');
   };
 
   return (

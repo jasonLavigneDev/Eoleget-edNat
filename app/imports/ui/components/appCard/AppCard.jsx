@@ -161,7 +161,7 @@ function AppCard({ app, cart }) {
         </Typography>
       </CardContent>
       <CardActions sx={cardActionsStyle}>
-        <Link to={`/detailapp/${app.identification}`}>
+        <Link to={`/app/${app.identification}`}>
           <Button variant="contained" sx={{ backgroundColor: 'primary.purple', width: '200%' }}>
             {i18n.__('components.Card.showMore')}
           </Button>

@@ -59,8 +59,8 @@ const MainLayout = ({ appsettings, ready }) => {
                   <Spinner />
                 ) : !verifyEmail || isVerified(user) ? (
                   <Switch>
-                    <Route exact path="/" component={Index} />
-                    <Route exact path="/detailApp/:identification" component={DetailApp} />
+                    <Route exact path="/app" component={Index} />
+                    <Route exact path="/app/:identification" component={DetailApp} />
 
                     <Route exact path="/packs" component={Packs} />
                     <Route exact path="/packs/detail/:_id" component={DetailPack} />
@@ -78,7 +78,7 @@ const MainLayout = ({ appsettings, ready }) => {
                 <Route path="/" component={NotLoggedIn} />
               )}
 
-              <Redirect from="*" to="/" />
+              <Redirect from="*" to="/app" />
             </Switch>
           </Suspense>
         </main>

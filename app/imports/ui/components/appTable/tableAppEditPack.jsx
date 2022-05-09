@@ -214,7 +214,7 @@ function TableAppEditPack({ ready }) {
                     </TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
-                        <Link to={`/detailapp/${app.identification}`}>
+                        <Link to={`/app/${app.identification}`}>
                           <IconButton>
                             <OpenInNewIcon sx={tableCellStyle} />
                           </IconButton>

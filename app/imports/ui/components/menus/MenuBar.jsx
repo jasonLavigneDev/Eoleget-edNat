@@ -7,7 +7,7 @@ import Tab from '@mui/material/Tab';
 
 export const links = [
   {
-    path: '/',
+    path: '/app',
     content: 'menuApp',
   },
   {

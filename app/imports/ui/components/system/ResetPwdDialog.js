@@ -52,7 +52,7 @@ const ResetPwdDialog = ({ token }) => {
       } else {
         msg.success(i18n.__('components.ResetPwdDialog.success'));
         setOpen(false);
-        history.replace('/');
+        history.replace('/app');
       }
     });
   };

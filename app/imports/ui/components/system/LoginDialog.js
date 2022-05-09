@@ -71,7 +71,7 @@ const LoginDialog = () => {
         msg.error(i18n.__('components.LoginDialog.signinError'));
       } else {
         setOpen(false);
-        history.push('/');
+        history.push('/app');
       }
     });
   };
@@ -83,7 +83,7 @@ const LoginDialog = () => {
       } else {
         msg.success(i18n.__('components.LoginDialog.signupSuccess'));
         setOpen(false);
-        history.push('/');
+        history.push('/app');
       }
     });
   };
