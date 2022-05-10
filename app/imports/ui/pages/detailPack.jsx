@@ -7,7 +7,7 @@ import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { IconButton } from '@mui/material';
+import { IconButton, Divider } from '@mui/material';
 
 import i18n from 'meteor/universe:i18n';
 import Tooltip from '@mui/material/Tooltip';
@@ -25,7 +25,7 @@ import PackIcon from '../components/packs/PackIcon';
 
 // Styles CSS //
 const orangeBorder = 'secondary.main';
-const blueBorder = 'primary.main';
+const primaryMain = 'primary.main';
 const containerStyle = {
   marginTop: theme.spacing(10),
   maxWidth: '1000px',
@@ -57,6 +57,7 @@ const ButtonCommandStyle = {
   textTransform: 'none',
   width: 'fit-content',
   marginBottom: 5,
+  marginLeft: 2,
 };
 const ButtonGetCommandStyle = {
   width: '20%',
@@ -68,10 +69,7 @@ const divButtons = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
-};
-const paperButtons = {
-  marginBottom: 5,
-  padding: 1,
+  marginTop: 30,
 };
 const dlJsonButton = {
   marginTop: 3,
@@ -169,11 +167,11 @@ function DetailPack({ pack, ready }) {
         </div>
         <Paper sx={paperStyle}>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div
-              style={{
+            <Paper
+              sx={{
                 border: '1px solid',
-                borderColor: blueBorder,
-                borderRadius: 10,
+                borderColor: primaryMain,
+                borderRadius: 1,
                 width: '60%',
                 marginTop: '-30px',
                 backgroundColor: 'white',
@@ -182,7 +180,7 @@ function DetailPack({ pack, ready }) {
             >
               <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <div style={divMainContentStyle}>
-                  <Typography variant="h6" component="div">
+                  <Typography variant="h6" component="div" color="primary.purple">
                     {pack.name}
                   </Typography>
                   <Typography variant="body1" component="div">
@@ -194,63 +192,60 @@ function DetailPack({ pack, ready }) {
                   <textarea readOnly value={pack.description} rows="5" style={{ resize: 'none', border: 0 }} />
                 </div>
               </div>
-            </div>
+            </Paper>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ marginLeft: '50%' }}>
                 <PackIcon big icon={pack.icon} />
               </div>
             </div>
           </div>
-          <Paper sx={paperButtons}>
-            <div style={divButtons}>
+          <div style={divButtons}>
+            <Button
+              title="batch"
+              variant="contained"
+              onClick={() => changeDisplay(CMD_BATCH)}
+              sx={ButtonGetCommandStyle}
+            >
+              Batch
+            </Button>
+            <Button
+              title="powershell"
+              variant="contained"
+              onClick={() => changeDisplay(CMD_POWERSHELL)}
+              sx={ButtonGetCommandStyle}
+            >
+              Powershell
+            </Button>
+            <Button title="json" variant="contained" onClick={() => changeDisplay(CMD_JSON)} sx={ButtonGetCommandStyle}>
+              JSON
+            </Button>
+          </div>
+          <Button title={i18n.__('pages.detailPack.copyToClipboard')} onClick={copyCommand} sx={ButtonCommandStyle}>
+            <ContentCopyIcon />
+            <Typography variant="paragraph">{command}</Typography>
+          </Button>
+          <Divider
+            variant="middle"
+            sx={{ backgroundColor: 'secondary.main', marginBottom: 5, marginLeft: 10, marginRight: 10 }}
+          />
+          {displayCmd === CMD_JSON ? (
+            <div style={buttonJsonContainerStyle}>
+              <Typography variant="paragraph" align="center">
+                <IconButton disabled>
+                  <InfoIcon />
+                </IconButton>
+                {i18n.__('pages.detailPack.instructions')}
+              </Typography>
               <Button
-                title="batch"
                 variant="contained"
-                onClick={() => changeDisplay(CMD_BATCH)}
-                sx={ButtonGetCommandStyle}
+                title={i18n.__('pages.detailPack.copyToClipboard')}
+                sx={dlJsonButton}
+                onClick={generateFile}
               >
-                Batch
-              </Button>
-              <Button
-                title="powershell"
-                variant="contained"
-                onClick={() => changeDisplay(CMD_POWERSHELL)}
-                sx={ButtonGetCommandStyle}
-              >
-                Powershell
-              </Button>
-              <Button
-                title="json"
-                variant="contained"
-                onClick={() => changeDisplay(CMD_JSON)}
-                sx={ButtonGetCommandStyle}
-              >
-                JSON
+                {i18n.__('pages.detailPack.downloadJSON')}
               </Button>
             </div>
-            <Button title={i18n.__('pages.detailPack.copyToClipboard')} onClick={copyCommand} sx={ButtonCommandStyle}>
-              <ContentCopyIcon />
-              <Typography variant="paragraph">{command}</Typography>
-            </Button>
-            {displayCmd === CMD_JSON ? (
-              <div style={buttonJsonContainerStyle}>
-                <Typography variant="paragraph" align="center">
-                  <IconButton disabled>
-                    <InfoIcon />
-                  </IconButton>
-                  {i18n.__('pages.detailPack.instructions')}
-                </Typography>
-                <Button
-                  variant="contained"
-                  title={i18n.__('pages.detailPack.copyToClipboard')}
-                  sx={dlJsonButton}
-                  onClick={generateFile}
-                >
-                  {i18n.__('pages.detailPack.downloadJSON')}
-                </Button>
-              </div>
-            ) : null}
-          </Paper>
+          ) : null}
 
           {apps.map((app) => (
             <AppPacksCard key={app.identification} app={app} />
