@@ -110,8 +110,14 @@ const LoginDialog = () => {
 
   return (
     <div style={paperStyle}>
-      <Dialog open={open} sx={dialogStyle}>
-        <DialogTitle>{i18n.__(`components.LoginDialog.${mode}Title`)}</DialogTitle>
+      <Dialog
+        open={open}
+        sx={dialogStyle}
+        PaperProps={{
+          style: { border: '2px solid', borderColor: 'orange' },
+        }}
+      >
+        <DialogTitle sx={{ color: 'primary.main' }}>{i18n.__(`components.LoginDialog.${mode}Title`)}</DialogTitle>
         <DialogContent>
           {mode === 'reset' ? (
             <DialogContentText>{i18n.__('components.LoginDialog.resetInfo')}</DialogContentText>
@@ -120,6 +126,7 @@ const LoginDialog = () => {
             value={username}
             name="username"
             onKeyDown={handleKeyDown}
+            sx={{ marginTop: 1 }}
             label={i18n.__(
               `components.LoginDialog.${
                 mode === 'signin' ? 'labelUsernameEmail' : mode === 'signup' ? 'labelUsername' : 'labelEmail'
