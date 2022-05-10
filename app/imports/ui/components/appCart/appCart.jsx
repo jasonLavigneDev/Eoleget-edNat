@@ -57,7 +57,13 @@ function AppCart({ cart }) {
 
   return (
     <div style={divStyle}>
-      <Paper>
+      <Paper
+        sx={{
+          '&:hover': {
+            backgroundColor: isDisable ? 'none' : 'secondary.main',
+          },
+        }}
+      >
         <Box>
           <Badge badgeContent={cart[0].length} color="secondary">
             <IconButton
