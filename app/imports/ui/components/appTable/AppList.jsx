@@ -199,7 +199,7 @@ function AppList({ applications, cart, isModal, editPack }) {
                     </TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
-                        <Link to={`/detailapp/${app.identification}`}>
+                        <Link to={`/app/${app.identification}`}>
                           <IconButton
                             sx={{
                               color: 'primary.light',

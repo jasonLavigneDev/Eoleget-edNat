@@ -23,7 +23,7 @@ function App() {
   if (dologout !== undefined) {
     // if requested (after redirect from keycloak logout),
     // close local session and redirect without dologout parameter
-    Meteor.logout(() => history.replace('/'));
+    Meteor.logout(() => history.replace('/app'));
   }
 
   return (
