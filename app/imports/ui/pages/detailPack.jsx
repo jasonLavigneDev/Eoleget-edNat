@@ -7,8 +7,7 @@ import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { IconButton } from '@mui/material';
-import { Divider } from '@mui/material';
+import { IconButton, Divider } from '@mui/material';
 
 import i18n from 'meteor/universe:i18n';
 import Tooltip from '@mui/material/Tooltip';
