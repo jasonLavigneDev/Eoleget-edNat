@@ -60,7 +60,7 @@ function AppCart({ cart }) {
       <Paper
         sx={{
           '&:hover': {
-            backgroundColor: 'secondary.main',
+            backgroundColor: isDisable ? 'none' : 'secondary.main',
           },
         }}
       >
