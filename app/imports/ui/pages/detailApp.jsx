@@ -43,7 +43,7 @@ const detailApp = ({ app, ready }) => {
     justifyItems: 'center',
   };
   const gridDetailAppStyle = {
-    border: '2px solid',
+    border: '1px solid',
     borderColor: 'primary.main',
     borderRadius: '15px',
     backgroundColor: 'white',
@@ -164,7 +164,7 @@ const detailApp = ({ app, ready }) => {
               <div style={{ display: 'flex', marginTop: 10 }}>
                 <Typography style={{ paddingRight: 5, paddingTop: 5, paddingBottom: 10 }}>Versions :</Typography>
                 {checkAppAllreadyAdded() ? (
-                  <p>{getVersion()}</p>
+                  <div style={{ paddingTop: 5 }}>{getVersion()}</div>
                 ) : (
                   <ListVersion versions={app.versions} app={app} setCommand={setCommand} />
                 )}
