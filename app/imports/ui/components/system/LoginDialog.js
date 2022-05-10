@@ -32,6 +32,14 @@ const LoginDialog = () => {
   };
   const textfieldStyle = {
     marginTop: '8px;',
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'orange',
+    },
+    '& .MuiOutlinedInput-root': {
+      '&:hover fieldset': {
+        borderColor: 'orange',
+      },
+    },
   };
   const textButtonStyle = {
     textTransform: 'none',
@@ -126,7 +134,7 @@ const LoginDialog = () => {
             value={username}
             name="username"
             onKeyDown={handleKeyDown}
-            sx={{ marginTop: 1 }}
+            sx={textfieldStyle}
             label={i18n.__(
               `components.LoginDialog.${
                 mode === 'signin' ? 'labelUsernameEmail' : mode === 'signup' ? 'labelUsername' : 'labelEmail'
