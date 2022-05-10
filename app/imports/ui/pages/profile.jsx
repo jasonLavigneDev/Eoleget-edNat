@@ -342,7 +342,7 @@ function ProfilePage() {
                     </FormHelperText>
                   </FormControl>
                 </Grid>
-                <Grid item xs={4} sx={{ height: 1 / 1, marginTop: 10, marginLeft: -5 }}>
+                <Grid item xs={4} sx={{ height: 1 / 1, marginTop: enableKeycloak ? 10 : 0, marginLeft: -5 }}>
                   <AvatarPicker
                     userAvatar={userData.avatar || ''}
                     userFirstName={userData.firstName || ''}
