@@ -52,6 +52,7 @@ const divButtonStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-evenly',
+  marginBottom: 15,
 };
 const ButtonCommandStyle = {
   textTransform: 'none',
