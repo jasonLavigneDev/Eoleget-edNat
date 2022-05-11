@@ -100,8 +100,16 @@ function AppCart({ cart }) {
               {i18n.__('components.appCart.createPack')}
             </Button>
             <Tooltip title={i18n.__('components.appCart.deleteAll')}>
-              <IconButton variant="contained" disabled={isDisable} onClick={handleDeleteAll}>
-                <DeleteIcon sx={{ color: 'secondary.main' }} />
+              <IconButton
+                variant="contained"
+                disabled={isDisable}
+                onClick={handleDeleteAll}
+                sx={{
+                  color: 'secondary.main',
+                  '&:hover': { color: 'primary.light', backgroundColor: 'secondary.main', borderRadius: 5 },
+                }}
+              >
+                <DeleteIcon />
               </IconButton>
             </Tooltip>
           </div>

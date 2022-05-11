@@ -137,7 +137,13 @@ function AppCard({ app, cart }) {
                   addAppToCart();
                 }}
               >
-                <AddIcon fontSize="large" sx={{ color: 'secondary.main' }} />
+                <AddIcon
+                  fontSize="large"
+                  sx={{
+                    color: 'secondary.main',
+                    '&:hover': { color: 'primary.purple', backgroundColor: 'secondary.main', borderRadius: 10 },
+                  }}
+                />
               </IconButton>
             </Tooltip>
           ) : (
@@ -148,7 +154,13 @@ function AppCard({ app, cart }) {
                   removeAppToCart();
                 }}
               >
-                <RemoveIcon fontSize="large" sx={{ color: 'secondary.main' }} />
+                <RemoveIcon
+                  fontSize="large"
+                  sx={{
+                    color: 'secondary.main',
+                    '&:hover': { color: 'primary.purple', backgroundColor: 'secondary.main', borderRadius: 10 },
+                  }}
+                />
               </IconButton>
             </Tooltip>
           )
