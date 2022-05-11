@@ -46,7 +46,7 @@ function TopBar() {
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar position="fixed" sx={appBarStyle}>
-        <Link to="/" sx={imgLogoStyle}>
+        <Link to="/app" sx={imgLogoStyle}>
           <img src={LOGO} style={imgLogoStyle} alt="Logo" />
         </Link>
 
