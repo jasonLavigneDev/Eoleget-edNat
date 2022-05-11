@@ -33,11 +33,11 @@ const LoginDialog = () => {
   const textfieldStyle = {
     marginTop: '8px;',
     '& .MuiInput-underline:after': {
-      borderBottomColor: 'orange',
+      borderBottomColor: 'secondary.main',
     },
     '& .MuiOutlinedInput-root': {
       '&:hover fieldset': {
-        borderColor: 'orange',
+        borderColor: 'secondary.main',
       },
     },
   };

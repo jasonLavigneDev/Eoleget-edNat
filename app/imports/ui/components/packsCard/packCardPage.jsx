@@ -124,6 +124,16 @@ function packCardPage({ isUserPack, setTotal }) {
       variant="outlined"
       inputRef={searchRef}
       style={textfieldStyle}
+      sx={{
+        '& .MuiInput-underline:after': {
+          borderBottomColor: 'secondary.main',
+        },
+        '& .MuiOutlinedInput-root': {
+          '&:hover fieldset': {
+            borderColor: 'secondary.main',
+          },
+        },
+      }}
       helperText={
         packPage.search ? (
           packPage.search.startsWith('@') ? (

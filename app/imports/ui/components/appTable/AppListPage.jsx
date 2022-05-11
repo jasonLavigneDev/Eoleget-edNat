@@ -131,6 +131,16 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
       inputRef={searchRef}
       variant="outlined"
       style={textfieldStyle}
+      sx={{
+        '& .MuiInput-underline:after': {
+          borderBottomColor: 'secondary.main',
+        },
+        '& .MuiOutlinedInput-root': {
+          '&:hover fieldset': {
+            borderColor: 'secondary.main',
+          },
+        },
+      }}
       helperText={
         appPage.search ? (
           appPage.search.startsWith('#') ? (
