@@ -34,13 +34,21 @@ const spanIconListStyle = {
   flexDirection: 'row-reverse',
   justifyContent: 'start',
   flexGrow: 3,
-  marginTop: -5,
+  marginTop: -1,
   marginLeft: 5,
+  height: '90%',
 };
 const spanCartStyle = {
   display: 'flex',
   justifyContent: 'flex-end',
   width: '100%',
+};
+const toggleButtonStyle = {
+  color: 'primary.purple',
+  '&.Mui-selected, &.Mui-selected:hover': {
+    color: 'orange',
+    backgroundColor: 'primary.purple',
+  },
 };
 // End styles //
 
@@ -79,9 +87,10 @@ function Index() {
                   onClick={() => {
                     setViewMode('card');
                   }}
+                  sx={toggleButtonStyle}
                 >
                   <Tooltip title="Mode carte">
-                    <CardIcon fontSize="large" />
+                    <CardIcon />
                   </Tooltip>
                 </ToggleButton>
                 <ToggleButton
@@ -89,9 +98,10 @@ function Index() {
                   onClick={() => {
                     setViewMode('list');
                   }}
+                  sx={toggleButtonStyle}
                 >
                   <Tooltip title="Mode liste">
-                    <ListIcon fontSize="large" />
+                    <ListIcon />
                   </Tooltip>
                 </ToggleButton>
               </ToggleButtonGroup>

@@ -30,8 +30,16 @@ const divStoreTitleStyle = {
 const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
-  marginTop: -5,
+  marginTop: -1,
   marginLeft: 5,
+  height: '90%',
+};
+const toggleButtonStyle = {
+  color: 'primary.purple',
+  '&.Mui-selected, &.Mui-selected:hover': {
+    color: 'orange',
+    backgroundColor: 'primary.purple',
+  },
 };
 // End styles //
 
@@ -67,9 +75,10 @@ function Packs() {
                 onClick={() => {
                   setViewMode('card');
                 }}
+                sx={toggleButtonStyle}
               >
                 <Tooltip title="Mode carte">
-                  <CardIcon fontSize="large" />
+                  <CardIcon />
                 </Tooltip>
               </ToggleButton>
               <ToggleButton
@@ -77,9 +86,10 @@ function Packs() {
                 onClick={() => {
                   setViewMode('list');
                 }}
+                sx={toggleButtonStyle}
               >
                 <Tooltip title="Mode liste">
-                  <ListIcon fontSize="large" />
+                  <ListIcon />
                 </Tooltip>
               </ToggleButton>
             </ToggleButtonGroup>
