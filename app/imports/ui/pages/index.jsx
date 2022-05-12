@@ -48,6 +48,10 @@ const toggleButtonStyle = {
   '&.Mui-selected, &.Mui-selected:hover': {
     color: 'orange',
     backgroundColor: 'primary.purple',
+    cursor: 'default',
+  },
+  '&:hover': {
+    backgroundColor: 'secondary.main',
   },
 };
 // End styles //
