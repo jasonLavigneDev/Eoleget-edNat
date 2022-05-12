@@ -41,9 +41,8 @@ function AppCart({ cart }) {
   const isDisable = cart[0].length === 0;
 
   const RemoveAppFromCart = (appId) => {
-    cart[0].splice(0, cart[0].length);
     cart[1](cart[0].filter((appli) => appli.identification !== appId));
-    if (cart[0].length === 0) {
+    if (cart[0].length <= 1) {
       handleClose();
     }
   };
