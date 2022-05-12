@@ -30,17 +30,6 @@ const spanIconListStyle = {
   marginLeft: 5,
   height: '90%',
 };
-const toggleButtonStyle = {
-  color: 'primary.purple',
-  '&.Mui-selected, &.Mui-selected:hover': {
-    color: 'orange',
-    backgroundColor: 'primary.purple',
-    cursor: 'default',
-  },
-  '&:hover': {
-    backgroundColor: 'secondary.main',
-  },
-};
 // End styles //
 
 function Packs() {

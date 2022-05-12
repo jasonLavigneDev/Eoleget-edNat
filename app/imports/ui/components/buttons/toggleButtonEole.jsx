@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -48,5 +49,10 @@ function ToggleButtonEole({ viewMode, setViewMode }) {
     </>
   );
 }
+
+ToggleButtonEole.propTypes = {
+  viewMode: PropTypes.string.isRequired,
+  setViewMode: PropTypes.func.isRequired,
+};
 
 export default ToggleButtonEole;
