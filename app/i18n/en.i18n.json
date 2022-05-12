@@ -311,7 +311,8 @@
     },
     "appCart": {
       "createPack": "Create Pack",
-      "deleteAll": "Delete all applications"
+      "deleteAll": "Delete all applications",
+      "deleteOne": "Delete"
     }
   },
   "layouts": {

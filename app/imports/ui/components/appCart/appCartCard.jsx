@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from 'meteor/universe:i18n';
 import { Card, CardActions, CardContent, Tooltip, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
@@ -32,7 +33,7 @@ function AppCardCart({ app, handleClose }) {
         <CardContent sx={cardContentStyle}>
           {app.nom} ({getVersion()})
           <CardActions>
-            <Tooltip title="delete">
+            <Tooltip title={i18n.__('components.appCart.deleteOne')}>
               <IconButton onClick={() => handleClose(app.identification)}>
                 <CloseIcon />
               </IconButton>
