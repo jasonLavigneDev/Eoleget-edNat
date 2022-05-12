@@ -72,6 +72,14 @@ const keycloakLink = {
 };
 const textfieldStyle = {
   width: '80%',
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'secondary.main',
+  },
+  '& .MuiOutlinedInput-root': {
+    '&:hover fieldset': {
+      borderColor: 'secondary.main',
+    },
+  },
 };
 
 // End styles //
@@ -301,7 +309,16 @@ function ProfilePage() {
                     variant="outlined"
                     sx={textfieldStyle}
                   />
-                  <FormControl variant="outlined" fullWidth margin="normal">
+                  <FormControl
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    sx={{
+                      '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                        borderColor: 'secondary.main',
+                      },
+                    }}
+                  >
                     <InputLabel
                       disabled={enableKeycloak}
                       error={errors.username !== ''}
@@ -329,7 +346,11 @@ function ProfilePage() {
                             aria-label={i18n.__('pages.ProfilePage.useEmail')}
                           >
                             <span>
-                              <IconButton onClick={useEmail} disabled={enableKeycloak}>
+                              <IconButton
+                                onClick={useEmail}
+                                disabled={enableKeycloak}
+                                sx={{ '&:hover': { color: 'secondary.main' } }}
+                              >
                                 <MailIcon />
                               </IconButton>
                             </span>
