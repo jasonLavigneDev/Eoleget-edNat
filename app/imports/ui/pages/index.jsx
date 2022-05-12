@@ -2,17 +2,13 @@ import React, { useState, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 // import { Roles } from 'meteor/alanning:roles';
 
-import ListIcon from '@mui/icons-material/ViewList';
-import CardIcon from '@mui/icons-material/Dashboard';
-import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import { Typography } from '@mui/material';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import ToggleButton from '@mui/material/ToggleButton';
 
 import AppListPage from '../components/appTable/AppListPage';
 import AppCardPage from '../components/appCard/AppCardPage';
 import AppCart from '../components/appCart/appCart';
+import ToggleButtonEole from '../components/buttons/toggleButtonEole';
 
 // Styles CSS //
 const divMainStyle = {
@@ -41,17 +37,6 @@ const spanCartStyle = {
   display: 'flex',
   justifyContent: 'flex-end',
   width: '100%',
-};
-const toggleButtonStyle = {
-  color: 'primary.purple',
-  '&.Mui-selected, &.Mui-selected:hover': {
-    color: 'orange',
-    backgroundColor: 'primary.purple',
-    cursor: 'default',
-  },
-  '&:hover': {
-    backgroundColor: 'secondary.main',
-  },
 };
 // End styles //
 
@@ -84,30 +69,7 @@ function Index() {
               <AppCart cart={cart} />
             </span>
             <span style={spanIconListStyle}>
-              <ToggleButtonGroup value={viewMode} exclusive>
-                <ToggleButton
-                  value="card"
-                  onClick={() => {
-                    setViewMode('card');
-                  }}
-                  sx={toggleButtonStyle}
-                >
-                  <Tooltip title="Mode carte">
-                    <CardIcon />
-                  </Tooltip>
-                </ToggleButton>
-                <ToggleButton
-                  value="list"
-                  onClick={() => {
-                    setViewMode('list');
-                  }}
-                  sx={toggleButtonStyle}
-                >
-                  <Tooltip title="Mode liste">
-                    <ListIcon />
-                  </Tooltip>
-                </ToggleButton>
-              </ToggleButtonGroup>
+              <ToggleButtonEole viewMode={viewMode} setViewMode={setViewMode} />
             </span>
           </div>
         </div>
