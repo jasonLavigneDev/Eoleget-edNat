@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 // Style CSS //
 const divStyle = {
   width: '100%',
+  marginBottom: 3,
 };
 const cardContentStyle = {
   display: 'flex',
@@ -34,7 +35,14 @@ function AppCardCart({ app, handleClose }) {
           {app.nom} ({getVersion()})
           <CardActions>
             <Tooltip title={i18n.__('components.appCart.deleteOne')}>
-              <IconButton onClick={() => handleClose(app.identification)}>
+              <IconButton
+                onClick={() => handleClose(app.identification)}
+                sx={{
+                  color: 'secondary.main',
+                  marginLeft: '30%',
+                  '&:hover': { color: 'primary.light', backgroundColor: 'secondary.main', borderRadius: 5 },
+                }}
+              >
                 <CloseIcon />
               </IconButton>
             </Tooltip>

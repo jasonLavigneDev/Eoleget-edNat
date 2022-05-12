@@ -4,7 +4,6 @@ import i18n from 'meteor/universe:i18n';
 
 import ListIcon from '@mui/icons-material/ViewList';
 import CardIcon from '@mui/icons-material/Dashboard';
-// import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import { Typography } from '@mui/material';
