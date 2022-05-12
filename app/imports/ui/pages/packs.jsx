@@ -2,16 +2,12 @@ import React, { useState, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 // import { Roles } from 'meteor/alanning:roles';
 
-import ListIcon from '@mui/icons-material/ViewList';
-import CardIcon from '@mui/icons-material/Dashboard';
-import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import { Typography } from '@mui/material';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import ToggleButton from '@mui/material/ToggleButton';
 
 import PackListPage from '../components/packTable/packListPage';
 import PackCardPage from '../components/packsCard/packCardPage';
+import ToggleButtonEole from '../components/buttons/toggleButtonEole';
 
 // Styles CSS //
 const divMainStyle = {
@@ -33,17 +29,6 @@ const spanIconListStyle = {
   marginTop: -1,
   marginLeft: 5,
   height: '90%',
-};
-const toggleButtonStyle = {
-  color: 'primary.purple',
-  '&.Mui-selected, &.Mui-selected:hover': {
-    color: 'orange',
-    backgroundColor: 'primary.purple',
-    cursor: 'default',
-  },
-  '&:hover': {
-    backgroundColor: 'secondary.main',
-  },
 };
 // End styles //
 
@@ -73,30 +58,7 @@ function Packs() {
             {i18n.__('pages.Packs.packsStoreTitle')}({total})
           </Typography>
           <span style={spanIconListStyle}>
-            <ToggleButtonGroup value={viewMode} exclusive>
-              <ToggleButton
-                value="card"
-                onClick={() => {
-                  setViewMode('card');
-                }}
-                sx={toggleButtonStyle}
-              >
-                <Tooltip title="Mode carte">
-                  <CardIcon />
-                </Tooltip>
-              </ToggleButton>
-              <ToggleButton
-                value="list"
-                onClick={() => {
-                  setViewMode('list');
-                }}
-                sx={toggleButtonStyle}
-              >
-                <Tooltip title="Mode liste">
-                  <ListIcon />
-                </Tooltip>
-              </ToggleButton>
-            </ToggleButtonGroup>
+            <ToggleButtonEole viewMode={viewMode} setViewMode={setViewMode} />
           </span>
         </div>
         {viewMode === 'card' ? <PackCardPage setTotal={setTotal} /> : <PackListPage setTotal={setTotal} />}

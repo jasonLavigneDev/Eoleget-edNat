@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 
 import Typography from '@mui/material/Typography';
-import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
-import ListIcon from '@mui/icons-material/ViewList';
-import CardIcon from '@mui/icons-material/Dashboard';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import ToggleButton from '@mui/material/ToggleButton';
 
 import PackListPage from '../components/packTable/packListPage';
 import PackCardPage from '../components/packsCard/packCardPage';
+import ToggleButtonEole from '../components/buttons/toggleButtonEole';
 
 // Styles CSS //
 const divMainStyle = {
@@ -53,28 +49,7 @@ function PackPage() {
             </Typography>
           </div>
           <span style={spanIconListStyle}>
-            <ToggleButtonGroup value={viewMode} exclusive>
-              <ToggleButton
-                value="card"
-                onClick={() => {
-                  setViewMode('card');
-                }}
-              >
-                <Tooltip title="Mode carte">
-                  <CardIcon fontSize="large" />
-                </Tooltip>
-              </ToggleButton>
-              <ToggleButton
-                value="list"
-                onClick={() => {
-                  setViewMode('list');
-                }}
-              >
-                <Tooltip title="Mode liste">
-                  <ListIcon fontSize="large" />
-                </Tooltip>
-              </ToggleButton>
-            </ToggleButtonGroup>
+            <ToggleButtonEole viewMode={viewMode} setViewMode={setViewMode} />
           </span>
         </div>
         {viewMode === 'card' ? (
