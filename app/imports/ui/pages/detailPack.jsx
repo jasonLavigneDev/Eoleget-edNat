@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
+import i18n from 'meteor/universe:i18n';
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -8,13 +11,10 @@ import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { IconButton, Divider } from '@mui/material';
-
-import i18n from 'meteor/universe:i18n';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
-import { withTracker } from 'meteor/react-meteor-data';
-import PropTypes from 'prop-types';
+
 import Spinner from '../components/system/Spinner';
 import AppPacksCard from '../components/packsCard/appPacksCard';
 import Packs from '../../api/packs/packs';
@@ -22,6 +22,7 @@ import theme from '../themes/light';
 import { generateJSONFile } from '../utils';
 import { useAppContext } from '../contexts/context';
 import PackIcon from '../components/packs/PackIcon';
+import ButtonEole from '../components/buttons/buttonEole';
 
 // Styles CSS //
 const orangeBorder = 'secondary.main';
@@ -59,6 +60,9 @@ const ButtonCommandStyle = {
   width: 'fit-content',
   marginBottom: 5,
   marginLeft: 2,
+  '&:hover': {
+    color: 'secondary.main',
+  },
 };
 const ButtonGetCommandStyle = {
   width: '20%',
@@ -201,25 +205,9 @@ function DetailPack({ pack, ready }) {
             </div>
           </div>
           <div style={divButtons}>
-            <Button
-              title="batch"
-              variant="contained"
-              onClick={() => changeDisplay(CMD_BATCH)}
-              sx={ButtonGetCommandStyle}
-            >
-              Batch
-            </Button>
-            <Button
-              title="powershell"
-              variant="contained"
-              onClick={() => changeDisplay(CMD_POWERSHELL)}
-              sx={ButtonGetCommandStyle}
-            >
-              Powershell
-            </Button>
-            <Button title="json" variant="contained" onClick={() => changeDisplay(CMD_JSON)} sx={ButtonGetCommandStyle}>
-              JSON
-            </Button>
+            <ButtonEole text="batch" onClick={() => changeDisplay(CMD_BATCH)} style={ButtonGetCommandStyle} />
+            <ButtonEole text="powershell" onClick={() => changeDisplay(CMD_POWERSHELL)} style={ButtonGetCommandStyle} />
+            <ButtonEole text="json" onClick={() => changeDisplay(CMD_JSON)} style={ButtonGetCommandStyle} />
           </div>
           <Button title={i18n.__('pages.detailPack.copyToClipboard')} onClick={copyCommand} sx={ButtonCommandStyle}>
             <ContentCopyIcon />
@@ -252,9 +240,7 @@ function DetailPack({ pack, ready }) {
             <AppPacksCard key={app.identification} app={app} />
           ))}
           <div style={divButtonStyle}>
-            <Button variant="contained" sx={ButtonGetPackStyle} onClick={goBack}>
-              {i18n.__('pages.detailPack.back')}
-            </Button>
+            <ButtonEole style={ButtonGetPackStyle} onClick={goBack} text={i18n.__('pages.detailPack.back')} />
           </div>
         </Paper>
       </Container>

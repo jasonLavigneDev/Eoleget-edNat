@@ -5,12 +5,14 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
-import { Button, Container, Fade, Paper, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material';
+import { Container, Fade, Paper, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material';
+
 import Spinner from '../components/system/Spinner';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import Packs from '../../api/packs/packs';
 import TableAppEditPack from '../components/appTable/tableAppEditPack';
 import PackIconPicker from '../components/packs/PackIconPicker';
+import ButtonEole from '../components/buttons/buttonEole';
 
 // Style CSS //
 const mainBlue = 'primary.main';
@@ -183,17 +185,8 @@ const EditPackPage = ({ pack, ready }) => {
               <TableAppEditPack />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
-                {i18n.__('pages.packEditPage.back')}
-              </Button>
-              <Button
-                variant="contained"
-                onClick={editPack}
-                disabled={isDisable}
-                sx={{ backgroundColor: 'primary.purple' }}
-              >
-                {i18n.__('pages.packEditPage.edit')}
-              </Button>
+              <ButtonEole onClick={goBack} text={i18n.__('pages.packEditPage.back')} />
+              <ButtonEole onClick={editPack} disabled={isDisable} text={i18n.__('pages.packEditPage.edit')} />
             </div>
           </form>
         </Paper>

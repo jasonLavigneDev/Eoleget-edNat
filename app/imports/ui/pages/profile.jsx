@@ -14,7 +14,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import FormHelperText from '@mui/material/FormHelperText';
-import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import MailIcon from '@mui/icons-material/Mail';
 
@@ -24,6 +23,7 @@ import LanguageSwitcher from '../components/system/LanguageSwitcher';
 import AvatarPicker from '../components/users/AvatarPicker';
 import Spinner from '../components/system/Spinner';
 import theme from '../themes/light';
+import ButtonEole from '../components/buttons/buttonEole';
 
 // Styles CSS //
 const primaryMain = 'primary.main';
@@ -380,17 +380,8 @@ function ProfilePage() {
               </Grid>
             </Grid>
             <div style={buttonGroupStyle}>
-              <Button variant="contained" onClick={resetForm} sx={{ backgroundColor: 'primary.purple' }}>
-                {i18n.__('pages.ProfilePage.reset')}
-              </Button>
-              <Button
-                variant="contained"
-                disabled={!submitOk}
-                onClick={submitUpdateUser}
-                sx={{ backgroundColor: 'primary.purple' }}
-              >
-                {i18n.__('pages.ProfilePage.update')}
-              </Button>
+              <ButtonEole onClick={resetForm} text={i18n.__('pages.ProfilePage.reset')} />
+              <ButtonEole disabled={!submitOk} onClick={submitUpdateUser} text={i18n.__('pages.ProfilePage.update')} />
             </div>
           </form>
         </Paper>

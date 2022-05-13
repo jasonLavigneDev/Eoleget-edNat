@@ -2,12 +2,12 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
-import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 
 import { useAppContext } from '../contexts/context';
 import LoginDialog from '../components/system/LoginDialog';
+import ButtonEole from '../components/buttons/buttonEole';
 
 // Styles CSS //
 const paperStyle = {
@@ -42,9 +42,7 @@ const NotLoggedIn = () => {
       <Typography variant="h3">{i18n.__('pages.NotLoggedIn.welcome')}</Typography>
       <div style={divWrapperStyle}>
         {enableKeycloak ? (
-          <Button variant="contained" onClick={handleLogging} sx={{ backgroundColor: 'primary.purple' }}>
-            {i18n.__(loggingIn ? 'system.loading' : 'system.login')}
-          </Button>
+          <ButtonEole onClick={handleLogging} text={i18n.__(loggingIn ? 'system.loading' : 'system.login')} />
         ) : (
           <LoginDialog />
         )}

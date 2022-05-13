@@ -8,11 +8,10 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-
 import IconButton from '@mui/material/IconButton';
-
 import ClearIcon from '@mui/icons-material/Clear';
+
+import ButtonEole from '../buttons/buttonEole';
 
 const primaryMain = 'primary.main';
 const root = {
@@ -66,12 +65,12 @@ const PackDelete = ({ pack, open, onClose }) => {
           </CardContent>
           <CardActions sx={actions}>
             <div style={buttonDelete}>
-              <Button sx={{ marginRight: 10, backgroundColor: 'primary.purple' }} onClick={onClose} variant="contained">
-                {i18n.__('components.packDelete.cancel')}
-              </Button>
-              <Button sx={{ backgroundColor: 'primary.purple' }} onClick={deletePack} variant="contained">
-                {i18n.__('components.packDelete.validateForm')}
-              </Button>
+              <ButtonEole
+                style={{ marginRight: 10 }}
+                onClick={onClose}
+                text={i18n.__('components.packDelete.cancel')}
+              />
+              <ButtonEole onClick={deletePack} text={i18n.__('components.packDelete.validateForm')} />
             </div>
           </CardActions>
         </Card>

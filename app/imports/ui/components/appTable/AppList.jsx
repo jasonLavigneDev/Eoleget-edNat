@@ -192,7 +192,7 @@ function AppList({ applications, cart, isModal, editPack }) {
                     <TableCell style={{ textAlign: 'center' }}>
                       <Button
                         onClick={() => handleUrlButton(app)}
-                        sx={{ textTransform: 'unset', color: 'primary.light' }}
+                        sx={{ textTransform: 'unset', color: 'primary.light', textDecoration: 'underline' }}
                       >
                         {app.url}
                       </Button>

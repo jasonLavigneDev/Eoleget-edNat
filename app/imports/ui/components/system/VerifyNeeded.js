@@ -1,11 +1,12 @@
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
+
+import ButtonEole from '../buttons/buttonEole';
 
 // Styles CSS //
 const wrapperStyle = {
@@ -42,9 +43,7 @@ const VerifyNeeded = () => {
           <DialogContentText>{i18n.__('components.VerifyNeeded.info')}</DialogContentText>
         </DialogContent>
         <DialogActions sx={dialogActionsStyle}>
-          <Button onClick={doVerify} variant="contained" color="primary">
-            {i18n.__(`components.VerifyNeeded.doVerify`)}
-          </Button>
+          <ButtonEole onClick={doVerify} text={i18n.__(`components.VerifyNeeded.doVerify`)} />
         </DialogActions>
       </Dialog>
     </div>
