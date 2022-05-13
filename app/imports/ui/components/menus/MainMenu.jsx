@@ -106,6 +106,14 @@ const MainMenu = ({ user = {} }) => {
               key={item.path}
               onClick={() => handleMenuClick(item.path)}
               selected={currentLink ? currentLink.path === item.path : false}
+              sx={{
+                '&:hover': { backgroundColor: 'secondary.main', color: 'black' },
+                '&.Mui-selected': {
+                  backgroundColor: 'primary.main',
+                  color: 'primary.light',
+                  '&:hover': { backgroundColor: 'secondary.main', color: 'black' },
+                },
+              }}
             >
               <T>{item.content}</T>
             </MenuItem>
@@ -113,7 +121,12 @@ const MainMenu = ({ user = {} }) => {
         })}
         <Divider />
 
-        <MenuItem onClick={onLogout}>
+        <MenuItem
+          onClick={onLogout}
+          sx={{
+            '&:hover': { backgroundColor: 'secondary.main' },
+          }}
+        >
           <T>menuLogoutLabel</T>
         </MenuItem>
         <Divider />
