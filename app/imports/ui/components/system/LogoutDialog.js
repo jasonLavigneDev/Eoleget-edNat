@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';

@@ -2,7 +2,6 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
-import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 

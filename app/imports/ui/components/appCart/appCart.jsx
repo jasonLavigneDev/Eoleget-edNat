@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { IconButton, Paper, Box, Button, Popover, Badge, Tooltip } from '@mui/material';
+import { IconButton, Paper, Box, Popover, Badge, Tooltip } from '@mui/material';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
@@ -10,11 +10,6 @@ import ButtonEole from '../buttons/buttonEole';
 
 const divStyle = {
   position: 'static',
-};
-
-const buttonCreateStyle = {
-  margin: 1,
-  backgroundColor: 'primary.purple',
 };
 const paperStyle = {
   display: 'flex',

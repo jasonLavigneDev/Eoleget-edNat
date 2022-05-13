@@ -7,7 +7,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { styled } from '@mui/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';

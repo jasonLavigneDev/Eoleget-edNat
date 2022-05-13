@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
-import { Button, Container, Fade, Paper, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material';
+import { Container, Fade, Paper, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material';
 
 import Spinner from '../components/system/Spinner';
 import ColorRadioButton from '../components/packCreation/colorRadioButton';

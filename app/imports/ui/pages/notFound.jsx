@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 
-import { Button, Paper, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 
 import ButtonEole from '../components/buttons/buttonEole';
 

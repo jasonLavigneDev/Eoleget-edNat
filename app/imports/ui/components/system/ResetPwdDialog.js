@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Accounts } from 'meteor/accounts-base';
 import i18n from 'meteor/universe:i18n';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
