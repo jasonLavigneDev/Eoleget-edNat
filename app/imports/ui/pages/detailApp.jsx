@@ -211,7 +211,11 @@ const detailApp = ({ app, ready }) => {
               </span>
               <span style={iconSpanTagStyle}>
                 {app.tags.map((tag) => (
-                  <Button key={tag} variant="outlined">
+                  <Button
+                    key={tag}
+                    variant="outlined"
+                    sx={{ '&:hover': { color: 'secondary.main', borderColor: 'secondary.main' } }}
+                  >
                     {tag}
                   </Button>
                 ))}
