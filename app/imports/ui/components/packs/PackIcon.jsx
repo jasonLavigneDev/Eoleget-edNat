@@ -9,7 +9,9 @@ const PackIcon = ({ icon, big }) => {
     <Avatar
       src={icon || defaultImage}
       sx={
-        big ? { width: 200, height: 200 } : { width: 40, height: 40, backgroundColor: 'primary.light', padding: '3px' }
+        big
+          ? { width: 200, height: 200 }
+          : { width: 40, height: 40, backgroundColor: 'rgba(255,255,255,0.6)', padding: '3px' }
       }
     />
   );
