@@ -23,6 +23,7 @@ import AppListPage from './AppListPage';
 import EnhancedTableHead from './tableHeadAppPack';
 import Applications from '../../../api/applications/applications';
 import ListVersionEdit from '../version/listVersionEdit';
+import ButtonEole from '../buttons/buttonEole';
 
 // Styles CSS //
 const mainWhite = 'primary.light';
@@ -42,13 +43,8 @@ const buttonCloseStyle = {
   width: 400,
   margin: 'auto',
   bottom: 20,
-  color: 'primary.light',
-  backgroundColor: 'primary.purple',
   border: '2px solid',
   borderColor: 'secondary.main',
-  '&:hover': {
-    backgroundColor: 'primary.main',
-  },
 };
 const tableCellStyle = {
   color: mainWhite,
@@ -235,20 +231,11 @@ function TableAppCreatePack({ ready }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button
-        variant="contanied"
+      <ButtonEole
         onClick={openList}
-        sx={{
-          width: '90%',
-          backgroundColor: 'primary.purple',
-          padding: 1,
-          marginTop: 1,
-          color: mainWhite,
-          '&:hover': { backgroundColor: 'primary.main' },
-        }}
-      >
-        {i18n.__('pages.packEditPage.addApp')}
-      </Button>
+        style={{ width: '90%', padding: 1, marginTop: 1 }}
+        text={i18n.__('pages.packEditPage.addApp')}
+      />
       <TablePagination
         rowsPerPageOptions={[5]}
         component="div"
@@ -265,9 +252,7 @@ function TableAppCreatePack({ ready }) {
               {i18n.__('pages.Store.storeTitle')}
             </Typography>
             <AppListPage modal cart={cart} />
-            <Button variant="contanied" onClick={onClose} sx={buttonCloseStyle} size="large">
-              {i18n.__('pages.packEditPage.validateModal')}
-            </Button>
+            <ButtonEole onClick={onClose} style={buttonCloseStyle} text={i18n.__('pages.packEditPage.validateModal')} />
           </Paper>
         </Modal>
       ) : null}

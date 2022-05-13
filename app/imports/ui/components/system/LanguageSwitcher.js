@@ -52,7 +52,13 @@ const LanguageSwitcher = ({ topbar, relative }) => {
           variant="contained"
           aria-controls="simple-menu"
           aria-haspopup="true"
-          sx={{ backgroundColor: 'primary.purple' }}
+          sx={{
+            backgroundColor: 'primary.purple',
+            '&:hover': {
+              color: 'primary.purple',
+              backgroundColor: 'secondary.main',
+            },
+          }}
           onClick={handleClick}
         >
           <T>{language}</T>

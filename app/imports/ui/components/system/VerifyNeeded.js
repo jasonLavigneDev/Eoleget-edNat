@@ -7,6 +7,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
 
+import ButtonEole from '../buttons/buttonEole';
+
 // Styles CSS //
 const wrapperStyle = {
   height: 'calc(100vh - 64px)',
@@ -42,9 +44,7 @@ const VerifyNeeded = () => {
           <DialogContentText>{i18n.__('components.VerifyNeeded.info')}</DialogContentText>
         </DialogContent>
         <DialogActions sx={dialogActionsStyle}>
-          <Button onClick={doVerify} variant="contained" color="primary">
-            {i18n.__(`components.VerifyNeeded.doVerify`)}
-          </Button>
+          <ButtonEole onClick={doVerify} text={i18n.__(`components.VerifyNeeded.doVerify`)} />
         </DialogActions>
       </Dialog>
     </div>

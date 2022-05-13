@@ -21,6 +21,7 @@ import Applications from '../../api/applications/applications';
 import lightTheme from '../themes/light';
 import ListVersion from '../components/version/listVersion';
 import AppImg from '../components/appCard/AppImg';
+import ButtonEole from '../components/buttons/buttonEole';
 
 const detailApp = ({ app, ready }) => {
   if (!ready) return <Spinner full />;
@@ -171,7 +172,12 @@ const detailApp = ({ app, ready }) => {
               </div>
               {app.url ? (
                 <span style={iconSpanStyle}>
-                  <IconButton title={i18n.__('pages.detailApp.redirect')} onClick={handleUrlButton} color="primary">
+                  <IconButton
+                    title={i18n.__('pages.detailApp.redirect')}
+                    onClick={handleUrlButton}
+                    color="primary"
+                    sx={{ '&:hover': { color: 'secondary.main' } }}
+                  >
                     <LanguageIcon />
                     <Typography variant="body1" sx={{ textDecoration: 'underline' }}>
                       {app.url}
@@ -183,7 +189,7 @@ const detailApp = ({ app, ready }) => {
                 <Button
                   title={i18n.__('pages.detailApp.download')}
                   onClick={copyCommand}
-                  sx={{ textTransform: 'none' }}
+                  sx={{ textTransform: 'none', '&:hover': { color: 'secondary.main' } }}
                 >
                   <ContentCopyIcon />
                   <Typography variant="paragraph">{command}</Typography>
@@ -217,17 +223,17 @@ const detailApp = ({ app, ready }) => {
           </Grid>
           <div style={divButtonStyle}>
             {checkAppAllreadyAdded() ? (
-              <Button variant="contained" style={{ backgroundColor: 'red' }} onClick={removeAppFromCart}>
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: 'red', '&:hover': { backgroundColor: 'secondary.main' } }}
+                onClick={removeAppFromCart}
+              >
                 {i18n.__('pages.detailApp.Remove')}
               </Button>
             ) : (
-              <Button variant="contained" onClick={addAppToCart} sx={{ backgroundColor: 'primary.purple' }}>
-                {i18n.__('pages.detailApp.Save')}
-              </Button>
+              <ButtonEole onClick={addAppToCart} text={i18n.__('pages.detailApp.Save')} />
             )}
-            <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
-              {i18n.__('pages.detailApp.back')}
-            </Button>
+            <ButtonEole onClick={goBack} text={i18n.__('pages.detailApp.back')} />
           </div>
         </Paper>
       </Container>

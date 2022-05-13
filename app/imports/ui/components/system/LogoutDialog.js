@@ -13,6 +13,8 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
+import ButtonEole from '../buttons/buttonEole';
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -55,12 +57,8 @@ function LogoutDialog({ open, onAccept, onClose }) {
         </FormGroup>
       </DialogContent>
       <DialogActions>
-        <Button onClick={keycloakLogout} variant="contained" sx={{ backgroundColor: 'primary.purple' }}>
-          {i18n.__('components.LogoutDialog.buttonYes')}
-        </Button>
-        <Button onClick={simpleLogout} variant="contained" sx={{ backgroundColor: 'primary.purple' }}>
-          {i18n.__('components.LogoutDialog.buttonNo')}
-        </Button>
+        <ButtonEole onClick={keycloakLogout} text={i18n.__('components.LogoutDialog.buttonYes')} />
+        <ButtonEole onClick={simpleLogout} text={i18n.__('components.LogoutDialog.buttonNo')} />
       </DialogActions>
     </Dialog>
   );

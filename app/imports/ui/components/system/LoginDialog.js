@@ -9,7 +9,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContentText from '@mui/material/DialogContentText';
+
 import { useAppContext } from '../../contexts/context';
+import ButtonEole from '../buttons/buttonEole';
 
 const LoginDialog = () => {
   const [{ isMobile }] = useAppContext();
@@ -221,14 +223,11 @@ const LoginDialog = () => {
           </div>
         </DialogContent>
         <DialogActions sx={DialogActionStyle}>
-          <Button
+          <ButtonEole
             onClick={mode === 'signup' ? dosignup : mode === 'reset' ? doreset : dosignin}
             disabled={!isValid}
-            variant="contained"
-            color="primary"
-          >
-            {i18n.__(`components.LoginDialog.do${mode}`)}
-          </Button>
+            text={i18n.__(`components.LoginDialog.do${mode}`)}
+          />
         </DialogActions>
       </Dialog>
     </div>

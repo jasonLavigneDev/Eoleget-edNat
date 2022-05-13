@@ -4,6 +4,8 @@ import i18n from 'meteor/universe:i18n';
 
 import { Button, Paper, Typography } from '@mui/material';
 
+import ButtonEole from '../components/buttons/buttonEole';
+
 // Styles CSS //
 const mainDivStyle = {
   margin: 'auto',
@@ -39,12 +41,8 @@ const NotFound = () => {
           {i18n.__('pages.NotFound.message')}
         </Typography>
         <span style={spanButtonStyle}>
-          <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
-            {i18n.__('pages.NotFound.backButtonLabel')}
-          </Button>
-          <Button variant="contained" onClick={handleClick} sx={{ backgroundColor: 'primary.purple' }}>
-            {i18n.__('pages.NotFound.homeButtonLabel')}
-          </Button>
+          <ButtonEole onClick={goBack} text={i18n.__('pages.NotFound.backButtonLabel')} />
+          <ButtonEole onClick={handleClick} text={i18n.__('pages.NotFound.homeButtonLabel')} />
         </span>
       </Paper>
     </div>

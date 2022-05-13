@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
-
 import { useHistory } from 'react-router-dom';
 
 import { Button, Container, Fade, Paper, Typography, TextField, FormControlLabel, Checkbox } from '@mui/material';
+
 import ColorRadioButton from '../components/packCreation/colorRadioButton';
 import TableAppCreatePack from '../components/appTable/tableAppCreatePack';
 import { useAppContext } from '../contexts/context';
 import PackIconPicker from '../components/packs/PackIconPicker';
+import ButtonEole from '../components/buttons/buttonEole';
 
 // Style CSS //
 const mainBlue = 'primary.main';
@@ -179,17 +180,8 @@ function CreatePackPage() {
               <TableAppCreatePack />
             </div>
             <div style={divButtonStyle}>
-              <Button variant="contained" onClick={goBack} sx={{ backgroundColor: 'primary.purple' }}>
-                {i18n.__('pages.packCreation.delete')}
-              </Button>
-              <Button
-                variant="contained"
-                onClick={createPack}
-                disabled={isDisable}
-                sx={{ backgroundColor: 'primary.purple' }}
-              >
-                {i18n.__('pages.packCreation.add')}
-              </Button>
+              <ButtonEole onClick={goBack} text={i18n.__('pages.packCreation.delete')} />
+              <ButtonEole onClick={createPack} disabled={isDisable} text={i18n.__('pages.packCreation.add')} />
             </div>
           </form>
         </Paper>

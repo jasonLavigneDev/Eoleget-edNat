@@ -8,6 +8,7 @@ import { Typography } from '@mui/material';
 
 import { useAppContext } from '../contexts/context';
 import LoginDialog from '../components/system/LoginDialog';
+import ButtonEole from '../components/buttons/buttonEole';
 
 // Styles CSS //
 const paperStyle = {
@@ -42,9 +43,7 @@ const NotLoggedIn = () => {
       <Typography variant="h3">{i18n.__('pages.NotLoggedIn.welcome')}</Typography>
       <div style={divWrapperStyle}>
         {enableKeycloak ? (
-          <Button variant="contained" onClick={handleLogging} sx={{ backgroundColor: 'primary.purple' }}>
-            {i18n.__(loggingIn ? 'system.loading' : 'system.login')}
-          </Button>
+          <ButtonEole onClick={handleLogging} text={i18n.__(loggingIn ? 'system.loading' : 'system.login')} />
         ) : (
           <LoginDialog />
         )}

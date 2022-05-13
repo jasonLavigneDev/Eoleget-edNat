@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AppCardCart from './appCartCard';
+import ButtonEole from '../buttons/buttonEole';
 
 const divStyle = {
   position: 'static',
@@ -96,9 +97,12 @@ function AppCart({ cart }) {
             ? cart[0].map((app) => <AppCardCart key={app.identification} app={app} handleClose={RemoveAppFromCart} />)
             : null}
           <div>
-            <Button sx={buttonCreateStyle} variant="contained" disabled={isDisable} onClick={handleCreatePackButton}>
-              {i18n.__('components.appCart.createPack')}
-            </Button>
+            <ButtonEole
+              style={{ margin: 1 }}
+              disabled={isDisable}
+              onClick={handleCreatePackButton}
+              text={i18n.__('components.appCart.createPack')}
+            />
             <Tooltip title={i18n.__('components.appCart.deleteAll')}>
               <IconButton
                 variant="contained"

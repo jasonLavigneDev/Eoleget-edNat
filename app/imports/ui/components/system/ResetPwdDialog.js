@@ -9,7 +9,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+
 import { useAppContext } from '../../contexts/context';
+import ButtonEole from '../buttons/buttonEole';
 
 const ResetPwdDialog = ({ token }) => {
   const [{ isMobile }] = useAppContext();
@@ -93,9 +95,7 @@ const ResetPwdDialog = ({ token }) => {
           />
         </DialogContent>
         <DialogActions sx={dialogActionStyle}>
-          <Button onClick={doResetPwd} disabled={!isValid} variant="contained" color="primary">
-            {i18n.__('components.ResetPwdDialog.doResetPwd')}
-          </Button>
+          <ButtonEole onClick={doResetPwd} disabled={!isValid} text={i18n.__('components.ResetPwdDialog.doResetPwd')} />
         </DialogActions>
       </Dialog>
     </div>

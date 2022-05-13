@@ -13,7 +13,9 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+
 import AppImg from './AppImg';
+import ButtonEole from '../buttons/buttonEole';
 
 // Styles CSS //
 const cardStyle = {
@@ -174,9 +176,7 @@ function AppCard({ app, cart }) {
       </CardContent>
       <CardActions sx={cardActionsStyle}>
         <Link to={`/app/${app.identification}`}>
-          <Button variant="contained" sx={{ backgroundColor: 'primary.purple', width: '200%' }}>
-            {i18n.__('components.Card.showMore')}
-          </Button>
+          <ButtonEole text={i18n.__('components.Card.showMore')} style={{ width: '200%' }} />
         </Link>
       </CardActions>
     </Card>
