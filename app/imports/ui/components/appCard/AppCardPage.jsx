@@ -8,7 +8,6 @@ import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
@@ -16,10 +15,10 @@ import { Typography } from '@mui/material';
 
 import { useAppContext } from '../../contexts/context';
 import { usePagination } from '../../../api/utils/hooks';
-
 import AppCard from './AppCard';
 import Applications from '../../../api/applications/applications';
 import { debounce } from '../../utils';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const gridPaginationStyle = {
@@ -163,9 +162,11 @@ function AppCardPage({ cart, setTotal }) {
         ),
         endAdornment: search ? (
           <InputAdornment position="end">
-            <IconButton onClick={resetSearch}>
-              <ClearIcon />
-            </IconButton>
+            <IconButtonEole
+              onClick={resetSearch}
+              icon={<ClearIcon />}
+              style={{ backgroundColor: 'none', color: 'secondary.main' }}
+            />
           </InputAdornment>
         ) : null,
       }}

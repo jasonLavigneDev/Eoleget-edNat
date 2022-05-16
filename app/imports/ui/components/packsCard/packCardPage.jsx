@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 
-import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import SearchIcon from '@mui/icons-material/Search';
@@ -16,9 +15,9 @@ import { Typography } from '@mui/material';
 import PackCard from './packCard';
 import { useAppContext } from '../../contexts/context';
 import { usePagination } from '../../../api/utils/hooks';
-
 import Packs from '../../../api/packs/packs';
 import { debounce } from '../../utils';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const gridPaginationStyle = {
@@ -161,9 +160,11 @@ function packCardPage({ isUserPack, setTotal }) {
         ),
         endAdornment: search ? (
           <InputAdornment position="end">
-            <IconButton onClick={resetSearch}>
-              <ClearIcon />
-            </IconButton>
+            <IconButtonEole
+              icon={<ClearIcon />}
+              onClick={resetSearch}
+              style={{ backgroundColor: 'none', color: 'secondary.main' }}
+            />
           </InputAdornment>
         ) : null,
       }}

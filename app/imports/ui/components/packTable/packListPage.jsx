@@ -1,12 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
+import { useTracker } from 'meteor/react-meteor-data';
 
-import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import SearchIcon from '@mui/icons-material/Search';
-
-import { useTracker } from 'meteor/react-meteor-data';
 import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -14,9 +12,9 @@ import { Typography, Paper } from '@mui/material';
 
 import PackList from '../packsCard/packList';
 import { useAppContext } from '../../contexts/context';
-
 import Packs from '../../../api/packs/packs';
 import { debounce } from '../../utils';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const divMainStyle = {
@@ -147,9 +145,11 @@ function packListPage({ isUserPack, setTotal }) {
         ),
         endAdornment: search ? (
           <InputAdornment position="end">
-            <IconButton onClick={resetSearch}>
-              <ClearIcon />
-            </IconButton>
+            <IconButtonEole
+              icon={<ClearIcon />}
+              onClick={resetSearch}
+              style={{ background: 'none', color: 'secondary.main' }}
+            />
           </InputAdornment>
         ) : null,
       }}

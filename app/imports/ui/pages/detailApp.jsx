@@ -226,18 +226,16 @@ const detailApp = ({ app, ready }) => {
             </div>
           </Grid>
           <div style={divButtonStyle}>
+            <ButtonEole onClick={goBack} text={i18n.__('pages.detailApp.back')} />
             {checkAppAllreadyAdded() ? (
-              <Button
-                variant="contained"
-                sx={{ backgroundColor: 'red', '&:hover': { backgroundColor: 'secondary.main' } }}
+              <ButtonEole
+                style={{ backgroundColor: 'red', '&:hover': { backgroundColor: 'secondary.main' } }}
                 onClick={removeAppFromCart}
-              >
-                {i18n.__('pages.detailApp.Remove')}
-              </Button>
+                text={i18n.__('pages.detailApp.Remove')}
+              />
             ) : (
               <ButtonEole onClick={addAppToCart} text={i18n.__('pages.detailApp.Save')} />
             )}
-            <ButtonEole onClick={goBack} text={i18n.__('pages.detailApp.back')} />
           </div>
         </Paper>
       </Container>

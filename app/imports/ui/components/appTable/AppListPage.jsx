@@ -7,7 +7,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
 import Fade from '@mui/material/Fade';
 import { Typography, Paper } from '@mui/material';
 
@@ -15,6 +14,7 @@ import { useAppContext } from '../../contexts/context';
 import AppList from './AppList';
 import Applications from '../../../api/applications/applications';
 import { debounce } from '../../utils';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const divMainStyle = {
@@ -168,9 +168,11 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
         ),
         endAdornment: search ? (
           <InputAdornment position="end">
-            <IconButton onClick={resetSearch}>
-              <ClearIcon />
-            </IconButton>
+            <IconButtonEole
+              onClick={resetSearch}
+              icon={<ClearIcon />}
+              style={{ backgroundColor: 'none', color: 'secondary.main' }}
+            />
           </InputAdornment>
         ) : null,
       }}

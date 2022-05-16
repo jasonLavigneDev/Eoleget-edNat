@@ -12,7 +12,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -25,6 +24,7 @@ import EnhancedTableHead from './tableHeadAppPack';
 import ListVersionEdit from '../version/listVersionEdit';
 import Applications from '../../../api/applications/applications';
 import ButtonEole from '../buttons/buttonEole';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const mainWhite = 'primary.light';
@@ -211,17 +211,20 @@ function TableAppEditPack({ ready }) {
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
                         <Link to={`/app/${app.identification}`}>
-                          <IconButton>
-                            <OpenInNewIcon sx={tableCellStyle} />
-                          </IconButton>
+                          <IconButtonEole
+                            icon={<OpenInNewIcon sx={tableCellStyle} />}
+                            style={{ backgroundColor: 'none' }}
+                          />
                         </Link>
                       </Tooltip>
                     </TableCell>
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.removeTooltip')}>
-                        <IconButton onClick={(e) => handleDeleteButton(e, app)}>
-                          <DeleteIcon sx={tableCellStyle} />
-                        </IconButton>
+                        <IconButtonEole
+                          onClick={(e) => handleDeleteButton(e, app)}
+                          icon={<DeleteIcon sx={tableCellStyle} />}
+                          style={{ backgroundColor: 'none' }}
+                        />
                       </Tooltip>
                     </TableCell>
                   </TableRow>

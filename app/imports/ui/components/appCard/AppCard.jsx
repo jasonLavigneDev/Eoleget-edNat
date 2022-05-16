@@ -9,12 +9,12 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
 import AppImg from './AppImg';
 import ButtonEole from '../buttons/buttonEole';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const cardStyle = {
@@ -131,13 +131,8 @@ function AppCard({ app, cart }) {
         avatar={<AppImg appIdent={app.identification} size={40} />}
         action={
           !checkAppAllreadyAdded() ? (
-            <Tooltip title={i18n.__('components.Card.addButtonTooltip')}>
-              <IconButton
-                aria-label="add"
-                onClick={() => {
-                  addAppToCart();
-                }}
-              >
+            <IconButtonEole
+              icon={
                 <AddIcon
                   fontSize="large"
                   sx={{
@@ -145,16 +140,27 @@ function AppCard({ app, cart }) {
                     '&:hover': { color: 'primary.purple', backgroundColor: 'secondary.main', borderRadius: 10 },
                   }}
                 />
-              </IconButton>
-            </Tooltip>
+              }
+              tooltipText={i18n.__('components.Card.addButtonTooltip')}
+              ariaLabel="add"
+              onClick={() => {
+                addAppToCart();
+              }}
+              style={{
+                background: 'primary.purple',
+                '&:hover': {
+                  backgroundColor: 'primary.purple',
+                },
+              }}
+            />
           ) : (
-            <Tooltip title={i18n.__('components.Card.removeButtonTooltip')}>
-              <IconButton
-                aria-label="remove"
-                onClick={() => {
-                  removeAppToCart();
-                }}
-              >
+            <IconButtonEole
+              tooltipText={i18n.__('components.Card.removeButtonTooltip')}
+              ariaLabel="remove"
+              onClick={() => {
+                removeAppToCart();
+              }}
+              icon={
                 <RemoveIcon
                   fontSize="large"
                   sx={{
@@ -162,8 +168,14 @@ function AppCard({ app, cart }) {
                     '&:hover': { color: 'primary.purple', backgroundColor: 'secondary.main', borderRadius: 10 },
                   }}
                 />
-              </IconButton>
-            </Tooltip>
+              }
+              style={{
+                background: 'primary.purple',
+                '&:hover': {
+                  backgroundColor: 'primary.purple',
+                },
+              }}
+            />
           )
         }
         sx={cardHeaderStyle}
