@@ -14,6 +14,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormHelperText from '@mui/material/FormHelperText';
 import Paper from '@mui/material/Paper';
 import MailIcon from '@mui/icons-material/Mail';
+import { Tooltip } from '@mui/material';
 
 import { useAppContext } from '../contexts/context';
 import { useObjectState } from '../../api/utils/hooks';
@@ -340,16 +341,19 @@ function ProfilePage() {
                       sx={textfieldStyle}
                       endAdornment={
                         <InputAdornment position="end">
-                          <span>
-                            <IconButtonEole
-                              onClick={useEmail}
-                              disabled={enableKeycloak}
-                              style={{ backgroundColor: 'none' }}
-                              icon={<MailIcon />}
-                              tooltipText={i18n.__('pages.ProfilePage.useEmail')}
-                              ariaLabel={i18n.__('pages.ProfilePage.useEmail')}
-                            />
-                          </span>
+                          <Tooltip
+                            title={enableKeycloak ? '' : i18n.__('pages.ProfilePage.useEmail')}
+                            aria-label={i18n.__('pages.ProfilePage.useEmail')}
+                          >
+                            <span>
+                              <IconButtonEole
+                                onClick={useEmail}
+                                disabled={enableKeycloak}
+                                style={{ backgroundColor: 'none' }}
+                                icon={<MailIcon />}
+                              />
+                            </span>
+                          </Tooltip>
                         </InputAdornment>
                       }
                     />

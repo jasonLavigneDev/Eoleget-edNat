@@ -25,7 +25,7 @@ function ButtonEole({ text, style, onClick, disabled }) {
 
 ButtonEole.propTypes = {
   text: PropTypes.string.isRequired,
-  style: PropTypes.objectOf,
+  style: PropTypes.objectOf(PropTypes.any),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
 };

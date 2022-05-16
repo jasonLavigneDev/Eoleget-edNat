@@ -27,7 +27,7 @@ function IconButtonEole({ icon, tooltipText, ariaLabel, style, onClick, disabled
 
 IconButtonEole.propTypes = {
   icon: PropTypes.element.isRequired,
-  style: PropTypes.objectOf,
+  style: PropTypes.objectOf(PropTypes.any),
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   tooltipText: PropTypes.string,
