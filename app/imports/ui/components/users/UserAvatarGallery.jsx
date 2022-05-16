@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import i18n from 'meteor/universe:i18n';
+import PropTypes from 'prop-types';
+
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
@@ -11,8 +12,8 @@ import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 
-import PropTypes from 'prop-types';
 import { useAppContext } from '../../contexts/context';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 const UserAvatarGallery = ({ open, onClose, onSendImage }) => {
   const [{ isMobile }] = useAppContext();
@@ -53,9 +54,11 @@ const UserAvatarGallery = ({ open, onClose, onSendImage }) => {
             title={i18n.__('components.UserAvatarGallery.title')}
             subheader={i18n.__('components.UserAvatarGallery.subtitle')}
             action={
-              <IconButton onClick={onClose}>
-                <ClearIcon />
-              </IconButton>
+              <IconButtonEole
+                icon={<ClearIcon />}
+                onClick={onClose}
+                style={{ backgroundColor: 'none', color: 'primary.purple' }}
+              />
             }
           />
           <CardContent>

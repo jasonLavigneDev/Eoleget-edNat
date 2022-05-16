@@ -11,8 +11,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
 import FormHelperText from '@mui/material/FormHelperText';
 import Paper from '@mui/material/Paper';
 import MailIcon from '@mui/icons-material/Mail';
@@ -24,6 +22,7 @@ import AvatarPicker from '../components/users/AvatarPicker';
 import Spinner from '../components/system/Spinner';
 import theme from '../themes/light';
 import ButtonEole from '../components/buttons/buttonEole';
+import IconButtonEole from '../components/buttons/iconButtonEole';
 
 // Styles CSS //
 const primaryMain = 'primary.main';
@@ -341,20 +340,16 @@ function ProfilePage() {
                       sx={textfieldStyle}
                       endAdornment={
                         <InputAdornment position="end">
-                          <Tooltip
-                            title={i18n.__('pages.ProfilePage.useEmail')}
-                            aria-label={i18n.__('pages.ProfilePage.useEmail')}
-                          >
-                            <span>
-                              <IconButton
-                                onClick={useEmail}
-                                disabled={enableKeycloak}
-                                sx={{ '&:hover': { color: 'secondary.main' } }}
-                              >
-                                <MailIcon />
-                              </IconButton>
-                            </span>
-                          </Tooltip>
+                          <span>
+                            <IconButtonEole
+                              onClick={useEmail}
+                              disabled={enableKeycloak}
+                              style={{ backgroundColor: 'none' }}
+                              icon={<MailIcon />}
+                              tooltipText={i18n.__('pages.ProfilePage.useEmail')}
+                              ariaLabel={i18n.__('pages.ProfilePage.useEmail')}
+                            />
+                          </span>
                         </InputAdornment>
                       }
                     />

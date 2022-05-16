@@ -9,7 +9,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -21,6 +20,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import EnhancedTableHead from '../packTable/tableHead';
 import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 const typographieHeaderStyle = {
   width: '18rem',
@@ -153,32 +153,34 @@ function PackList({ packs, isUserPack }) {
                     <TableCell>
                       {pack.owner === userId ? (
                         <div>
-                          <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
-                            <Link to={`/packs/detail/${pack._id}`}>
-                              <IconButton>
-                                <OpenInNewIcon sx={iconStyle} />
-                              </IconButton>
-                            </Link>
-                          </Tooltip>
-                          <Tooltip title={i18n.__('components.PacksCard.editPack')}>
-                            <IconButton onClick={() => handleEditButton(pack._id)}>
-                              <EditIcon sx={iconStyle} />
-                            </IconButton>
-                          </Tooltip>
-                          <Tooltip title={i18n.__('components.PacksCard.deletePack')}>
-                            <IconButton onClick={() => handleDeleteButton(pack)}>
-                              <ClearIcon sx={iconStyle} />
-                            </IconButton>
-                          </Tooltip>
+                          <Link to={`/packs/detail/${pack._id}`}>
+                            <IconButtonEole
+                              tooltipText={i18n.__('components.PackList.detailTooltip')}
+                              icon={<OpenInNewIcon />}
+                              style={{ backgroundColor: 'none' }}
+                            />
+                          </Link>
+                          <IconButtonEole
+                            tooltipText={i18n.__('components.PacksCard.editPack')}
+                            icon={<EditIcon />}
+                            onClick={() => handleEditButton(pack._id)}
+                            style={{ backgroundColor: 'none' }}
+                          />
+                          <IconButtonEole
+                            tooltipText={i18n.__('components.PacksCard.deletePack')}
+                            icon={<ClearIcon />}
+                            onClick={() => handleDeleteButton(pack)}
+                            style={{ backgroundColor: 'none' }}
+                          />
                         </div>
                       ) : (
-                        <Tooltip title={i18n.__('components.PackList.detailTooltip')}>
-                          <Link to={`/packs/detail/${pack._id}`}>
-                            <IconButton>
-                              <OpenInNewIcon sx={iconStyle} />
-                            </IconButton>
-                          </Link>
-                        </Tooltip>
+                        <Link to={`/packs/detail/${pack._id}`}>
+                          <IconButtonEole
+                            tooltipText={i18n.__('components.PackList.detailTooltip')}
+                            icon={<OpenInNewIcon />}
+                            style={{ backgroundColor: 'none' }}
+                          />
+                        </Link>
                       )}
                     </TableCell>
                   </TableRow>

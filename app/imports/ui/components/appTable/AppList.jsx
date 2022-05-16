@@ -10,7 +10,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -19,6 +18,7 @@ import Button from '@mui/material/Button';
 import ListVersion from '../version/listVersion';
 import EnhancedTableHead from './tableHead';
 import ListVersionEdit from '../version/listVersionEdit';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const tableCellStyle = {
@@ -200,13 +200,13 @@ function AppList({ applications, cart, isModal, editPack }) {
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
                         <Link to={`/app/${app.identification}`}>
-                          <IconButton
-                            sx={{
+                          <IconButtonEole
+                            style={{
                               color: 'primary.light',
+                              backgroundColor: 'none',
                             }}
-                          >
-                            <OpenInNewIcon />
-                          </IconButton>
+                            icon={<OpenInNewIcon />}
+                          />
                         </Link>
                       </Tooltip>
                     </TableCell>

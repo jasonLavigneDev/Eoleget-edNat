@@ -11,19 +11,19 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
 import { Typography } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import TablePagination from '@mui/material/TablePagination';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Modal from '@mui/material/Modal';
-import AppListPage from './AppListPage';
 
+import AppListPage from './AppListPage';
 import EnhancedTableHead from './tableHeadAppPack';
 import Applications from '../../../api/applications/applications';
 import ListVersionEdit from '../version/listVersionEdit';
 import ButtonEole from '../buttons/buttonEole';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const mainWhite = 'primary.light';
@@ -212,18 +212,20 @@ function TableAppCreatePack({ ready }) {
                     <TableCell>
                       <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
                         <Link to={`/app/${app.identification}`}>
-                          <IconButton>
-                            <OpenInNewIcon sx={tableCellStyle} />
-                          </IconButton>
+                          <IconButtonEole
+                            icon={<OpenInNewIcon sx={tableCellStyle} />}
+                            style={{ backgroundColor: 'none' }}
+                          />
                         </Link>
                       </Tooltip>
                     </TableCell>
                     <TableCell>
-                      <Tooltip title={i18n.__('components.AppList.detailTooltip')}>
-                        <IconButton onClick={(e) => handleDeleteButton(e, app)}>
-                          <DeleteIcon sx={tableCellStyle} />
-                        </IconButton>
-                      </Tooltip>
+                      <IconButtonEole
+                        tooltipText={i18n.__('components.AppList.removeTooltip')}
+                        onClick={(e) => handleDeleteButton(e, app)}
+                        icon={<DeleteIcon sx={tableCellStyle} />}
+                        style={{ backgroundColor: 'none' }}
+                      />
                     </TableCell>
                   </TableRow>
                 );

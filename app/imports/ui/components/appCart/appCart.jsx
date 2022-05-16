@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { IconButton, Paper, Box, Popover, Badge, Tooltip } from '@mui/material';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { useHistory } from 'react-router-dom';
 import i18n from 'meteor/universe:i18n';
+import { useHistory } from 'react-router-dom';
+
+import { IconButton, Paper, Box, Popover, Badge } from '@mui/material';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 import AppCardCart from './appCartCard';
 import ButtonEole from '../buttons/buttonEole';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 const divStyle = {
   position: 'static',
@@ -97,19 +100,17 @@ function AppCart({ cart }) {
               onClick={handleCreatePackButton}
               text={i18n.__('components.appCart.createPack')}
             />
-            <Tooltip title={i18n.__('components.appCart.deleteAll')}>
-              <IconButton
-                variant="contained"
-                disabled={isDisable}
-                onClick={handleDeleteAll}
-                sx={{
-                  color: 'secondary.main',
-                  '&:hover': { color: 'primary.light', backgroundColor: 'secondary.main', borderRadius: 5 },
-                }}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </Tooltip>
+            <IconButtonEole
+              tooltipText={i18n.__('components.appCart.deleteAll')}
+              disabled={isDisable}
+              onClick={handleDeleteAll}
+              style={{
+                color: 'secondary.main',
+                backgroundColor: 'none',
+                '&:hover': { color: 'primary.light', backgroundColor: 'secondary.main', borderRadius: 5 },
+              }}
+              icon={<DeleteIcon />}
+            />
           </div>
         </Paper>
       </Popover>

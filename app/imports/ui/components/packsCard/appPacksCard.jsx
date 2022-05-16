@@ -7,12 +7,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-import Tooltip from '@mui/material/Tooltip';
 
 import AppBadge from '../appCard/AppBadge';
 import AppImg from '../appCard/AppImg';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const cardStyle = {
@@ -49,13 +48,17 @@ function AppPacksCard({ app }) {
           </Typography>
         </div>
         <CardActions>
-          <Tooltip title={i18n.__('components.AppPacksCard.infoTooltip')}>
-            <IconButton>
-              <Link to={`/app/${app.identification}`}>
-                <InfoIcon sx={{ color: 'primary.main' }} />
-              </Link>
-            </IconButton>
-          </Tooltip>
+          <Link to={`/app/${app.identification}`}>
+            <IconButtonEole
+              tooltipText={i18n.__('components.AppPacksCard.infoTooltip')}
+              icon={<InfoIcon />}
+              style={{
+                background: 'none',
+                color: 'primary.main',
+                '&:hover': { backgroundColor: 'secondary.main', color: 'primary.purple' },
+              }}
+            />
+          </Link>
         </CardActions>
       </CardContent>
     </Card>

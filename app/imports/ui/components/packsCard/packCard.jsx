@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import i18n from 'meteor/universe:i18n';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
@@ -22,6 +23,7 @@ import { useAppContext } from '../../contexts/context';
 import PackDelete from './packDelete';
 import { generateGradiant } from '../../utils';
 import PackIcon from '../packs/PackIcon';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 // Styles CSS //
 const divCardContainerStyle = {
@@ -37,7 +39,12 @@ const expendMoreStyle = {
 };
 const iconButtonStyle = {
   color: 'primary.light',
+  backgroundColor: 'none',
   marginLeft: -1,
+  '&:hover': {
+    backgroundColor: 'primary.light',
+    color: 'primary.purple',
+  },
 };
 const typographieHeaderStyle = {
   overflow: 'ellipsis',
@@ -144,28 +151,32 @@ const PackCard = ({ pack, isUserPack }) => {
             <>
               {pack.owner === userId ? (
                 <div>
-                  <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
-                    <IconButton sx={iconButtonStyle} onClick={openDetailPack}>
-                      <OpenInNewIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title={i18n.__('components.PacksCard.editPack')}>
-                    <IconButton sx={iconButtonStyle} onClick={handleEditButton}>
-                      <EditIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title={i18n.__('components.PacksCard.deletePack')}>
-                    <IconButton sx={iconButtonStyle} onClick={handleDeleteButton}>
-                      <ClearIcon />
-                    </IconButton>
-                  </Tooltip>
+                  <IconButtonEole
+                    tooltipText={i18n.__('components.PacksCard.packTooltip')}
+                    icon={<OpenInNewIcon />}
+                    style={iconButtonStyle}
+                    onClick={openDetailPack}
+                  />
+                  <IconButtonEole
+                    tooltipText={i18n.__('components.PacksCard.editPack')}
+                    icon={<EditIcon />}
+                    style={iconButtonStyle}
+                    onClick={handleEditButton}
+                  />
+                  <IconButtonEole
+                    tooltipText={i18n.__('components.PacksCard.deletePack')}
+                    icon={<ClearIcon />}
+                    style={iconButtonStyle}
+                    onClick={handleDeleteButton}
+                  />
                 </div>
               ) : (
-                <Tooltip title={i18n.__('components.PacksCard.packTooltip')}>
-                  <IconButton sx={iconButtonStyle} onClick={openDetailPack}>
-                    <OpenInNewIcon />
-                  </IconButton>
-                </Tooltip>
+                <IconButtonEole
+                  tooltipText={i18n.__('components.PacksCard.packTooltip')}
+                  icon={<OpenInNewIcon />}
+                  style={iconButtonStyle}
+                  onClick={openDetailPack}
+                />
               )}
             </>
           }

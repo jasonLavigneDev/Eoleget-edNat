@@ -8,10 +8,10 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 
 import ButtonEole from '../buttons/buttonEole';
+import IconButtonEole from '../buttons/iconButtonEole';
 
 const primaryMain = 'primary.main';
 const root = {
@@ -55,9 +55,11 @@ const PackDelete = ({ pack, open, onClose }) => {
           <CardHeader
             title={i18n.__('components.packDelete.title')}
             action={
-              <IconButton onClick={onClose}>
-                <ClearIcon />
-              </IconButton>
+              <IconButtonEole
+                icon={<ClearIcon />}
+                onClick={onClose}
+                style={{ backgroundColor: 'none', color: 'primary.main' }}
+              />
             }
           />
           <CardContent>
