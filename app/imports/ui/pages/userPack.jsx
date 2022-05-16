@@ -29,8 +29,9 @@ const divPackContainerStyle = {
 const spanIconListStyle = {
   display: 'flex',
   flexDirection: 'row-reverse',
-  marginTop: -10,
+  marginTop: -1,
   marginLeft: 5,
+  height: '90%',
 };
 // End styles //
 
