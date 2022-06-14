@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import i18n from 'meteor/universe:i18n';
+import 'material-icons/iconfont/material-icons.css';
 import { registerSchemaMessages, getLang } from '../../api/utils/functions';
 import App from '../../ui/layouts/App';
 
