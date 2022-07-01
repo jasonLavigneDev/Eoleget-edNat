@@ -46,7 +46,7 @@ function PackPage() {
         <div style={divPackContainerStyle}>
           <div style={divPackTitleContainerStyle}>
             <Typography variant="h4" component="div" sx={{ color: 'primary.purple' }}>
-              {i18n.__('pages.UserPacks.userPacksTitle')}({total})
+              {i18n.__('pages.UserPacks.userPacksTitle')} ({total})
             </Typography>
           </div>
           <span style={spanIconListStyle}>

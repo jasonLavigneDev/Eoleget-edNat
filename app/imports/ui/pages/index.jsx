@@ -62,7 +62,7 @@ function Index() {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           <Typography variant="h4" component="div" sx={{ color: 'primary.main' }}>
-            {i18n.__('pages.Store.storeTitle')}({total})
+            {i18n.__('pages.Store.storeTitle')} ({total})
           </Typography>
           <div style={spanIconListStyle}>
             <span style={spanCartStyle}>

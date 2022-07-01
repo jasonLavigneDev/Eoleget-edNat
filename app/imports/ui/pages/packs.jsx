@@ -55,7 +55,7 @@ function Packs() {
       <div style={divMainStyle}>
         <div style={divStoreTitleStyle}>
           <Typography variant="h4" component="div" color="primary">
-            {i18n.__('pages.Packs.packsStoreTitle')}({total})
+            {i18n.__('pages.Packs.packsStoreTitle')} ({total})
           </Typography>
           <span style={spanIconListStyle}>
             <ToggleButtonEole viewMode={viewMode} setViewMode={setViewMode} />
