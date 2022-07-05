@@ -116,8 +116,8 @@ function DetailPack({ pack, ready }) {
     if (displayCmd === CMD_BATCH) {
       apps.map((app) => {
         let c = '';
-        if (app.version === '') c = `winget install --id=${app.identification} -e`;
-        else c = `winget install --id=${app.identification} -v "${app.version}" -e`;
+        if (app.version === '') c = `winget install --id ${app.identification} -e`;
+        else c = `winget install --id ${app.identification} -v "${app.version}" -e`;
         if (str !== '') str += ` && ${c}`;
         else str += c;
         return str;
@@ -125,8 +125,8 @@ function DetailPack({ pack, ready }) {
     } else if (displayCmd === CMD_POWERSHELL) {
       apps.map((app) => {
         let c = '';
-        if (app.version === '') c = `winget install --id=${app.identification} -e`;
-        else c = `winget install --id=${app.identification} -v "${app.version}" -e`;
+        if (app.version === '') c = `winget install --id ${app.identification} -e`;
+        else c = `winget install --id ${app.identification} -v "${app.version}" -e`;
         if (str !== '') str += ` ; ${c}`;
         else str += c;
         return str;
