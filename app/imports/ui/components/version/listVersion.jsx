@@ -15,8 +15,8 @@ function ListVersion({ versions, app, setCommand }) {
 
   const generateCommand = (v) => {
     let c = '';
-    if (v === '') c = `winget install --id=${app.identification} -e`;
-    else c = `winget install --id=${app.identification} -v "${v}" -e`;
+    if (v === '') c = `winget install --id ${app.identification} -e`;
+    else c = `winget install --id ${app.identification} -v "${v}" -e`;
     setCommand(c);
   };
 

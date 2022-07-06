@@ -136,8 +136,8 @@ const detailApp = ({ app, ready }) => {
 
   const generateCommand = (v) => {
     let c = '';
-    if (v === 'latest') c = `winget install --id=${app.identification} -e`;
-    else c = `winget install --id=${app.identification} -v "${v}" -e`;
+    if (v === 'latest') c = `winget install --id ${app.identification} -e`;
+    else c = `winget install --id ${app.identification} -v "${v}" -e`;
     return c;
   };
 
