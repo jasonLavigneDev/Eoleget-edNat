@@ -4,7 +4,8 @@
   - [Application : Eoleget](#application-eoleget)
   - [Parameters](#parameters)
 - [Run project](#run-project)
-  - [Run an other terminal **eoleget**](#run-an-other-terminal-eoleget)
+  - [Run a terminal **eoleget**](#run-a-terminal-eoleget)
+- [Create your first pack](#create-your-first-pack)
 
 ---
 
@@ -28,7 +29,7 @@ To run **Eoleget** locally, see [configuration document for more informations](c
 
 ## Run project
 
-### Run an other terminal **eoleget**
+### Run a terminal **eoleget**
 
 ```
 cd eoleget/app
@@ -41,3 +42,5 @@ From the browser, type this :
 http://localhost:3000
 
 ```
+
+## Create your first pack
