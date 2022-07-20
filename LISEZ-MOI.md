@@ -76,7 +76,7 @@ sélectionner la version de l'application et cliquer sur le bouton `Ajouter au p
 
 ### En mode 'liste'
 
-Vous pouvez naviguer dans la liste grâce à la pagination en bas de page et chosir le nombre d'application par page et/ou
+Vous pouvez naviguer dans la liste grâce à la pagination en bas de page et choisir le nombre d'application par page et/ou
 utiliser la barre de recherche. Une fois l'application trouvée, vous pouvez choisir la version voulue puis cliquer sur
 la checkbox pour la sélectionner. Vous pouvez aussi accéder au [Détail de l'application](###détail-dune-application)
 grâce au bouton en bout de ligne où vous pourrez sélectionner la version de l'application et cliquer sur le bouton
@@ -119,7 +119,7 @@ recherche.
 
 Une fois le pack à télécharger trouvé :
 
-Vous pouvez cliquer sur le premier icon (en haut de la card / au bout de la ligne) pour accéder au
+Vous pouvez cliquer sur le premier icone (en haut de la card / au bout de la ligne) pour accéder au
 [détail du pack](#détail-dun-pack).
 
 Une fois dans la page de [détail du pack](#détail-dun-pack), vous retrouvez un résumé de votre pack. Depuis cette page,
@@ -141,7 +141,7 @@ ajouter l'application au panier ou encore naviguer vers le site de l'application
 
 Depuis le détail d'une application, vous pouvez retrouver plusieurs informations :
 
-- le nom de l'appliction
+- le nom de l'application
 - son identifiant winget
 - la version sélectionnée
 - un lien vers le site de l'application
