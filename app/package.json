@@ -1,6 +1,9 @@
 {
   "name": "eoleget",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "license": "EUPL-1.2",
+  "description": "Winget online market",
+  "author": "EOLE/PCLL <team@eole.education> - DINUM",
   "private": true,
   "scripts": {
     "start": "meteor --exclude-archs 'web.browser.legacy, web.cordova' --settings ../config/settings.development.json",
