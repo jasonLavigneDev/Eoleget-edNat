@@ -8,13 +8,14 @@ import ClearIcon from '@mui/icons-material/Clear';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import Fade from '@mui/material/Fade';
-import { Typography, Paper } from '@mui/material';
+import { Typography, Paper, Button } from '@mui/material';
 
 import { useAppContext } from '../../contexts/context';
-import AppList from './AppList';
 import Applications from '../../../api/applications/applications';
 import { debounce } from '../../utils';
 import IconButtonEole from '../buttons/iconButtonEole';
+import MaterialTable from './MaterialTable';
+import ListVersion from '../version/listVersion';
 
 // Styles CSS //
 const divMainStyle = {
@@ -116,6 +117,46 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
     }
   };
 
+  const column = [
+    {
+      header: i18n.__('components.AppList.application'),
+      id: 'nom',
+      accessorKey: 'nom',
+      width: 250,
+    },
+    {
+      header: i18n.__('components.AppList.description'),
+      id: 'description',
+      accessorKey: 'description',
+      width: 650,
+    },
+    {
+      header: i18n.__('components.AppList.version'),
+      id: 'versions',
+      accessorKey: 'versions',
+      width: 130,
+      // FIXME: Remove disabled prop validation
+      // eslint-disable-next-line react/prop-types
+      Cell: ({ cell }) => <ListVersion versions={cell.getValue()} app={cell} />,
+    },
+    {
+      header: i18n.__('components.AppList.url'),
+      id: 'url',
+      accessorKey: 'url',
+      width: 250,
+      Cell: ({ cell }) => (
+        // eslint-disable-next-line react/prop-types
+        <a href={cell.getValue()} target="_blank" rel="noreferrer">
+          {
+            // FIXME: Remove disabled prop validation
+            // eslint-disable-next-line react/prop-types
+            cell.getValue()
+          }
+        </a>
+      ),
+    },
+  ];
+
   const searchField = (
     <TextField
       margin="normal"
@@ -186,7 +227,8 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
           <div style={divStoreTitleStyle}>
             {searchField}
             {applications.length !== 0 ? (
-              <AppList applications={applications} cart={cart} isModal={modal} editPack={editModal} />
+              // <AppList applications={applications} cart={cart} isModal={modal} editPack={editModal} />
+              <MaterialTable columns={column} data={applications} cart={cart} />
             ) : (
               <div sx={{ padding: 6 }}>
                 <Typography variant="h5" align="center">
