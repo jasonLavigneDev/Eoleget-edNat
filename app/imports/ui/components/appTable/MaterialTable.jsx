@@ -1,7 +1,13 @@
 import React from 'react';
 import MaterialReactTable from 'material-react-table';
 import i18n from 'meteor/universe:i18n';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PropTypes from 'prop-types';
+import { ListItemIcon, MenuItem } from '@mui/material';
+import { useState } from 'react';
+import { useEffect } from 'react';
+
+let tempSelect = [];
 
 const MaterialTable = ({ columns, data, cart }) => {
   const checkAppAllreadyAdded = (app) => {
@@ -42,14 +48,52 @@ const MaterialTable = ({ columns, data, cart }) => {
     }
   };
 
-  const handleSelectApp = (event, app) => {
-    console.log(app);
-    if (checkAppAllreadyAdded(app)) {
-      removeAppToCart(app);
-    } else {
-      addAppToCart(app);
+  const [rowSelection, setRowSelection] = useState({});
+
+  const handleSelectApp = (app) => {
+    if (app !== undefined) {
+      if (checkAppAllreadyAdded(app)) {
+        removeAppToCart(app);
+      } else {
+        addAppToCart(app);
+      }
     }
   };
+
+  useEffect(() => {
+    if (rowSelection) {
+      // console.log(data[Object.keys(rowSelection).pop()]);
+      const l = Object.keys(rowSelection);
+
+      if (tempSelect.length > l.length) {
+        const index = tempSelect.find(function (nombre) {
+          if (!l.includes(nombre)) {
+            return nombre;
+          }
+          return undefined;
+        });
+
+        if (index !== undefined) {
+          handleSelectApp(data[index]);
+        }
+      } else {
+        //handleSelectApp(data[Object.keys(rowSelection).pop()]);
+
+        const index = l.find(function (nombre) {
+          if (!tempSelect.includes(nombre)) {
+            return nombre;
+          }
+          return undefined;
+        });
+
+        if (index !== undefined) {
+          handleSelectApp(data[index]);
+        }
+      }
+
+      tempSelect = l;
+    }
+  }, [rowSelection]);
 
   return (
     <>
@@ -57,11 +101,8 @@ const MaterialTable = ({ columns, data, cart }) => {
         columns={columns ?? []}
         data={data ?? []}
         enableRowSelection
-        muiTableBodyRowProps={({ row }) => ({
-          onClick: () => {
-            handleSelectApp(row.getValue());
-          },
-        })}
+        onRowSelectionChange={setRowSelection}
+        state={{ rowSelection }}
       />
     </>
   );
