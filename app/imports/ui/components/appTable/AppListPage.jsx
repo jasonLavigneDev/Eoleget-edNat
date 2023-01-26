@@ -188,7 +188,7 @@ function AppListPage({ modal, editModal, cart, setTotal }) {
             {applications.length !== 0 ? (
               <AppList applications={applications} cart={cart} isModal={modal} editPack={editModal} />
             ) : (
-              <div sx={{ padding: 6 }}>
+              <div style={{ padding: 6 }}>
                 <Typography variant="h5" align="center">
                   {i18n.__('pages.Store.noResult')}
                 </Typography>
