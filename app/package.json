@@ -15,28 +15,28 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer --settings ../config/settings.development.json"
   },
   "dependencies": {
-    "@babel/runtime": "^7.20.13",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@babel/runtime": "^7.21.5",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
     "@mui/base": "^5.0.0-alpha.115",
-    "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.6",
-    "@mui/private-theming": "^5.11.2",
-    "@mui/styled-engine": "^5.11.0",
-    "@mui/styled-engine-sc": "^5.11.0",
-    "@mui/styles": "^5.11.2",
-    "@mui/system": "^5.11.5",
-    "@mui/utils": "^5.11.2",
-    "@mui/x-data-grid": "^5.17.20",
-    "@types/react-transition-group": "^4.4.5",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.3",
+    "@mui/private-theming": "^5.12.3",
+    "@mui/styled-engine": "^5.12.3",
+    "@mui/styled-engine-sc": "^5.12.0",
+    "@mui/styles": "^5.12.3",
+    "@mui/system": "^5.12.3",
+    "@mui/utils": "^5.12.3",
+    "@mui/x-data-grid": "^5.17.26",
+    "@types/react-transition-group": "^4.4.6",
     "babel-eslint": "^10.1.0",
     "bcrypt": "^5.1.0",
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.2",
     "chai": "^4.3.7",
-    "connect-rest": "^3.0.33",
+    "connect-rest": "^2.12.7",
     "cors": "^2.8.5",
     "faker": "^4.1.0",
-    "material-icons": "^1.13.1",
+    "material-icons": "^1.13.6",
     "meteor-node-stubs": "^1.2.5",
     "moment": "^2.29.4",
     "prop-types": "^15.7.2",
@@ -45,7 +45,7 @@
     "react-router-dom": "^5.3.4",
     "react-transition-group": "^4.4.5",
     "simpl-schema": "^1.13.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.10"
   },
   "meteor": {
     "mainModule": {
@@ -54,7 +54,7 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.21.8",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
@@ -68,9 +68,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react": "^7.32.1",
+    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-standard": "^4.1.0",
-    "prettier": "^2.8.3"
+    "prettier": "^2.8.8"
   }
 }
