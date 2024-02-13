@@ -20,5 +20,5 @@ repos:
         types_or: [javascript, jsx, ts, tsx]
         language: docker_image
         entry: |
-          hub.eole.education/proxyhub/geoffreybooth/meteor-base:2.7.1
+          hub.eole.education/proxyhub/geoffreybooth/meteor-base:2.14
           env HOME=/tmp bin/pre-commit-meteor-lint
